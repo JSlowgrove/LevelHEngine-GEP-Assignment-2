@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{ffcf6612-0985-456a-89df-1e9b7bebe2c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{c00f0be7-74a6-4444-aad5-5c13dfa0bea1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{65e28837-87cc-498a-b0f5-4fffb898a45e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{635f6e40-0865-4dcc-81d6-cb9cf7353316}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\BackgroundSystem">
+      <UniqueIdentifier>{a90c5993-3cef-4bc2-83e5-953a791e7183}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BackgroundSystem">
+      <UniqueIdentifier>{c363215f-40ea-409a-9bfb-7401750e3862}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Enitites">
+      <UniqueIdentifier>{d9b4c03f-3dc1-4dc5-8c03-d33932cd66e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Enitites">
+      <UniqueIdentifier>{01581987-4a83-4ef1-863b-0ab78528480e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gameplay">
+      <UniqueIdentifier>{15b6b52b-1147-433e-983b-0e5fb7c5e499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gameplay">
+      <UniqueIdentifier>{a0df60b7-5b36-4e83-9954-8bb2686d141a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ParticleSystem">
+      <UniqueIdentifier>{8d88518e-c5aa-4606-85a4-f9f1dc53b21c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ParticleSystem">
+      <UniqueIdentifier>{c5acf561-2300-418c-85a6-3330a8ac115b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States">
+      <UniqueIdentifier>{2a87d4a5-8057-44a1-9c7d-c919690397f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States">
+      <UniqueIdentifier>{3a961682-2314-4e73-952e-525de9c61cff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Enitites\Base">
+      <UniqueIdentifier>{61edb2e7-0fac-465c-af0f-f0e7ff7c8522}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Enitites\Base">
+      <UniqueIdentifier>{cb803107-a82c-4734-8d8a-eb27ca58a3a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States\Menus">
+      <UniqueIdentifier>{68dc7591-335c-4162-92fd-e3a819d07d24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\Menus">
+      <UniqueIdentifier>{b9fdcc05-75a9-4288-8ff7-b1e9373739b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Enitites\Player">
+      <UniqueIdentifier>{f110ff65-edbf-4644-9b0d-f1b3e7b3e0c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Enitites\Player">
+      <UniqueIdentifier>{e76e90b8-6e9a-4b00-af43-077c9c509c58}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\C_Audio.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\C_Music.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\C_Text.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\C_Texture.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\C_Timer.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\C_Utilities.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundSystem\B_Background.cpp">
+      <Filter>Source Files\BackgroundSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundSystem\B_BackgroundManager.cpp">
+      <Filter>Source Files\BackgroundSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\G_Gameplay.cpp">
+      <Filter>Source Files\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\G_CollisionManager.cpp">
+      <Filter>Source Files\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\G_SpawnManager.cpp">
+      <Filter>Source Files\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Enitites\E_EntityManager.cpp">
+      <Filter>Source Files\Enitites</Filter>
+    </ClCompile>
+    <ClCompile Include="Enitites\Base\EB_Animated.cpp">
+      <Filter>Source Files\Enitites\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Enitites\Base\EB_Entity.cpp">
+      <Filter>Source Files\Enitites\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Enitites\Base\EB_Velocity.cpp">
+      <Filter>Source Files\Enitites\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Enitites\Base\EB_VelocityAnimated.cpp">
+      <Filter>Source Files\Enitites\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="States\S_Splash.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\S_State.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\S_StateManager.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\Menus\SM_MainMenu.cpp">
+      <Filter>Source Files\States\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystem\PS_Particle.cpp">
+      <Filter>Source Files\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystem\PS_ParticleEffect.cpp">
+      <Filter>Source Files\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\UI_Button.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Enitites\Player\EP_Player.cpp">
+      <Filter>Source Files\Enitites\Player</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\C_Audio.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\C_Music.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\C_Text.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\C_Texture.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\C_Timer.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\C_Utilities.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\C_Vec2.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundSystem\B_Background.h">
+      <Filter>Header Files\BackgroundSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundSystem\B_BackgroundManager.h">
+      <Filter>Header Files\BackgroundSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\G_CollisionManager.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\G_Gameplay.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\G_SpawnManager.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Enitites\E_EntityManager.h">
+      <Filter>Header Files\Enitites</Filter>
+    </ClInclude>
+    <ClInclude Include="Enitites\Base\EB_Animated.h">
+      <Filter>Header Files\Enitites\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Enitites\Base\EB_Entity.h">
+      <Filter>Header Files\Enitites\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Enitites\Base\EB_Velocity.h">
+      <Filter>Header Files\Enitites\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Enitites\Base\EB_VelocityAnimated.h">
+      <Filter>Header Files\Enitites\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="States\S_Splash.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="States\S_State.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="States\S_StateManager.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="States\Menus\SM_MainMenu.h">
+      <Filter>Header Files\States\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystem\PS_Particle.h">
+      <Filter>Header Files\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystem\PS_ParticleEffect.h">
+      <Filter>Header Files\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\UI_Button.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Enitites\Player\EP_Player.h">
+      <Filter>Header Files\Enitites\Player</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
