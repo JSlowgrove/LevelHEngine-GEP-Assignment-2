@@ -50,6 +50,4 @@ public:
 private:
 	///The background music.
 	//C_Music* backgroundMusic;
-	///A pointer for the universal speed of the menu.
-	float* universalSpeed;
 };

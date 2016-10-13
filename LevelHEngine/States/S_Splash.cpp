@@ -5,14 +5,10 @@ S_Splash::S_Splash(S_StateManager* stateManager, SDL_Renderer* renderer, C_Vec2 
 	splash(new C_Texture("Assets/Images/splash.png", renderer)),
 	splashTimer(new C_Timer(3.0f))
 {
-	//Initialise universal speed
-	universalSpeed = new float(0.0f);
 }
 
 S_Splash::~S_Splash()
 {
-	//Delete pointers
-	delete universalSpeed;
 	delete splash;
 }
 

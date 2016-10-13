@@ -47,8 +47,6 @@ public:
 	void draw();
 
 private:
-	///A pointer for the universal speed of the menu.
-	float* universalSpeed;
 	///The splash image
 	C_Texture* splash;
 	///The timer keeping the splash screen open

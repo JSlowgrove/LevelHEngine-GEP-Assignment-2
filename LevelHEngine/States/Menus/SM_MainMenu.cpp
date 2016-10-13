@@ -4,8 +4,6 @@ SM_MainMenu::SM_MainMenu(S_StateManager* stateManager, SDL_Renderer* renderer, C
 	: S_State(stateManager, renderer, dimensions)/*,
 	//backgroundMusic(new C_Music("Assets/Audio/[INSERTNAME].ogg"))*/
 {
-	//Initialise universal speed
-	universalSpeed = new float(0.0f);
 }
 
 SM_MainMenu::~SM_MainMenu()
@@ -15,7 +13,6 @@ SM_MainMenu::~SM_MainMenu()
 	//Delete audio pointers
 	//delete backgroundMusic;
 	//delete pointers
-	delete universalSpeed;
 }
 
 bool SM_MainMenu::input()
