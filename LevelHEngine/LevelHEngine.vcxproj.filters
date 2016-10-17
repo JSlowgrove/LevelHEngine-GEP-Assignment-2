@@ -73,6 +73,18 @@
     <Filter Include="Source Files\Enitites\Player">
       <UniqueIdentifier>{e76e90b8-6e9a-4b00-af43-077c9c509c58}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Rendering">
+      <UniqueIdentifier>{bbfb3f3f-2850-407f-b518-f4bcf9c61081}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rendering">
+      <UniqueIdentifier>{30adc752-8ea4-49a8-b2b3-882fdd2a6ccb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ResourceManagement">
+      <UniqueIdentifier>{7bc0348e-c559-4457-8fac-7a7a6a724a3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ResourceManagement">
+      <UniqueIdentifier>{088c2460-cd9f-4f74-836f-2a1ce5bfe895}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -150,6 +162,36 @@
     <ClCompile Include="Enitites\Player\EP_Player.cpp">
       <Filter>Source Files\Enitites\Player</Filter>
     </ClCompile>
+    <ClCompile Include="Rendering\R_Camera.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\UI_UI.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\UI_UIObject.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManagement\RM_FileLoader.cpp">
+      <Filter>Source Files\ResourceManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManagement\RM_Model.cpp">
+      <Filter>Source Files\ResourceManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManagement\RM_Object.cpp">
+      <Filter>Source Files\ResourceManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManagement\RM_Shader.cpp">
+      <Filter>Source Files\ResourceManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="Enitites\Base\EB_Entity3D.cpp">
+      <Filter>Source Files\Enitites\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystem\PS_Particle3D.cpp">
+      <Filter>Source Files\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystem\PS_ParticleEffect3D.cpp">
+      <Filter>Source Files\ParticleSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\C_Audio.h">
@@ -226,6 +268,36 @@
     </ClInclude>
     <ClInclude Include="Enitites\Player\EP_Player.h">
       <Filter>Header Files\Enitites\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\R_Camera.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\UI_UI.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\UI_UIObject.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManagement\RM_FileLoader.h">
+      <Filter>Header Files\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManagement\RM_Model.h">
+      <Filter>Header Files\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManagement\RM_Object.h">
+      <Filter>Header Files\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManagement\RM_Shader.h">
+      <Filter>Header Files\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Enitites\Base\EB_Entity3D.h">
+      <Filter>Header Files\Enitites\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystem\PS_Particle3D.h">
+      <Filter>Header Files\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystem\PS_ParticleEffect3D.h">
+      <Filter>Header Files\ParticleSystem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

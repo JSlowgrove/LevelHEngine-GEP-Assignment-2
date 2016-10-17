@@ -55,6 +55,11 @@ public:
 	*/
 	void draw();
 
+	/**
+	@brief Draws the current States using openGL.
+	*/
+	void drawOpenGL();
+
 private:
 	///The current states that are in use.
 	std::vector<S_State*> currentStates;

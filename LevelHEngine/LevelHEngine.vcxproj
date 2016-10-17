@@ -74,11 +74,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\SDKs\SDL2015\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SDKs\SDL2015\include;C:\SDKs\glew-2.0.0\include;C:\SDKs\glm-0.9.8.1\glm</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\SDKs\SDL2015\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\SDKs\SDL2015\lib;C:\SDKs\glew-2.0.0\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;OpenGL32.lib;glew32sd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -96,11 +97,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\SDKs\SDL\SDL2-devel-2.0.3-VC\SDL2-2.0.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SDKs\SDL2015\include;C:\SDKs\glew-2.0.0\include;C:\SDKs\glm-0.9.8.1\glm</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\SDKs\SDL2015\lib;C:\SDKs\glew-2.0.0\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;OpenGL32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -127,6 +131,7 @@
     <ClCompile Include="Core\C_Utilities.cpp" />
     <ClCompile Include="Enitites\Base\EB_Animated.cpp" />
     <ClCompile Include="Enitites\Base\EB_Entity.cpp" />
+    <ClCompile Include="Enitites\Base\EB_Entity3D.cpp" />
     <ClCompile Include="Enitites\Base\EB_Velocity.cpp" />
     <ClCompile Include="Enitites\Base\EB_VelocityAnimated.cpp" />
     <ClCompile Include="Enitites\E_EntityManager.cpp" />
@@ -136,12 +141,21 @@
     <ClCompile Include="Gameplay\G_SpawnManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ParticleSystem\PS_Particle.cpp" />
+    <ClCompile Include="ParticleSystem\PS_Particle3D.cpp" />
     <ClCompile Include="ParticleSystem\PS_ParticleEffect.cpp" />
+    <ClCompile Include="ParticleSystem\PS_ParticleEffect3D.cpp" />
+    <ClCompile Include="Rendering\R_Camera.cpp" />
+    <ClCompile Include="ResourceManagement\RM_FileLoader.cpp" />
+    <ClCompile Include="ResourceManagement\RM_Model.cpp" />
+    <ClCompile Include="ResourceManagement\RM_Object.cpp" />
+    <ClCompile Include="ResourceManagement\RM_Shader.cpp" />
     <ClCompile Include="States\Menus\SM_MainMenu.cpp" />
     <ClCompile Include="States\S_Splash.cpp" />
     <ClCompile Include="States\S_State.cpp" />
     <ClCompile Include="States\S_StateManager.cpp" />
     <ClCompile Include="UI\UI_Button.cpp" />
+    <ClCompile Include="UI\UI_UI.cpp" />
+    <ClCompile Include="UI\UI_UIObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackgroundSystem\B_Background.h" />
@@ -155,6 +169,7 @@
     <ClInclude Include="Core\C_Vec2.h" />
     <ClInclude Include="Enitites\Base\EB_Animated.h" />
     <ClInclude Include="Enitites\Base\EB_Entity.h" />
+    <ClInclude Include="Enitites\Base\EB_Entity3D.h" />
     <ClInclude Include="Enitites\Base\EB_Velocity.h" />
     <ClInclude Include="Enitites\Base\EB_VelocityAnimated.h" />
     <ClInclude Include="Enitites\E_EntityManager.h" />
@@ -163,12 +178,21 @@
     <ClInclude Include="Gameplay\G_Gameplay.h" />
     <ClInclude Include="Gameplay\G_SpawnManager.h" />
     <ClInclude Include="ParticleSystem\PS_Particle.h" />
+    <ClInclude Include="ParticleSystem\PS_Particle3D.h" />
     <ClInclude Include="ParticleSystem\PS_ParticleEffect.h" />
+    <ClInclude Include="ParticleSystem\PS_ParticleEffect3D.h" />
+    <ClInclude Include="Rendering\R_Camera.h" />
+    <ClInclude Include="ResourceManagement\RM_FileLoader.h" />
+    <ClInclude Include="ResourceManagement\RM_Model.h" />
+    <ClInclude Include="ResourceManagement\RM_Object.h" />
+    <ClInclude Include="ResourceManagement\RM_Shader.h" />
     <ClInclude Include="States\Menus\SM_MainMenu.h" />
     <ClInclude Include="States\S_Splash.h" />
     <ClInclude Include="States\S_State.h" />
     <ClInclude Include="States\S_StateManager.h" />
     <ClInclude Include="UI\UI_Button.h" />
+    <ClInclude Include="UI\UI_UI.h" />
+    <ClInclude Include="UI\UI_UIObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

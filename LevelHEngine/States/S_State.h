@@ -23,6 +23,14 @@ public:
 	S_State(S_StateManager* stateManager, SDL_Renderer* renderer, C_Vec2 dimensions);
 
 	/**
+	Constructs a State object with a window.
+	@param stateManager A pointer to the StateManager.
+	@param window A pointer to the window in use.
+	@param dimensions The screen dimensions.
+	*/
+	S_State(S_StateManager* stateManager, SDL_Window* window, C_Vec2 dimensions);
+
+	/**
 	@brief A virtual destructor for the State object.
 	*/
 	virtual ~S_State();
@@ -44,6 +52,12 @@ public:
 	*/
 	virtual void draw() = 0;
 
+	/**
+	@brief A function to return the window.
+	@returns A pointer to the window.
+	*/
+	SDL_Window* getWindow();
+
 protected:
 	///A pointer to the state manager.
 	S_StateManager* stateManager;
@@ -51,4 +65,6 @@ protected:
 	SDL_Renderer* renderer;
 	///The screen dimensions.
 	C_Vec2 dimensions;
+	///A window to display to
+	SDL_Window* window;
 };
