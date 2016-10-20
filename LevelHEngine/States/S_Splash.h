@@ -7,7 +7,7 @@
 #include "../Core/C_Timer.h"
 #include "../Core/C_Texture.h"
 #include "../Core/C_Audio.h"
-#include "Menus/SM_MainMenu.h"
+#include "S_MainMenu.h"
 
 /**
 @brief A State that contains and runs the splash screen.

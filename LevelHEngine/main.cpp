@@ -2,10 +2,18 @@
 #include <SDL_ttf.h>
 #include <SDL_mixer.h>
 #include <iostream>
-#include "Core/C_Vec2.h"
+#include <windows.h>
+#include "Maths/M_Vec2.h"
 #include "Core/C_Utilities.h"
 #include "States/S_StateManager.h"
 #include "States/S_Splash.h"
+
+///Forces the game to run on the NIVDIA GPU, if one is available.
+///http://developer.download.nvidia.com/devzone/devcenter/gamegraphics/files/OptimusRenderingPolicies.pdf
+extern "C"
+{
+	_declspec(dllexport) DWORD NvOptimusEnablement = 0x00000001;
+}
 
 //The declaration of the main function
 int main(int argc, char *argv[]);
@@ -130,14 +138,6 @@ int main(int argc, char *argv[])
 #include "glew.h"
 #include "StateManager.h"
 #include "MainMenu.h"
-
-
-//Forces the game to run on the NIVDIA GPU http://developer.download.nvidia.com/devzone/devcenter/gamegraphics/files/OptimusRenderingPolicies.pdf
-
-extern "C"
-{
-	_declspec(dllexport) DWORD NvOptimusEnablement = 0x00000001;
-}
 
 
 // An initialisation function, mainly for GLEW

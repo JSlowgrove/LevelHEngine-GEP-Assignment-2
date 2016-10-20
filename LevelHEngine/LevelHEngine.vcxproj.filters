@@ -31,12 +31,6 @@
     <Filter Include="Header Files\States">
       <UniqueIdentifier>{3a961682-2314-4e73-952e-525de9c61cff}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\States\Menus">
-      <UniqueIdentifier>{68dc7591-335c-4162-92fd-e3a819d07d24}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\States\Menus">
-      <UniqueIdentifier>{b9fdcc05-75a9-4288-8ff7-b1e9373739b6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Rendering">
       <UniqueIdentifier>{bbfb3f3f-2850-407f-b518-f4bcf9c61081}</UniqueIdentifier>
     </Filter>
@@ -87,9 +81,6 @@
     <ClCompile Include="States\S_StateManager.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
-    <ClCompile Include="States\Menus\SM_MainMenu.cpp">
-      <Filter>Source Files\States\Menus</Filter>
-    </ClCompile>
     <ClCompile Include="UI\UI_Button.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
@@ -116,6 +107,9 @@
     </ClCompile>
     <ClCompile Include="Maths\M_Utilities.cpp">
       <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="States\S_MainMenu.cpp">
+      <Filter>Source Files\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -146,9 +140,6 @@
     <ClInclude Include="States\S_StateManager.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
-    <ClInclude Include="States\Menus\SM_MainMenu.h">
-      <Filter>Header Files\States\Menus</Filter>
-    </ClInclude>
     <ClInclude Include="UI\UI_Button.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
@@ -178,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="Maths\M_Utilities.h">
       <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="States\S_MainMenu.h">
+      <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
