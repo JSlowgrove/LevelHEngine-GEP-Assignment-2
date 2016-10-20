@@ -2,37 +2,14 @@
 
 #include <string>
 #include <SDL.h>
-#include "C_Vec2.h"
-
-///A definition of PI.
-#define PI 3.141596f
+#include "../Maths/M_Vec2.h"
 
 /**
-@brief Contains utility functions for use within the code.
+@brief Contains core utility functions for use within the code.
 @author Jamie Slowgrove
 */
 namespace C_Utilities
 {
-	/**
-	@brief Gets the value for PI.
-	@returns The value for PI.
-	*/
-	float getPI();
-
-	/**
-	@brief Converts the degree to a radian.
-	@param angle The angle to convert.
-	@returns The converted radian.
-	*/
-	float convertDegreeToRadian(float angle);
-
-	/**
-	@brief Converts the radian to a degree.
-	@param angle The angle to convert.
-	@returns The converted degree.
-	*/
-	float convertRadianToDegree(float angle);
-
 	/**
 	@brief Logs the information message.
 	@param message The message.

@@ -4,7 +4,7 @@
 #include <SDL_ttf.h>
 #include <iostream>
 #include <string>
-#include "C_Vec2.h"
+#include "../Maths/M_Vec2.h"
 
 /**
 @brief Creates a Text Texture for use with a renderer using the Text formating.

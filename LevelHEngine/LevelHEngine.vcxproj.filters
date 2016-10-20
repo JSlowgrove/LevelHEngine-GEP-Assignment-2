@@ -25,53 +25,17 @@
     <Filter Include="Source Files\UI">
       <UniqueIdentifier>{635f6e40-0865-4dcc-81d6-cb9cf7353316}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\BackgroundSystem">
-      <UniqueIdentifier>{a90c5993-3cef-4bc2-83e5-953a791e7183}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\BackgroundSystem">
-      <UniqueIdentifier>{c363215f-40ea-409a-9bfb-7401750e3862}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Enitites">
-      <UniqueIdentifier>{d9b4c03f-3dc1-4dc5-8c03-d33932cd66e2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Enitites">
-      <UniqueIdentifier>{01581987-4a83-4ef1-863b-0ab78528480e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Gameplay">
-      <UniqueIdentifier>{15b6b52b-1147-433e-983b-0e5fb7c5e499}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Gameplay">
-      <UniqueIdentifier>{a0df60b7-5b36-4e83-9954-8bb2686d141a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\ParticleSystem">
-      <UniqueIdentifier>{8d88518e-c5aa-4606-85a4-f9f1dc53b21c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\ParticleSystem">
-      <UniqueIdentifier>{c5acf561-2300-418c-85a6-3330a8ac115b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\States">
       <UniqueIdentifier>{2a87d4a5-8057-44a1-9c7d-c919690397f4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\States">
       <UniqueIdentifier>{3a961682-2314-4e73-952e-525de9c61cff}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Enitites\Base">
-      <UniqueIdentifier>{61edb2e7-0fac-465c-af0f-f0e7ff7c8522}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Enitites\Base">
-      <UniqueIdentifier>{cb803107-a82c-4734-8d8a-eb27ca58a3a4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\States\Menus">
       <UniqueIdentifier>{68dc7591-335c-4162-92fd-e3a819d07d24}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\States\Menus">
       <UniqueIdentifier>{b9fdcc05-75a9-4288-8ff7-b1e9373739b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Enitites\Player">
-      <UniqueIdentifier>{f110ff65-edbf-4644-9b0d-f1b3e7b3e0c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Enitites\Player">
-      <UniqueIdentifier>{e76e90b8-6e9a-4b00-af43-077c9c509c58}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Rendering">
       <UniqueIdentifier>{bbfb3f3f-2850-407f-b518-f4bcf9c61081}</UniqueIdentifier>
@@ -84,6 +48,12 @@
     </Filter>
     <Filter Include="Source Files\ResourceManagement">
       <UniqueIdentifier>{088c2460-cd9f-4f74-836f-2a1ce5bfe895}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Maths">
+      <UniqueIdentifier>{a80b4c09-785a-4efc-8bb1-32325c5044fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Maths">
+      <UniqueIdentifier>{7d5397f7-606b-4e8c-b665-fbdb4bcb2a31}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -108,36 +78,6 @@
     <ClCompile Include="Core\C_Utilities.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="BackgroundSystem\B_Background.cpp">
-      <Filter>Source Files\BackgroundSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="BackgroundSystem\B_BackgroundManager.cpp">
-      <Filter>Source Files\BackgroundSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="Gameplay\G_Gameplay.cpp">
-      <Filter>Source Files\Gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="Gameplay\G_CollisionManager.cpp">
-      <Filter>Source Files\Gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="Gameplay\G_SpawnManager.cpp">
-      <Filter>Source Files\Gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="Enitites\E_EntityManager.cpp">
-      <Filter>Source Files\Enitites</Filter>
-    </ClCompile>
-    <ClCompile Include="Enitites\Base\EB_Animated.cpp">
-      <Filter>Source Files\Enitites\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Enitites\Base\EB_Entity.cpp">
-      <Filter>Source Files\Enitites\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Enitites\Base\EB_Velocity.cpp">
-      <Filter>Source Files\Enitites\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Enitites\Base\EB_VelocityAnimated.cpp">
-      <Filter>Source Files\Enitites\Base</Filter>
-    </ClCompile>
     <ClCompile Include="States\S_Splash.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
@@ -150,17 +90,8 @@
     <ClCompile Include="States\Menus\SM_MainMenu.cpp">
       <Filter>Source Files\States\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleSystem\PS_Particle.cpp">
-      <Filter>Source Files\ParticleSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleSystem\PS_ParticleEffect.cpp">
-      <Filter>Source Files\ParticleSystem</Filter>
-    </ClCompile>
     <ClCompile Include="UI\UI_Button.cpp">
       <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Enitites\Player\EP_Player.cpp">
-      <Filter>Source Files\Enitites\Player</Filter>
     </ClCompile>
     <ClCompile Include="Rendering\R_Camera.cpp">
       <Filter>Source Files\Rendering</Filter>
@@ -183,14 +114,8 @@
     <ClCompile Include="ResourceManagement\RM_Shader.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
-    <ClCompile Include="Enitites\Base\EB_Entity3D.cpp">
-      <Filter>Source Files\Enitites\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleSystem\PS_Particle3D.cpp">
-      <Filter>Source Files\ParticleSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleSystem\PS_ParticleEffect3D.cpp">
-      <Filter>Source Files\ParticleSystem</Filter>
+    <ClCompile Include="Maths\M_Utilities.cpp">
+      <Filter>Source Files\Maths</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -212,39 +137,6 @@
     <ClInclude Include="Core\C_Utilities.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Core\C_Vec2.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="BackgroundSystem\B_Background.h">
-      <Filter>Header Files\BackgroundSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="BackgroundSystem\B_BackgroundManager.h">
-      <Filter>Header Files\BackgroundSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="Gameplay\G_CollisionManager.h">
-      <Filter>Header Files\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="Gameplay\G_Gameplay.h">
-      <Filter>Header Files\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="Gameplay\G_SpawnManager.h">
-      <Filter>Header Files\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="Enitites\E_EntityManager.h">
-      <Filter>Header Files\Enitites</Filter>
-    </ClInclude>
-    <ClInclude Include="Enitites\Base\EB_Animated.h">
-      <Filter>Header Files\Enitites\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Enitites\Base\EB_Entity.h">
-      <Filter>Header Files\Enitites\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Enitites\Base\EB_Velocity.h">
-      <Filter>Header Files\Enitites\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Enitites\Base\EB_VelocityAnimated.h">
-      <Filter>Header Files\Enitites\Base</Filter>
-    </ClInclude>
     <ClInclude Include="States\S_Splash.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
@@ -257,17 +149,8 @@
     <ClInclude Include="States\Menus\SM_MainMenu.h">
       <Filter>Header Files\States\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystem\PS_Particle.h">
-      <Filter>Header Files\ParticleSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleSystem\PS_ParticleEffect.h">
-      <Filter>Header Files\ParticleSystem</Filter>
-    </ClInclude>
     <ClInclude Include="UI\UI_Button.h">
       <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Enitites\Player\EP_Player.h">
-      <Filter>Header Files\Enitites\Player</Filter>
     </ClInclude>
     <ClInclude Include="Rendering\R_Camera.h">
       <Filter>Header Files\Rendering</Filter>
@@ -290,14 +173,11 @@
     <ClInclude Include="ResourceManagement\RM_Shader.h">
       <Filter>Header Files\ResourceManagement</Filter>
     </ClInclude>
-    <ClInclude Include="Enitites\Base\EB_Entity3D.h">
-      <Filter>Header Files\Enitites\Base</Filter>
+    <ClInclude Include="Maths\M_Vec2.h">
+      <Filter>Header Files\Maths</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystem\PS_Particle3D.h">
-      <Filter>Header Files\ParticleSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleSystem\PS_ParticleEffect3D.h">
-      <Filter>Header Files\ParticleSystem</Filter>
+    <ClInclude Include="Maths\M_Utilities.h">
+      <Filter>Header Files\Maths</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

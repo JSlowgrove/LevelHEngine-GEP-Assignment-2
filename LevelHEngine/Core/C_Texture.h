@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string>
-#include "C_Vec2.h"
+#include "../Maths/M_Vec2.h"
 #include "C_Utilities.h"
 
 /**

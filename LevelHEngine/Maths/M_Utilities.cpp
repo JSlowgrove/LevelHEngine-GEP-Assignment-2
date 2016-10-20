@@ -1,0 +1,19 @@
+#include "M_Utilities.h"
+
+namespace M_Utilities
+{
+	float getPI()
+	{
+		return M_PI;
+	}
+
+	float convertDegreeToRadian(float angle)
+	{
+		return (angle * M_PI / 180.0f);
+	}
+
+	float convertRadianToDegree(float angle)
+	{
+		return (angle * 180.0f / M_PI);
+	}
+}

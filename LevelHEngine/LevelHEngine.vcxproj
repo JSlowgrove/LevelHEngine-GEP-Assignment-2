@@ -121,29 +121,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BackgroundSystem\B_Background.cpp" />
-    <ClCompile Include="BackgroundSystem\B_BackgroundManager.cpp" />
     <ClCompile Include="Core\C_Audio.cpp" />
     <ClCompile Include="Core\C_Music.cpp" />
     <ClCompile Include="Core\C_Text.cpp" />
     <ClCompile Include="Core\C_Texture.cpp" />
     <ClCompile Include="Core\C_Timer.cpp" />
     <ClCompile Include="Core\C_Utilities.cpp" />
-    <ClCompile Include="Enitites\Base\EB_Animated.cpp" />
-    <ClCompile Include="Enitites\Base\EB_Entity.cpp" />
-    <ClCompile Include="Enitites\Base\EB_Entity3D.cpp" />
-    <ClCompile Include="Enitites\Base\EB_Velocity.cpp" />
-    <ClCompile Include="Enitites\Base\EB_VelocityAnimated.cpp" />
-    <ClCompile Include="Enitites\E_EntityManager.cpp" />
-    <ClCompile Include="Enitites\Player\EP_Player.cpp" />
-    <ClCompile Include="Gameplay\G_CollisionManager.cpp" />
-    <ClCompile Include="Gameplay\G_Gameplay.cpp" />
-    <ClCompile Include="Gameplay\G_SpawnManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ParticleSystem\PS_Particle.cpp" />
-    <ClCompile Include="ParticleSystem\PS_Particle3D.cpp" />
-    <ClCompile Include="ParticleSystem\PS_ParticleEffect.cpp" />
-    <ClCompile Include="ParticleSystem\PS_ParticleEffect3D.cpp" />
+    <ClCompile Include="Maths\M_Utilities.cpp" />
     <ClCompile Include="Rendering\R_Camera.cpp" />
     <ClCompile Include="ResourceManagement\RM_FileLoader.cpp" />
     <ClCompile Include="ResourceManagement\RM_Model.cpp" />
@@ -158,29 +143,14 @@
     <ClCompile Include="UI\UI_UIObject.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BackgroundSystem\B_Background.h" />
-    <ClInclude Include="BackgroundSystem\B_BackgroundManager.h" />
     <ClInclude Include="Core\C_Audio.h" />
     <ClInclude Include="Core\C_Music.h" />
     <ClInclude Include="Core\C_Text.h" />
     <ClInclude Include="Core\C_Texture.h" />
     <ClInclude Include="Core\C_Timer.h" />
     <ClInclude Include="Core\C_Utilities.h" />
-    <ClInclude Include="Core\C_Vec2.h" />
-    <ClInclude Include="Enitites\Base\EB_Animated.h" />
-    <ClInclude Include="Enitites\Base\EB_Entity.h" />
-    <ClInclude Include="Enitites\Base\EB_Entity3D.h" />
-    <ClInclude Include="Enitites\Base\EB_Velocity.h" />
-    <ClInclude Include="Enitites\Base\EB_VelocityAnimated.h" />
-    <ClInclude Include="Enitites\E_EntityManager.h" />
-    <ClInclude Include="Enitites\Player\EP_Player.h" />
-    <ClInclude Include="Gameplay\G_CollisionManager.h" />
-    <ClInclude Include="Gameplay\G_Gameplay.h" />
-    <ClInclude Include="Gameplay\G_SpawnManager.h" />
-    <ClInclude Include="ParticleSystem\PS_Particle.h" />
-    <ClInclude Include="ParticleSystem\PS_Particle3D.h" />
-    <ClInclude Include="ParticleSystem\PS_ParticleEffect.h" />
-    <ClInclude Include="ParticleSystem\PS_ParticleEffect3D.h" />
+    <ClInclude Include="Maths\M_Utilities.h" />
+    <ClInclude Include="Maths\M_Vec2.h" />
     <ClInclude Include="Rendering\R_Camera.h" />
     <ClInclude Include="ResourceManagement\RM_FileLoader.h" />
     <ClInclude Include="ResourceManagement\RM_Model.h" />

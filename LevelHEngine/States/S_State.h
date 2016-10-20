@@ -2,7 +2,7 @@
 
 #include <SDL.h>
 #include <string.h>
-#include "../Core/C_Vec2.h"
+#include "../Maths/M_Vec2.h"
 
 ///Forward declaration of StateManager for the pointer to the StateManager.
 class S_StateManager;
