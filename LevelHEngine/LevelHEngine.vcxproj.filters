@@ -49,6 +49,12 @@
     <Filter Include="Source Files\Maths">
       <UniqueIdentifier>{7d5397f7-606b-4e8c-b665-fbdb4bcb2a31}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{edac2a95-66ea-4bef-8abf-1c4daa355c4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Physics">
+      <UniqueIdentifier>{1aabae74-f9cb-4a53-8c87-824b204a2b2b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -69,9 +75,6 @@
     <ClCompile Include="Core\C_Timer.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Core\C_Utilities.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="States\S_Splash.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
@@ -80,9 +83,6 @@
     </ClCompile>
     <ClCompile Include="States\S_StateManager.cpp">
       <Filter>Source Files\States</Filter>
-    </ClCompile>
-    <ClCompile Include="UI\UI_Button.cpp">
-      <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="Rendering\R_Camera.cpp">
       <Filter>Source Files\Rendering</Filter>
@@ -105,11 +105,20 @@
     <ClCompile Include="ResourceManagement\RM_Shader.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
-    <ClCompile Include="Maths\M_Utilities.cpp">
-      <Filter>Source Files\Maths</Filter>
-    </ClCompile>
     <ClCompile Include="States\S_MainMenu.cpp">
       <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\C_Logging.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Maths\M_Convert.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="Maths\M_Defs.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\P_Collision.cpp">
+      <Filter>Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,9 +137,6 @@
     <ClInclude Include="Core\C_Timer.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Core\C_Utilities.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="States\S_Splash.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
@@ -139,9 +145,6 @@
     </ClInclude>
     <ClInclude Include="States\S_StateManager.h">
       <Filter>Header Files\States</Filter>
-    </ClInclude>
-    <ClInclude Include="UI\UI_Button.h">
-      <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="Rendering\R_Camera.h">
       <Filter>Header Files\Rendering</Filter>
@@ -167,11 +170,20 @@
     <ClInclude Include="Maths\M_Vec2.h">
       <Filter>Header Files\Maths</Filter>
     </ClInclude>
-    <ClInclude Include="Maths\M_Utilities.h">
-      <Filter>Header Files\Maths</Filter>
-    </ClInclude>
     <ClInclude Include="States\S_MainMenu.h">
       <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\C_Logging.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Maths\M_Convert.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="Maths\M_Defs.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\P_Collision.h">
+      <Filter>Header Files\Physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

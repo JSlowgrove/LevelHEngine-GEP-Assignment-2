@@ -82,7 +82,7 @@ void RM_Shader::initaliseShader(std::string shaderFileName, char shaderType)
 	}
 
 	/*load in the shader file*/
-	std::string shaderFile = FileLoader::loadShaderFile(shaderFileName);
+	std::string shaderFile = RM_FileLoader::loadShaderFile(shaderFileName);
 	/*set the vertex shader code*/
 	const GLchar *shaderCode = shaderFile.c_str();
 	

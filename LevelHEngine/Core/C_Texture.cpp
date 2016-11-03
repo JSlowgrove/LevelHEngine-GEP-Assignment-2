@@ -42,7 +42,7 @@ C_Texture::C_Texture(std::string fileLocation, SDL_Renderer* renderer)
 	{
 		//Error message
 		std::string message = "Unable to load image from: " + fileLocation + ", Error is: " + IMG_GetError();
-		C_Utilities::logE(message);
+		C_Logging::logE(message);
 		return;
 	}
 
@@ -68,7 +68,7 @@ C_Texture::C_Texture(std::string fileLocation, SDL_Renderer* renderer, bool mage
 	{
 		//Error message
 		std::string message = "Unable to load image from: " + fileLocation + ", Error is: " + IMG_GetError();
-		C_Utilities::logE(message);
+		C_Logging::logE(message);
 		return;
 	}
 

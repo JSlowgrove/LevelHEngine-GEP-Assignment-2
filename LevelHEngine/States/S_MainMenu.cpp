@@ -1,12 +1,12 @@
-#include "SM_MainMenu.h"
+#include "S_MainMenu.h"
 
-SM_MainMenu::SM_MainMenu(S_StateManager* stateManager, SDL_Renderer* renderer, C_Vec2 dimensions)
+S_MainMenu::S_MainMenu(S_StateManager* stateManager, SDL_Renderer* renderer, C_Vec2 dimensions)
 	: S_State(stateManager, renderer, dimensions)/*,
 	//backgroundMusic(new C_Music("Assets/Audio/[INSERTNAME].ogg"))*/
 {
 }
 
-SM_MainMenu::~SM_MainMenu()
+S_MainMenu::~S_MainMenu()
 {
 	//Stop music
 	//backgroundMusic->stopMusic();
@@ -15,7 +15,7 @@ SM_MainMenu::~SM_MainMenu()
 	//delete pointers
 }
 
-bool SM_MainMenu::input()
+bool S_MainMenu::input()
 {
 	//Check for user input
 	SDL_Event incomingEvent;
@@ -42,12 +42,12 @@ bool SM_MainMenu::input()
 	return true;
 }
 
-void SM_MainMenu::update(float dt)
+void S_MainMenu::update(float dt)
 {
 	//Keep the music playing
 	//backgroundMusic->startMusic();
 }
 
-void SM_MainMenu::draw()
+void S_MainMenu::draw()
 {
 }

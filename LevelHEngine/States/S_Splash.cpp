@@ -37,7 +37,7 @@ void S_Splash::update(float dt)
 	//exit the splash screen if the timer is up
 	if (splashTimer->checkTimer())
 	{
-		stateManager->changeState(new SM_MainMenu(stateManager, renderer, dimensions));
+		stateManager->changeState(new S_MainMenu(stateManager, renderer, dimensions));
 		return;
 	}
 }

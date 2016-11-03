@@ -4,7 +4,7 @@
 #include <SDL_image.h>
 #include <string>
 #include "../Maths/M_Vec2.h"
-#include "C_Utilities.h"
+#include "C_Logging.h"
 
 /**
 @brief Creates a Texture for use with a renderer.

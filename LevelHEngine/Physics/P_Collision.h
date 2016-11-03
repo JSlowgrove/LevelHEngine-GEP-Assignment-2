@@ -5,23 +5,11 @@
 #include "../Maths/M_Vec2.h"
 
 /**
-@brief Contains core utility functions for use within the code.
+@brief Contains Physics collision detection functions for use within the code.
 @author Jamie Slowgrove
 */
-namespace C_Utilities
+namespace P_Collision
 {
-	/**
-	@brief Logs the information message.
-	@param message The message.
-	*/
-	void logI(std::string message);
-
-	/**
-	@brief Logs the error message.
-	@param message The message.
-	*/
-	void logE(std::string message);
-
 	/**
 	@brief Checks to see if two rectangles intersect
 	@param PosBoxA The position of the first rectangle.

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <windows.h>
 #include "Maths/M_Vec2.h"
-#include "Core/C_Utilities.h"
+#include "Core/C_Logging.h"
 #include "States/S_StateManager.h"
 #include "States/S_Splash.h"
 
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
 		//Failed initialisation
-		C_Utilities::logE("SDL failed to initialise: " + std::string(SDL_GetError()));
+		C_Logging::logE("SDL failed to initialise: " + std::string(SDL_GetError()));
 		return -1;
 	}
 
@@ -39,14 +39,14 @@ int main(int argc, char *argv[])
 	if (TTF_Init() < 0)
 	{
 		//Failed initialisation
-		C_Utilities::logE("SDL_ttf failed to initialise: " + std::string(TTF_GetError()));
+		C_Logging::logE("SDL_ttf failed to initialise: " + std::string(TTF_GetError()));
 		return -1;
 	}
 
 	//Initialise SDL_mixer
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 	{
-		C_Utilities::logE("SDL_mixer failed to initialise: " + std::string(Mix_GetError()));
+		C_Logging::logE("SDL_mixer failed to initialise: " + std::string(Mix_GetError()));
 		return -1;
 	}
 

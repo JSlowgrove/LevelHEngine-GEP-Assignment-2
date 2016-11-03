@@ -1,6 +1,9 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include "../Core/C_Logging.h"
+#include "../Maths/M_Defs.h"
 
 /** @brief A camera that holds and manipulates the View and Projection Matrices. */
 class R_Camera

@@ -50,7 +50,7 @@ void RM_Model::initialiseVAO(std::string objFileName, std::unordered_map<std::st
 		if (objects.count(objFileName + "/" + material) == 0)
 		{
 			/*load the object*/
-			objects[objFileName + "/" + material] = new Object(objFileName, material);
+			objects[objFileName + "/" + material] = new RM_Object(objFileName, material);
 		}
 		else
 		{
@@ -66,7 +66,7 @@ void RM_Model::initialiseVAO(std::string objFileName, std::unordered_map<std::st
 		if (objects.count(objFileName) == 0)
 		{
 			/*load the object*/
-			objects[objFileName] = new Object(objFileName);
+			objects[objFileName] = new RM_Object(objFileName);
 		}
 		else
 		{

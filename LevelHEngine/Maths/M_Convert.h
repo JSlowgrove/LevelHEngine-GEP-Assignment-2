@@ -1,23 +1,13 @@
 #pragma once
 
-#include <string>
-#include <SDL.h>
-
-///Maths Definitions:
-#define M_PI 3.141596f
+#include "M_Defs.h"
 
 /**
-@brief Contains maths utility functions for use within the code.
+@brief Contains maths convertion functions for use within the code.
 @author Jamie Slowgrove
 */
-namespace M_Utilities
+namespace M_Convert
 {
-	/**
-	@brief Gets the value for PI.
-	@returns The value for PI.
-	*/
-	float getPI();
-
 	/**
 	@brief Converts the degree to a radian.
 	@param angle The angle to convert.

@@ -48,7 +48,7 @@ void RM_Object::InitialiseVAO(std::string objFileName)
 	std::vector<float> vertices;
 	std::vector<float> vertexNormals;
 	std::vector<float> vertexTextures;
-	FileLoader::loadOBJFile(objFileName, vertices, vertexNormals, vertexTextures);
+	RM_FileLoader::loadOBJFile(objFileName, vertices, vertexNormals, vertexTextures);
 
 	/*set the vertices array to the contents of the vector*/
 	float* verticesArray = &vertices[0];
