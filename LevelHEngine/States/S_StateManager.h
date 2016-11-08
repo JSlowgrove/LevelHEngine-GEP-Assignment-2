@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <SDL.h>
+#include <GL/glew.h>
 #include "S_State.h"
 
 /**
