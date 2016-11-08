@@ -4,7 +4,7 @@
 @brief Contains the Vec2 structure with functions and overloaded operators.
 @author Jamie Slowgrove
 */
-struct C_Vec2
+struct M_Vec2
 {
 	///Position variables
 	float x, y;
@@ -12,28 +12,28 @@ struct C_Vec2
 	/**
 	@brief Constructs the Vec2 setting the values to 0,0.
 	*/
-	C_Vec2() : x(0.0f), y(0.0f){}
+	M_Vec2() : x(0.0f), y(0.0f){}
 
 	/**
 	@brief Constructs the Vec2 setting the values to the input coordinates.
 	@param x The inputed x position.
 	@param y The inputed y position.
 	*/
-	C_Vec2(float x, float y) : x(x), y(y){}
+	M_Vec2(float x, float y) : x(x), y(y){}
 
 	/**
 	@brief Constructs the Vec2 setting the values to the input coordinates.
 	@param x The inputed x position.
 	@param y The inputed y position.
 	*/
-	C_Vec2(int x, int y) : x((float)x), y((float)y){}
+	M_Vec2(int x, int y) : x((float)x), y((float)y){}
 
 	/**
 	@brief Overloads the += operator.
 	@param vecIn The input Vec2.
 	@returns The new vector.
 	*/
-	C_Vec2* operator += (C_Vec2 vecIn)
+	M_Vec2* operator += (M_Vec2 vecIn)
 	{
 		x += vecIn.x;
 		y += vecIn.y;
@@ -45,7 +45,7 @@ struct C_Vec2
 	@param vecIn The input Vec2.
 	@returns The new vector.
 	*/
-	C_Vec2* operator -= (C_Vec2 vecIn)
+	M_Vec2* operator -= (M_Vec2 vecIn)
 	{
 		x -= vecIn.x;
 		y -= vecIn.y;
@@ -58,9 +58,9 @@ struct C_Vec2
 @param vecIn The input Vec2.
 @returns The new vector.
 */
-inline C_Vec2 operator - (C_Vec2 vecIn)
+inline M_Vec2 operator - (M_Vec2 vecIn)
 {
-	C_Vec2 vecOut;
+	M_Vec2 vecOut;
 	vecOut.x = -vecIn.x;
 	vecOut.y = -vecIn.y;
 	return vecOut;
@@ -72,9 +72,9 @@ inline C_Vec2 operator - (C_Vec2 vecIn)
 @param vecInB One of the input Vec2's.
 @returns The new vector.
 */
-inline C_Vec2 operator - (C_Vec2 vecInA, C_Vec2 vecInB)
+inline M_Vec2 operator - (M_Vec2 vecInA, M_Vec2 vecInB)
 {
-	C_Vec2 vecOut;
+	M_Vec2 vecOut;
 	vecOut.x = vecInA.x - vecInB.x;
 	vecOut.y = vecInA.y - vecInB.y;
 	return vecOut;
@@ -86,9 +86,9 @@ inline C_Vec2 operator - (C_Vec2 vecInA, C_Vec2 vecInB)
 @param vecInB One of the input Vec2's.
 @returns The new vector.
 */
-inline C_Vec2 operator + (C_Vec2 vecInA, C_Vec2 vecInB)
+inline M_Vec2 operator + (M_Vec2 vecInA, M_Vec2 vecInB)
 {
-	C_Vec2 vecOut;
+	M_Vec2 vecOut;
 	vecOut.x = vecInA.x + vecInB.x;
 	vecOut.y = vecInA.y + vecInB.y;
 	return vecOut;
@@ -100,9 +100,9 @@ inline C_Vec2 operator + (C_Vec2 vecInA, C_Vec2 vecInB)
 @param scalar The scalar to divide by.
 @returns The new vector.
 */
-inline C_Vec2 operator / (C_Vec2 vecInA, float scalar)
+inline M_Vec2 operator / (M_Vec2 vecInA, float scalar)
 {
-	C_Vec2 vecOut;
+	M_Vec2 vecOut;
 	vecOut.x = vecInA.x / scalar;
 	vecOut.y = vecInA.y / scalar;
 	return vecOut;
@@ -114,9 +114,9 @@ inline C_Vec2 operator / (C_Vec2 vecInA, float scalar)
 @param scalar The scalar to multiply by.
 @returns The new vector.
 */
-inline C_Vec2 operator * (C_Vec2 vecInA, float scalar)
+inline M_Vec2 operator * (M_Vec2 vecInA, float scalar)
 {
-	C_Vec2 vecOut;
+	M_Vec2 vecOut;
 	vecOut.x = vecInA.x * scalar;
 	vecOut.y = vecInA.y * scalar;
 	return vecOut;
@@ -128,9 +128,9 @@ inline C_Vec2 operator * (C_Vec2 vecInA, float scalar)
 @param vecInB One of the input Vec2's.
 @returns The new vector.
 */
-inline C_Vec2 operator * (C_Vec2 vecInA, C_Vec2 vecInB)
+inline M_Vec2 operator * (M_Vec2 vecInA, M_Vec2 vecInB)
 {
-	C_Vec2 vecOut;
+	M_Vec2 vecOut;
 	vecOut.x = vecInA.x * vecInB.x;
 	vecOut.y = vecInA.y * vecInB.y;
 	return vecOut;

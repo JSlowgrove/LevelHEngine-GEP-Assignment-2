@@ -8,6 +8,7 @@
 #include "Core/C_Logging.h"
 #include "States/S_StateManager.h"
 #include "States/S_Splash.h"
+#include "Core/C_Window.h"
 
 ///Forces the game to run on the NIVDIA GPU, if one is available.
 ///http://developer.download.nvidia.com/devzone/devcenter/gamegraphics/files/OptimusRenderingPolicies.pdf
@@ -44,12 +45,8 @@ bool InitGL()
 
 int main(int argc, char *argv[])
 {
-	//Set the window title
-	std::string title = "Level H Engine";
-
-	//Set the window and target resolutions
-	C_Vec2 targetRes = C_Vec2(1280, 720);
-	C_Vec2 windowRes = C_Vec2(1280, 720);
+	//Set the window details
+	C_Window windowDetails("Level H Engine", M_Vec2(1280, 720), M_Vec2(40, 40), M_Vec2(1280, 720), false);
 
 	//Initialise SDL
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -88,7 +85,7 @@ int main(int argc, char *argv[])
 #if !defined(_DEBUG)
 
 	//Create Window
-	C_Vec2 windowPos = C_Vec2(0, 0);
+	M_Vec2 windowPos = M_Vec2(0, 0);
 	SDL_Window *window = SDL_CreateWindow(title.c_str(),
 		(int)windowPos.x, (int)windowPos.y,
 		(int)windowRes.x, (int)windowRes.y,
@@ -97,10 +94,9 @@ int main(int argc, char *argv[])
 #else
 
 	//Create Window
-	C_Vec2 windowPos = C_Vec2(40, 40);
-	SDL_Window *window = SDL_CreateWindow(title.c_str(),
-		(int)windowPos.x, (int)windowPos.y,
-		(int)windowRes.x, (int)windowRes.y,
+	SDL_Window *window = SDL_CreateWindow(windowDetails.getTitle().c_str(),
+		(int)windowDetails.getWindowPos().x, (int)windowDetails.getWindowPos().y,
+		(int)windowDetails.getWindowSize().x, (int)windowDetails.getWindowSize().y,
 		SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
 
 #endif	
@@ -110,7 +106,7 @@ int main(int argc, char *argv[])
 
 	//Set the renderer to work out the render at this resolution and then scale it up the 
 	//closest resolution it can to the windows resolution (adds bars of the render colour)
-	SDL_RenderSetLogicalSize(renderer, (int)targetRes.x, (int)targetRes.y);
+	SDL_RenderSetLogicalSize(renderer, (int)windowDetails.getTargetResoultion().x, (int)windowDetails.getTargetResoultion().y);
 
 	// Create an OpenGL context for the renderer
 	SDL_GLContext glcontext = SDL_GL_CreateContext(window);
@@ -126,7 +122,7 @@ int main(int argc, char *argv[])
 	
 	//Setup state manager and initial state
 	S_StateManager * stateManager = new S_StateManager();
-	stateManager->addState(new S_Splash(stateManager, renderer, targetRes));
+	stateManager->addState(new S_Splash(stateManager, renderer, windowDetails.getTargetResoultion()));
 
 	//Start Game Loop
 	bool go = true;

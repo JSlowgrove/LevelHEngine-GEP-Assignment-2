@@ -127,6 +127,7 @@
     <ClCompile Include="Core\C_Text.cpp" />
     <ClCompile Include="Core\C_Texture.cpp" />
     <ClCompile Include="Core\C_Timer.cpp" />
+    <ClCompile Include="Core\C_Window.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Maths\M_Convert.cpp" />
     <ClCompile Include="Maths\M_Defs.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Core\C_Text.h" />
     <ClInclude Include="Core\C_Texture.h" />
     <ClInclude Include="Core\C_Timer.h" />
+    <ClInclude Include="Core\C_Window.h" />
     <ClInclude Include="Maths\M_Convert.h" />
     <ClInclude Include="Maths\M_Defs.h" />
     <ClInclude Include="Maths\M_Vec2.h" />
