@@ -8,7 +8,6 @@
 #include "../Core/C_Audio.h"
 #include "../Core/C_Music.h"
 #include "../Core/C_Text.h"
-#include "../UI/UI_Button.h"
 
 /**
 @brief A State that contains and runs the Main Menu.
@@ -23,7 +22,7 @@ public:
 	@param renderer A pointer to the renderer.
 	@param dimensions The screen dimensions.
 	*/
-	S_MainMenu(S_StateManager* stateManager, SDL_Renderer* renderer, C_Vec2 dimensions);
+	S_MainMenu(S_StateManager* stateManager, SDL_Renderer* renderer, M_Vec2 dimensions);
 
 	/**
 	@brief Destructs the State object.

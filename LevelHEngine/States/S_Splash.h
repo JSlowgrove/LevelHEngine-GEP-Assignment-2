@@ -22,7 +22,7 @@ public:
 	@param renderer A pointer to the renderer.
 	@param dimensions The screen dimensions.
 	*/
-	S_Splash(S_StateManager* stateManager, SDL_Renderer* renderer, C_Vec2 dimensions);
+	S_Splash(S_StateManager* stateManager, SDL_Renderer* renderer, M_Vec2 dimensions);
 
 	/**
 	@brief Destructs the State object.

@@ -18,5 +18,5 @@ namespace P_Collision
 	@param DimBoxB The dimensions of the second rectangle.
 	@returns True if the rectangles intersect
 	*/
-	bool rectRectIntersect(C_Vec2 PosBoxA, C_Vec2 DimBoxA, C_Vec2 PosBoxB, C_Vec2 DimBoxB);
+	bool rectRectIntersect(M_Vec2 PosBoxA, M_Vec2 DimBoxA, M_Vec2 PosBoxB, M_Vec2 DimBoxB);
 }

@@ -121,6 +121,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Core\C_Application.cpp" />
     <ClCompile Include="Core\C_Audio.cpp" />
     <ClCompile Include="Core\C_Logging.cpp" />
     <ClCompile Include="Core\C_Music.cpp" />
@@ -130,7 +131,6 @@
     <ClCompile Include="Core\C_Window.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Maths\M_Convert.cpp" />
-    <ClCompile Include="Maths\M_Defs.cpp" />
     <ClCompile Include="Physics\P_Collision.cpp" />
     <ClCompile Include="Rendering\R_Camera.cpp" />
     <ClCompile Include="ResourceManagement\RM_FileLoader.cpp" />
@@ -145,6 +145,7 @@
     <ClCompile Include="UI\UI_UIObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core\C_Application.h" />
     <ClInclude Include="Core\C_Audio.h" />
     <ClInclude Include="Core\C_Logging.h" />
     <ClInclude Include="Core\C_Music.h" />

@@ -20,7 +20,7 @@ public:
 	@param renderer A pointer to the renderer.
 	@param dimensions The screen dimensions.
 	*/
-	S_State(S_StateManager* stateManager, SDL_Renderer* renderer, C_Vec2 dimensions);
+	S_State(S_StateManager* stateManager, SDL_Renderer* renderer, M_Vec2 dimensions);
 
 	/**
 	Constructs a State object with a window.
@@ -28,7 +28,7 @@ public:
 	@param window A pointer to the window in use.
 	@param dimensions The screen dimensions.
 	*/
-	S_State(S_StateManager* stateManager, SDL_Window* window, C_Vec2 dimensions);
+	S_State(S_StateManager* stateManager, SDL_Window* window, M_Vec2 dimensions);
 
 	/**
 	@brief A virtual destructor for the State object.
@@ -64,7 +64,7 @@ protected:
 	///A pointer to the renderer.
 	SDL_Renderer* renderer;
 	///The screen dimensions.
-	C_Vec2 dimensions;
+	M_Vec2 dimensions;
 	///A window to display to
 	SDL_Window* window;
 };

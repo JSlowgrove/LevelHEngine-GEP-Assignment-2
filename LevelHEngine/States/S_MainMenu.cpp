@@ -1,6 +1,6 @@
 #include "S_MainMenu.h"
 
-S_MainMenu::S_MainMenu(S_StateManager* stateManager, SDL_Renderer* renderer, C_Vec2 dimensions)
+S_MainMenu::S_MainMenu(S_StateManager* stateManager, SDL_Renderer* renderer, M_Vec2 dimensions)
 	: S_State(stateManager, renderer, dimensions)/*,
 	//backgroundMusic(new C_Music("Assets/Audio/[INSERTNAME].ogg"))*/
 {

@@ -81,7 +81,7 @@ public:
 	@brief Pushes the Text Texture to the Renderer to the XY Coordinates.
 	@param pos The position to push the Text Texture to.
 	*/
-	void pushToScreen(C_Vec2 pos);
+	void pushToScreen(M_Vec2 pos);
 
 	/**
 	@brief Sets the colour of the text.
@@ -119,7 +119,7 @@ public:
 	@brief Gets the dimensions of the Text Texture.
 	@returns The dimensions of the Text Texture.
 	*/
-	C_Vec2 getDimensions();
+	M_Vec2 getDimensions();
 
 private:
 	///Font
@@ -135,7 +135,7 @@ private:
 	///The text and font location
 	std::string text, fontLocation;
 	///The Texture dimensions
-	C_Vec2 dimensions;
+	M_Vec2 dimensions;
 
 	/**
 	@brief Creates a Text Texture using the Text data.
