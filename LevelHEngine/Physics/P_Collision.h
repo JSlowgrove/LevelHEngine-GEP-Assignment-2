@@ -2,7 +2,7 @@
 
 #include <string>
 #include <SDL.h>
-#include "../Maths/M_Vec2.h"
+#include "../Maths/Vec2.h"
 
 /**
 @brief Contains Physics collision detection functions for use within the code.
@@ -18,5 +18,5 @@ namespace P_Collision
 	@param DimBoxB The dimensions of the second rectangle.
 	@returns True if the rectangles intersect
 	*/
-	bool rectRectIntersect(M_Vec2 PosBoxA, M_Vec2 DimBoxA, M_Vec2 PosBoxB, M_Vec2 DimBoxB);
+	bool rectRectIntersect(Maths::Vec2 PosBoxA, Maths::Vec2 DimBoxA, Maths::Vec2 PosBoxB, Maths::Vec2 DimBoxB);
 }

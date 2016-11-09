@@ -3,7 +3,7 @@
 namespace P_Collision
 {
 
-	bool rectRectIntersect(M_Vec2 PosBoxA, M_Vec2 DimBoxA, M_Vec2 PosBoxB, M_Vec2 DimBoxB)
+	bool rectRectIntersect(Maths::Vec2 PosBoxA, Maths::Vec2 DimBoxA, Maths::Vec2 PosBoxB, Maths::Vec2 DimBoxB)
 	{
 		if (PosBoxA.x <= (PosBoxB.x + DimBoxB.x)
 			&& PosBoxA.y <= (PosBoxB.y + DimBoxB.y)

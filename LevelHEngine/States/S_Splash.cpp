@@ -1,6 +1,6 @@
 #include "S_Splash.h"
 
-S_Splash::S_Splash(S_StateManager* stateManager, SDL_Renderer* renderer, M_Vec2 dimensions)
+S_Splash::S_Splash(S_StateManager* stateManager, SDL_Renderer* renderer, Maths::Vec2 dimensions)
 	: S_State(stateManager, renderer, dimensions),
 	splash(new C_Texture("Assets/Images/splash.png", renderer)),
 	splashTimer(new C_Timer(3.0f))
@@ -47,7 +47,7 @@ void S_Splash::draw()
 	//draw the image
 	splash->pushToScreen(
 		renderer, 
-		M_Vec2((dimensions.x * 0.5f) - (dimensions.y * 0.375f), dimensions.y * 0.125f),
-		M_Vec2(dimensions.y * 0.75f, dimensions.y * 0.75f)
+		Maths::Vec2((dimensions.x * 0.5f) - (dimensions.y * 0.375f), dimensions.y * 0.125f),
+		Maths::Vec2(dimensions.y * 0.75f, dimensions.y * 0.75f)
 		);
 }

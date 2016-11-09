@@ -4,7 +4,7 @@
 #include <SDL_ttf.h>
 #include <iostream>
 #include <string>
-#include "../Maths/M_Vec2.h"
+#include "../Maths/Vec2.h"
 
 /**
 @brief Creates a Text Texture for use with a renderer using the Text formating.
@@ -81,7 +81,7 @@ public:
 	@brief Pushes the Text Texture to the Renderer to the XY Coordinates.
 	@param pos The position to push the Text Texture to.
 	*/
-	void pushToScreen(M_Vec2 pos);
+	void pushToScreen(Maths::Vec2 pos);
 
 	/**
 	@brief Sets the colour of the text.
@@ -119,7 +119,7 @@ public:
 	@brief Gets the dimensions of the Text Texture.
 	@returns The dimensions of the Text Texture.
 	*/
-	M_Vec2 getDimensions();
+	Maths::Vec2 getDimensions();
 
 private:
 	///Font
@@ -135,7 +135,7 @@ private:
 	///The text and font location
 	std::string text, fontLocation;
 	///The Texture dimensions
-	M_Vec2 dimensions;
+	Maths::Vec2 dimensions;
 
 	/**
 	@brief Creates a Text Texture using the Text data.

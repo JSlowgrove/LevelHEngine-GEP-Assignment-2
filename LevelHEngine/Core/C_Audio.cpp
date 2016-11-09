@@ -7,7 +7,7 @@ C_Audio::C_Audio(std::string file)
 	if (audio == NULL)
 	{
 		//Failed loading file
-		C_Logging::logE("Failed to load " + file + ", Error is: " + std::string(Mix_GetError()));
+		Core::Logging::logE("Failed to load " + file + ", Error is: " + std::string(Mix_GetError()));
 	}
 }
 

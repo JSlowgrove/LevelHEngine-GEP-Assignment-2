@@ -3,8 +3,8 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string>
-#include "../Maths/M_Vec2.h"
-#include "C_Logging.h"
+#include "../Maths/Vec2.h"
+#include "Logging.h"
 
 /**
 @brief Creates a Texture for use with a renderer.
@@ -59,14 +59,14 @@ public:
 	@brief Gets the Texture dimensions.
 	@returns The Texture dimensions.
 	*/
-	M_Vec2 getDimensions();
+	Maths::Vec2 getDimensions();
 
 	/**
 	@brief Pushes the image to the Renderer at the XY Coordinates.
 	@param renderer A pointer to the renderer.
 	@param pos The position of the image.
 	*/
-	void pushToScreen(SDL_Renderer* renderer, M_Vec2 pos);
+	void pushToScreen(SDL_Renderer* renderer, Maths::Vec2 pos);
 
 	/**
 	@brief Pushes the image to the Renderer at the XY Coordinates. 
@@ -75,7 +75,7 @@ public:
 	@param pos The position of the image.
 	@param scale The dimensions of the image.
 	*/
-	void pushToScreen(SDL_Renderer* renderer, M_Vec2 pos, M_Vec2 scale);
+	void pushToScreen(SDL_Renderer* renderer, Maths::Vec2 pos, Maths::Vec2 scale);
 
 	/**
 	@brief Pushes the image to the Renderer at the XY Coordinates. 
@@ -85,7 +85,7 @@ public:
 	@param spritePos The position of the sprite in the spritesheet.
 	@param spriteDimensions The dimensions of the sprite.
 	*/
-	void pushSpriteToScreen(SDL_Renderer* renderer, M_Vec2 pos, M_Vec2 spritePos, M_Vec2 spriteDimensions);
+	void pushSpriteToScreen(SDL_Renderer* renderer, Maths::Vec2 pos, Maths::Vec2 spritePos, Maths::Vec2 spriteDimensions);
 
 	/**
 	@brief Pushes the image to the Renderer, to the XY Coordinates. 
@@ -97,7 +97,7 @@ public:
 	@param spritePos The position of the sprite in the spritesheet.
 	@param spriteDimensions The dimensions of the sprite.
 	*/
-	void pushSpriteToScreen(SDL_Renderer* renderer, M_Vec2 pos, M_Vec2 scale, M_Vec2 spritePos, M_Vec2 spriteDimensions);
+	void pushSpriteToScreen(SDL_Renderer* renderer, Maths::Vec2 pos, Maths::Vec2 scale, Maths::Vec2 spritePos, Maths::Vec2 spriteDimensions);
 
 	/**
 	@brief Tints the texture with the inputed colour.
@@ -117,5 +117,5 @@ private:
 	///The Texture data
 	SDL_Texture* textureData;
 	///The Texture dimensions.
-	M_Vec2 dimensions;
+	Maths::Vec2 dimensions;
 };

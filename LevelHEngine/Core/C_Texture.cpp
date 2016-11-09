@@ -42,7 +42,7 @@ C_Texture::C_Texture(std::string fileLocation, SDL_Renderer* renderer)
 	{
 		//Error message
 		std::string message = "Unable to load image from: " + fileLocation + ", Error is: " + IMG_GetError();
-		C_Logging::logE(message);
+		Core::Logging::logE(message);
 		return;
 	}
 
@@ -55,7 +55,7 @@ C_Texture::C_Texture(std::string fileLocation, SDL_Renderer* renderer)
 	//store the size of the texture
 	int textureWidth, textureHeight;
 	SDL_QueryTexture(textureData, NULL, NULL, &textureWidth, &textureHeight);
-	dimensions = M_Vec2(textureWidth, textureHeight);
+	dimensions = Maths::Vec2(textureWidth, textureHeight);
 }
 
 C_Texture::C_Texture(std::string fileLocation, SDL_Renderer* renderer, bool magentaAlpha)
@@ -68,7 +68,7 @@ C_Texture::C_Texture(std::string fileLocation, SDL_Renderer* renderer, bool mage
 	{
 		//Error message
 		std::string message = "Unable to load image from: " + fileLocation + ", Error is: " + IMG_GetError();
-		C_Logging::logE(message);
+		Core::Logging::logE(message);
 		return;
 	}
 
@@ -88,7 +88,7 @@ C_Texture::C_Texture(std::string fileLocation, SDL_Renderer* renderer, bool mage
 	//store the size of the texture
 	int textureWidth, textureHeight;
 	SDL_QueryTexture(textureData, NULL, NULL, &textureWidth, &textureHeight);
-	dimensions = M_Vec2(textureWidth, textureHeight);
+	dimensions = Maths::Vec2(textureWidth, textureHeight);
 }
 
 C_Texture::~C_Texture()
@@ -102,12 +102,12 @@ SDL_Texture* C_Texture::getTexture()
 	return textureData;
 }
 
-M_Vec2 C_Texture::getDimensions()
+Maths::Vec2 C_Texture::getDimensions()
 {
 	return dimensions;
 }
 
-void C_Texture::pushToScreen(SDL_Renderer* renderer, M_Vec2 pos)
+void C_Texture::pushToScreen(SDL_Renderer* renderer, Maths::Vec2 pos)
 {
 	//Create the destination rectangle of the texture
 	SDL_Rect destRect;
@@ -120,7 +120,7 @@ void C_Texture::pushToScreen(SDL_Renderer* renderer, M_Vec2 pos)
 	SDL_RenderCopy(renderer, textureData, NULL, &destRect);
 }
 
-void C_Texture::pushToScreen(SDL_Renderer* renderer, M_Vec2 pos, M_Vec2 scale)
+void C_Texture::pushToScreen(SDL_Renderer* renderer, Maths::Vec2 pos, Maths::Vec2 scale)
 {
 	//Create the destination rectangle of the texture
 	SDL_Rect destRect;
@@ -133,7 +133,7 @@ void C_Texture::pushToScreen(SDL_Renderer* renderer, M_Vec2 pos, M_Vec2 scale)
 	SDL_RenderCopy(renderer, textureData, NULL, &destRect);
 }
 
-void C_Texture::pushSpriteToScreen(SDL_Renderer* renderer, M_Vec2 pos, M_Vec2 spritePos, M_Vec2 spriteDimensions)
+void C_Texture::pushSpriteToScreen(SDL_Renderer* renderer, Maths::Vec2 pos, Maths::Vec2 spritePos, Maths::Vec2 spriteDimensions)
 {
 	//Create the destination rectangle of the texture
 	SDL_Rect destRect;
@@ -153,7 +153,7 @@ void C_Texture::pushSpriteToScreen(SDL_Renderer* renderer, M_Vec2 pos, M_Vec2 sp
 	SDL_RenderCopy(renderer, textureData, &srcRect, &destRect);
 }
 
-void C_Texture::pushSpriteToScreen(SDL_Renderer* renderer, M_Vec2 pos, M_Vec2 scale, M_Vec2 spritePos, M_Vec2 spriteDimensions)
+void C_Texture::pushSpriteToScreen(SDL_Renderer* renderer, Maths::Vec2 pos, Maths::Vec2 scale, Maths::Vec2 spritePos, Maths::Vec2 spriteDimensions)
 {
 	//Create the destination rectangle of the texture
 	SDL_Rect destRect;

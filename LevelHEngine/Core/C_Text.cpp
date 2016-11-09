@@ -88,7 +88,7 @@ C_Text::~C_Text()
 	font = NULL;
 }
 
-void C_Text::pushToScreen(M_Vec2 pos)
+void C_Text::pushToScreen(Maths::Vec2 pos)
 {
 	//Create the destination rectangle of the texture
 	SDL_Rect destRect;
@@ -170,7 +170,7 @@ void C_Text::setText(std::string text)
 	createTextTexture();
 }
 
-M_Vec2 C_Text::getDimensions()
+Maths::Vec2 C_Text::getDimensions()
 {
 	return dimensions;
 }
@@ -195,5 +195,5 @@ void C_Text::createTextTexture()
 	SDL_QueryTexture(textureData, NULL, NULL, &textureWidth, &textureHeight);
 
 	//Store the dimensions of the texture
-	dimensions = M_Vec2(textureWidth, textureHeight);
+	dimensions = Maths::Vec2(textureWidth, textureHeight);
 }

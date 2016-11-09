@@ -2,6 +2,7 @@
 Documentation.lnk
 /LevelHEngine/Assets
 /LevelHEngine/Debug
+/LevelHEngine/log.txt
 /Debug/LevelHEngine.pdb
 /Debug/LevelHEngine.exe
 /Debug/LevelHEngine.ilk
@@ -10,3 +11,4 @@ Documentation.lnk
 /LevelHEngine.VC.VC.opendb
 /Debug/LevelHEngine.exp
 /Debug/LevelHEngine.lib
+

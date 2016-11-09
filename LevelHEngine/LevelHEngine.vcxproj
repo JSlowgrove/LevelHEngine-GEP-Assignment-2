@@ -121,14 +121,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Core\C_Application.cpp" />
+    <ClCompile Include="Core\Application.cpp" />
     <ClCompile Include="Core\C_Audio.cpp" />
-    <ClCompile Include="Core\C_Logging.cpp" />
     <ClCompile Include="Core\C_Music.cpp" />
     <ClCompile Include="Core\C_Text.cpp" />
     <ClCompile Include="Core\C_Texture.cpp" />
     <ClCompile Include="Core\C_Timer.cpp" />
-    <ClCompile Include="Core\C_Window.cpp" />
+    <ClCompile Include="Core\Logging.cpp" />
+    <ClCompile Include="Core\WindowFrame.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Maths\M_Convert.cpp" />
     <ClCompile Include="Physics\P_Collision.cpp" />
@@ -145,17 +145,17 @@
     <ClCompile Include="UI\UI_UIObject.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core\C_Application.h" />
+    <ClInclude Include="Core\Application.h" />
     <ClInclude Include="Core\C_Audio.h" />
-    <ClInclude Include="Core\C_Logging.h" />
     <ClInclude Include="Core\C_Music.h" />
     <ClInclude Include="Core\C_Text.h" />
     <ClInclude Include="Core\C_Texture.h" />
     <ClInclude Include="Core\C_Timer.h" />
-    <ClInclude Include="Core\C_Window.h" />
+    <ClInclude Include="Core\Logging.h" />
+    <ClInclude Include="Core\WindowFrame.h" />
     <ClInclude Include="Maths\M_Convert.h" />
     <ClInclude Include="Maths\M_Defs.h" />
-    <ClInclude Include="Maths\M_Vec2.h" />
+    <ClInclude Include="Maths\Vec2.h" />
     <ClInclude Include="Physics\P_Collision.h" />
     <ClInclude Include="Rendering\R_Camera.h" />
     <ClInclude Include="ResourceManagement\RM_FileLoader.h" />

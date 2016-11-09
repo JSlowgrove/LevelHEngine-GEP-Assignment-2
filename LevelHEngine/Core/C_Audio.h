@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include <SDL_mixer.h>
 #include <string>
-#include "C_Logging.h"
+#include "Logging.h"
 
 /**
 @brief Handles audio using SDL_Mixer.
