@@ -127,6 +127,7 @@
     <ClCompile Include="Core\C_Text.cpp" />
     <ClCompile Include="Core\C_Texture.cpp" />
     <ClCompile Include="Core\C_Timer.cpp" />
+    <ClCompile Include="Core\InputManager.cpp" />
     <ClCompile Include="Core\Logging.cpp" />
     <ClCompile Include="Core\WindowFrame.cpp" />
     <ClCompile Include="main.cpp" />
@@ -151,6 +152,8 @@
     <ClInclude Include="Core\C_Text.h" />
     <ClInclude Include="Core\C_Texture.h" />
     <ClInclude Include="Core\C_Timer.h" />
+    <ClInclude Include="Core\InputManager.h" />
+    <ClInclude Include="Core\InputManagerDefs.h" />
     <ClInclude Include="Core\Logging.h" />
     <ClInclude Include="Core\WindowFrame.h" />
     <ClInclude Include="Maths\M_Convert.h" />
