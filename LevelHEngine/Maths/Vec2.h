@@ -1,5 +1,7 @@
 #pragma once
 
+#include "math.h"
+
 /**
 @brief The namespace for all maths code.
 */
@@ -55,6 +57,15 @@ namespace Maths
 			x -= vecIn.x;
 			y -= vecIn.y;
 			return this;
+		}
+
+		/**
+		@brief Returns the length of the Vec2.
+		@returns The length of the Vec2.
+		*/
+		float getLength()
+		{
+			return sqrt((x*x) + (y*y));
 		}
 	};
 

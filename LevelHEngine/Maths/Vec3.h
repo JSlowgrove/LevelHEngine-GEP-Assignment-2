@@ -1,5 +1,7 @@
 #pragma once
 
+#include "math.h"
+
 /**
 @brief The namespace for all maths code.
 */
@@ -15,7 +17,7 @@ namespace Maths
 		float x, y, z;
 
 		/**
-		@brief Constructs the Vec3 setting the values to 0,0.
+		@brief Constructs the Vec3 setting the values to 0,0,0.
 		*/
 		Vec3() : x(0.0f), y(0.0f), z(0.0f) {}
 
@@ -59,6 +61,15 @@ namespace Maths
 			y -= vecIn.y;
 			z -= vecIn.z;
 			return this;
+		}
+
+		/**
+		@brief Returns the length of the Vec3.
+		@returns The length of the Vec3.
+		*/
+		float getLength()
+		{
+			return sqrt((x*x) + (y*y) + (z*z));
 		}
 	};
 
