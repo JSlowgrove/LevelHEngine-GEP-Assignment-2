@@ -159,6 +159,7 @@
     <ClInclude Include="Maths\M_Convert.h" />
     <ClInclude Include="Maths\M_Defs.h" />
     <ClInclude Include="Maths\Vec2.h" />
+    <ClInclude Include="Maths\Vec3.h" />
     <ClInclude Include="Physics\P_Collision.h" />
     <ClInclude Include="Rendering\R_Camera.h" />
     <ClInclude Include="ResourceManagement\RM_FileLoader.h" />

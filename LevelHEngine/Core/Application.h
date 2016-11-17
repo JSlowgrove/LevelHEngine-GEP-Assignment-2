@@ -6,6 +6,7 @@
 #include <iostream>
 #include <windows.h>
 #include <GL/glew.h>
+#include <memory>
 #include "Logging.h"
 #include "WindowFrame.h"
 #include "../Maths/Vec2.h"

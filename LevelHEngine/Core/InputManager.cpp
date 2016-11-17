@@ -5,6 +5,7 @@ namespace Core
 
 	InputManager::InputManager()
 	{
+		//initialise the keys
 		keys =
 		{
 			{SDLK_a, NONE}, {SDLK_b, NONE}, {SDLK_c, NONE}, {SDLK_d, NONE}, {SDLK_e, NONE}, {SDLK_f, NONE}, {SDLK_g, NONE},
@@ -29,6 +30,7 @@ namespace Core
 			{SDLK_PERIOD, NONE}, {SDLK_SLASH, NONE}
 		};
 
+		//initialise the mouse buttons
 		mouseButtons =
 		{
 			{SDL_BUTTON_LEFT, NONE}, {SDL_BUTTON_RIGHT, NONE}

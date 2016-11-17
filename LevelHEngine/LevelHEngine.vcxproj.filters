@@ -203,5 +203,8 @@
     <ClInclude Include="Core\InputManagerDefs.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="Maths\Vec3.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
