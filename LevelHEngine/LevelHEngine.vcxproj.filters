@@ -206,5 +206,11 @@
     <ClInclude Include="Maths\Vec3.h">
       <Filter>Header Files\Maths</Filter>
     </ClInclude>
+    <ClInclude Include="Maths\Quaternion.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="Maths\Vec4.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
