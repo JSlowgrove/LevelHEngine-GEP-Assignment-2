@@ -122,11 +122,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Core\Application.cpp" />
-    <ClCompile Include="Core\C_Audio.cpp" />
-    <ClCompile Include="Core\C_Music.cpp" />
+    <ClCompile Include="Core\Audio.cpp" />
+    <ClCompile Include="Core\Music.cpp" />
     <ClCompile Include="Core\C_Text.cpp" />
     <ClCompile Include="Core\C_Texture.cpp" />
-    <ClCompile Include="Core\C_Timer.cpp" />
+    <ClCompile Include="Core\Timer.cpp" />
     <ClCompile Include="Core\InputManager.cpp" />
     <ClCompile Include="Core\Logging.cpp" />
     <ClCompile Include="Core\PerformanceTest.cpp" />
@@ -151,11 +151,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Application.h" />
-    <ClInclude Include="Core\C_Audio.h" />
-    <ClInclude Include="Core\C_Music.h" />
+    <ClInclude Include="Core\Audio.h" />
+    <ClInclude Include="Core\Music.h" />
     <ClInclude Include="Core\C_Text.h" />
     <ClInclude Include="Core\C_Texture.h" />
-    <ClInclude Include="Core\C_Timer.h" />
+    <ClInclude Include="Core\Timer.h" />
     <ClInclude Include="Core\InputManager.h" />
     <ClInclude Include="Core\InputManagerDefs.h" />
     <ClInclude Include="Core\Logging.h" />
