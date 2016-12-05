@@ -4,10 +4,10 @@
 #include <iostream>
 #include "State.h"
 #include "StateManager.h"
-#include "../Core/C_Texture.h"
-#include "../Core/Audio.h"
-#include "../Core/Music.h"
-#include "../Core/C_Text.h"
+#include "../ResourceManagement/C_Texture.h"
+#include "../ResourceManagement/Audio.h"
+#include "../ResourceManagement/Music.h"
+#include "../ResourceManagement/C_Text.h"
 #include "../Core/InputManager.h"
 
 /**
@@ -54,7 +54,7 @@ namespace States
 
 	private:
 		///The background music.
-		//Core::Music* backgroundMusic;
+		//ResourceManagement::Music* backgroundMusic;
 	};
 
 }// End of state namespace

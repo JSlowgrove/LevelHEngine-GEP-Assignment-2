@@ -1,6 +1,6 @@
 #include "Music.h"
 
-namespace Core
+namespace ResourceManagment
 {
 
 	Music::Music(std::string file)
@@ -51,4 +51,4 @@ namespace Core
 		Mix_VolumeMusic(MIX_MAX_VOLUME);
 	}
 
-}// End of Core namespace
+}// End of resource management namespace

@@ -5,8 +5,8 @@
 #include "State.h"
 #include "StateManager.h"
 #include "../Core/Timer.h"
-#include "../Core/C_Texture.h"
-#include "../Core/Audio.h"
+#include "../ResourceManagement/C_Texture.h"
+#include "../ResourceManagement/Audio.h"
 #include "../Core/InputManager.h"
 #include "MainMenu.h"
 

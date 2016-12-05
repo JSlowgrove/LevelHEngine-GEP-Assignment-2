@@ -1,6 +1,6 @@
 #include "Audio.h"
 
-namespace Core
+namespace ResourceManagment
 {
 
 	Audio::Audio(std::string file)
@@ -29,4 +29,4 @@ namespace Core
 		Mix_PlayChannel(-1, audio, 0);
 	}
 
-}// End of Core namespace
+}// End of resource management namespace

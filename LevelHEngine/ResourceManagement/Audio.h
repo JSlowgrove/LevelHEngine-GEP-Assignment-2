@@ -3,12 +3,12 @@
 #include <SDL.h>
 #include <SDL_mixer.h>
 #include <string>
-#include "Logging.h"
+#include "../Core/Logging.h"
 
 /**
-@brief The namespace for all core code.
+@brief The namespace for all resource management code.
 */
-namespace Core
+namespace ResourceManagment
 {
 
 	/**
@@ -38,4 +38,4 @@ namespace Core
 		Mix_Chunk* audio;
 	};
 
-}// End of Core namespace
+}// End of resource management namespace

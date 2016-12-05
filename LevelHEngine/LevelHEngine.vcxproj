@@ -122,10 +122,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Core\Application.cpp" />
-    <ClCompile Include="Core\Audio.cpp" />
-    <ClCompile Include="Core\Music.cpp" />
-    <ClCompile Include="Core\C_Text.cpp" />
-    <ClCompile Include="Core\C_Texture.cpp" />
     <ClCompile Include="Core\Timer.cpp" />
     <ClCompile Include="Core\InputManager.cpp" />
     <ClCompile Include="Core\Logging.cpp" />
@@ -138,7 +134,12 @@
     <ClCompile Include="Physics\Collision.cpp" />
     <ClCompile Include="Physics\Mechanics.cpp" />
     <ClCompile Include="Rendering\R_Camera.cpp" />
+    <ClCompile Include="ResourceManagement\Audio.cpp" />
+    <ClCompile Include="ResourceManagement\C_Text.cpp" />
+    <ClCompile Include="ResourceManagement\C_Texture.cpp" />
     <ClCompile Include="ResourceManagement\FileLoader.cpp" />
+    <ClCompile Include="ResourceManagement\Music.cpp" />
+    <ClCompile Include="ResourceManagement\ResourceManager.cpp" />
     <ClCompile Include="ResourceManagement\RM_Model.cpp" />
     <ClCompile Include="ResourceManagement\RM_Object.cpp" />
     <ClCompile Include="ResourceManagement\RM_Shader.cpp" />
@@ -151,10 +152,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Application.h" />
-    <ClInclude Include="Core\Audio.h" />
-    <ClInclude Include="Core\Music.h" />
-    <ClInclude Include="Core\C_Text.h" />
-    <ClInclude Include="Core\C_Texture.h" />
     <ClInclude Include="Core\Timer.h" />
     <ClInclude Include="Core\InputManager.h" />
     <ClInclude Include="Core\InputManagerDefs.h" />
@@ -171,7 +168,12 @@
     <ClInclude Include="Physics\Collision.h" />
     <ClInclude Include="Physics\Mechanics.h" />
     <ClInclude Include="Rendering\R_Camera.h" />
+    <ClInclude Include="ResourceManagement\Audio.h" />
+    <ClInclude Include="ResourceManagement\C_Text.h" />
+    <ClInclude Include="ResourceManagement\C_Texture.h" />
     <ClInclude Include="ResourceManagement\FileLoader.h" />
+    <ClInclude Include="ResourceManagement\Music.h" />
+    <ClInclude Include="ResourceManagement\ResourceManager.h" />
     <ClInclude Include="ResourceManagement\RM_Model.h" />
     <ClInclude Include="ResourceManagement\RM_Object.h" />
     <ClInclude Include="ResourceManagement\RM_Shader.h" />
