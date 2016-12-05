@@ -75,15 +75,6 @@
     <ClCompile Include="Core\C_Timer.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="States\S_Splash.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
-    <ClCompile Include="States\S_State.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
-    <ClCompile Include="States\S_StateManager.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
     <ClCompile Include="Rendering\R_Camera.cpp">
       <Filter>Source Files\Rendering</Filter>
     </ClCompile>
@@ -101,9 +92,6 @@
     </ClCompile>
     <ClCompile Include="ResourceManagement\RM_Shader.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
-    </ClCompile>
-    <ClCompile Include="States\S_MainMenu.cpp">
-      <Filter>Source Files\States</Filter>
     </ClCompile>
     <ClCompile Include="Core\Application.cpp">
       <Filter>Source Files\Core</Filter>
@@ -138,6 +126,18 @@
     <ClCompile Include="Physics\Mechanics.cpp">
       <Filter>Source Files\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="States\MainMenu.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\Splash.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\State.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\StateManager.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\C_Audio.h">
@@ -154,15 +154,6 @@
     </ClInclude>
     <ClInclude Include="Core\C_Timer.h">
       <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="States\S_Splash.h">
-      <Filter>Header Files\States</Filter>
-    </ClInclude>
-    <ClInclude Include="States\S_State.h">
-      <Filter>Header Files\States</Filter>
-    </ClInclude>
-    <ClInclude Include="States\S_StateManager.h">
-      <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="Rendering\R_Camera.h">
       <Filter>Header Files\Rendering</Filter>
@@ -181,9 +172,6 @@
     </ClInclude>
     <ClInclude Include="ResourceManagement\RM_Shader.h">
       <Filter>Header Files\ResourceManagement</Filter>
-    </ClInclude>
-    <ClInclude Include="States\S_MainMenu.h">
-      <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="Core\Application.h">
       <Filter>Header Files\Core</Filter>
@@ -232,6 +220,18 @@
     </ClInclude>
     <ClInclude Include="Physics\Mechanics.h">
       <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="States\MainMenu.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="States\Splash.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="States\State.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="States\StateManager.h">
+      <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

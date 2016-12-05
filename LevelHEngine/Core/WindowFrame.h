@@ -17,101 +17,86 @@ namespace Core
 	{
 	public:
 		/**
-		@brief Constructs WindowFrame.
+		@brief A static function to set a Window.
 		@param title The tile.
 		@param windowPos The window position.
 		@param windowRes The window resolution.
 		@param fullscreen The boolean for fullscreen.
 		@param frameRate The frame rate for the window.
 		*/
-		WindowFrame(std::string title, Maths::Vec2 windowPos, Maths::Vec2 windowRes, bool fullscreen, float frameRate);
+		static void setWindow(std::string title, Maths::Vec2 windowPos, Maths::Vec2 windowRes, bool fullscreen, float frameRate);
 
 		/**
-		@brief Destructs WindowFrame.
-		*/
-		~WindowFrame();
-
-		/**
-		@brief Sets the window details.
-		@param title The tile.
-		@param windowPos The window position.
-		@param windowRes The window resolution.
-		@param fullscreen The boolean for fullscreen.
-		@param frameRate The frame rate for the window.
-		*/
-		void setWindow(std::string title, Maths::Vec2 windowPos, Maths::Vec2 windowRes, bool fullscreen, float frameRate);
-
-		/**
-		@brief Sets the title of the window.
+		@brief A static function to set the title of the window.
 		@param title The tile.
 		*/
-		void setTitle(std::string title);
+		static void setTitle(std::string title);
 
 		/**
-		@brief Sets the position of the window.
+		@brief A static function to set the position of the window.
 		@param windowPos The window position.
 		*/
-		void setWindowPos(Maths::Vec2 windowPos);
+		static void setWindowPos(Maths::Vec2 windowPos);
 
 		/**
-		@brief Sets the resolution of the window.
+		@brief A static function to set the resolution of the window.
 		@param windowRes The window size.
 		*/
-		void setWindowRes(Maths::Vec2 windowRes);
+		static void setWindowRes(Maths::Vec2 windowRes);
 
 		/**
-		@brief Sets if the window should be fullscreen.
+		@brief A static function to set if the window should be fullscreen.
 		@param fullscreen The boolean for fullscreen.
 		*/
-		void setFullscreen(bool fullscreen);
+		static void setFullscreen(bool fullscreen);
 
 		/**
-		@brief Sets the frame rate of the window.
+		@brief A static function to set the frame rate of the window.
 		@param frameRate The frame rate for the window.
 		*/
-		void setFrameRate(float frameRate);
+		static void setFrameRate(float frameRate);
 
 		/**
-		@brief Gets the title of the window.
+		@brief A static function to get the title of the window.
 		@returns The tile.
 		*/
-		std::string getTitle();
+		static std::string getTitle();
 		
 		/**
-		@brief Gets the position of the window.
+		@brief A static function to get the position of the window.
 		@returns The window position.
 		*/
-		Maths::Vec2 getWindowPos();
+		static Maths::Vec2 getWindowPos();
 
 		/**
-		@brief Gets the size of the window.
+		@brief A static function to get the size of the window.
 		@returns The window resolution.
 		*/
-		Maths::Vec2 getWindowRes();
+		static Maths::Vec2 getWindowRes();
 
 		/**
-		@brief Gets if the window should be fullscreen.
+		@brief A static function to get if the window should be fullscreen.
 		@returns The boolean for fullscreen.
 		*/
-		bool getFullscreen();
+		static bool getFullscreen();
 
 		/**
-		@brief Gets the frame rate of the window.
+		@brief A static function to get the frame rate of the window.
 		@returns The frame rate for the window.
 		*/
-		float getFrameRate();
+		static float getFrameRate();
 
 	private:
 		///The window title.
-		std::string title;
+		static std::string title;
 		///The position of the window.
-		Maths::Vec2 windowPos;
+		static Maths::Vec2 windowPos;
 		///The resolution of the window.
-		Maths::Vec2 windowRes;
+		static Maths::Vec2 windowRes;
 		///A boolean for if the window should be fullscreen.
-		bool fullscreen;
+		static bool fullscreen;
 		///The wanted frame rate of the window.
-		float frameRate;
+		static float frameRate;
 	};
 
 }// End of Core namespace

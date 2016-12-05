@@ -142,10 +142,10 @@
     <ClCompile Include="ResourceManagement\RM_Model.cpp" />
     <ClCompile Include="ResourceManagement\RM_Object.cpp" />
     <ClCompile Include="ResourceManagement\RM_Shader.cpp" />
-    <ClCompile Include="States\S_MainMenu.cpp" />
-    <ClCompile Include="States\S_Splash.cpp" />
-    <ClCompile Include="States\S_State.cpp" />
-    <ClCompile Include="States\S_StateManager.cpp" />
+    <ClCompile Include="States\MainMenu.cpp" />
+    <ClCompile Include="States\Splash.cpp" />
+    <ClCompile Include="States\State.cpp" />
+    <ClCompile Include="States\StateManager.cpp" />
     <ClCompile Include="UI\UI_UI.cpp" />
     <ClCompile Include="UI\UI_UIObject.cpp" />
   </ItemGroup>
@@ -175,10 +175,10 @@
     <ClInclude Include="ResourceManagement\RM_Model.h" />
     <ClInclude Include="ResourceManagement\RM_Object.h" />
     <ClInclude Include="ResourceManagement\RM_Shader.h" />
-    <ClInclude Include="States\S_MainMenu.h" />
-    <ClInclude Include="States\S_Splash.h" />
-    <ClInclude Include="States\S_State.h" />
-    <ClInclude Include="States\S_StateManager.h" />
+    <ClInclude Include="States\MainMenu.h" />
+    <ClInclude Include="States\Splash.h" />
+    <ClInclude Include="States\State.h" />
+    <ClInclude Include="States\StateManager.h" />
     <ClInclude Include="UI\UI_UI.h" />
     <ClInclude Include="UI\UI_UIObject.h" />
   </ItemGroup>

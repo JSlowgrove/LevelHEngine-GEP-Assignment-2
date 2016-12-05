@@ -17,11 +17,8 @@ int main(int argc, char *argv[])
 	///The application instance 
 	std::shared_ptr<Core::Application> application = std::make_shared<Core::Application>("Level H Engine", Maths::Vec2(700, 200), Maths::Vec2(640, 480), false, 60.0f);
 
-	///Initialise the application
-	application->init(argc, argv);
-
 	///Run the application
-	application->run();
+	application->run(argc, argv);
 
 	///Destroy the application
 	application->destroy();

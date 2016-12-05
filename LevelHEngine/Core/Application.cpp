@@ -4,15 +4,6 @@ namespace Core
 {
 
 	Application::Application(std::string title, Maths::Vec2 windowPos, Maths::Vec2 windowRes, bool fullscreen, float frameRate)
-		: WindowFrame(title, windowPos, windowRes, fullscreen, frameRate)
-	{
-	}
-
-	Application::~Application()
-	{
-	}
-
-	void Application::init(int argc, char *argv[])
 	{
 		//Initialise SDL
 		initSDL();
@@ -26,22 +17,23 @@ namespace Core
 		SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
 		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
+		WindowFrame::setWindow(title, windowPos, windowRes, fullscreen, frameRate);
 
-		if (getFullscreen())
+		if (WindowFrame::getFullscreen())
 		{
 			//Create Window
 			Maths::Vec2 windowPos = Maths::Vec2(0, 0);
-			window = SDL_CreateWindow(getTitle().c_str(),
-				(int)getWindowPos().x, (int)getWindowPos().y,
-				(int)getWindowRes().x, (int)getWindowRes().y,
+			window = SDL_CreateWindow(WindowFrame::getTitle().c_str(),
+				(int)WindowFrame::getWindowPos().x, (int)WindowFrame::getWindowPos().y,
+				(int)WindowFrame::getWindowRes().x, (int)WindowFrame::getWindowRes().y,
 				SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN_DESKTOP);
 		}
 		else
 		{
 			//Create Window
-			window = SDL_CreateWindow(getTitle().c_str(),
-				(int)getWindowPos().x, (int)getWindowPos().y,
-				(int)getWindowRes().x, (int)getWindowRes().y,
+			window = SDL_CreateWindow(WindowFrame::getTitle().c_str(),
+				(int)WindowFrame::getWindowPos().x, (int)WindowFrame::getWindowPos().y,
+				(int)WindowFrame::getWindowRes().x, (int)WindowFrame::getWindowRes().y,
 				SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
 		}
 
@@ -53,9 +45,18 @@ namespace Core
 
 		//Enable the depth test to make sure triangles in front are always in front no matter the order they are drawn
 		glEnable(GL_DEPTH_TEST);
+
+		//setup state manager
+		stateManager = new States::StateManager();
+		//set the initial state
+		stateManager->addState(new States::Splash(stateManager, window));
 	}
 
-	void Application::run()
+	Application::~Application()
+	{
+	}
+	
+	void Application::run(int argc, char *argv[])
 	{
 		//Time Check
 		unsigned int lastTime = SDL_GetTicks();
@@ -70,9 +71,10 @@ namespace Core
 			lastTime = current;
 
 			//input
-			go = input();
+			go = stateManager->input();
 
 			//update
+			stateManager->update(deltaTime);
 
 			//clear the frame-buffer to black
 			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -80,14 +82,15 @@ namespace Core
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			//draw
+			stateManager->draw();
 
 			//display the window
 			SDL_GL_SwapWindow(window);
 
 			//Time Limiter
-			if (deltaTime < (1.0f / getFrameRate()))
+			if (deltaTime < (1.0f / WindowFrame::getFrameRate()))
 			{
-				SDL_Delay((unsigned int)(((1.0f / getFrameRate()) - deltaTime) * 1000.0f));
+				SDL_Delay((unsigned int)(((1.0f / WindowFrame::getFrameRate()) - deltaTime) * 1000.0f));
 			}
 		}
 	}
@@ -154,26 +157,6 @@ namespace Core
 		{
 			Logging::logE("SDL_mixer failed to initialise: " + std::string(Mix_GetError()));
 			return false;
-		}
-		return true;
-	}
-
-	bool Application::input()
-	{
-		SDL_Event incomingEvent;
-		while (SDL_PollEvent(&incomingEvent))
-		{
-			InputManager::pollInputEvent(incomingEvent);
-			if (incomingEvent.type == SDL_QUIT)
-			{
-				//If player closes the window, end the game loop
-				return false;
-			}
-			if (InputManager::isKeyPressed(ESC_KEY))
-			{
-				//If Escape is pressed, end the game loop
-				return false;
-			}
 		}
 		return true;
 	}

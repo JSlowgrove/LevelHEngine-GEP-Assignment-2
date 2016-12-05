@@ -3,20 +3,11 @@
 namespace Core
 {
 
-	WindowFrame::WindowFrame(std::string title, Maths::Vec2 windowPos, Maths::Vec2 windowRes, bool fullscreen, float frameRate) 
-		: title(title), windowPos(windowPos), windowRes(windowRes), fullscreen(fullscreen), frameRate(frameRate)
-	{
-		//Log window details
-		Logging::logI("Window title: " + title);
-		Logging::logI("Window position: " + std::to_string(int(windowPos.x)) + ", " + std::to_string(int(windowPos.y)));
-		Logging::logI("Window resolution: " + std::to_string(int(windowRes.x)) + ", " + std::to_string(int(windowRes.y)));
-		Logging::logI("Window fullscreen: " + Logging::boolToString(fullscreen));
-		Logging::logI("Window frame rate: " + std::to_string(frameRate));
-	}
-
-	WindowFrame::~WindowFrame()
-	{
-	}
+	std::string WindowFrame::title;
+	Maths::Vec2 WindowFrame::windowPos;
+	Maths::Vec2 WindowFrame::windowRes;
+	bool WindowFrame::fullscreen;
+	float WindowFrame::frameRate;
 
 	void WindowFrame::setWindow(std::string title, Maths::Vec2 windowPos, Maths::Vec2 windowRes, bool fullscreen, float frameRate)
 	{
@@ -25,31 +16,38 @@ namespace Core
 		setWindowRes(windowRes);
 		setFullscreen(fullscreen);
 		setFrameRate(frameRate);
+
+		//Log window details
+		Logging::logI("Window title: " + title);
+		Logging::logI("Window position: " + std::to_string(int(windowPos.x)) + ", " + std::to_string(int(windowPos.y)));
+		Logging::logI("Window resolution: " + std::to_string(int(windowRes.x)) + ", " + std::to_string(int(windowRes.y)));
+		Logging::logI("Window fullscreen: " + Logging::boolToString(fullscreen));
+		Logging::logI("Window frame rate: " + std::to_string(frameRate));
 	}
 
 	void WindowFrame::setTitle(std::string title)
 	{
-		this->title = title;
+		WindowFrame::title = title;
 	}
 	
 	void WindowFrame::setWindowPos(Maths::Vec2 windowPos)
 	{
-		this->windowPos = windowPos;
+		WindowFrame::windowPos = windowPos;
 	}
 
 	void WindowFrame::setWindowRes(Maths::Vec2 windowRes)
 	{
-		this->windowRes = windowRes;
+		WindowFrame::windowRes = windowRes;
 	}
 
 	void WindowFrame::setFullscreen(bool fullscreen)
 	{
-		this->fullscreen = fullscreen;
+		WindowFrame::fullscreen = fullscreen;
 	}
 
 	void WindowFrame::setFrameRate(float frameRate)
 	{
-		this->frameRate = frameRate;
+		WindowFrame::frameRate = frameRate;
 	}
 
 	std::string WindowFrame::getTitle()
