@@ -27,7 +27,7 @@ namespace Maths
 		@param y The inputed y position.
 		@param z The inputed z position.
 		*/
-		Vec3(float x, float y, float z) : x(x), y(y), z() {}
+		Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
 
 		/**
 		@brief Constructs the Vec3 setting the values to the input coordinates.
@@ -69,7 +69,18 @@ namespace Maths
 		*/
 		float getLength()
 		{
-			return sqrt((x*x) + (y*y) + (z*z));
+			return float(sqrt((x*x) + (y*y) + (z*z)));
+		}
+
+		/**
+		@brief Returns a normalised version of the Vec3.
+		@returns The normalised Vec3.
+		*/
+		Vec3 getNormalised()
+		{
+			float magnitude = getLength();
+			Vec3 normalised = Vec3(x / magnitude, y / magnitude, z / magnitude);
+			return normalised;
 		}
 	};
 

@@ -28,7 +28,7 @@ namespace Maths
 		@param z The inputed z position.
 		@param w The inputed w position.
 		*/
-		Vec4(float x, float y, float z, float w) : x(x), y(y), z(), w() {}
+		Vec4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
 
 		/**
 		@brief Constructs the Vec4 setting the values to the input coordinates.
@@ -73,7 +73,7 @@ namespace Maths
 		*/
 		float getLength()
 		{
-			return sqrt((w*w) + (x*x) + (y*y) + (z*z));
+			return float(sqrt((w*w) + (x*x) + (y*y) + (z*z)));
 		}
 	};
 

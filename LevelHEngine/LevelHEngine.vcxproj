@@ -129,9 +129,12 @@
     <ClCompile Include="Core\C_Timer.cpp" />
     <ClCompile Include="Core\InputManager.cpp" />
     <ClCompile Include="Core\Logging.cpp" />
+    <ClCompile Include="Core\PerformanceTest.cpp" />
     <ClCompile Include="Core\WindowFrame.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Maths\M_Convert.cpp" />
+    <ClCompile Include="Maths\Convert.cpp" />
+    <ClCompile Include="Maths\Mat4.cpp" />
+    <ClCompile Include="Maths\Quaternion.cpp" />
     <ClCompile Include="Physics\P_Collision.cpp" />
     <ClCompile Include="Rendering\R_Camera.cpp" />
     <ClCompile Include="ResourceManagement\RM_FileLoader.cpp" />
@@ -155,9 +158,11 @@
     <ClInclude Include="Core\InputManager.h" />
     <ClInclude Include="Core\InputManagerDefs.h" />
     <ClInclude Include="Core\Logging.h" />
+    <ClInclude Include="Core\PerformanceTest.h" />
     <ClInclude Include="Core\WindowFrame.h" />
-    <ClInclude Include="Maths\M_Convert.h" />
-    <ClInclude Include="Maths\M_Defs.h" />
+    <ClInclude Include="Maths\Convert.h" />
+    <ClInclude Include="Maths\Mat4.h" />
+    <ClInclude Include="Maths\MathsDefs.h" />
     <ClInclude Include="Maths\Quaternion.h" />
     <ClInclude Include="Maths\Vec2.h" />
     <ClInclude Include="Maths\Vec3.h" />

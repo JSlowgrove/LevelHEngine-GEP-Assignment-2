@@ -16,6 +16,11 @@ namespace Core
 			logE(message, true);
 		}
 
+		void logMat4(Maths::Mat4 testMat)
+		{
+			logMat4(testMat, true);
+		}
+
 		void logI(std::string message, bool printToLog)
 		{
 			SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, message.c_str());
@@ -31,6 +36,26 @@ namespace Core
 			if (printToLog)
 			{
 				printToLogFile("ERROR: " + message);
+			}
+		}
+
+		void logMat4(Maths::Mat4 testMat, bool printToLog)
+		{
+			std::string outString = "MAT4:\n";
+			outString += std::to_string(testMat.m[0]) + " ";
+			for (int i = 1; i < 16; i++)
+			{
+				outString += std::to_string(testMat.m[i]) + " ";
+				if (i == 3 || i == 7 || i == 11)
+				{
+					outString += "\n";
+				}
+			}
+
+			SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, outString.c_str());
+			if (printToLog)
+			{
+				printToLogFile("INFO: " + outString);
 			}
 		}
 

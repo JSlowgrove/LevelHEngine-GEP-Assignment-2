@@ -108,9 +108,6 @@
     <ClCompile Include="States\S_MainMenu.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
-    <ClCompile Include="Maths\M_Convert.cpp">
-      <Filter>Source Files\Maths</Filter>
-    </ClCompile>
     <ClCompile Include="Physics\P_Collision.cpp">
       <Filter>Source Files\Physics</Filter>
     </ClCompile>
@@ -124,6 +121,18 @@
       <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="Core\InputManager.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Maths\Convert.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="Maths\Mat4.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="Maths\Quaternion.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\PerformanceTest.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
   </ItemGroup>
@@ -176,12 +185,6 @@
     <ClInclude Include="States\S_MainMenu.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
-    <ClInclude Include="Maths\M_Convert.h">
-      <Filter>Header Files\Maths</Filter>
-    </ClInclude>
-    <ClInclude Include="Maths\M_Defs.h">
-      <Filter>Header Files\Maths</Filter>
-    </ClInclude>
     <ClInclude Include="Physics\P_Collision.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
@@ -211,6 +214,18 @@
     </ClInclude>
     <ClInclude Include="Maths\Vec4.h">
       <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="Maths\Convert.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="Maths\Mat4.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="Maths\MathsDefs.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\PerformanceTest.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
