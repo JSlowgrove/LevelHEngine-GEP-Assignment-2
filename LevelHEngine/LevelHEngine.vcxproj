@@ -137,7 +137,7 @@
     <ClCompile Include="Maths\Quaternion.cpp" />
     <ClCompile Include="Physics\P_Collision.cpp" />
     <ClCompile Include="Rendering\R_Camera.cpp" />
-    <ClCompile Include="ResourceManagement\RM_FileLoader.cpp" />
+    <ClCompile Include="ResourceManagement\FileLoader.cpp" />
     <ClCompile Include="ResourceManagement\RM_Model.cpp" />
     <ClCompile Include="ResourceManagement\RM_Object.cpp" />
     <ClCompile Include="ResourceManagement\RM_Shader.cpp" />
@@ -169,7 +169,7 @@
     <ClInclude Include="Maths\Vec4.h" />
     <ClInclude Include="Physics\P_Collision.h" />
     <ClInclude Include="Rendering\R_Camera.h" />
-    <ClInclude Include="ResourceManagement\RM_FileLoader.h" />
+    <ClInclude Include="ResourceManagement\FileLoader.h" />
     <ClInclude Include="ResourceManagement\RM_Model.h" />
     <ClInclude Include="ResourceManagement\RM_Object.h" />
     <ClInclude Include="ResourceManagement\RM_Shader.h" />

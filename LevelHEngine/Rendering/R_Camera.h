@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include "../Core/Logging.h"
-#include "../Maths/M_Defs.h"
+#include "../Maths/MathsDefs.h"
 
 /** @brief A camera that holds and manipulates the View and Projection Matrices. */
 class R_Camera

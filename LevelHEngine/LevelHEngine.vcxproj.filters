@@ -93,9 +93,6 @@
     <ClCompile Include="UI\UI_UIObject.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceManagement\RM_FileLoader.cpp">
-      <Filter>Source Files\ResourceManagement</Filter>
-    </ClCompile>
     <ClCompile Include="ResourceManagement\RM_Model.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
@@ -135,6 +132,9 @@
     <ClCompile Include="Core\PerformanceTest.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="ResourceManagement\FileLoader.cpp">
+      <Filter>Source Files\ResourceManagement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\C_Audio.h">
@@ -169,9 +169,6 @@
     </ClInclude>
     <ClInclude Include="UI\UI_UIObject.h">
       <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManagement\RM_FileLoader.h">
-      <Filter>Header Files\ResourceManagement</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManagement\RM_Model.h">
       <Filter>Header Files\ResourceManagement</Filter>
@@ -226,6 +223,9 @@
     </ClInclude>
     <ClInclude Include="Core\PerformanceTest.h">
       <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManagement\FileLoader.h">
+      <Filter>Header Files\ResourceManagement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
