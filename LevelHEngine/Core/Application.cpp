@@ -70,7 +70,7 @@ namespace Core
 			lastTime = current;
 
 			//input
-			go = tmpInput();
+			go = input();
 
 			//update
 
@@ -158,35 +158,21 @@ namespace Core
 		return true;
 	}
 
-
-
-
-
-
-
-
-	//ONLY TEMPORARY
-	bool Application::tmpInput()
+	bool Application::input()
 	{
 		SDL_Event incomingEvent;
 		while (SDL_PollEvent(&incomingEvent))
 		{
-			switch (incomingEvent.type)
+			InputManager::pollInputEvent(incomingEvent);
+			if (incomingEvent.type == SDL_QUIT)
 			{
-			case SDL_QUIT: //If player closes the window, end the game loop
-
+				//If player closes the window, end the game loop
 				return false;
-				break;
-
-			case SDL_KEYDOWN:
-
-				switch (incomingEvent.key.keysym.sym)
-				{
-				case SDLK_ESCAPE: //If Escape is pressed, end the game loop
-
-					return false;
-					break;
-				}
+			}
+			if (InputManager::isKeyPressed(ESC_KEY))
+			{
+				//If Escape is pressed, end the game loop
+				return false;
 			}
 		}
 		return true;

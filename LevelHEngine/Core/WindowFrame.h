@@ -9,9 +9,9 @@
 */
 namespace Core
 {
+
 	/**
 	@brief Contains details and functions for use with the window.
-	@author Jamie Slowgrove
 	*/
 	class WindowFrame
 	{

@@ -9,6 +9,7 @@
 #include <memory>
 #include "Logging.h"
 #include "WindowFrame.h"
+#include "InputManager.h"
 #include "../Maths/Vec2.h"
 
 /**
@@ -23,7 +24,15 @@ namespace Core
 	class Application : public WindowFrame
 	{
 	public:
+
+		/**
+		@brief Constructs Application.
+		*/
 		Application(std::string title, Maths::Vec2 windowPos, Maths::Vec2 windowRes, bool fullscreen, float frameRate);
+
+		/**
+		@brief Destructs Application.
+		*/
 		~Application();
 		void init(int argc, char *argv[]);
 		void run();
@@ -34,15 +43,10 @@ namespace Core
 		bool initTTF();
 		bool initMixer();
 		bool initGLEW();
+		bool input();
 
 		SDL_Window *window;
 		SDL_GLContext glcontext;
-
-
-
-
-		//TMP
-		bool tmpInput();
 	};
 
 }// End of Core namespace

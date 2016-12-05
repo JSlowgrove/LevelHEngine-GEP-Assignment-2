@@ -12,7 +12,6 @@ namespace Core
 {
 	/**
 	@brief Contains details and functions for use with testing performance.
-	@author Jamie Slowgrove
 	*/
 	class PerformanceTest
 	{
