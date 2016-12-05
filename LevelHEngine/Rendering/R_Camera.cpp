@@ -4,7 +4,7 @@ R_Camera::R_Camera()
 {
 	// Create a viewing matrix for the camera
 	viewMatrix = glm::translate(glm::mat4(1), glm::vec3(0, -1.0f, -2.5f));
-	viewMatrix = glm::rotate(viewMatrix, M_HALF_PI, glm::vec3(0, 1, 0));
+	viewMatrix = glm::rotate(viewMatrix, HALF_PI, glm::vec3(0, 1, 0));
 
 	// Construct a projection matrix for the camera
 	projMatrix = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 200.0f);

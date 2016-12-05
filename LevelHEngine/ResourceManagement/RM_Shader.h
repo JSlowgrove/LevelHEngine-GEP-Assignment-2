@@ -3,7 +3,7 @@
 #include <iostream>
 #include <glm/glm.hpp>
 #include "gl/glew.h"
-#include "../ResourceManagement/RM_FileLoader.h"
+#include "../ResourceManagement/FileLoader.h"
 
 /**
 @brief Creates a Shader for use with OpenGL.

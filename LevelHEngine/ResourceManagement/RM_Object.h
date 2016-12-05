@@ -6,7 +6,7 @@
 #include <glm/glm.hpp>
 #include <string>
 #include "gl/glew.h"
-#include "../ResourceManagement/RM_FileLoader.h"
+#include "../ResourceManagement/FileLoader.h"
 
 /**
 @brief Creates an object for use with OpenGL.
