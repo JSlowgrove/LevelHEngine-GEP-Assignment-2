@@ -7,7 +7,7 @@ namespace States
 {
 
 	MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
-		: State(stateManager, window, "MainMenu")/*, backgroundMusic(new C_Music("Assets/Audio/[INSERTNAME].ogg"))*/
+		: State(stateManager, window, "MainMenu")/*, backgroundMusic(new Core::Music("Assets/Audio/[INSERTNAME].ogg"))*/
 	{
 	}
 

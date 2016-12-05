@@ -4,9 +4,9 @@
 #include <iostream>
 #include "State.h"
 #include "StateManager.h"
-#include "../Core/C_Timer.h"
+#include "../Core/Timer.h"
 #include "../Core/C_Texture.h"
-#include "../Core/C_Audio.h"
+#include "../Core/Audio.h"
 #include "../Core/InputManager.h"
 #include "MainMenu.h"
 
@@ -54,7 +54,7 @@ namespace States
 
 	private:
 		///The timer keeping the splash screen open
-		C_Timer* splashTimer;
+		Core::Timer* splashTimer;
 	};
 
 }// End of states namespace

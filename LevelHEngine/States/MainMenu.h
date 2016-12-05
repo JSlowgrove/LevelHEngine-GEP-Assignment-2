@@ -5,8 +5,8 @@
 #include "State.h"
 #include "StateManager.h"
 #include "../Core/C_Texture.h"
-#include "../Core/C_Audio.h"
-#include "../Core/C_Music.h"
+#include "../Core/Audio.h"
+#include "../Core/Music.h"
 #include "../Core/C_Text.h"
 #include "../Core/InputManager.h"
 
@@ -54,7 +54,7 @@ namespace States
 
 	private:
 		///The background music.
-		//C_Music* backgroundMusic;
+		//Core::Music* backgroundMusic;
 	};
 
 }// End of state namespace

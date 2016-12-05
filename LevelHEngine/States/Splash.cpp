@@ -4,7 +4,7 @@ namespace States
 {
 
 	Splash::Splash(StateManager* stateManager, SDL_Window* window)
-		: State(stateManager, window, "Splash"), splashTimer(new C_Timer(3.0f))
+		: State(stateManager, window, "Splash"), splashTimer(new Core::Timer(3.0f))
 	{
 	}
 
