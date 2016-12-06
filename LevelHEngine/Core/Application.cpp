@@ -22,7 +22,6 @@ namespace Core
 		if (WindowFrame::getFullscreen())
 		{
 			//Create Window
-			Maths::Vec2 windowPos = Maths::Vec2(0, 0);
 			window = SDL_CreateWindow(WindowFrame::getTitle().c_str(),
 				(int)WindowFrame::getWindowPos().x, (int)WindowFrame::getWindowPos().y,
 				(int)WindowFrame::getWindowRes().x, (int)WindowFrame::getWindowRes().y,

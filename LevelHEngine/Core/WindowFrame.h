@@ -86,6 +86,12 @@ namespace Core
 		*/
 		static float getFrameRate();
 
+		/**
+		@brief A static function to get the aspect of the window.
+		@returns The aspect of the window.
+		*/
+		static float getAspect();
+
 	private:
 		///The window title.
 		static std::string title;

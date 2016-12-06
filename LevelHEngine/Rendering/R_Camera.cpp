@@ -7,7 +7,7 @@ R_Camera::R_Camera()
 	viewMatrix = glm::rotate(viewMatrix, HALF_PI, glm::vec3(0, 1, 0));
 
 	// Construct a projection matrix for the camera
-	projMatrix = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 200.0f);
+	projMatrix = glm::perspective(45.0f, Core::WindowFrame::getAspect(), 0.1f, 200.0f);
 
 	// Initialise the orientation
 	orientation = glm::vec3(0.0f, 0.0f, 0.0f);

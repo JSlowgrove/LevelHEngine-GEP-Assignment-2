@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 	Core::Logging::logI("Program Started: " + Core::Logging::getCurrentDateAndTime());
 
 	///The application instance 
-	std::shared_ptr<Core::Application> application = std::make_shared<Core::Application>("Level H Engine", Maths::Vec2(700, 200), Maths::Vec2(640, 480), false, 60.0f);
+	std::shared_ptr<Core::Application> application = std::make_shared<Core::Application>("Level H Engine", Maths::Vec2(60, 60), Maths::Vec2(1280, 720), false, 60.0f);
 
 	///Run the application
 	application->run(argc, argv);

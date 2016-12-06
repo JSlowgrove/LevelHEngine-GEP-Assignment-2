@@ -75,4 +75,9 @@ namespace Core
 		return frameRate;
 	}
 
+	float WindowFrame::getAspect()
+	{
+		return (windowRes.x / windowRes.y);
+	}
+
 }// End of Core namespace
