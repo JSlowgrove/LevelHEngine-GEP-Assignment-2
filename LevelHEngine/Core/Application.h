@@ -12,12 +12,15 @@
 #include "../Maths/Vec2.h"
 #include "../States/StateManager.h"
 #include "../States/Splash.h"
+#include "GameObject.h"
 
 /**
 @brief The namespace for all core code.
 */
 namespace Core
 {
+	///forward declaration of game object
+	class GameObject;
 
 	/**
 	@brief Contains details and functions for the application.
@@ -27,63 +30,66 @@ namespace Core
 	public:
 
 		/**
-		@brief Constructs Application.
+		@brief A static function to initialise Application.
 		@param title The title of the window.
 		@param windowPos The position of the window.
 		@param windowRes The resolution of the window.
 		@param fullscreen If the window should be fullscreen.
 		@param frameRate The frame rate of the window.
 		*/
-		Application(std::string title, Maths::Vec2 windowPos, Maths::Vec2 windowRes, bool fullscreen, float frameRate);
+		static void init(std::string title, Maths::Vec2 windowPos, Maths::Vec2 windowRes, bool fullscreen, float frameRate);
 
 		/**
-		@brief Destructs Application.
-		*/
-		~Application();
-
-		/**
-		@brief Runs Application.
+		@brief A static function that runs Application.
 		@param argc The command line argument count.
 		@param argv The command line argument vector.
 		*/
-		void run(int argc, char *argv[]);
+		static void run(int argc, char *argv[]);
 
 		/**
-		@brief Destroys the Application.
+		@brief A static function that destroys the Application.
 		*/
-		void destroy();
+		static void destroy();
+
+
+		/**
+		@brief A static function to get game objects.
+		*/
+		static std::vector<std::shared_ptr<GameObject> >& getGameObjects();
 
 	private:
 		/**
-		@brief Initialise SDL.
+		@brief A static function to initialise SDL.
 		@returns If the initialisation succeeded.
 		*/
-		bool initSDL();
+		static bool initSDL();
 
 		/**
-		@brief Initialise SDL TTF.
+		@brief A static function to initialise SDL TTF.
 		@returns If the initialisation succeeded.
 		*/
-		bool initTTF();
+		static bool initTTF();
 
 		/**
-		@brief Initialise SDL Mixer.
+		@brief A static function to initialise SDL Mixer.
 		@returns If the initialisation succeeded.
 		*/
-		bool initMixer();
+		static bool initMixer();
 
 		/**
-		@brief Initialise GLEW.
+		@brief A static function to initialise GLEW.
 		@returns If the initialisation succeeded.
 		*/
-		bool initGLEW();
+		static bool initGLEW();
 
 		///A pointer for the window.
-		SDL_Window *window;
+		static SDL_Window *window;
 		///The SDL OpenGL context.
-		SDL_GLContext glcontext;
+		static SDL_GLContext glcontext;
 		///A pointer to the state manager.
-		States::StateManager* stateManager;
+		static States::StateManager* stateManager;
+		///A vector of the game objects.
+		static std::vector< std::shared_ptr<GameObject> > gameObjects;
 	};
 
 }// End of Core namespace

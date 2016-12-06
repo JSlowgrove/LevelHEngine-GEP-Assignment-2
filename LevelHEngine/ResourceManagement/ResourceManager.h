@@ -6,7 +6,7 @@
 #include "Audio.h"
 #include "Music.h"
 #include "Shader.h"
-#include "Object.h"
+#include "Mesh.h"
 
 /**
 @brief The namespace for all resource management code.
@@ -27,9 +27,9 @@ namespace ResourceManagment
 		static void deleteResources();
 
 		/**
-		@brief A static function to delete all the objects
+		@brief A static function to delete all the meshes
 		*/
-		static void deleteAllObjects();
+		static void deleteAllMeshes();
 
 		/**
 		@brief A static function to delete all the shaders
@@ -47,10 +47,10 @@ namespace ResourceManagment
 		static void deleteAllMusic();
 
 		/**
-		@brief A static function to delete the object
+		@brief A static function to delete the mesh
 		@param id The ID of the file.
 		*/
-		static void deleteObject(std::string id) { objects.erase(id); }
+		static void deleteObject(std::string id) { meshes.erase(id); }
 
 		/**
 		@brief A static function to delete the shader
@@ -71,21 +71,22 @@ namespace ResourceManagment
 		static void deleteAudio(std::string id) { audio.erase(id); }
 
 		/**
-		@brief A static function to initialise a vertex array object without a material.
+		@brief A static function to initialise a mesh without a material.
 		@param objFileName The name of the obj file.
 		@returns The ID of the loaded file.
 		*/
-		static std::string initialiseObject(std::string objFileName);
+		static std::string initialiseMesh(std::string objFileName);
 
 		/**
-		@brief Initialise a vertex array object.
+		@brief A static function to initialise a mesh.
 		@param objFileName The name of the obj file.
+		@param materialFileName The name of the material
 		@returns The ID of the loaded file.
 		*/
-		static std::string initialiseObject(std::string objFileName, std::string materialFileName);
+		static std::string initialiseMesh(std::string objFileName, std::string materialFileName);
 
 		/**
-		@brief Initialise a shader.
+		@brief A static function to initialise a shader.
 		@param vertexShaderFileName The name of the vertex shader file.
 		@param fragmentShaderFileName The name of the fragment shader file.
 		@returns The ID of the loaded file.
@@ -107,10 +108,10 @@ namespace ResourceManagment
 		static std::string initialiseMusic(std::string musicFileName);
 
 		/**
-		@brief A static function to get an object.
+		@brief A static function to get a mesh.
 		@param id The ID of the file.
 		*/
-		static Object* getObject(std::string id) { return objects[id]; }
+		static Mesh* getObject(std::string id) { return meshes[id]; }
 
 		/**
 		@brief A static function to get an shaders.
@@ -132,8 +133,8 @@ namespace ResourceManagment
 
 		
 	private:
-		///The loaded Object files
-		static std::unordered_map<std::string, Object*> objects;
+		///The loaded Mesh files
+		static std::unordered_map<std::string, Mesh*> meshes;
 		///The loaded Shader files
 		static std::unordered_map<std::string, Shader*> shaders;
 		///The loaded Audio files

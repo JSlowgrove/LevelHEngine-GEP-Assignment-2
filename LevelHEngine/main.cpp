@@ -14,14 +14,14 @@ int main(int argc, char *argv[])
 	///Log the time and date the program started
 	Core::Logging::logI("Program Started: " + Core::Logging::getCurrentDateAndTime());
 
-	///The application instance 
-	std::shared_ptr<Core::Application> application = std::make_shared<Core::Application>("Level H Engine", Maths::Vec2(60, 60), Maths::Vec2(1280, 720), false, 60.0f);
+	///Initialise the application instance 
+	Core::Application::init("Level H Engine", Maths::Vec2(60, 60), Maths::Vec2(1280, 720), false, 60.0f);
 
 	///Run the application
-	application->run(argc, argv);
+	Core::Application::run(argc, argv);
 
 	///Destroy the application
-	application->destroy();
+	Core::Application::destroy();
 
 	return 0;
 }

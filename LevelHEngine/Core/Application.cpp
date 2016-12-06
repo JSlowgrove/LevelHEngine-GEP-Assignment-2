@@ -3,7 +3,12 @@
 namespace Core
 {
 
-	Application::Application(std::string title, Maths::Vec2 windowPos, Maths::Vec2 windowRes, bool fullscreen, float frameRate)
+	SDL_Window* Application::window;
+	SDL_GLContext Application::glcontext;
+	States::StateManager* Application::stateManager;
+	std::vector<std::shared_ptr<GameObject> > Application::gameObjects;
+
+	void Application::init(std::string title, Maths::Vec2 windowPos, Maths::Vec2 windowRes, bool fullscreen, float frameRate)
 	{
 		//Initialise SDL
 		initSDL();
@@ -49,10 +54,6 @@ namespace Core
 		stateManager = new States::StateManager();
 		//set the initial state
 		stateManager->addState(new States::Splash(stateManager, window));
-	}
-
-	Application::~Application()
-	{
 	}
 	
 	void Application::run(int argc, char *argv[])
@@ -158,6 +159,11 @@ namespace Core
 			return false;
 		}
 		return true;
+	}
+
+	std::vector<std::shared_ptr<GameObject> >& Application::getGameObjects()
+	{
+		return gameObjects;
 	}
 
 }// End of Core namespace

@@ -1,4 +1,4 @@
-#include "Object.h"
+#include "Mesh.h"
 
 /**
 @brief The namespace for all resource management code.
@@ -6,7 +6,7 @@
 namespace ResourceManagment
 {
 
-	Object::Object(std::string objFileName)
+	Mesh::Mesh(std::string objFileName)
 	{
 		//initialise the material
 		materialFileName = "Untextured";
@@ -15,7 +15,7 @@ namespace ResourceManagment
 		InitialiseVAO(objFileName);
 	}
 
-	Object::Object(std::string objFileName, std::string materialFileName)
+	Mesh::Mesh(std::string objFileName, std::string materialFileName)
 	{
 		//store the material
 		this->materialFileName = materialFileName;
@@ -24,14 +24,14 @@ namespace ResourceManagment
 		InitialiseVAO(objFileName);
 	}
 
-	Object::~Object()
+	Mesh::~Mesh()
 	{
 		//delete data
 		glDeleteVertexArrays(1, &vertexArrayObject);
 		glDeleteTextures(1, &textureID);
 	}
 
-	void Object::InitialiseVAO(std::string objFileName)
+	void Mesh::InitialiseVAO(std::string objFileName)
 	{
 		//Creates one VAO
 		glGenVertexArrays(1, &vertexArrayObject);
@@ -97,7 +97,7 @@ namespace ResourceManagment
 		glDisableVertexAttribArray(0);
 	}
 
-	void Object::initialiseTexture(std::vector<float> vertexTextures)
+	void Mesh::initialiseTexture(std::vector<float> vertexTextures)
 	{
 		//Loads the image as a surface
 		SDL_Surface* image = IMG_Load(materialFileName.c_str());
@@ -167,19 +167,19 @@ namespace ResourceManagment
 		SDL_FreeSurface(image);
 	}
 
-	GLuint Object::getVAO()
+	GLuint Mesh::getVAO()
 	{
 		//returns the vertex array object
 		return vertexArrayObject;
 	}
 
-	GLuint Object::getTextureID()
+	GLuint Mesh::getTextureID()
 	{
 		//returns the texture ID
 		return textureID;
 	}
 
-	unsigned int Object::getNumberOfVertices()
+	unsigned int Mesh::getNumberOfVertices()
 	{
 		//returns the vertex buffer object
 		return numberOfVertices;

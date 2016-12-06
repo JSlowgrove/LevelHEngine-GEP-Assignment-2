@@ -1,5 +1,3 @@
-//DISCLAMER - This is a version of code from one of my other assignments.
-
 #pragma once
 
 #include "Vec4.h"
@@ -104,6 +102,21 @@ namespace Maths
 			m[4] = 0.0f;					m[5] = 1.0f / a;	m[6] = 0.0f;						m[7] = 0.0f;
 			m[8] = 0.0f;					m[9] = 0.0f;		m[10] = -((f + n) / (f - n));		m[11] = -((2.0f * f * n) / (f - n));
 			m[12] = 0.0f;					m[13] = 0.0f;		m[14] = -1.0f;						m[15] = 0.0f;
+		}
+
+		/**
+		@brief Sets the values of the matrix to that of a Orthogonal Projection matrix
+		@param w The width of the area to view.
+		@param h The height of the area to view.
+		@param f The z plane which is the furthest the view can see.
+		@param n The z plane which is the closest the view can see.
+		*/
+		void setAsOrthogonalProjectionMatrix(float w, float h, float n, float f)
+		{
+			m[0] = w * 0.5f;		m[1] = 0.0f;		m[2] = 0.0f;				m[3] = 0.0f;
+			m[4] = 0.0f;			m[5] = h * 0.5f;	m[6] = 0.0f;				m[7] = 0.0f;
+			m[8] = 0.0f;			m[9] = 0.0f;		m[10] = 1 / (f - n);		m[11] = -n / (f - n);
+			m[12] = 0.0f;			m[13] = 0.0f;		m[14] = 0.0f;				m[15] = 1.0f;
 		}
 
 		/**

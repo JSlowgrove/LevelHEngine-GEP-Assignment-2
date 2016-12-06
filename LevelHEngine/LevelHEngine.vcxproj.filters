@@ -19,23 +19,11 @@
     <Filter Include="Source Files\Core">
       <UniqueIdentifier>{c00f0be7-74a6-4444-aad5-5c13dfa0bea1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\UI">
-      <UniqueIdentifier>{65e28837-87cc-498a-b0f5-4fffb898a45e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\UI">
-      <UniqueIdentifier>{635f6e40-0865-4dcc-81d6-cb9cf7353316}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\States">
       <UniqueIdentifier>{2a87d4a5-8057-44a1-9c7d-c919690397f4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\States">
       <UniqueIdentifier>{3a961682-2314-4e73-952e-525de9c61cff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Rendering">
-      <UniqueIdentifier>{bbfb3f3f-2850-407f-b518-f4bcf9c61081}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Rendering">
-      <UniqueIdentifier>{30adc752-8ea4-49a8-b2b3-882fdd2a6ccb}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\ResourceManagement">
       <UniqueIdentifier>{7bc0348e-c559-4457-8fac-7a7a6a724a3b}</UniqueIdentifier>
@@ -59,15 +47,6 @@
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UI\UI_UI.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="UI\UI_UIObject.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceManagement\RM_Model.cpp">
-      <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
     <ClCompile Include="Core\Application.cpp">
       <Filter>Source Files\Core</Filter>
@@ -120,38 +99,29 @@
     <ClCompile Include="ResourceManagement\Audio.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceManagement\C_Text.cpp">
-      <Filter>Source Files\ResourceManagement</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceManagement\C_Texture.cpp">
-      <Filter>Source Files\ResourceManagement</Filter>
-    </ClCompile>
     <ClCompile Include="ResourceManagement\Music.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManagement\ResourceManager.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceManagement\Object.cpp">
-      <Filter>Source Files\ResourceManagement</Filter>
-    </ClCompile>
     <ClCompile Include="ResourceManagement\Shader.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
-    <ClCompile Include="Rendering\Camera.cpp">
-      <Filter>Source Files\Rendering</Filter>
+    <ClCompile Include="Core\Component.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\GameObject.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Maths\TransformComponent.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManagement\Mesh.cpp">
+      <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UI\UI_UI.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="UI\UI_UIObject.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManagement\RM_Model.h">
-      <Filter>Header Files\ResourceManagement</Filter>
-    </ClInclude>
     <ClInclude Include="Core\Application.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
@@ -218,26 +188,26 @@
     <ClInclude Include="ResourceManagement\Audio.h">
       <Filter>Header Files\ResourceManagement</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceManagement\C_Text.h">
-      <Filter>Header Files\ResourceManagement</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManagement\C_Texture.h">
-      <Filter>Header Files\ResourceManagement</Filter>
-    </ClInclude>
     <ClInclude Include="ResourceManagement\Music.h">
       <Filter>Header Files\ResourceManagement</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManagement\ResourceManager.h">
       <Filter>Header Files\ResourceManagement</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceManagement\Object.h">
-      <Filter>Header Files\ResourceManagement</Filter>
-    </ClInclude>
     <ClInclude Include="ResourceManagement\Shader.h">
       <Filter>Header Files\ResourceManagement</Filter>
     </ClInclude>
-    <ClInclude Include="Rendering\Camera.h">
-      <Filter>Header Files\Rendering</Filter>
+    <ClInclude Include="Core\Component.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\GameObject.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Maths\TransformComponent.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManagement\Mesh.h">
+      <Filter>Header Files\ResourceManagement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

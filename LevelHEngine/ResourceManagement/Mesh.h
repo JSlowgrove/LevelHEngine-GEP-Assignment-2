@@ -16,26 +16,26 @@ namespace ResourceManagment
 	/**
 	@brief Creates an object from an text file, this can then be used with OpenGL.
 	*/
-	class Object
+	class Mesh
 	{	
 	public:
 		/**
 		@brief Creates a vertex array object using a obj file location and OpenGL.
 		@param objFileName The name of the obj file.
 		*/
-		Object(std::string objFileName);
+		Mesh(std::string objFileName);
 
 		/**
 		@brief Creates a vertex array object using a obj file location and OpenGL.
 		@param objFileName The name of the obj file.
 		@param material The name of the material file.
 		*/
-		Object(std::string objFileName, std::string materialFileName);
+		Mesh(std::string objFileName, std::string materialFileName);
 
 		/**
 		@brief Destructs an Object.
 		*/
-		~Object();
+		~Mesh();
 	
 		/**
 		@brief Returns the vertex array object.

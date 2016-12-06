@@ -42,7 +42,7 @@ namespace ResourceManagment
 		shaderProjectionMatrixLocation = glGetUniformLocation(shaderProgram, "projMat");
 
 		//if the shader is a texture shader then get the texture
-		if (vertexShaderFileName == "texture")
+		if (vertexShaderFileName == "2d.texture" || vertexShaderFileName == "texture")
 		{
 			textureSamplerLocation = glGetUniformLocation(shaderProgram, "textureSampler");
 		}

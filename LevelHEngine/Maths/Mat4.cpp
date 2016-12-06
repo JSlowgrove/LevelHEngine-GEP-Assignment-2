@@ -1,5 +1,3 @@
-//DISCLAMER - This is a version of code from one of my other assignments.
-
 #include "Mat4.h"
 
 namespace Maths

@@ -3,22 +3,22 @@
 namespace ResourceManagment
 {
 
-	std::unordered_map<std::string, Object*> ResourceManager::objects;
+	std::unordered_map<std::string, Mesh*> ResourceManager::meshes;
 	std::unordered_map<std::string, Shader*> ResourceManager::shaders;
 	std::unordered_map<std::string, Audio*> ResourceManager::audio;
 	std::unordered_map<std::string, Music*> ResourceManager::music;
 
 	void ResourceManager::deleteResources()
 	{
-		deleteAllObjects();
+		deleteAllMeshes();
 		deleteAllShaders();
 		deleteAllAudio();
 		deleteAllMusic();
 	}
 
-	void ResourceManager::deleteAllObjects()
+	void ResourceManager::deleteAllMeshes()
 	{
-		for (auto i = objects.begin(); i != objects.end(); ++i)
+		for (auto i = meshes.begin(); i != meshes.end(); ++i)
 		{
 			delete i->second;
 		}
@@ -48,41 +48,41 @@ namespace ResourceManagment
 		}
 	}
 
-	std::string ResourceManager::initialiseObject(std::string objFileName)
+	std::string ResourceManager::initialiseMesh(std::string objFileName)
 	{
-		//test if the object has already been loaded
-		if (objects.count(objFileName) == 0)
+		//test if the mesh has already been loaded
+		if (meshes.count(objFileName) == 0)
 		{
-			//load the object
-			objects[objFileName] = new Object(objFileName);
+			//load the mesh
+			meshes[objFileName] = new Mesh(objFileName);
 		}
 		else
 		{
 			//print out that it is already loaded
-			Core::Logging::logI(objFileName + " object already loaded.");
+			Core::Logging::logI(objFileName + " mesh already loaded.");
 		}
 		//return the ID
 		return objFileName;
 	}
 
-	std::string ResourceManager::initialiseObject(std::string objFileName, std::string materialFileName)
+	std::string ResourceManager::initialiseMesh(std::string objFileName, std::string materialFileName)
 	{
-		//a string for the name of the linked object
-		std::string linkedObjName = objFileName + "/" + materialFileName;
+		//a string for the name of the linked mesh
+		std::string linkedMeshName = objFileName + "/" + materialFileName;
 
 		//test if the object has already been loaded
-		if (objects.count(linkedObjName) == 0)
+		if (meshes.count(linkedMeshName) == 0)
 		{
 			//load the object
-			objects[linkedObjName] = new Object(objFileName, materialFileName);
+			meshes[linkedMeshName] = new Mesh(objFileName, materialFileName);
 		}
 		else
 		{
 			//print out that it is already loaded
-			Core::Logging::logI(linkedObjName + " object already loaded.");
+			Core::Logging::logI(linkedMeshName + " mesh already loaded.");
 		}
 		//return the ID
-		return linkedObjName;
+		return linkedMeshName;
 	}
 
 	std::string ResourceManager::initialiseShader(std::string vertexShaderFileName, std::string fragmentShaderFileName)

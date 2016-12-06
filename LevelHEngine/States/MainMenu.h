@@ -4,9 +4,7 @@
 #include <iostream>
 #include "State.h"
 #include "StateManager.h"
-#include "../ResourceManagement/C_Texture.h"
 #include "../ResourceManagement/ResourceManager.h"
-#include "../ResourceManagement/C_Text.h"
 #include "../Core/InputManager.h"
 
 /**

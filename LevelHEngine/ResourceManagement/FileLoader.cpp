@@ -21,7 +21,7 @@ namespace ResourceManagment
 			std::string loadedFile;
 
 			//Open the file using a ifstream
-			std::ifstream file("assets/shaders/" + fileName + ".txt");
+			std::ifstream file("assets/shad/" + fileName + ".txt");
 
 			//If the file successfully opens
 			if (file.is_open())

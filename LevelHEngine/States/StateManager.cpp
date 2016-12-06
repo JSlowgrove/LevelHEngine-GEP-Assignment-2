@@ -63,20 +63,12 @@ namespace States
 
 	void StateManager::draw() 
 	{
-		//clear the frame-buffer to a colour
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		//write colour to the frame-buffer
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 		//loops through the running stacks and draws them all, with the latest added state on top
 		for (unsigned int i = 0; i < currentStates.size(); i++)
 		{
 			//draw the state
 			currentStates.at(i)->draw();
 		}
-
-		//display the window
-		SDL_GL_SwapWindow(currentStates[0]->getWindow());
 	}
 
 }// End of states namespace
