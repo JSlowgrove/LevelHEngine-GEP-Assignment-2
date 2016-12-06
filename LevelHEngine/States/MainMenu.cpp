@@ -7,16 +7,18 @@ namespace States
 {
 
 	MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
-		: State(stateManager, window, "MainMenu")/*, backgroundMusic(new ResourceManagement::Music("Assets/Audio/[INSERTNAME].ogg"))*/
+		: State(stateManager, window, "MainMenu"), backgroundMusicID(ResourceManagment::ResourceManager::initialiseMusic("Assets/aud/Cipher.ogg"))
 	{
+		//start the music
+		ResourceManagment::ResourceManager::getMusic(backgroundMusicID)->startMusic();
 	}
 
 	MainMenu::~MainMenu()
 	{
 		//Stop music
-		//backgroundMusic->stopMusic();
-		//Delete audio pointers
-		//delete backgroundMusic;
+		ResourceManagment::ResourceManager::getMusic(backgroundMusicID)->stopMusic();
+		//Delete music pointers
+		ResourceManagment::ResourceManager::deleteMusic(backgroundMusicID);
 	}
 
 	bool MainMenu::input()
@@ -43,7 +45,7 @@ namespace States
 	void MainMenu::update(float dt)
 	{
 		//Keep the music playing
-		//backgroundMusic->startMusic();
+		ResourceManagment::ResourceManager::getMusic(backgroundMusicID)->startMusic();
 	}
 
 	void MainMenu::draw()

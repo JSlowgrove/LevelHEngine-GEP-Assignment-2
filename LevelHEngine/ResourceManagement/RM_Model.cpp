@@ -4,7 +4,7 @@
 
 /*Constructs a Model Object.*/
 RM_Model::RM_Model(std::string vertexShaderFileLocation, std::string fragmentShaderFileLocation, std::string objFileName,
-	std::unordered_map<std::string, RM_Object*> &objects, std::unordered_map<std::string, RM_Shader*> &shaders)
+	std::unordered_map<std::string, ResourceManagment::Object*> &objects, std::unordered_map<std::string, ResourceManagment::Shader*> &shaders)
 {
 	/*initialise the material*/
 	material = "Untextured";
@@ -19,7 +19,7 @@ RM_Model::RM_Model(std::string vertexShaderFileLocation, std::string fragmentSha
 
 /*Constructs a Model Object.*/
 RM_Model::RM_Model(std::string vertexShaderFileLocation, std::string fragmentShaderFileLocation, std::string objFileName,
-	std::unordered_map<std::string, RM_Object*> &objects, std::unordered_map<std::string, RM_Shader*> &shaders, 
+	std::unordered_map<std::string, ResourceManagment::Object*> &objects, std::unordered_map<std::string, ResourceManagment::Shader*> &shaders,
 	std::string material)
 {
 	/*initialise the material*/
@@ -41,7 +41,7 @@ RM_Model::~RM_Model()
 /**************************************************************************************************************/
 
 /*Initialise the object for the Model.*/
-void RM_Model::initialiseVAO(std::string objFileName, std::unordered_map<std::string, RM_Object*> &objects)
+void RM_Model::initialiseVAO(std::string objFileName, std::unordered_map<std::string, ResourceManagment::Object*> &objects)
 {
 	/*test if the model is textured*/
 	if (material != "Untextured")
@@ -50,7 +50,7 @@ void RM_Model::initialiseVAO(std::string objFileName, std::unordered_map<std::st
 		if (objects.count(objFileName + "/" + material) == 0)
 		{
 			/*load the object*/
-			objects[objFileName + "/" + material] = new RM_Object(objFileName, material);
+			objects[objFileName + "/" + material] = new ResourceManagment::Object(objFileName, material);
 		}
 		else
 		{
@@ -66,7 +66,7 @@ void RM_Model::initialiseVAO(std::string objFileName, std::unordered_map<std::st
 		if (objects.count(objFileName) == 0)
 		{
 			/*load the object*/
-			objects[objFileName] = new RM_Object(objFileName);
+			objects[objFileName] = new ResourceManagment::Object(objFileName);
 		}
 		else
 		{
@@ -82,7 +82,7 @@ void RM_Model::initialiseVAO(std::string objFileName, std::unordered_map<std::st
 
 /*Initialise the shaders.*/
 void RM_Model::initialiseShaders(std::string vertexShaderFileName, std::string fragmentShaderFileName,
-	std::unordered_map<std::string, RM_Shader*> &shaders)
+	std::unordered_map<std::string, ResourceManagment::Shader*> &shaders)
 {
 	/*a string for the name of the linked shader*/
 	std::string linkedShaderName = vertexShaderFileName + "/" + fragmentShaderFileName;
@@ -91,7 +91,7 @@ void RM_Model::initialiseShaders(std::string vertexShaderFileName, std::string f
 	if(shaders.count(linkedShaderName) == 0)
 	{
 		/*load the shader*/
-		shaders[linkedShaderName] = new RM_Shader(vertexShaderFileName, fragmentShaderFileName);
+		shaders[linkedShaderName] = new ResourceManagment::Shader(vertexShaderFileName, fragmentShaderFileName);
 	}
 	else
 	{

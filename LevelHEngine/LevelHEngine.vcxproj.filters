@@ -72,12 +72,6 @@
     <ClCompile Include="ResourceManagement\RM_Model.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceManagement\RM_Object.cpp">
-      <Filter>Source Files\ResourceManagement</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceManagement\RM_Shader.cpp">
-      <Filter>Source Files\ResourceManagement</Filter>
-    </ClCompile>
     <ClCompile Include="Core\Application.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
@@ -141,6 +135,12 @@
     <ClCompile Include="ResourceManagement\ResourceManager.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
+    <ClCompile Include="ResourceManagement\Object.cpp">
+      <Filter>Source Files\ResourceManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManagement\Shader.cpp">
+      <Filter>Source Files\ResourceManagement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Rendering\R_Camera.h">
@@ -153,12 +153,6 @@
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManagement\RM_Model.h">
-      <Filter>Header Files\ResourceManagement</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManagement\RM_Object.h">
-      <Filter>Header Files\ResourceManagement</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManagement\RM_Shader.h">
       <Filter>Header Files\ResourceManagement</Filter>
     </ClInclude>
     <ClInclude Include="Core\Application.h">
@@ -237,6 +231,12 @@
       <Filter>Header Files\ResourceManagement</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManagement\ResourceManager.h">
+      <Filter>Header Files\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManagement\Object.h">
+      <Filter>Header Files\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManagement\Shader.h">
       <Filter>Header Files\ResourceManagement</Filter>
     </ClInclude>
   </ItemGroup>

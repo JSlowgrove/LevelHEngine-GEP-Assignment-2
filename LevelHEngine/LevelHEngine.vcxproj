@@ -139,10 +139,10 @@
     <ClCompile Include="ResourceManagement\C_Texture.cpp" />
     <ClCompile Include="ResourceManagement\FileLoader.cpp" />
     <ClCompile Include="ResourceManagement\Music.cpp" />
+    <ClCompile Include="ResourceManagement\Object.cpp" />
     <ClCompile Include="ResourceManagement\ResourceManager.cpp" />
     <ClCompile Include="ResourceManagement\RM_Model.cpp" />
-    <ClCompile Include="ResourceManagement\RM_Object.cpp" />
-    <ClCompile Include="ResourceManagement\RM_Shader.cpp" />
+    <ClCompile Include="ResourceManagement\Shader.cpp" />
     <ClCompile Include="States\MainMenu.cpp" />
     <ClCompile Include="States\Splash.cpp" />
     <ClCompile Include="States\State.cpp" />
@@ -173,10 +173,10 @@
     <ClInclude Include="ResourceManagement\C_Texture.h" />
     <ClInclude Include="ResourceManagement\FileLoader.h" />
     <ClInclude Include="ResourceManagement\Music.h" />
+    <ClInclude Include="ResourceManagement\Object.h" />
     <ClInclude Include="ResourceManagement\ResourceManager.h" />
     <ClInclude Include="ResourceManagement\RM_Model.h" />
-    <ClInclude Include="ResourceManagement\RM_Object.h" />
-    <ClInclude Include="ResourceManagement\RM_Shader.h" />
+    <ClInclude Include="ResourceManagement\Shader.h" />
     <ClInclude Include="States\MainMenu.h" />
     <ClInclude Include="States\Splash.h" />
     <ClInclude Include="States\State.h" />

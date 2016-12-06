@@ -4,8 +4,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <unordered_map>
 #include "GL/glew.h"
-#include "RM_Shader.h"
-#include "RM_Object.h"
+#include "Shader.h"
+#include "Object.h"
 
 /**
 @brief Creates a Model from an object and a shader.
@@ -15,9 +15,9 @@ class RM_Model
 {
 private:
 	/**The Shader for the Model*/
-	RM_Shader* shader;
+	ResourceManagment::Shader* shader;
 	/**The object for the Model*/
-	RM_Object* obj;
+	ResourceManagment::Object* obj;
 	/**The Position of the Model*/
 	glm::vec3 position;
 	/**The matrix for the Model*/
@@ -30,7 +30,7 @@ private:
 	@param objFileName The name of the obj file.
 	@param objects A reference to the loaded Object files
 	*/
-	void initialiseVAO(std::string objFileName, std::unordered_map<std::string, RM_Object*> &objects);
+	void initialiseVAO(std::string objFileName, std::unordered_map<std::string, ResourceManagment::Object*> &objects);
 
 	/**
 	Initialise the shaders.
@@ -39,7 +39,7 @@ private:
 	@param shaders A reference to the loaded Shader files
 	*/
 	void initialiseShaders(std::string vertexShaderFileName, std::string fragmentShaderFileName, 
-		std::unordered_map<std::string, RM_Shader*> &shaders);
+		std::unordered_map<std::string, ResourceManagment::Shader*> &shaders);
 
 public:
 	/**
@@ -52,7 +52,7 @@ public:
 	@param shaders A reference to the loaded Shader files
 	*/
 	RM_Model(std::string vertexShaderFileName, std::string fragmentShaderFileName, std::string objFileName,
-		std::unordered_map<std::string, RM_Object*> &objects, std::unordered_map<std::string, RM_Shader*> &shaders);
+		std::unordered_map<std::string, ResourceManagment::Object*> &objects, std::unordered_map<std::string, ResourceManagment::Shader*> &shaders);
 
 	/**
 	Constructs a Model Object.
@@ -65,7 +65,7 @@ public:
 	@param material The name of the material to texture with.
 	*/
 	RM_Model(std::string vertexShaderFileName, std::string fragmentShaderFileName, std::string objFileName,
-		std::unordered_map<std::string, RM_Object*> &objects, std::unordered_map<std::string, RM_Shader*> &shaders,
+		std::unordered_map<std::string, ResourceManagment::Object*> &objects, std::unordered_map<std::string, ResourceManagment::Shader*> &shaders,
 		std::string material);
 
 	/**

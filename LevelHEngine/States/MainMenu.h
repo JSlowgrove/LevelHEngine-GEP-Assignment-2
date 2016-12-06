@@ -5,8 +5,7 @@
 #include "State.h"
 #include "StateManager.h"
 #include "../ResourceManagement/C_Texture.h"
-#include "../ResourceManagement/Audio.h"
-#include "../ResourceManagement/Music.h"
+#include "../ResourceManagement/ResourceManager.h"
 #include "../ResourceManagement/C_Text.h"
 #include "../Core/InputManager.h"
 
@@ -53,8 +52,8 @@ namespace States
 		void draw();
 
 	private:
-		///The background music.
-		//ResourceManagement::Music* backgroundMusic;
+		///The background music id.
+		std::string backgroundMusicID;
 	};
 
 }// End of state namespace
