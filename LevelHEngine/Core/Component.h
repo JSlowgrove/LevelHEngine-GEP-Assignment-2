@@ -9,11 +9,13 @@
 */
 namespace Core
 {
-
+	
 	class GameObject;
 
 	class Component
 	{
+		friend class GameObject;
+
 	public:
 		Component();
 		virtual ~Component();

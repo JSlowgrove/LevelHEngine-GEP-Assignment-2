@@ -61,10 +61,10 @@ namespace Core
 			for (int i = 0; i < components.size(); i++)
 			{
 				// Get a weak pointer for the current component
-				std::weak_ptr<T> component = dynamic_cast<T*>(components.at(i).get());
+				std::shared_ptr<T> component = std::dynamic_pointer_cast<T>(components.at(i));
 
 				// Check if the component is found
-				if (component.valid())
+				if (component.get() != nullptr)
 				{
 					//return a weak pointer to the component.
 					return component;
@@ -72,7 +72,7 @@ namespace Core
 			}
 
 			//if the component isn't found return a NULL weak pointer
-			return weak_ptr<T>(); 
+			return std::weak_ptr<T>(); 
 		}
 
 

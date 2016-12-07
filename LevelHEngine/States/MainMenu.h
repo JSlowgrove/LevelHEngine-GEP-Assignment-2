@@ -5,7 +5,11 @@
 #include "State.h"
 #include "StateManager.h"
 #include "../ResourceManagement/ResourceManager.h"
+#include "../States/MainMenu.h"
+#include "../Core/GameObject.h"
 #include "../Core/InputManager.h"
+#include "../Rendering/ModelComponent.h"
+#include "../Core/Application.h"
 
 /**
 @brief The namespace for all states code.

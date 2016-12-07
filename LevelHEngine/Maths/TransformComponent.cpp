@@ -60,4 +60,14 @@ namespace Maths
 		mPos = curr * mPos;
 	}
 
+	Mat4 TransformComponent::getTransformMat4()
+	{
+		Mat4 m;
+		m.setAsIdentityMatrix();
+		m.translate(m, pos);
+		m.rotate(m, rotation);
+		m.scale(m, scale.x);
+		return m;
+	}
+
 }

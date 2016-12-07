@@ -8,8 +8,8 @@ namespace ResourceManagment
 
 	Mesh::Mesh(std::string objFileName)
 	{
-		//initialise the material
-		materialFileName = "Untextured";
+		//initialise the texture
+		textureFileName = "Untextured";
 
 		//Initialise the vertex buffer object
 		InitialiseVAO(objFileName);
@@ -17,8 +17,8 @@ namespace ResourceManagment
 
 	Mesh::Mesh(std::string objFileName, std::string materialFileName)
 	{
-		//store the material
-		this->materialFileName = materialFileName;
+		//store the texture
+		this->textureFileName = materialFileName;
 
 		//Initialise the vertex buffer object
 		InitialiseVAO(objFileName);
@@ -79,7 +79,7 @@ namespace ResourceManagment
 		glEnableVertexAttribArray(1);
 
 		//test if the model uses a texture
-		if (materialFileName != "Untextured")
+		if (textureFileName != "Untextured")
 		{
 			//initialise the texture
 			initialiseTexture(vertexTextures);
@@ -100,12 +100,12 @@ namespace ResourceManagment
 	void Mesh::initialiseTexture(std::vector<float> vertexTextures)
 	{
 		//Loads the image as a surface
-		SDL_Surface* image = IMG_Load(materialFileName.c_str());
+		SDL_Surface* image = IMG_Load(textureFileName.c_str());
 
 		//Error Check - If unable to load image then end program
 		if (!image)
 		{
-			Core::Logging::logE("Unable to load image from: " + materialFileName);
+			Core::Logging::logE("Unable to load image from: " + textureFileName);
 			Core::Logging::logE("Image error : " + std::string(IMG_GetError()));
 		}
 

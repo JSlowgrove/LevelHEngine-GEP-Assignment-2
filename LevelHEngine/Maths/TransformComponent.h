@@ -25,6 +25,8 @@ namespace Maths
 		void setRotation(Vec3 rotation) { this->rotation = rotation; }
 		void setScale(Vec3 scale) { this->scale = scale; }
 
+		Mat4 getTransformMat4();
+
 		void rotate(Vec3 angles);
 		void translate(Vec3 translation);
 		void lookAt(Vec3 worldPosition);

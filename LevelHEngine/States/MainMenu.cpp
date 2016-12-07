@@ -11,6 +11,15 @@ namespace States
 	{
 		//start the music
 		ResourceManagment::ResourceManager::getMusic(backgroundMusicID)->startMusic();
+
+		auto cube = std::make_shared<Core::GameObject>("cubeOfDoom");
+		cube->addComponent<Rendering::CameraComponent>();
+		cube->addComponent<Rendering::ModelComponent>();
+		cube->getComponent<Rendering::ModelComponent>().lock()->initaliseMesh("Assets/obj/sam.obj", "Assets/mat/sam.png");
+		cube->getComponent<Rendering::ModelComponent>().lock()->initaliseShaders("Assets/shaders/vs.texture.txt", "Assets/shaders/fs.texture.txt");
+
+		//initialise a cube with a texture
+		Core::Application::getGameObjects().push_back(cube);
 	}
 
 	MainMenu::~MainMenu()
@@ -46,10 +55,33 @@ namespace States
 	{
 		//Keep the music playing
 		ResourceManagment::ResourceManager::getMusic(backgroundMusicID)->startMusic();
+
+		//Update the matrix for the render
+
+		//get the camera mats
+		Maths::Mat4 proj = Core::Application::getCamera()->getComponent<Rendering::CameraComponent>().lock()->getProjection();
+		Maths::Mat4 view = Core::Application::getCamera()->getComponent<Maths::TransformComponent>().lock()->getTransformMat4();
+
+		//loops through the game objects
+		for (unsigned int i = 0; i < Core::Application::getGameObjects().size(); i++)
+		{
+			auto object = Core::Application::getGameObjects()[i];
+			if (object->getName() == "cubeOfDoom")
+			{
+				Maths::Mat4 mat = object->getComponent<Maths::TransformComponent>().lock()->getTransformMat4();
+				object->getComponent<Rendering::ModelComponent>().lock()->setRenderMats(view, proj, mat);
+			}
+		}
 	}
 
 	void MainMenu::draw()
 	{
+		//loops through the game objects
+		for (unsigned int i = 0; i < Core::Application::getGameObjects().size(); i++)
+		{
+			//draw the state
+			Core::Application::getGameObjects()[i]->render();
+		}
 	}
 
 }// End of state namespace

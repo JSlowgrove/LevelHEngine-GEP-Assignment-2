@@ -7,6 +7,7 @@ namespace Core
 	SDL_GLContext Application::glcontext;
 	States::StateManager* Application::stateManager;
 	std::vector<std::shared_ptr<GameObject> > Application::gameObjects;
+	std::shared_ptr<GameObject> camera;
 
 	void Application::init(std::string title, Maths::Vec2 windowPos, Maths::Vec2 windowRes, bool fullscreen, float frameRate)
 	{
@@ -54,6 +55,10 @@ namespace Core
 		stateManager = new States::StateManager();
 		//set the initial state
 		stateManager->addState(new States::Splash(stateManager, window));
+
+		//initialise the camera
+		camera->addComponent<Rendering::CameraComponent>();
+		camera->addComponent<Maths::TransformComponent>();
 	}
 	
 	void Application::run(int argc, char *argv[])
@@ -164,6 +169,11 @@ namespace Core
 	std::vector<std::shared_ptr<GameObject> >& Application::getGameObjects()
 	{
 		return gameObjects;
+	}
+
+	std::shared_ptr<GameObject>& Application::getCamera()
+	{
+		return camera;
 	}
 
 }// End of Core namespace

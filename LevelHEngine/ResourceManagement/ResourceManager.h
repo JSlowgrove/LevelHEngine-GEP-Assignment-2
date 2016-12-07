@@ -50,7 +50,7 @@ namespace ResourceManagment
 		@brief A static function to delete the mesh
 		@param id The ID of the file.
 		*/
-		static void deleteObject(std::string id) { meshes.erase(id); }
+		static void deleteMesh(std::string id) { meshes.erase(id); }
 
 		/**
 		@brief A static function to delete the shader
@@ -71,7 +71,7 @@ namespace ResourceManagment
 		static void deleteAudio(std::string id) { audio.erase(id); }
 
 		/**
-		@brief A static function to initialise a mesh without a material.
+		@brief A static function to initialise a mesh without a texture.
 		@param objFileName The name of the obj file.
 		@returns The ID of the loaded file.
 		*/
@@ -80,10 +80,10 @@ namespace ResourceManagment
 		/**
 		@brief A static function to initialise a mesh.
 		@param objFileName The name of the obj file.
-		@param materialFileName The name of the material
+		@param materialFileName The name of the texture
 		@returns The ID of the loaded file.
 		*/
-		static std::string initialiseMesh(std::string objFileName, std::string materialFileName);
+		static std::string initialiseMesh(std::string objFileName, std::string textureFileName);
 
 		/**
 		@brief A static function to initialise a shader.
@@ -111,7 +111,7 @@ namespace ResourceManagment
 		@brief A static function to get a mesh.
 		@param id The ID of the file.
 		*/
-		static Mesh* getObject(std::string id) { return meshes[id]; }
+		static Mesh* getMesh(std::string id) { return meshes[id]; }
 
 		/**
 		@brief A static function to get an shaders.

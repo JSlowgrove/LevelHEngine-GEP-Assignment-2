@@ -21,7 +21,6 @@ namespace Core
 		return object;
 	}
 
-
 	void GameObject::awake()
 	{
 		for (size_t i = 0; i < components.size(); i++)

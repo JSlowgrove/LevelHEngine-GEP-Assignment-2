@@ -12,6 +12,8 @@
 #include "../Maths/Vec2.h"
 #include "../States/StateManager.h"
 #include "../States/Splash.h"
+#include "../Rendering/CameraComponent.h"
+#include "../Maths/TransformComponent.h"
 #include "GameObject.h"
 
 /**
@@ -57,6 +59,11 @@ namespace Core
 		*/
 		static std::vector<std::shared_ptr<GameObject> >& getGameObjects();
 
+		/**
+		@brief A static function to get camera.
+		*/
+		static std::shared_ptr<GameObject>& getCamera();
+
 	private:
 		/**
 		@brief A static function to initialise SDL.
@@ -90,6 +97,8 @@ namespace Core
 		static States::StateManager* stateManager;
 		///A vector of the game objects.
 		static std::vector< std::shared_ptr<GameObject> > gameObjects;
+		///A static of the camera
+		static std::shared_ptr< GameObject > camera;
 	};
 
 }// End of Core namespace

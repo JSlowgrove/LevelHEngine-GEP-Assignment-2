@@ -28,9 +28,9 @@ namespace ResourceManagment
 		/**
 		@brief Creates a vertex array object using a obj file location and OpenGL.
 		@param objFileName The name of the obj file.
-		@param material The name of the material file.
+		@param textureFileName The name of the texture file.
 		*/
-		Mesh(std::string objFileName, std::string materialFileName);
+		Mesh(std::string objFileName, std::string textureFileName);
 
 		/**
 		@brief Destructs an Object.
@@ -60,8 +60,8 @@ namespace ResourceManagment
 		GLuint vertexArrayObject;
 		///Number of vertices in the model
 		unsigned int numberOfVertices;
-		///The name of the material file
-		std::string materialFileName;
+		///The name of the texture file
+		std::string textureFileName;
 		///The Texture
 		GLuint textureID;
 
