@@ -7,64 +7,56 @@
 #include "../Core/Logging.h"
 
 /**
-@brief The namespace for all states code.
+@brief Creates a StateManager object.
 */
-namespace States
+class StateManager
 {
+public:
+	/**
+	@brief Constructs a StateManager object.
+	*/
+	StateManager();
 
 	/**
-	@brief Creates a StateManager object.
+	@brief Destructs a StateManager object.
 	*/
-	class StateManager
-	{
-	public:
-		/**
-		@brief Constructs a StateManager object.
-		*/
-		StateManager();
+	~StateManager();
 
-		/**
-		@brief Destructs a StateManager object.
-		*/
-		~StateManager();
+	/**
+	@brief Adds a new state to the current stack of states.
+	@param state A pointer to the State in use.
+	*/
+	void addState(State* state);
 
-		/**
-		@brief Adds a new state to the current stack of states.
-		@param state A pointer to the State in use.
-		*/
-		void addState(State* state);
+	/**
+	@brief Changes the current State to a new State.
+	@param state A pointer to the State in use.
+	*/
+	void changeState(State* state);
 
-		/**
-		@brief Changes the current State to a new State.
-		@param state A pointer to the State in use.
-		*/
-		void changeState(State* state);
+	/**
+	@brief Removes the last State from the vector.
+	*/
+	void removeLastState();
 
-		/**
-		@brief Removes the last State from the vector.
-		*/
-		void removeLastState();
+	/**
+	@brief Handles the user input in the current State.
+	@returns If false then quit the application.
+	*/
+	bool input();
 
-		/**
-		@brief Handles the user input in the current State.
-		@returns If false then quit the application.
-		*/
-		bool input();
+	/**
+	@brief Updates the current State.
+	@param dt The delta time for use within the update function.
+	*/
+	void update(float dt);
 
-		/**
-		@brief Updates the current State.
-		@param dt The delta time for use within the update function.
-		*/
-		void update(float dt);
+	/**
+	@param Draws the current State.
+	*/
+	void draw();
 
-		/**
-		@param Draws the current State.
-		*/
-		void draw();
-
-	private:
-		///The current states that are in use
-		std::vector<State*> currentStates;
-	};
-
-}// End of states namespace
+private:
+	///The current states that are in use
+	std::vector<State*> currentStates;
+};

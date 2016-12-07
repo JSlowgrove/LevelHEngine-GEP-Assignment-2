@@ -1,142 +1,137 @@
 #include "ResourceManager.h"
 
-namespace ResourceManagment
+std::unordered_map<std::string, Mesh*> ResourceManager::meshes;
+std::unordered_map<std::string, Shader*> ResourceManager::shaders;
+std::unordered_map<std::string, Audio*> ResourceManager::audio;
+std::unordered_map<std::string, Music*> ResourceManager::music;
+
+void ResourceManager::deleteResources()
 {
+	deleteAllMeshes();
+	deleteAllShaders();
+	deleteAllAudio();
+	deleteAllMusic();
+}
 
-	std::unordered_map<std::string, Mesh*> ResourceManager::meshes;
-	std::unordered_map<std::string, Shader*> ResourceManager::shaders;
-	std::unordered_map<std::string, Audio*> ResourceManager::audio;
-	std::unordered_map<std::string, Music*> ResourceManager::music;
-
-	void ResourceManager::deleteResources()
+void ResourceManager::deleteAllMeshes()
+{
+	for (auto i = meshes.begin(); i != meshes.end(); ++i)
 	{
-		deleteAllMeshes();
-		deleteAllShaders();
-		deleteAllAudio();
-		deleteAllMusic();
+		delete i->second;
 	}
+}
 
-	void ResourceManager::deleteAllMeshes()
+void ResourceManager::deleteAllShaders()
+{
+	for (auto i = shaders.begin(); i != shaders.end(); ++i)
 	{
-		for (auto i = meshes.begin(); i != meshes.end(); ++i)
-		{
-			delete i->second;
-		}
+		delete i->second;
 	}
+}
 
-	void ResourceManager::deleteAllShaders()
+void ResourceManager::deleteAllAudio()
+{
+	for (auto i = audio.begin(); i != audio.end(); ++i)
 	{
-		for (auto i = shaders.begin(); i != shaders.end(); ++i)
-		{
-			delete i->second;
-		}
+		delete i->second;
 	}
+}
 
-	void ResourceManager::deleteAllAudio()
+void ResourceManager::deleteAllMusic()
+{
+	for (auto i = music.begin(); i != music.end(); ++i)
 	{
-		for (auto i = audio.begin(); i != audio.end(); ++i)
-		{
-			delete i->second;
-		}
+		delete i->second;
 	}
+}
 
-	void ResourceManager::deleteAllMusic()
+std::string ResourceManager::initialiseMesh(std::string objFileName)
+{
+	//test if the mesh has already been loaded
+	if (meshes.count(objFileName) == 0)
 	{
-		for (auto i = music.begin(); i != music.end(); ++i)
-		{
-			delete i->second;
-		}
+		//load the mesh
+		meshes[objFileName] = new Mesh(objFileName);
 	}
-
-	std::string ResourceManager::initialiseMesh(std::string objFileName)
+	else
 	{
-		//test if the mesh has already been loaded
-		if (meshes.count(objFileName) == 0)
-		{
-			//load the mesh
-			meshes[objFileName] = new Mesh(objFileName);
-		}
-		else
-		{
-			//print out that it is already loaded
-			Core::Logging::logI(objFileName + " mesh already loaded.");
-		}
-		//return the ID
-		return objFileName;
+		//print out that it is already loaded
+		Logging::logI(objFileName + " mesh already loaded.");
 	}
+	//return the ID
+	return objFileName;
+}
 
-	std::string ResourceManager::initialiseMesh(std::string objFileName, std::string materialFileName)
+std::string ResourceManager::initialiseMesh(std::string objFileName, std::string materialFileName)
+{
+	//a string for the name of the linked mesh
+	std::string linkedMeshName = objFileName + "/" + materialFileName;
+
+	//test if the object has already been loaded
+	if (meshes.count(linkedMeshName) == 0)
 	{
-		//a string for the name of the linked mesh
-		std::string linkedMeshName = objFileName + "/" + materialFileName;
-
-		//test if the object has already been loaded
-		if (meshes.count(linkedMeshName) == 0)
-		{
-			//load the object
-			meshes[linkedMeshName] = new Mesh(objFileName, materialFileName);
-		}
-		else
-		{
-			//print out that it is already loaded
-			Core::Logging::logI(linkedMeshName + " mesh already loaded.");
-		}
-		//return the ID
-		return linkedMeshName;
+		//load the object
+		meshes[linkedMeshName] = new Mesh(objFileName, materialFileName);
 	}
-
-	std::string ResourceManager::initialiseShader(std::string vertexShaderFileName, std::string fragmentShaderFileName)
+	else
 	{
-		//a string for the name of the linked shader
-		std::string linkedShaderName = vertexShaderFileName + "/" + fragmentShaderFileName;
-
-		//test if the shader has already been loaded
-		if (shaders.count(linkedShaderName) == 0)
-		{
-			//load the shader
-			shaders[linkedShaderName] = new Shader(vertexShaderFileName, fragmentShaderFileName);
-		}
-		else
-		{
-			//print out that it is already loaded
-			Core::Logging::logI(linkedShaderName + " shader already loaded.");
-		}
-		//return the ID
-		return linkedShaderName;
+		//print out that it is already loaded
+		Logging::logI(linkedMeshName + " mesh already loaded.");
 	}
+	//return the ID
+	return linkedMeshName;
+}
 
-	std::string ResourceManager::initialiseAudio(std::string audioFileName)
+std::string ResourceManager::initialiseShader(std::string vertexShaderFileName, std::string fragmentShaderFileName)
+{
+	//a string for the name of the linked shader
+	std::string linkedShaderName = vertexShaderFileName + "/" + fragmentShaderFileName;
+
+	//test if the shader has already been loaded
+	if (shaders.count(linkedShaderName) == 0)
 	{
-		//test if the audio has already been loaded
-		if (audio.count(audioFileName) == 0)
-		{
-			//load the audio
-			audio[audioFileName] = new Audio(audioFileName);
-		}
-		else
-		{
-			//print out that it is already loaded
-			Core::Logging::logI(audioFileName + " audio already loaded.");
-		}
-		//return the ID
-		return audioFileName;
+		//load the shader
+		shaders[linkedShaderName] = new Shader(vertexShaderFileName, fragmentShaderFileName);
 	}
-
-	std::string ResourceManager::initialiseMusic(std::string musicFileName)
+	else
 	{
-		//test if the music has already been loaded
-		if (music.count(musicFileName) == 0)
-		{
-			//load the music
-			music[musicFileName] = new Music(musicFileName);
-		}
-		else
-		{
-			//print out that it is already loaded
-			Core::Logging::logI(musicFileName + " music already loaded.");
-		}
-		//return the ID
-		return musicFileName;
+		//print out that it is already loaded
+		Logging::logI(linkedShaderName + " shader already loaded.");
 	}
+	//return the ID
+	return linkedShaderName;
+}
 
-}// End of resource management namespace
+std::string ResourceManager::initialiseAudio(std::string audioFileName)
+{
+	//test if the audio has already been loaded
+	if (audio.count(audioFileName) == 0)
+	{
+		//load the audio
+		audio[audioFileName] = new Audio(audioFileName);
+	}
+	else
+	{
+		//print out that it is already loaded
+		Logging::logI(audioFileName + " audio already loaded.");
+	}
+	//return the ID
+	return audioFileName;
+}
+
+std::string ResourceManager::initialiseMusic(std::string musicFileName)
+{
+	//test if the music has already been loaded
+	if (music.count(musicFileName) == 0)
+	{
+		//load the music
+		music[musicFileName] = new Music(musicFileName);
+	}
+	else
+	{
+		//print out that it is already loaded
+		Logging::logI(musicFileName + " music already loaded.");
+	}
+	//return the ID
+	return musicFileName;
+}

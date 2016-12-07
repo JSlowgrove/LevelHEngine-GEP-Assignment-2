@@ -12,93 +12,87 @@
 #include "../Maths/Vec2.h"
 #include "../States/StateManager.h"
 #include "../States/Splash.h"
-#include "../Rendering/CameraComponent.h"
-#include "../Maths/TransformComponent.h"
+#include "../Components/CameraComponent.h"
+#include "../Components/TransformComponent.h"
 #include "GameObject.h"
 
+
+///forward declaration of game object
+class GameObject;
+
 /**
-@brief The namespace for all core code.
+@brief Contains details and functions for the application.
 */
-namespace Core
+class Application
 {
-	///forward declaration of game object
-	class GameObject;
+public:
 
 	/**
-	@brief Contains details and functions for the application.
+	@brief A static function to initialise Application.
+	@param title The title of the window.
+	@param windowPos The position of the window.
+	@param windowRes The resolution of the window.
+	@param fullscreen If the window should be fullscreen.
+	@param frameRate The frame rate of the window.
 	*/
-	class Application
-	{
-	public:
+	static void init(std::string title, Vec2 windowPos, Vec2 windowRes, bool fullscreen, float frameRate);
 
-		/**
-		@brief A static function to initialise Application.
-		@param title The title of the window.
-		@param windowPos The position of the window.
-		@param windowRes The resolution of the window.
-		@param fullscreen If the window should be fullscreen.
-		@param frameRate The frame rate of the window.
-		*/
-		static void init(std::string title, Maths::Vec2 windowPos, Maths::Vec2 windowRes, bool fullscreen, float frameRate);
+	/**
+	@brief A static function that runs Application.
+	@param argc The command line argument count.
+	@param argv The command line argument vector.
+	*/
+	static void run(int argc, char *argv[]);
 
-		/**
-		@brief A static function that runs Application.
-		@param argc The command line argument count.
-		@param argv The command line argument vector.
-		*/
-		static void run(int argc, char *argv[]);
-
-		/**
-		@brief A static function that destroys the Application.
-		*/
-		static void destroy();
+	/**
+	@brief A static function that destroys the Application.
+	*/
+	static void destroy();
 
 
-		/**
-		@brief A static function to get game objects.
-		*/
-		static std::vector<std::shared_ptr<GameObject> >& getGameObjects();
+	/**
+	@brief A static function to get game objects.
+	*/
+	static std::vector<std::shared_ptr<GameObject> >& getGameObjects();
 
-		/**
-		@brief A static function to get camera.
-		*/
-		static std::shared_ptr<GameObject>& getCamera();
+	/**
+	@brief A static function to get camera.
+	*/
+	static std::shared_ptr<GameObject>& getCamera();
 
-	private:
-		/**
-		@brief A static function to initialise SDL.
-		@returns If the initialisation succeeded.
-		*/
-		static bool initSDL();
+private:
+	/**
+	@brief A static function to initialise SDL.
+	@returns If the initialisation succeeded.
+	*/
+	static bool initSDL();
 
-		/**
-		@brief A static function to initialise SDL TTF.
-		@returns If the initialisation succeeded.
-		*/
-		static bool initTTF();
+	/**
+	@brief A static function to initialise SDL TTF.
+	@returns If the initialisation succeeded.
+	*/
+	static bool initTTF();
 
-		/**
-		@brief A static function to initialise SDL Mixer.
-		@returns If the initialisation succeeded.
-		*/
-		static bool initMixer();
+	/**
+	@brief A static function to initialise SDL Mixer.
+	@returns If the initialisation succeeded.
+	*/
+	static bool initMixer();
 
-		/**
-		@brief A static function to initialise GLEW.
-		@returns If the initialisation succeeded.
-		*/
-		static bool initGLEW();
+	/**
+	@brief A static function to initialise GLEW.
+	@returns If the initialisation succeeded.
+	*/
+	static bool initGLEW();
 
-		///A pointer for the window.
-		static SDL_Window *window;
-		///The SDL OpenGL context.
-		static SDL_GLContext glcontext;
-		///A pointer to the state manager.
-		static States::StateManager* stateManager;
-		///A vector of the game objects.
-		static std::vector< std::shared_ptr<GameObject> > gameObjects;
-		///A static of the camera
-		static std::shared_ptr< GameObject > camera;
-	};
-
-}// End of Core namespace
+	///A pointer for the window.
+	static SDL_Window *window;
+	///The SDL OpenGL context.
+	static SDL_GLContext glcontext;
+	///A pointer to the state manager.
+	static StateManager* stateManager;
+	///A vector of the game objects.
+	static std::vector< std::shared_ptr<GameObject> > gameObjects;
+	///A static of the camera
+	static std::shared_ptr< GameObject > camera;
+};

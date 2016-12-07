@@ -121,8 +121,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Components\CameraComponent.cpp" />
+    <ClCompile Include="Components\Component.cpp" />
+    <ClCompile Include="Components\ModelComponent.cpp" />
+    <ClCompile Include="Components\TransformComponent.cpp" />
     <ClCompile Include="Core\Application.cpp" />
-    <ClCompile Include="Core\Component.cpp" />
     <ClCompile Include="Core\GameObject.cpp" />
     <ClCompile Include="Core\Timer.cpp" />
     <ClCompile Include="Core\InputManager.cpp" />
@@ -133,11 +136,8 @@
     <ClCompile Include="Maths\Convert.cpp" />
     <ClCompile Include="Maths\Mat4.cpp" />
     <ClCompile Include="Maths\Quaternion.cpp" />
-    <ClCompile Include="Maths\TransformComponent.cpp" />
     <ClCompile Include="Physics\Collision.cpp" />
     <ClCompile Include="Physics\Mechanics.cpp" />
-    <ClCompile Include="Rendering\CameraComponent.cpp" />
-    <ClCompile Include="Rendering\ModelComponent.cpp" />
     <ClCompile Include="ResourceManagement\Audio.cpp" />
     <ClCompile Include="ResourceManagement\FileLoader.cpp" />
     <ClCompile Include="ResourceManagement\Music.cpp" />
@@ -150,8 +150,11 @@
     <ClCompile Include="States\StateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Components\CameraComponent.h" />
+    <ClInclude Include="Components\Component.h" />
+    <ClInclude Include="Components\ModelComponent.h" />
+    <ClInclude Include="Components\TransformComponent.h" />
     <ClInclude Include="Core\Application.h" />
-    <ClInclude Include="Core\Component.h" />
     <ClInclude Include="Core\GameObject.h" />
     <ClInclude Include="Core\Timer.h" />
     <ClInclude Include="Core\InputManager.h" />
@@ -163,14 +166,11 @@
     <ClInclude Include="Maths\Mat4.h" />
     <ClInclude Include="Maths\MathsDefs.h" />
     <ClInclude Include="Maths\Quaternion.h" />
-    <ClInclude Include="Maths\TransformComponent.h" />
     <ClInclude Include="Maths\Vec2.h" />
     <ClInclude Include="Maths\Vec3.h" />
     <ClInclude Include="Maths\Vec4.h" />
     <ClInclude Include="Physics\Collision.h" />
     <ClInclude Include="Physics\Mechanics.h" />
-    <ClInclude Include="Rendering\CameraComponent.h" />
-    <ClInclude Include="Rendering\ModelComponent.h" />
     <ClInclude Include="ResourceManagement\Audio.h" />
     <ClInclude Include="ResourceManagement\FileLoader.h" />
     <ClInclude Include="ResourceManagement\Music.h" />

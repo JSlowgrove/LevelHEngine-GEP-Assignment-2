@@ -43,11 +43,11 @@
     <Filter Include="Header Files\Physics">
       <UniqueIdentifier>{1aabae74-f9cb-4a53-8c87-824b204a2b2b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Rendering">
-      <UniqueIdentifier>{3386f160-aeaf-4d21-9f7c-fbe998e233b4}</UniqueIdentifier>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{4fb415cf-9786-4fc3-b6a9-be7111aa49b8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Rendering">
-      <UniqueIdentifier>{3eaeb0c0-97c3-4095-b5b5-29808582f360}</UniqueIdentifier>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{0ae1aaa0-eeab-4caf-9a71-7a95d57c054a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -114,23 +114,23 @@
     <ClCompile Include="ResourceManagement\Shader.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Component.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="Core\GameObject.cpp">
       <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Maths\TransformComponent.cpp">
-      <Filter>Source Files\Maths</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManagement\Mesh.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
-    <ClCompile Include="Rendering\CameraComponent.cpp">
-      <Filter>Source Files\Rendering</Filter>
+    <ClCompile Include="Components\CameraComponent.cpp">
+      <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Rendering\ModelComponent.cpp">
-      <Filter>Source Files\Rendering</Filter>
+    <ClCompile Include="Components\Component.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\ModelComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\TransformComponent.cpp">
+      <Filter>Source Files\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -209,23 +209,23 @@
     <ClInclude Include="ResourceManagement\Shader.h">
       <Filter>Header Files\ResourceManagement</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Component.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Core\GameObject.h">
       <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Maths\TransformComponent.h">
-      <Filter>Header Files\Maths</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManagement\Mesh.h">
       <Filter>Header Files\ResourceManagement</Filter>
     </ClInclude>
-    <ClInclude Include="Rendering\CameraComponent.h">
-      <Filter>Header Files\Rendering</Filter>
+    <ClInclude Include="Components\CameraComponent.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Rendering\ModelComponent.h">
-      <Filter>Header Files\Rendering</Filter>
+    <ClInclude Include="Components\Component.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ModelComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\TransformComponent.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

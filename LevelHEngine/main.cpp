@@ -12,16 +12,16 @@ extern "C"
 int main(int argc, char *argv[])
 {
 	///Log the time and date the program started
-	Core::Logging::logI("Program Started: " + Core::Logging::getCurrentDateAndTime());
+	Logging::logI("Program Started: " + Logging::getCurrentDateAndTime());
 
 	///Initialise the application instance 
-	Core::Application::init("Level H Engine", Maths::Vec2(60, 60), Maths::Vec2(1280, 720), false, 60.0f);
+	Application::init("Level H Engine", Vec2(60, 60), Vec2(1280, 720), false, 60.0f);
 
 	///Run the application
-	Core::Application::run(argc, argv);
+	Application::run(argc, argv);
 
 	///Destroy the application
-	Core::Application::destroy();
+	Application::destroy();
 
 	return 0;
 }

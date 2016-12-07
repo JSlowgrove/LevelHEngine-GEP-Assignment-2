@@ -8,54 +8,45 @@
 #include "../States/MainMenu.h"
 #include "../Core/GameObject.h"
 #include "../Core/InputManager.h"
-#include "../Rendering/ModelComponent.h"
 #include "../Core/Application.h"
+#include "../Components/ModelComponent.h"
 
 /**
-@brief The namespace for all states code.
+@brief A State that contains and runs the Main Menu.
 */
-namespace States
+class MainMenu : public State
 {
+public:
+	/**
+	@brief Constructs the State object.
+	@param stateManager A pointer to the StateManager.
+	@param window A pointer to the window in use.
+	*/
+	MainMenu(StateManager* stateManager, SDL_Window* window);
 
 	/**
-	@brief A State that contains and runs the Main Menu.
-	@author Jamie Slowgrove
+	@brief Destructs the State object.
 	*/
-	class MainMenu : public State
-	{
-	public:
-		/**
-		@brief Constructs the State object.
-		@param stateManager A pointer to the StateManager.
-		@param window A pointer to the window in use.
-		*/
-		MainMenu(StateManager* stateManager, SDL_Window* window);
+	~MainMenu();
 
-		/**
-		@brief Destructs the State object.
-		*/
-		~MainMenu();
+	/**
+	@brief Handles the State input.
+	@returns If false then quit the State.
+	*/
+	bool input();
 
-		/**
-		@brief Handles the State input.
-		@returns If false then quit the State.
-		*/
-		bool input();
+	/**
+	@brief A function to update the State.
+	@param dt The delta time.
+	*/
+	void update(float dt);
 
-		/**
-		@brief A function to update the State.
-		@param dt The delta time.
-		*/
-		void update(float dt);
+	/**
+	@brief A function to draw the State to the screen.
+	*/
+	void draw();
 
-		/**
-		@brief A function to draw the State to the screen.
-		*/
-		void draw();
-
-	private:
-		///The background music id.
-		std::string backgroundMusicID;
-	};
-
-}// End of state namespace
+private:
+	///The background music id.
+	std::string backgroundMusicID;
+};

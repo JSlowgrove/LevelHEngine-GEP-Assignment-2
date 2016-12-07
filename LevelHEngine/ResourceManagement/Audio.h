@@ -6,36 +6,28 @@
 #include "../Core/Logging.h"
 
 /**
-@brief The namespace for all resource management code.
+@brief Handles audio using SDL_Mixer.
 */
-namespace ResourceManagment
+class Audio
 {
+public:
+	/**
+	@brief Constructs the Audio object.
+	@param file The file to be loaded.
+	*/
+	Audio(std::string file);
 
 	/**
-	@brief Handles audio using SDL_Mixer.
+	@brief Destructs the Audio object.
 	*/
-	class Audio
-	{
-	public:
-		/**
-		@brief Constructs the Audio object.
-		@param file The file to be loaded.
-		*/
-		Audio(std::string file);
+	~Audio();
 
-		/**
-		@brief Destructs the Audio object.
-		*/
-		~Audio();
+	/**
+	@brief Plays the sound effect.
+	*/
+	void playEffect();
 
-		/**
-		@brief Plays the sound effect.
-		*/
-		void playEffect();
-
-	private:
-		///Variable for the audio.
-		Mix_Chunk* audio;
-	};
-
-}// End of resource management namespace
+private:
+	///Variable for the audio.
+	Mix_Chunk* audio;
+};
