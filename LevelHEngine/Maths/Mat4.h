@@ -147,32 +147,38 @@ namespace Maths
 		void translate(Mat4 &matrix, Vec3 tv);
 
 		/**
+		@brief Rotate the matrix using the angle of rotation along the axis.
+		@param matrix A pointer to the matrix to rotate.
+		@param angle The angles to rotate the matrix by, must be a Radian.
+		*/
+		void Mat4::rotate(Mat4 &matrix, Vec3 angle);
+
+		/**
 		@brief Rotate the matrix using the angle of rotation along the x axis.
 		@param matrix A pointer to the matrix to rotate.
-		@param angle The angle to rotate the matrix by.
-		@param format The type of angle, must be a Radian
+		@param angle The angle to rotate the matrix by, must be a Radian.
 		*/
 		void rotateAlongX(Mat4 &matrix, float angle);
 
 		/**
 		@brief Rotate the matrix using the angle of rotation along the y axis.
 		@param matrix A pointer to the matrix to rotate.
-		@param angle The angle to rotate the matrix by.
-		@param format The type of angle, must be a Radian
+		@param angle The angle to rotate the matrix by, must be a Radian.
 		*/
 		void rotateAlongY(Mat4 &matrix, float angle);
 
 		/**
 		@brief Rotate the matrix using the angle of rotation along the z axis.
 		@param matrix A pointer to the matrix to rotate.
-		@param angle The angle to rotate the matrix by.
-		@param format The type of angle, must be a Radian
+		@param angle The angle to rotate the matrix by, must be a Radian.
 		*/
 		void rotateAlongZ(Mat4 &matrix, float angle);
 
 		void rotatePointAroundXAxis(Mat4 &matrix, Maths::Vec3 axisPoint, float angle);
 		void rotatePointAroundYAxis(Mat4 &matrix, Maths::Vec3 axisPoint, float angle);
 		void rotatePointAroundZAxis(Mat4 &matrix, Maths::Vec3 axisPoint, float angle);
+
+		void getInverse(Mat4 &matrix);
 
 		/**
 		@brief Gets the position of the matrix
