@@ -26,7 +26,7 @@ void Mat4::scale(Mat4 &matrix, float sv) //uses row1x, row2y & row3z
 	matrix = matrix * tm;
 }
 
-void scale(Mat4 &matrix, Vec3 &sv) //uses row1x, row2y & row3z
+void Mat4::scale(Mat4 &matrix, Vec3 &sv) //uses row1x, row2y & row3z
 {
 	//make a temporary identity matrix
 	Mat4 tm;
@@ -34,7 +34,7 @@ void scale(Mat4 &matrix, Vec3 &sv) //uses row1x, row2y & row3z
 
 	tm.m[0] = sv.x;			/*y					  z					  w*/
 	/*x*/				tm.m[5] = sv.y;			/*z					  w*/
-	/*x					y*/						tm.m[10] = sv.z;		/*w*/
+	/*x					y*/						tm.m[10] = sv.z;	/*w*/
 	/*x					y						z					  w*/
 
 	//multiply the current matrix with the temporary matrix

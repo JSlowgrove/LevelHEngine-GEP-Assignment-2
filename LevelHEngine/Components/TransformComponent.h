@@ -17,10 +17,10 @@ public:
 
 	Vec3 getPos() { return pos; }
 	Vec3 getRotation() { return rotation; }
-	Vec3 getScale() { return scale; }
+	Vec3 getScale() { return scaleSize; }
 	void setPos(Vec3 pos) { this->pos = pos; }
 	void setRotation(Vec3 rotation) { this->rotation = rotation; }
-	void setScale(Vec3 scale) { this->scale = scale; }
+	void setScale(Vec3 scaleSize) { this->scaleSize = scaleSize; }
 
 	Mat4 getTransformMat4();
 
@@ -35,7 +35,7 @@ public:
 private:
 	Vec3 pos;
 	Vec3 rotation;
-	Vec3 scale;
+	Vec3 scaleSize;
 
 	
 };

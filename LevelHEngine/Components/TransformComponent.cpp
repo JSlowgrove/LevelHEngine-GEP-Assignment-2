@@ -7,7 +7,7 @@ TransformComponent::~TransformComponent()
 
 void TransformComponent::onAwake()
 {
-	scale = Vec3(1, 1, 1);
+	scaleSize = Vec3(1, 1, 1);
 }
 
 void TransformComponent::onDestroy()
@@ -63,6 +63,6 @@ Mat4 TransformComponent::getTransformMat4()
 	m.setAsIdentityMatrix();
 	m.translate(m, pos);
 	m.rotate(m, rotation);
-	m.scale(m, scale.x);
+	m.scale(m, scaleSize);
 	return m;
 }
