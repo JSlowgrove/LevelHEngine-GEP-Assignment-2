@@ -4,7 +4,7 @@ SDL_Window* Application::window;
 SDL_GLContext Application::glcontext;
 StateManager* Application::stateManager;
 std::vector<std::shared_ptr<GameObject> > Application::gameObjects;
-std::shared_ptr<GameObject> camera;
+std::shared_ptr<GameObject> Application::camera;
 
 void Application::init(std::string title, Vec2 windowPos, Vec2 windowRes, bool fullscreen, float frameRate)
 {
@@ -53,9 +53,6 @@ void Application::init(std::string title, Vec2 windowPos, Vec2 windowRes, bool f
 	//set the initial state
 	stateManager->addState(new Splash(stateManager, window));
 
-	//initialise the camera
-	camera->addComponent<CameraComponent>();
-	camera->addComponent<TransformComponent>();
 }
 	
 void Application::run(int argc, char *argv[])
@@ -79,7 +76,7 @@ void Application::run(int argc, char *argv[])
 		stateManager->update(deltaTime);
 
 		//clear the frame-buffer to black
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		//write colour to the frame-buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -131,7 +128,7 @@ bool Application::initGLEW()
 bool Application::initSDL()
 {
 	//Initialise SDL
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	if (SDL_Init(SDL_INIT_VIDEO| SDL_INIT_AUDIO) < 0)
 	{
 		//Failed initialisation
 		Logging::logE("SDL failed to initialise: " + std::string(SDL_GetError()));

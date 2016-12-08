@@ -1,19 +1,33 @@
 #include "MainMenu.h"
 
+#include "../Core/GameObject.h"
+#include "../Core/InputManager.h"
+#include "../Core/Application.h"
+#include "../Components/ModelComponent.h"
+#include "../Components/CameraComponent.h"
+#include "../Components/TransformComponent.h"
+
 MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "MainMenu"), backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/Cipher.ogg"))
 {
 	//start the music
 	ResourceManager::getMusic(backgroundMusicID)->startMusic();
 
-	auto cube = std::make_shared<GameObject>("cubeOfDoom");
-	cube->addComponent<CameraComponent>();
-	cube->addComponent<ModelComponent>();
-	cube->getComponent<ModelComponent>().lock()->initaliseMesh("Assets/obj/sam.obj", "Assets/mat/sam.png");
-	cube->getComponent<ModelComponent>().lock()->initaliseShaders("Assets/shaders/vs.texture.txt", "Assets/shaders/fs.texture.txt");
 
-	//initialise a cube with a texture
-	Application::getGameObjects().push_back(cube);
+	auto camera = GameObject::create("camera").lock();
+	camera->addComponent<CameraComponent>();
+	camera->addComponent<TransformComponent>().lock()->setPos(Vec3(0.0f,0.0f,-50.0f));
+	Application::camera = camera;
+
+	auto cube = GameObject::create("cubeOfDoom").lock();
+	cube->addComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 0.0f, 0.0f));
+	auto model = cube->addComponent<ModelComponent>().lock();
+	model->initaliseMesh("sam", "sam.png");
+	model->initaliseShaders("texture", "texture");
+
+	camera->awake();
+	cube->awake();
+
 }
 
 MainMenu::~MainMenu()
@@ -53,18 +67,11 @@ void MainMenu::update(float dt)
 	//Update the matrix for the render
 
 	//get the camera mats
-	Mat4 proj = Application::getCamera()->getComponent<CameraComponent>().lock()->getProjection();
-	Mat4 view = Application::getCamera()->getComponent<TransformComponent>().lock()->getTransformMat4();
-
+	
 	//loops through the game objects
 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
 	{
-		auto object = Application::getGameObjects()[i];
-		if (object->getName() == "cubeOfDoom")
-		{
-			Mat4 mat = object->getComponent<TransformComponent>().lock()->getTransformMat4();
-			object->getComponent<ModelComponent>().lock()->setRenderMats(view, proj, mat);
-		}
+		
 	}
 }
 

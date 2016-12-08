@@ -1,5 +1,8 @@
 #include "ModelComponent.h"
 
+#include "TransformComponent.h"
+#include "CameraComponent.h"
+
 ModelComponent::~ModelComponent()
 {
 }
@@ -12,8 +15,14 @@ void ModelComponent::onDestroy()
 {
 }
 
-void ModelComponent::render()
+void ModelComponent::onRender()
 {
+	auto camera = Application::camera;
+	Mat4 view = camera->getComponent<TransformComponent>().lock()->getTransformMat4();
+	Mat4 projection = camera->getComponent<CameraComponent>().lock()->getProjection();
+
+	Mat4 model = getGameObject().lock()->getComponent<TransformComponent>().lock()->getTransformMat4();
+
 	/*Activate the shader program*/
 	glUseProgram(ResourceManager::getShaders(shaderID)->getShaderProgram());
 
@@ -21,12 +30,12 @@ void ModelComponent::render()
 	glBindVertexArray(ResourceManager::getMesh(meshID)->getVAO());
 
 	/*Send the matrices to the shader as uniforms locations*/
-	glUniformMatrix4fv(ResourceManager::getShaders(shaderID)->getModelMatrixLocation(), 1, GL_TRUE, matrix.getMatrixArray());
-	glUniformMatrix4fv(ResourceManager::getShaders(shaderID)->getViewMatrixLocation(), 1, GL_TRUE, viewMatrix.getMatrixArray());
-	glUniformMatrix4fv(ResourceManager::getShaders(shaderID)->getShaderProjectionMatrixLocation(), 1, GL_TRUE, projMatrix.getMatrixArray());
+	glUniformMatrix4fv(ResourceManager::getShaders(shaderID)->getModelMatrixLocation(), 1, GL_TRUE, model.getMatrixArray());
+	glUniformMatrix4fv(ResourceManager::getShaders(shaderID)->getViewMatrixLocation(), 1, GL_TRUE, view.getMatrixArray());
+	glUniformMatrix4fv(ResourceManager::getShaders(shaderID)->getShaderProjectionMatrixLocation(), 1, GL_TRUE, projection.getMatrixArray());
 
-	/*if the model uses a shader*/
-	if (!textured)
+	/*if the model uses a texture*/
+	if (textured)
 	{
 		/*texturing*/
 		glActiveTexture(GL_TEXTURE0);
@@ -36,7 +45,7 @@ void ModelComponent::render()
 
 	/*Draw the model to the screen, using the type of geometry and the number of vertices's*/
 	glDrawArrays(GL_TRIANGLES, 0, ResourceManager::getMesh(meshID)->getNumberOfVertices());
-
+	
 	/*Unbind the vertex array object*/
 	glBindVertexArray(0);
 

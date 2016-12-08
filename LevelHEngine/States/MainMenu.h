@@ -6,10 +6,7 @@
 #include "StateManager.h"
 #include "../ResourceManagement/ResourceManager.h"
 #include "../States/MainMenu.h"
-#include "../Core/GameObject.h"
-#include "../Core/InputManager.h"
-#include "../Core/Application.h"
-#include "../Components/ModelComponent.h"
+
 
 /**
 @brief A State that contains and runs the Main Menu.

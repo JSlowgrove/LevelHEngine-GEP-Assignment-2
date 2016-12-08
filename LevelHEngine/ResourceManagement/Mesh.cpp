@@ -79,6 +79,7 @@ void Mesh::InitialiseVAO(std::string objFileName)
 		initialiseTexture(vertexTextures);
 	}
 
+	
 	//deactivate the VBO
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
@@ -89,12 +90,13 @@ void Mesh::InitialiseVAO(std::string objFileName)
 
 	//disable the array
 	glDisableVertexAttribArray(0);
+	
 }
 
 void Mesh::initialiseTexture(std::vector<float> vertexTextures)
 {
 	//Loads the image as a surface
-	SDL_Surface* image = IMG_Load(textureFileName.c_str());
+	SDL_Surface* image = IMG_Load(("Assets/img/" + textureFileName).c_str());
 
 	//Error Check - If unable to load image then end program
 	if (!image)

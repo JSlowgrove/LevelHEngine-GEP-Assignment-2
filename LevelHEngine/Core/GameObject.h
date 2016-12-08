@@ -38,7 +38,7 @@ public:
 		// Store a reference to the game object inside component
 		component->gameObject = shared_from_this();
 		//Activate the component
-		component->awake();
+		component->onAwake();
 
 		//Return a weak pointer to the component to allow instance use.
 		return component; 

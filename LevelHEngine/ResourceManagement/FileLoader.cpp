@@ -15,7 +15,7 @@ namespace FileLoader
 		std::string loadedFile;
 
 		//Open the file using a ifstream
-		std::ifstream file("assets/shad/" + fileName + ".txt");
+		std::ifstream file("Assets/shaders/" + fileName + ".txt");
 
 		//If the file successfully opens
 		if (file.is_open())
@@ -55,7 +55,7 @@ namespace FileLoader
 		Logging::logI("Loading " + objFileName);
 
 		//Open the file using a ifstream
-		std::ifstream file("assets/obj/" + objFileName + ".obj");
+		std::ifstream file("Assets/obj/" + objFileName + ".obj");
 
 		//local versions of the unsorted vertices and vertex normals
 		std::vector<float> loadedVertices;

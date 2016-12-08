@@ -1,8 +1,5 @@
 #include "Component.h"
 
-Component::Component()
-{
-}
 
 Component::~Component()
 {
@@ -13,22 +10,22 @@ std::weak_ptr<GameObject> Component::getGameObject()
 	return gameObject;
 }
 
-void Component::awake()
+void Component::onAwake()
 {
 
 }
 
-void Component::update()
+void Component::onUpdate()
 {
 
 }
 
-void Component::render()
+void Component::onRender()
 {
 
 }
 
-void Component::destroy()
+void Component::onDestroy()
 {
 
 }

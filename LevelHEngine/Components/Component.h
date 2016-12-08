@@ -4,20 +4,20 @@
 #include "../Core/GameObject.h"
 
 class GameObject;
+class Application;
 
 class Component
 {
 	friend class GameObject;
 
 public:
-	Component();
 	virtual ~Component();
 	std::weak_ptr<GameObject> getGameObject();
 
-	virtual void awake();
-	virtual void update();
-	virtual void render();
-	virtual void destroy();
+	virtual void onAwake();
+	virtual void onUpdate();
+	virtual void onRender();
+	virtual void onDestroy();
 	void setDestroyed(bool destroyed) { this->destroyed = destroyed; }
 	bool getDestroyed() { return destroyed; }
 

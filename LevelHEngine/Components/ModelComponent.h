@@ -15,7 +15,7 @@ class ModelComponent : public Component
 public:
 	virtual ~ModelComponent();
 
-	void render();
+	void onRender();
 	void initaliseMesh(std::string objFileName);
 	void initaliseMesh(std::string objFileName, std::string textureFileName);
 	void initaliseShaders(std::string vertexShaderFileName, std::string fragmentShaderFileName);
@@ -27,6 +27,8 @@ public:
 		this->matrix = matrix;
 	}
 
+	virtual void onAwake();
+	virtual void onDestroy();
 private:
 	///The Shader for the Model
 	std::string shaderID;
@@ -41,6 +43,5 @@ private:
 	///The object matrix to render with
 	Mat4 matrix;
 
-	virtual void onAwake();
-	virtual void onDestroy();
+	
 };

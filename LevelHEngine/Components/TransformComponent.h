@@ -29,11 +29,13 @@ public:
 	void lookAt(Vec3 worldPosition);
 	void rotateAround(Vec3 center, Vec3 axis, float amount);
 
+	virtual void onAwake();
+	virtual void onDestroy();
+
 private:
 	Vec3 pos;
 	Vec3 rotation;
 	Vec3 scale;
 
-	virtual void onAwake();
-	virtual void onDestroy();
+	
 };

@@ -22,10 +22,12 @@ public:
 	*/
 	Mat4 getProjection();
 
+	virtual void onAwake();
+	virtual void onDestroy();
+
 private:
 	///Construct a projection matrix for the Camera (Camera lense)
 	Mat4 projection;
 
-	virtual void onAwake();
-	virtual void onDestroy();
+	
 };

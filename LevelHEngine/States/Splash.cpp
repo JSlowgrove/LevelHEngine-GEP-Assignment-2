@@ -33,14 +33,14 @@ bool Splash::input()
 void Splash::update(float dt)
 {
 	//Update the timer
-	splashTimer->upadateTimer(dt);
+	//splashTimer->upadateTimer(dt);
 
 	//exit the splash screen if the timer is up
-	if (splashTimer->checkTimer())
-	{
+	//if (splashTimer->checkTimer())
+	//{
 		stateManager->changeState(new MainMenu(stateManager, window));
 		return;
-	}
+	//}
 }
 
 void Splash::draw()

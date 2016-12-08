@@ -12,8 +12,6 @@
 #include "../Maths/Vec2.h"
 #include "../States/StateManager.h"
 #include "../States/Splash.h"
-#include "../Components/CameraComponent.h"
-#include "../Components/TransformComponent.h"
 #include "GameObject.h"
 
 
@@ -94,5 +92,7 @@ private:
 	///A vector of the game objects.
 	static std::vector< std::shared_ptr<GameObject> > gameObjects;
 	///A static of the camera
+
+public:
 	static std::shared_ptr< GameObject > camera;
 };

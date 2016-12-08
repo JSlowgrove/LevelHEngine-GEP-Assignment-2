@@ -12,3 +12,5 @@ Documentation.lnk
 /Debug/LevelHEngine.exp
 /Debug/LevelHEngine.lib
 
+/Release
+/LevelHEngine/Release
