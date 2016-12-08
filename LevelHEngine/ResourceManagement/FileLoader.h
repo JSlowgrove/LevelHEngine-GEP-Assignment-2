@@ -21,7 +21,7 @@ namespace FileLoader
 	std::string loadShaderFile(std::string fileName);
 
 	/**
-	@brief Load the contents of an obj file.
+	@brief Load the contents of an obj file. NOTE: This can only load in triangulated meshes.
 	@param objFileName The name of the obj file.
 	@param vertices The vertices vector array to push to.
 	@param vertexNormals The vertex normals vector array to push to.

@@ -73,14 +73,14 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	camera->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 2.0f, -12.0f));
 	camera->getComponent<TransformComponent>().lock()->rotate(Vec3(Convert::convertDegreeToRadian(-15.0f), 0.0f, 0.0f));
 
-	sphere1->getComponent<TransformComponent>().lock()->setScale(Vec3(0.5f, 0.5f, 0.5f));
+	sphere1->getComponent<TransformComponent>().lock()->setScale(Vec3(0.1f, 0.1f, 0.1f));
 	sphere1->getComponent<TransformComponent>().lock()->setPos(Vec3(-2.0f, -2.0f, 6.0f));
-	sphere1->getComponent<ModelComponent>().lock()->initaliseMesh("cube");
+	sphere1->getComponent<ModelComponent>().lock()->initaliseMesh("sphere");
 	sphere1->getComponent<ModelComponent>().lock()->initaliseShaders("default", "cyan");
 
-	sphere2->getComponent<TransformComponent>().lock()->setScale(Vec3(0.5f, 0.5f, 0.5f));
+	sphere2->getComponent<TransformComponent>().lock()->setScale(Vec3(0.1f, 0.1f, 0.1f));
 	sphere2->getComponent<TransformComponent>().lock()->setPos(Vec3(2.0f,-2.0f, 6.0f));
-	sphere2->getComponent<ModelComponent>().lock()->initaliseMesh("cube");
+	sphere2->getComponent<ModelComponent>().lock()->initaliseMesh("sphere");
 	sphere2->getComponent<ModelComponent>().lock()->initaliseShaders("default", "magenta");
 
 
@@ -104,7 +104,7 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	background->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 0.0f, -100.0f));
 	background->getComponent<TransformComponent>().lock()->setScale(Vec3(125.0f, 125.0f, 125.0f));
 	background->getComponent<TransformComponent>().lock()->rotate(Vec3(Convert::convertDegreeToRadian(120.0f), 0.0f, 0.0f));
-	background->getComponent<ModelComponent>().lock()->initaliseMesh("flatPlane", "background.png");
+	background->getComponent<ModelComponent>().lock()->initaliseMesh("flatPlane", "background.jpg");
 	background->getComponent<ModelComponent>().lock()->initaliseShaders("texture", "texture");
 
 	floor->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, -3.0f, 5.0f));
