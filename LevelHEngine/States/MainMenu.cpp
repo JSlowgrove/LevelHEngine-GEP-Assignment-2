@@ -83,7 +83,6 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	sphere2->getComponent<ModelComponent>().lock()->initaliseMesh("sphere");
 	sphere2->getComponent<ModelComponent>().lock()->initaliseShaders("default", "magenta");
 
-
 	sam->getComponent<TransformComponent>().lock()->setScale(Vec3(0.2f, 0.2f, 0.2f));
 	sam->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, -2.0f, 0.0f));
 	sam->getComponent<ModelComponent>().lock()->initaliseMesh("sam", "sam.png");

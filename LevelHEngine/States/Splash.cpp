@@ -1,12 +1,49 @@
 #include "Splash.h"
 
+#include "../Core/InputManager.h"
+#include "../Core/Application.h"
+#include "../Components/ModelComponent.h"
+#include "../Components/CameraComponent.h"
+#include "../Components/TransformComponent.h"
+
 Splash::Splash(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "Splash"), splashTimer(new Timer(3.0f))
 {
+	auto camera = GameObject::create("camera").lock();
+	camera->addComponent<CameraComponent>();
+	camera->addComponent<TransformComponent>();
+	Application::camera = camera;
+
+	auto splash = GameObject::create("splash").lock();
+	splash->addComponent<TransformComponent>();
+	splash->addComponent<ModelComponent>();
+
+	camera->awake();
+	splash->awake();
+
+	camera->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f,02.0f, -10.0f));
+	camera->getComponent<TransformComponent>().lock()->rotate(Vec3(0.0f, 0.0f, 0.0f));
+
+	splash->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, -2.0f, 0.0f));
+	splash->getComponent<TransformComponent>().lock()->setScale(Vec3(11.2f, 1.0f, 6.3f));
+	splash->getComponent<TransformComponent>().lock()->rotate(Vec3(Convert::convertDegreeToRadian(90.0f), 0.0f, 0.0f));
+	splash->getComponent<ModelComponent>().lock()->initaliseMesh("flatPlane", "splash.jpg");
+	splash->getComponent<ModelComponent>().lock()->initaliseShaders("texture", "textureInv");
 }
 
 Splash::~Splash()
 {
+	//loops through the game objects
+	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
+	{
+		if (Application::getGameObjects()[i]->getName() == "splash")
+		{
+			//destroy the state
+			Application::getGameObjects()[i]->destroy();
+			//remove it from the list if game objects
+			Application::getGameObjects().erase(Application::getGameObjects().begin() + i);
+		}
+	}
 }
 
 bool Splash::input()
@@ -33,16 +70,22 @@ bool Splash::input()
 void Splash::update(float dt)
 {
 	//Update the timer
-	//splashTimer->upadateTimer(dt);
+	splashTimer->upadateTimer(dt);
 
 	//exit the splash screen if the timer is up
-	//if (splashTimer->checkTimer())
-	//{
+	if (splashTimer->checkTimer())
+	{
 		stateManager->changeState(new MainMenu(stateManager, window));
 		return;
-	//}
+	}
 }
 
 void Splash::draw()
 {
+	//loops through the game objects
+	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
+	{
+		//draw the state
+		Application::getGameObjects()[i]->render();
+	}
 }

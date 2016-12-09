@@ -5,7 +5,6 @@
 #include "State.h"
 #include "StateManager.h"
 #include "../Core/Timer.h"
-#include "../Core/InputManager.h"
 #include "MainMenu.h"
 
 
