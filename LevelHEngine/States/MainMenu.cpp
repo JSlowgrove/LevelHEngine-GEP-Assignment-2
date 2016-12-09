@@ -27,13 +27,13 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	sam->addComponent<TransformComponent>();
 	sam->addComponent<ModelComponent>();
 
-	auto ben = GameObject::create("ben").lock();
-	ben->addComponent<TransformComponent>();
-	ben->addComponent<ModelComponent>();
+	auto barrel = GameObject::create("barrel").lock();
+	barrel->addComponent<TransformComponent>();
+	barrel->addComponent<ModelComponent>();
 
-	auto harry = GameObject::create("harry").lock();
-	harry->addComponent<TransformComponent>();
-	harry->addComponent<ModelComponent>();
+	auto heli = GameObject::create("heli").lock();
+	heli->addComponent<TransformComponent>();
+	heli->addComponent<ModelComponent>();
 
 	auto background = GameObject::create("backgroundPlane").lock();
 	background->addComponent<TransformComponent>();
@@ -63,6 +63,8 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	sphere2->awake();
 	camera->awake();
 	sam->awake();
+	heli->awake();
+	barrel->awake();
 	background->awake();
 	floor->awake();
 	leftWall->awake();
@@ -84,21 +86,21 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	sphere2->getComponent<ModelComponent>().lock()->initaliseShaders("default", "magenta");
 
 	sam->getComponent<TransformComponent>().lock()->setScale(Vec3(0.2f, 0.2f, 0.2f));
-	sam->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, -2.0f, 0.0f));
+	sam->getComponent<TransformComponent>().lock()->setPos(Vec3(-5.0f, -2.0f, 0.0f));
 	sam->getComponent<ModelComponent>().lock()->initaliseMesh("sam", "sam.png");
 	sam->getComponent<ModelComponent>().lock()->initaliseShaders("texture", "texture");
 
-	ben->getComponent<TransformComponent>().lock()->setScale(Vec3(0.2f, 0.2f, 0.2f));
-	ben->getComponent<TransformComponent>().lock()->setPos(Vec3(-5.0f, -2.0f, 0.0f));
-	ben->getComponent<TransformComponent>().lock()->rotate( Vec3(0.0f, Convert::convertDegreeToRadian(15.0f), 0.0f));
-	ben->getComponent<ModelComponent>().lock()->initaliseMesh("sam", "ben.png");
-	ben->getComponent<ModelComponent>().lock()->initaliseShaders("texture", "texture");
+	barrel->getComponent<TransformComponent>().lock()->setScale(Vec3(0.2f, 0.2f, 0.2f));
+	barrel->getComponent<TransformComponent>().lock()->setPos(Vec3(5.0f, -2.0f, 0.0f));
+	barrel->getComponent<TransformComponent>().lock()->rotate( Vec3(0.0f, 0.0f, 0.0f));
+	barrel->getComponent<ModelComponent>().lock()->initaliseMesh("barrel", "barrel.png");
+	barrel->getComponent<ModelComponent>().lock()->initaliseShaders("texture", "texture");
 
-	harry->getComponent<TransformComponent>().lock()->setScale(Vec3(0.2f, 0.2f, 0.2f));
-	harry->getComponent<TransformComponent>().lock()->setPos(Vec3(5.0f, -2.0f, 0.0f));
-	harry->getComponent<TransformComponent>().lock()->rotate(Vec3(0.0f, Convert::convertDegreeToRadian(-15.0f), 0.0f));
-	harry->getComponent<ModelComponent>().lock()->initaliseMesh("sam", "harry.png");
-	harry->getComponent<ModelComponent>().lock()->initaliseShaders("texture", "texture");
+	heli->getComponent<TransformComponent>().lock()->setScale(Vec3(0.03f, 0.03f, 0.03f));
+	heli->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, -2.0f, 0.0f));
+	heli->getComponent<TransformComponent>().lock()->rotate(Vec3(0.0f, 0.0f, 0.0f));
+	heli->getComponent<ModelComponent>().lock()->initaliseMesh("heli", "heli.png");
+	heli->getComponent<ModelComponent>().lock()->initaliseShaders("texture", "texture");
 
 	background->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 0.0f, -100.0f));
 	background->getComponent<TransformComponent>().lock()->setScale(Vec3(125.0f, 125.0f, 125.0f));
@@ -224,7 +226,7 @@ void MainMenu::update(float dt)
 	//loops through the game objects
  	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
  	{
-		if(Application::getGameObjects()[i]->getName() == "ben" || Application::getGameObjects()[i]->getName() == "sam" || Application::getGameObjects()[i]->getName() == "harry")
+		if(Application::getGameObjects()[i]->getName() == "heli" || Application::getGameObjects()[i]->getName() == "sam" || Application::getGameObjects()[i]->getName() == "barrel")
 		{
 			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(Vec3(0.0f, Convert::convertDegreeToRadian(200.0f * dt), 0.0f));
 		}
