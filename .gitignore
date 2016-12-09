@@ -1,6 +1,5 @@
 /docs
 Documentation.lnk
-/LevelHEngine/Assets
 /LevelHEngine/Debug
 /LevelHEngine/log.txt
 /Debug/LevelHEngine.pdb
@@ -11,6 +10,8 @@ Documentation.lnk
 /LevelHEngine.VC.VC.opendb
 /Debug/LevelHEngine.exp
 /Debug/LevelHEngine.lib
-
+/LevelHEngine/Assets/aud
+/LevelHEngine/Assets/img
+/LevelHEngine/Assets/obj
 /Release
 /LevelHEngine/Release

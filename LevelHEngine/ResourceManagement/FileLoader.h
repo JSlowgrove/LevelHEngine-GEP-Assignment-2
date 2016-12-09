@@ -7,6 +7,11 @@
 #include <sstream> 
 #include "../Core/Logging.h"
 
+#define shaderFolder "Assets/glsl/"
+#define shaderExtension ".glsl"
+#define meshFolder "Assets/obj/"
+#define meshExtension ".obj"
+
 /**
 @brief A namespace that contains functions to load in files.
 */
