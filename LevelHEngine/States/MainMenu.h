@@ -5,8 +5,9 @@
 #include "State.h"
 #include "StateManager.h"
 #include "../ResourceManagement/ResourceManager.h"
-#include "../States/MainMenu.h"
+#include "../Maths/Vec3.h"
 
+#define moveVel 10.0f;
 
 /**
 @brief A State that contains and runs the Main Menu.
@@ -49,4 +50,5 @@ private:
 	///The sphere input bools
 	bool s1F, s1B, s1L, s1R;
 	bool s2F, s2B, s2L, s2R;
+	Vec3 s1V, s2V;
 };

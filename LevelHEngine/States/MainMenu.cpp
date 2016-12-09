@@ -175,43 +175,43 @@ bool MainMenu::input()
 			return false;
 		}
 
-		//reset input bools
-		s1F = s1B = s1R = s1L = s2F = s2B = s2R = s2L = false;
+		//reset velocities
+		s1V = s2V = Vec3(0.0f, 0.0f, 0.0f);
 
 		//handle sphere 1
 		if (InputManager::isKeyPressed(W_KEY))
 		{
-			s1F = true;
+			s1V.z = -moveVel;
 		}
 		if (InputManager::isKeyPressed(A_KEY))
 		{
-			s1L = true;
+			s1V.x = -moveVel;
 		}
 		if (InputManager::isKeyPressed(S_KEY))
 		{
-			s1B = true;
+			s1V.z = moveVel;
 		}
 		if (InputManager::isKeyPressed(D_KEY))
 		{
-			s1R = true;
+			s1V.x = moveVel;
 		}
 
 		//handle sphere 2
 		if (InputManager::isKeyPressed(UP_KEY))
 		{
-			s2F = true;
+			s2V.z = -moveVel;
 		}
 		if (InputManager::isKeyPressed(LEFT_KEY))
 		{
-			s2L = true;
+			s2V.x = -moveVel;
 		}
 		if (InputManager::isKeyPressed(DOWN_KEY))
 		{
-			s2B = true;
+			s2V.z = moveVel;
 		}
 		if (InputManager::isKeyPressed(RIGHT_KEY))
 		{
-			s2R = true;
+			s2V.x = moveVel;
 		}
 
 	}
@@ -226,47 +226,20 @@ void MainMenu::update(float dt)
 	//loops through the game objects
  	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
  	{
-		if(Application::getGameObjects()[i]->getName() == "heli" || Application::getGameObjects()[i]->getName() == "sam" || Application::getGameObjects()[i]->getName() == "barrel")
+		if(Application::getGameObjects()[i]->getName() == "heli" || Application::getGameObjects()[i]->getName() == "sam" 
+			|| Application::getGameObjects()[i]->getName() == "barrel")
 		{
-			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(Vec3(0.0f, Convert::convertDegreeToRadian(200.0f * dt), 0.0f));
+			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
+				Vec3(0.0f, Convert::convertDegreeToRadian(200.0f * dt), 0.0f)
+			);
 		}
 		if (Application::getGameObjects()[i]->getName() == "sphere1")
 		{
-			if (s1F)
-			{
-				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(Vec3(0.0f, 0.0f, -10.0f * dt));
-			}
-			if (s1B)
-			{
-				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(Vec3(0.0f, 0.0f, 10.0f * dt));
-			}
-			if (s1R)
-			{
-				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(Vec3(10.0f * dt, 0.0f, 0.0f));
-			}
-			if (s1L)
-			{
-				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(Vec3(-10.0f * dt, 0.0f, 0.0f));
-			}
+			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(s1V * dt);
 		}
 		if (Application::getGameObjects()[i]->getName() == "sphere2")
 		{
-			if (s2F)
-			{
-				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(Vec3(0.0f, 0.0f, -10.0f * dt));
-			}
-			if (s2B)
-			{
-				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(Vec3(0.0f, 0.0f, 10.0f * dt));
-			}
-			if (s2R)
-			{
-				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(Vec3(10.0f * dt, 0.0f, 0.0f));
-			}
-			if (s2L)
-			{
-				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(Vec3(-10.0f * dt, 0.0f, 0.0f));
-			}
+			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(s2V * dt);
 		}
  	}
 }
