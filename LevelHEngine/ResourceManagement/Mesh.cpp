@@ -43,6 +43,38 @@ void Mesh::InitialiseVAO(std::string objFileName)
 	//set the number of vertices's
 	numberOfVertices = vertices.size() / 3;
 
+	//calculate the max and min verticies
+	for (unsigned int i = 0; i < vertices.size(); i+=3)
+	{
+		//x
+		if (vertices[i] > maxVert.x)
+		{
+			maxVert.x = vertices[i];
+		}
+		else if (vertices[i] < minVert.x)
+		{
+			minVert.x = vertices[i];
+		}
+		//y
+		if (vertices[i + 1] > maxVert.y)
+		{
+			maxVert.y = vertices[i];
+		}
+		else if (vertices[i + 1] < minVert.y)
+		{
+			minVert.y = vertices[i];
+		}
+		//z
+		if (vertices[i + 2] > maxVert.z)
+		{
+			maxVert.z = vertices[i];
+		}
+		else if (vertices[i + 2] < minVert.z)
+		{
+			minVert.z = vertices[i];
+		}
+	}
+
 	//Variable for storing a VBO
 	GLuint positionBuffer = 0;
 	//Create a generic buffer

@@ -6,6 +6,7 @@
 #include <string>
 #include "GL/glew.h"
 #include "FileLoader.h"
+#include "../Maths/Vec3.h"
 
 /**
 @brief Creates an object from an text file, this can then be used with OpenGL.
@@ -49,6 +50,9 @@ public:
 	*/
 	unsigned int getNumberOfVertices();
 
+	Vec3 getMaxVert() { return maxVert; }
+	Vec3 getMinVert() { return minVert; }
+
 private:
 	///The Vertex Array Object for use with OpenGL
 	GLuint vertexArrayObject;
@@ -58,6 +62,10 @@ private:
 	std::string textureFileName;
 	///The Texture
 	GLuint textureID;
+	///The Max Verticies
+	Vec3 maxVert;
+	///The Min Verticies
+	Vec3 minVert;
 
 	/**
 	@brief Initialise the texture.
