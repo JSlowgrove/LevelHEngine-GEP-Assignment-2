@@ -13,23 +13,23 @@ namespace Collision
 
 	/**
 	@brief Checks to see if two rectangles intersect
-	@param PosBoxA The position of the first rectangle.
-	@param DimBoxA The dimensions of the first rectangle.
-	@param PosBoxB The position of the second rectangle.
-	@param DimBoxB The dimensions of the second rectangle.
-	@returns True if the rectangles intersect
+	@param posBoxA The position of the first rectangle.
+	@param dimBoxA The dimensions of the first rectangle.
+	@param posBoxB The position of the second rectangle.
+	@param dimBoxB The dimensions of the second rectangle.
+	@returns If the rectangles intersect.
 	*/
-	bool rectRectIntersect(Vec2 PosBoxA, Vec2 DimBoxA, Vec2 PosBoxB, Vec2 DimBoxB);
+	bool rectRectIntersect(Vec2 posBoxA, Vec2 dimBoxA, Vec2 posBoxB, Vec2 dimBoxB);
 
 	/**
 	@brief Checks to see if two cubes intersect (position is the center of the cube)
-	@param PosBoxA The position of the first cube.
-	@param DimBoxA The dimensions of the first cube.
-	@param PosBoxB The position of the second cube.
-	@param DimBoxB The dimensions of the second cube.
-	@returns True if the cube intersect
+	@param posBoxA The position of the first cube.
+	@param dimBoxA The dimensions of the first cube.
+	@param posBoxB The position of the second cube.
+	@param dimBoxB The dimensions of the second cube.
+	@returns If the cubes intersect.
 	*/
-	bool cubeCubeIntersect(Vec3 PosBoxA, Vec3 DimBoxA, Vec3 PosBoxB, Vec3 DimBoxB);
+	bool cubeCubeIntersect(Vec3 posBoxA, Vec3 dimBoxA, Vec3 posBoxB, Vec3 dimBoxB);
 
 	/**
 	@brief Takes in two circle positions, radius's to detect if the circles collide.
@@ -39,7 +39,7 @@ namespace Collision
 	@param circle2Rad The second circle radius's to be used in the collision check.
 	@return If the collision occurs.
 	*/
-	bool collisionCheckCircleCircle(Vec2 circle1Pos, Vec2 circle2Pos, float circle1Rad, float circle2Rad);
+	bool circleCircleIntersect(Vec2 circle1Pos, Vec2 circle2Pos, float circle1Rad, float circle2Rad);
 
 	/**
 	@brief Takes in two sphere positions and radius's and uses this to detect if the sphere's collide.
@@ -49,7 +49,7 @@ namespace Collision
 	@param sphere2Rad The second sphere radius's to be used in the collision check.
 	@return If the collision occurs.
 	*/
-	bool collisionCheckSphereSphere(Vec3 sphere1Pos, Vec3 sphere2Pos, float sphere1Rad, float sphere2Rad);
+	bool sphereSphereIntersect(Vec3 sphere1Pos, Vec3 sphere2Pos, float sphere1Rad, float sphere2Rad);
 
 	/**
 	@brief Takes in a circle position and radius and a box position and dimensions to detect for collision.
@@ -59,6 +59,6 @@ namespace Collision
 	@param boxDim The box's dimension's to be used in the collision check.
 	@return If the collision occurs.
 	*/
-	bool collisionCheckCircleBox(Vec2 circlePos, Vec2 boxPos, float circleRad, Vec2 boxDim);
+	bool circleRectIntersect(Vec2 circlePos, Vec2 boxPos, float circleRad, Vec2 boxDim);
 
 }

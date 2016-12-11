@@ -20,5 +20,6 @@ void BoundingSphereComponent::onDestroy()
 void BoundingSphereComponent::initaliseBoundingSphere(std::string meshID)
 {
 	initialSphereRad = ResourceManager::getMesh(meshID)->getMaxVert().x - ResourceManager::getMesh(meshID)->getMinVert().x;
+	initialSphereRad *= 0.5f;
 	sphereRad = initialSphereRad;
 }

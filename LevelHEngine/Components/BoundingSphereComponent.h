@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Component.h"
-#include "../Maths/Vec3.h"
 
 /**
 @brief A class that handles the bounding sphere component.
@@ -13,7 +12,7 @@ public:
 
 	void initaliseBoundingSphere(std::string meshID);
 	float getBoundingSphereRadius() { return sphereRad; }
-	void scaleBoundingSphere(float scale) { sphereRad = initialSphereRad * scale; }
+	void scaleBoundingSphere(Vec3 scale) { sphereRad = initialSphereRad * scale.x; }
 
 	virtual void onAwake();
 	virtual void onDestroy();
