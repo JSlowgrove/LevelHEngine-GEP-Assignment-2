@@ -51,4 +51,5 @@ private:
 	bool s1F, s1B, s1L, s1R;
 	bool s2F, s2B, s2L, s2R;
 	Vec3 s1V, s2V;
+	bool initialLoop, jump;
 };
