@@ -1,4 +1,5 @@
 #include "Convert.h"
+#include "../Core/WindowFrame.h"
 
 namespace Convert
 {

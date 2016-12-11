@@ -47,9 +47,9 @@ public:
 private:
 	///The background music id.
 	std::string backgroundMusicID;
+	///The mouse press sound id.
+	std::string mousePressSoundID;
 	///The sphere input bools
-	bool s1F, s1B, s1L, s1R;
-	bool s2F, s2B, s2L, s2R;
 	Vec3 s1V, s2V;
 	bool initialLoop, jump;
 };

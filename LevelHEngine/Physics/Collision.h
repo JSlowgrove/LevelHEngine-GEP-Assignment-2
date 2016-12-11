@@ -31,6 +31,14 @@ namespace Collision
 	*/
 	bool cubeCubeIntersect(Vec3 posBoxA, Vec3 dimBoxA, Vec3 posBoxB, Vec3 dimBoxB);
 
+	/**
+	@brief Checks to see if a cube and sphere intersects (position is the center of the cube)
+	@param posBox The position of the cube.
+	@param dimBox The dimensions of the cube.
+	@param posSphere The position of the sphere.
+	@param radSphere The radius of the sphere.
+	@returns If the cubes intersect.
+	*/
 	bool sphereCubeIntersect(Vec3 posBox, Vec3 dimBox, Vec3 posSphere, float radSphere);
 
 	/**

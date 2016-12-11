@@ -206,7 +206,10 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	initialLoop = true;
 
 	//start the music
-	ResourceManager::getMusic(backgroundMusicID)->startMusic();
+	//ResourceManager::getMusic(backgroundMusicID)->startMusic();
+
+	//initialise the mouse press sound
+	mousePressSoundID = ResourceManager::initialiseAudio("Assets/aud/threeTone2.ogg");
 }
 
 MainMenu::~MainMenu()
@@ -277,12 +280,19 @@ bool MainMenu::input()
 		{
 			s2V.x = moveVel;
 		}
-		//handel both
+		//handle both
 		if (InputManager::isKeyPressed(SPACE_KEY))
 		{
 			s1V.y = s2V.y = 20.0f;
 		}
 
+		//if the mouse left button is pressed
+		if (InputManager::isMouseButtonPressed(MOUSE_LEFT))
+		{
+			//ResourceManager::getAudio(mousePressSoundID)->playEffect();
+			std::string message = "Mouse press window position: " + std::to_string(InputManager::getMousePos().x) + "," + std::to_string(InputManager::getMousePos().y);
+			Logging::logI(message);
+		}
 	}
 	return true;
 }
@@ -297,7 +307,7 @@ void MainMenu::update(float dt)
 	}
 
 	//Keep the music playing
-	ResourceManager::getMusic(backgroundMusicID)->startMusic();
+	//ResourceManager::getMusic(backgroundMusicID)->startMusic();
 
 	//perform collision detection
 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
@@ -307,7 +317,8 @@ void MainMenu::update(float dt)
 			//loop through all others with bounding spheres
 			for (unsigned int j = 0; j < Application::getGameObjects().size(); j++)
 			{
-				if (Application::getGameObjects()[j]->checkForComponent("boundingBox") && j != i)
+				//sphere box collision check
+				if (Application::getGameObjects()[j]->checkForComponent("boundingBox"))
 				{
 					//check for collision
 					if (Collision::sphereCubeIntersect(
@@ -317,6 +328,7 @@ void MainMenu::update(float dt)
 						Application::getGameObjects()[i]->getComponent<BoundingSphereComponent>().lock()->getBoundingSphereRadius()
 					))
 					{
+						//Logging::logI("Sphere-Box Collision");
 						if (Application::getGameObjects()[i]->getName() == "sphere1" && s1V.y != 20.0f)
 						{
 							s1V.y = 0.0f;
@@ -325,6 +337,20 @@ void MainMenu::update(float dt)
 						{
 							s2V.y = 0.0f;
 						}
+					}
+				}
+				//sphere sphere collision check
+				if (Application::getGameObjects()[j]->checkForComponent("boundingSphere") && j != i)
+				{
+					//check for collision
+					if (Collision::sphereSphereIntersect(
+						Application::getGameObjects()[j]->getComponent<TransformComponent>().lock()->getPos(),
+						Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->getPos(),
+						Application::getGameObjects()[j]->getComponent<BoundingSphereComponent>().lock()->getBoundingSphereRadius(),
+						Application::getGameObjects()[i]->getComponent<BoundingSphereComponent>().lock()->getBoundingSphereRadius()
+					))
+					{
+						//Logging::logI("Sphere-Sphere Collision");
 					}
 				}
 			}
