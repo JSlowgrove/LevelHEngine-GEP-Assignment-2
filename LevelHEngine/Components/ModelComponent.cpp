@@ -8,7 +8,8 @@ ModelComponent::~ModelComponent()
 }
 
 void ModelComponent::onAwake()
-{		
+{
+	id = "model";
 }
 
 void ModelComponent::onDestroy()

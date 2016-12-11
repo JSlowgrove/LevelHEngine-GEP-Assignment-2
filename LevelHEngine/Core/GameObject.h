@@ -10,8 +10,7 @@ class Component;
 
 class GameObject : public std::enable_shared_from_this<GameObject>
 {
-public:
-		
+public:		
 	/**
 	@brief Constructs Application.
 	@param name The name of the game object.
@@ -39,6 +38,9 @@ public:
 		component->gameObject = shared_from_this();
 		//Activate the component
 		component->onAwake();
+
+		//store the id
+		componentIDs.push_back(component->getID());
 
 		//Return a weak pointer to the component to allow instance use.
 		return component; 
@@ -79,11 +81,13 @@ public:
 	virtual void destroy();
 	void setDestroyed(bool destroyed) { this->destroyed = destroyed; }
 	bool getDestroyed() { return destroyed; }
+	bool checkForComponent(std::string id);
 
 private:
 	///The name of the game object
 	std::string name;
 	///A vector of components attached to the game object.
 	std::vector < std::shared_ptr<Component> > components;
+	std::vector < std::string > componentIDs;
 	bool destroyed;
 };

@@ -15,6 +15,66 @@ namespace Collision
 		return false;
 	}
 
+	bool cubeCubeIntersect(Vec3 PosBoxA, Vec3 DimBoxA, Vec3 PosBoxB, Vec3 DimBoxB)
+	{
+		//Half dimensions for center
+		Vec3 halfDimA = DimBoxA * 0.5f;
+		Vec3 halfDimB = DimBoxB * 0.5f;
+
+		//calculate max/min coords for box a
+		float minAX = PosBoxA.x - halfDimA.x;
+		float maxAX = PosBoxA.x + halfDimA.x;
+		float minAY = PosBoxA.y - halfDimA.y;
+		float maxAY = PosBoxA.y + halfDimA.y;
+		float minAZ = PosBoxA.z - halfDimA.z;
+		float maxAZ = PosBoxA.z + halfDimA.z;
+
+		//calculate max/min coords for box b
+		float minBX = PosBoxB.x - halfDimB.x;
+		float maxBX = PosBoxB.x + halfDimB.x;
+		float minBY = PosBoxB.y - halfDimB.y;
+		float maxBY = PosBoxB.y + halfDimB.y;
+		float minBZ = PosBoxB.z - halfDimB.z;
+		float maxBZ = PosBoxB.z + halfDimB.z;
+
+		bool collisionX = false;
+		bool collisionY = false;
+		bool collisionZ = false;
+
+		if (minAX < minBX)
+		{
+			if (maxAX >= minBX)
+				collisionX = true;
+		}
+		else if (maxBX >= minAX)
+		{
+			collisionX = true;
+		}
+
+		if (minAY < minBY)
+		{
+			if (maxAY >= minBY)
+				collisionY = true;
+		}
+		else if (maxBY >= minAY)
+		{
+			collisionY = true;
+		}
+
+		if (minAZ < minBZ)
+		{
+			if (maxAZ >= minBZ)
+				collisionZ = true;
+		}
+		else if (maxBZ >= minAZ)
+		{
+			collisionZ = true;
+		}
+
+		//check for intersection
+		return (collisionX && collisionY && collisionZ);
+	}
+
 	bool collisionCheckCircleCircle(Vec2 circle1Pos, Vec2 circle2Pos, float circle1Rad, float circle2Rad)
 	{
 		// gets the combination of the 2 circles radius

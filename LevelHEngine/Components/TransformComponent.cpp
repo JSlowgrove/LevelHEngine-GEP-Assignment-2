@@ -2,12 +2,12 @@
 
 TransformComponent::~TransformComponent()
 {
-
 }
 
 void TransformComponent::onAwake()
 {
 	scaleSize = Vec3(1, 1, 1);
+	id = "transform";
 }
 
 void TransformComponent::onDestroy()

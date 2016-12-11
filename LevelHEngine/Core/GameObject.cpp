@@ -2,8 +2,6 @@
 
 GameObject::GameObject(std::string name) : name(name)
 {
-	// Add the shared_ptr to created GameObject to the vector in Application
-	
 }
 
 GameObject::~GameObject()
@@ -60,4 +58,16 @@ void GameObject::destroy()
 	{
 		components.at(i)->onDestroy();
 	}
+}
+
+bool GameObject::checkForComponent(std::string id)
+{
+	for (size_t i = 0; i < components.size(); i++)
+	{
+		if (components.at(i)->getID() == id)
+		{
+			return true;
+		}
+	}
+	return false;
 }

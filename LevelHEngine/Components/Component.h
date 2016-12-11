@@ -20,8 +20,12 @@ public:
 	virtual void onDestroy();
 	void setDestroyed(bool destroyed) { this->destroyed = destroyed; }
 	bool getDestroyed() { return destroyed; }
+	std::string getID() { return id; }
 
 private:
 	std::weak_ptr<GameObject> gameObject;
 	bool destroyed;
+
+protected:
+	std::string id;
 };

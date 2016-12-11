@@ -58,20 +58,20 @@ void Mesh::InitialiseVAO(std::string objFileName)
 		//y
 		if (vertices[i + 1] > maxVert.y)
 		{
-			maxVert.y = vertices[i];
+			maxVert.y = vertices[i + 1];
 		}
 		else if (vertices[i + 1] < minVert.y)
 		{
-			minVert.y = vertices[i];
+			minVert.y = vertices[i + 1];
 		}
 		//z
 		if (vertices[i + 2] > maxVert.z)
 		{
-			maxVert.z = vertices[i];
+			maxVert.z = vertices[i + 2];
 		}
 		else if (vertices[i + 2] < minVert.z)
 		{
-			minVert.z = vertices[i];
+			minVert.z = vertices[i + 2];
 		}
 	}
 

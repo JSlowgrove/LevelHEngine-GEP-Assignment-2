@@ -22,6 +22,16 @@ namespace Collision
 	bool rectRectIntersect(Vec2 PosBoxA, Vec2 DimBoxA, Vec2 PosBoxB, Vec2 DimBoxB);
 
 	/**
+	@brief Checks to see if two cubes intersect (position is the center of the cube)
+	@param PosBoxA The position of the first cube.
+	@param DimBoxA The dimensions of the first cube.
+	@param PosBoxB The position of the second cube.
+	@param DimBoxB The dimensions of the second cube.
+	@returns True if the cube intersect
+	*/
+	bool cubeCubeIntersect(Vec3 PosBoxA, Vec3 DimBoxA, Vec3 PosBoxB, Vec3 DimBoxB);
+
+	/**
 	@brief Takes in two circle positions, radius's to detect if the circles collide.
 	@param circle1Pos The first circle position's to be used in the collision check.
 	@param circle2Pos The second circle position's to be used in the collision check.

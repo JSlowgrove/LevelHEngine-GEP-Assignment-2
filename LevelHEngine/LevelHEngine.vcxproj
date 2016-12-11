@@ -121,6 +121,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Components\BoundingBoxComponent.cpp" />
+    <ClCompile Include="Components\BoundingSphereComponent.cpp" />
     <ClCompile Include="Components\CameraComponent.cpp" />
     <ClCompile Include="Components\Component.cpp" />
     <ClCompile Include="Components\ModelComponent.cpp" />
@@ -150,6 +152,8 @@
     <ClCompile Include="States\StateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Components\BoundingBoxComponent.h" />
+    <ClInclude Include="Components\BoundingSphereComponent.h" />
     <ClInclude Include="Components\CameraComponent.h" />
     <ClInclude Include="Components\Component.h" />
     <ClInclude Include="Components\ModelComponent.h" />

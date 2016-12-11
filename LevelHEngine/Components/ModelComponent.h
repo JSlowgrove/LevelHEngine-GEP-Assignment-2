@@ -20,12 +20,7 @@ public:
 	void initaliseMesh(std::string objFileName, std::string textureFileName);
 	void initaliseShaders(std::string vertexShaderFileName, std::string fragmentShaderFileName);
 
-	void setRenderMats(Mat4 viewMatrix, Mat4 projMatrix, Mat4 matrix)
-	{
-		this->viewMatrix = viewMatrix;
-		this->projMatrix = projMatrix;
-		this->matrix = matrix;
-	}
+	std::string getMeshID() { return meshID; }
 
 	virtual void onAwake();
 	virtual void onDestroy();
@@ -36,12 +31,6 @@ private:
 	std::string meshID;
 	///A boolean for if textured
 	bool textured;
-	///The projection matrix to render with
-	Mat4 projMatrix;
-	///The view matrix to render with
-	Mat4 viewMatrix;
-	///The object matrix to render with
-	Mat4 matrix;
 
 	
 };
