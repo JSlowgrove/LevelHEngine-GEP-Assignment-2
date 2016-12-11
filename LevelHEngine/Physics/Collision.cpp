@@ -75,6 +75,65 @@ namespace Collision
 		return (collisionX && collisionY && collisionZ);
 	}
 
+	bool sphereCubeIntersect(Vec3 posBox, Vec3 dimBox, Vec3 posSphere, float radSphere)
+	{
+		//Half dimensions for center
+		Vec3 halfDim = dimBox * 0.5f;
+
+		//calculate max/min coords for box a
+		float minBoxX = posBox.x - halfDim.x;
+		float maxBoxX = posBox.x + halfDim.x;
+		float minBoxY = posBox.y - halfDim.y;
+		float maxBoxY = posBox.y + halfDim.y;
+		float minBoxZ = posBox.z - halfDim.z;
+		float maxBoxZ = posBox.z + halfDim.z;
+
+		//calculate max/min coords for sphere
+		float minSphereX = posSphere.x - radSphere;
+		float maxSphereX = posSphere.x + radSphere;
+		float minSphereY = posSphere.y - radSphere;
+		float maxSphereY = posSphere.y + radSphere;
+		float minSphereZ = posSphere.z - radSphere;
+		float maxSphereZ = posSphere.z + radSphere;
+
+		bool collisionX = false;
+		bool collisionY = false;
+		bool collisionZ = false;
+
+		if (minBoxX < minSphereX)
+		{
+			if (maxBoxX >= minSphereX)
+				collisionX = true;
+		}
+		else if (maxSphereX >= minBoxX)
+		{
+			collisionX = true;
+		}
+
+		if (minBoxY < minSphereY)
+		{
+			if (maxBoxY >= minSphereY)
+				collisionY = true;
+		}
+		else if (maxSphereY >= minBoxY)
+		{
+			collisionY = true;
+		}
+
+		if (minBoxZ < minSphereZ)
+		{
+			if (maxBoxZ >= minSphereZ)
+				collisionZ = true;
+		}
+		else if (maxSphereZ >= minBoxZ)
+		{
+			collisionZ = true;
+		}
+
+		//check for intersection
+		return (collisionX && collisionY && collisionZ);
+	}
+
 	bool circleCircleIntersect(Vec2 circle1Pos, Vec2 circle2Pos, float circle1Rad, float circle2Rad)
 	{
 		// gets the combination of the 2 circles radius

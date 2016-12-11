@@ -31,6 +31,8 @@ namespace Collision
 	*/
 	bool cubeCubeIntersect(Vec3 posBoxA, Vec3 dimBoxA, Vec3 posBoxB, Vec3 dimBoxB);
 
+	bool sphereCubeIntersect(Vec3 posBox, Vec3 dimBox, Vec3 posSphere, float radSphere);
+
 	/**
 	@brief Takes in two circle positions, radius's to detect if the circles collide.
 	@param circle1Pos The first circle position's to be used in the collision check.

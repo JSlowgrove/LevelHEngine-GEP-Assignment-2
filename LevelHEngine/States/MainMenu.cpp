@@ -7,6 +7,7 @@
 #include "../Components/CameraComponent.h"
 #include "../Components/TransformComponent.h"
 #include "../Components/BoundingSphereComponent.h"
+#include "../Components/BoundingBoxComponent.h"
 #include "../Physics/Collision.h"
 
 MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
@@ -26,7 +27,7 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	auto sphere2 = GameObject::create("sphere2").lock();
 	sphere2->addComponent<TransformComponent>();
 	sphere2->addComponent<ModelComponent>();
-	sphere2->addComponent<BoundingSphereComponent>();
+	sphere2->addComponent<BoundingBoxComponent>();
 
 	auto sam = GameObject::create("sam").lock();
 	sam->addComponent<TransformComponent>();
@@ -73,12 +74,12 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 
 	sphere2->getComponent<TransformComponent>().lock()->setScale(Vec3(0.5f, 0.5f, 0.5f));
 	sphere2->getComponent<TransformComponent>().lock()->setPos(Vec3(2.0f,-2.0f, 6.0f));
-	sphere2->getComponent<ModelComponent>().lock()->initaliseMesh("sphere");
+	sphere2->getComponent<ModelComponent>().lock()->initaliseMesh("cube");
 	sphere2->getComponent<ModelComponent>().lock()->initaliseShaders("default", "magenta");
-	sphere2->getComponent<BoundingSphereComponent>().lock()->initaliseBoundingSphere(
+	sphere2->getComponent<BoundingBoxComponent>().lock()->initaliseBoundingBox(
 		sphere2->getComponent<ModelComponent>().lock()->getMeshID()
 	);
-	sphere2->getComponent<BoundingSphereComponent>().lock()->scaleBoundingSphere(
+	sphere2->getComponent<BoundingBoxComponent>().lock()->scaleBoundingBox(
  		sphere2->getComponent<TransformComponent>().lock()->getScale()
  	);
 
@@ -215,69 +216,18 @@ void MainMenu::update(float dt)
 			//loop through all others with bounding spheres
 			for (unsigned int j = 0; j < Application::getGameObjects().size(); j++)
 			{
-				if (Application::getGameObjects()[j]->checkForComponent("boundingSphere") && j != i)
+				if (Application::getGameObjects()[j]->checkForComponent("boundingBox") && j != i)
 				{
 					//check for collision
-					if (Collision::sphereSphereIntersect(
-						Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->getPos(),
+					if (Collision::sphereCubeIntersect(
 						Application::getGameObjects()[j]->getComponent<TransformComponent>().lock()->getPos(),
-						Application::getGameObjects()[i]->getComponent<BoundingSphereComponent>().lock()->getBoundingSphereRadius(),
-						Application::getGameObjects()[j]->getComponent<BoundingSphereComponent>().lock()->getBoundingSphereRadius()
+						Application::getGameObjects()[j]->getComponent<BoundingBoxComponent>().lock()->getBoundingBoxDimensions(),
+						Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->getPos(),
+						Application::getGameObjects()[i]->getComponent<BoundingSphereComponent>().lock()->getBoundingSphereRadius()
 					))
 					{
 						Logging::logI("Collision");
 						tmp += 200.0f;
-						//sphere 1
-// 						if (s1V.x > 0.0f)
-// 						{
-// 							s1V.x = -moveVel;
-// 						}
-// 						else if (s1V.x < 0.0f)
-// 						{
-// 							s1V.x = moveVel;
-// 						}
-// 						if (s1V.y > 0.0f)
-// 						{
-// 							s1V.y = -moveVel;
-// 						}
-// 						else if (s1V.y < 0.0f)
-// 						{
-// 							s1V.y = moveVel;
-// 						}
-// 						if (s1V.z > 0.0f)
-// 						{
-// 							s1V.z = -moveVel;
-// 						}
-// 						else if (s1V.z < 0.0f)
-// 						{
-// 							s1V.z = moveVel;
-// 						}
-// 
-// 						//sphere 2
-// 						if (s2V.x > 0.0f)
-// 						{
-// 							s2V.x = -moveVel;
-// 						}
-// 						else if (s2V.x < 0.0f)
-// 						{
-// 							s2V.x = moveVel;
-// 						}
-// 						if (s2V.y > 0.0f)
-// 						{
-// 							s2V.y = -moveVel;
-// 						}
-// 						else if (s2V.y < 0.0f)
-// 						{
-// 							s2V.y = moveVel;
-// 						}
-// 						if (s2V.z > 0.0f)
-// 						{
-// 							s2V.z = -moveVel;
-// 						}
-// 						else if (s2V.z < 0.0f)
-// 						{
-// 							s2V.z = moveVel;
-// 						}
 					}
 				}
 			}
