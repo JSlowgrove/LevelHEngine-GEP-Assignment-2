@@ -186,6 +186,13 @@ namespace Collision
 
 	bool sphereSphereIntersect(Vec3 sphere1Pos, Vec3 sphere2Pos, float sphere1Rad, float sphere2Rad)
 	{
+		Vec3 vel1 = Vec3(0.0f, 0.0f, 0.0f);
+		Vec3 vel2 = Vec3(0.0f, 0.0f, 0.0f);
+		return sphereSphereIntersect(sphere1Pos, sphere2Pos, sphere1Rad, sphere2Rad, vel1, vel2);
+	}
+
+	bool sphereSphereIntersect(Vec3 sphere1Pos, Vec3 sphere2Pos, float sphere1Rad, float sphere2Rad, Vec3 &vel1, Vec3 &vel2)
+	{
 		// gets the combination of the 2 sphere's radius
 		float radSum = sphere1Rad + sphere2Rad;
 		//work out the distance between the spheres
@@ -194,6 +201,30 @@ namespace Collision
 		//if the distance between the two spheres is less than the sum of the radius's then there will be a collision
 		if (distance < radSum)
 		{
+			if (vel1.x != 0.0f)
+			{
+				vel1.x = 0.0f;
+			}
+			if (vel1.y != 0.0f && vel1.y != -9.81f)
+			{
+				vel1.y = 0.0f;
+			}
+			if (vel1.z != 0.0f)
+			{
+				vel1.z = 0.0f;
+			}
+			if (vel2.x != 0.0f)
+			{
+				vel2.x = 0.0f;
+			}
+			if (vel2.y != 0.0f && vel2.y != -9.81f)
+			{
+				vel2.y = 0.0f;
+			}
+			if (vel2.z != 0.0f)
+			{
+				vel2.z = 0.0f;
+			}
 			return true;
 		}
 		return false;

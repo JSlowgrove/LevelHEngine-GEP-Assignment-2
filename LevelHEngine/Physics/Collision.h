@@ -84,6 +84,18 @@ namespace Collision
 	bool sphereSphereIntersect(Vec3 sphere1Pos, Vec3 sphere2Pos, float sphere1Rad, float sphere2Rad);
 
 	/**
+	@brief Takes in two sphere positions and radius's and uses this to detect if the sphere's collide.
+	@param sphere1Pos The first sphere position's to be used in the collision check.
+	@param sphere2Pos The second sphere position's to be used in the collision check.
+	@param sphere1Rad The first sphere radius's to be used in the collision check.
+	@param sphere2Rad The second sphere radius's to be used in the collision check.
+	@param vel1 A reference to the velocities of the 1st sphere.
+	@param vel2 A reference to the velocities of the 2nd sphere.
+	@return If the collision occurs.
+	*/
+	bool sphereSphereIntersect(Vec3 sphere1Pos, Vec3 sphere2Pos, float sphere1Rad, float sphere2Rad, Vec3 &vel1, Vec3 &vel2);
+
+	/**
 	@brief Takes in a circle position and radius and a box position and dimensions to detect for collision.
 	@param circlePos The circle's position to be used in the collision check.
 	@param boxPos The box's position to be used in the collision check.

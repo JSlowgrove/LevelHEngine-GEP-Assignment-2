@@ -265,9 +265,6 @@ void MainMenu::update(float dt)
 	//Keep the music playing
 	ResourceManager::getMusic(backgroundMusicID)->startMusic();
 
-	//A vector for the sphere collision rotation
-	float rotSpeed = 0.0f;
-
 	//perform collision detection
 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
 	{
@@ -305,18 +302,16 @@ void MainMenu::update(float dt)
 				//sphere sphere collision check
 				if (Application::getGameObjects()[j]->checkForComponent("boundingSphere") && j != i)
 				{
-					//check for collision
+					//check for collision and react.
 					if (Collision::sphereSphereIntersect(
-						Application::getGameObjects()[j]->getComponent<TransformComponent>().lock()->getPos(),
-						Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->getPos(),
+						Application::getGameObjects()[j]->getComponent<BoundingSphereComponent>().lock()->getNextPos(),
+						Application::getGameObjects()[i]->getComponent<BoundingSphereComponent>().lock()->getNextPos(),
 						Application::getGameObjects()[j]->getComponent<BoundingSphereComponent>().lock()->getBoundingSphereRadius(),
-						Application::getGameObjects()[i]->getComponent<BoundingSphereComponent>().lock()->getBoundingSphereRadius()
+						Application::getGameObjects()[i]->getComponent<BoundingSphereComponent>().lock()->getBoundingSphereRadius(), 
+						s1V, s2V
 					))
 					{
 						//Logging::logI("Sphere-Sphere Collision");
-
-						//set the rotation speed
-						rotSpeed = 200.0f;
 					}
 				}
 			}
@@ -330,7 +325,7 @@ void MainMenu::update(float dt)
 			|| Application::getGameObjects()[i]->getName() == "barrel")
 		{
  			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
- 				Vec3(0.0f, Convert::convertDegreeToRadian(rotSpeed * dt), 0.0f)
+ 				Vec3(0.0f, Convert::convertDegreeToRadian(200.0f * dt), 0.0f)
  			);
 		}
 		if (Application::getGameObjects()[i]->getName() == "lightingCube")
