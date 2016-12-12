@@ -14,7 +14,6 @@
 #include "../States/Splash.h"
 #include "GameObject.h"
 
-
 ///forward declaration of game object
 class GameObject;
 
@@ -24,7 +23,6 @@ class GameObject;
 class Application
 {
 public:
-
 	/**
 	@brief A static function to initialise Application.
 	@param title The title of the window.
@@ -47,7 +45,6 @@ public:
 	*/
 	static void destroy();
 
-
 	/**
 	@brief A static function to get game objects.
 	*/
@@ -57,6 +54,9 @@ public:
 	@brief A static function to get camera.
 	*/
 	static std::shared_ptr<GameObject>& getCamera();
+
+	///A shared pointer for the camera
+	static std::shared_ptr< GameObject > camera;
 
 private:
 	/**
@@ -91,8 +91,5 @@ private:
 	static StateManager* stateManager;
 	///A vector of the game objects.
 	static std::vector< std::shared_ptr<GameObject> > gameObjects;
-	///A static of the camera
 
-public:
-	static std::shared_ptr< GameObject > camera;
 };

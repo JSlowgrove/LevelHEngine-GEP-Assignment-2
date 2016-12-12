@@ -1,3 +1,5 @@
+//DISCLAIMER - This was originaly from my GCP Assignement 1
+
 #include "Quaternion.h"
 
 void Quaternion::rotate(Quaternion &quat, Vec3 axis, float angle)

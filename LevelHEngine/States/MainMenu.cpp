@@ -14,6 +14,8 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "MainMenu"), 
 	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/ExitThePremises.ogg"))
 {
+	//Create the game objects
+
 	auto camera = GameObject::create("camera").lock();
 	camera->addComponent<CameraComponent>();
 	camera->addComponent<TransformComponent>();
@@ -54,25 +56,7 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	floor->addComponent<ModelComponent>();
 	floor->addComponent<BoundingBoxComponent>();
 
-	auto leftWall = GameObject::create("leftWall").lock();
-	leftWall->addComponent<TransformComponent>();
-	leftWall->addComponent<ModelComponent>();
-	leftWall->addComponent<BoundingBoxComponent>();
-
-	auto rightWall = GameObject::create("rightWall").lock();
-	rightWall->addComponent<TransformComponent>();
-	rightWall->addComponent<ModelComponent>();
-	rightWall->addComponent<BoundingBoxComponent>();
-
-	auto backWall = GameObject::create("backWall").lock();
-	backWall->addComponent<TransformComponent>();
-	backWall->addComponent<ModelComponent>();
-	backWall->addComponent<BoundingBoxComponent>();
-
-	auto frontWall = GameObject::create("frontWall").lock();
-	frontWall->addComponent<TransformComponent>();
-	frontWall->addComponent<ModelComponent>();
-	frontWall->addComponent<BoundingBoxComponent>();
+	//Awake the game objects
 
 	sphere1->awake();
 	sphere2->awake();
@@ -82,17 +66,15 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	barrel->awake();
 	background->awake();
 	floor->awake();
-	leftWall->awake();
-	rightWall->awake();
-	backWall->awake();
-	frontWall->awake();
 	lightingCube->awake();
+
+	//Initalise the game objects
 
 	camera->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 2.0f, -12.0f));
 	camera->getComponent<TransformComponent>().lock()->rotate(Vec3(Convert::convertDegreeToRadian(-15.0f), 0.0f, 0.0f));
 
 	sphere1->getComponent<TransformComponent>().lock()->setScale(Vec3(0.5f, 0.5f, 0.5f));
-	sphere1->getComponent<TransformComponent>().lock()->setPos(Vec3(-2.0f, -2.0f, 6.0f));
+	sphere1->getComponent<TransformComponent>().lock()->setPos(Vec3(-2.0f, 4.0f, 6.0f));
 	sphere1->getComponent<ModelComponent>().lock()->initaliseMesh("sphere");
 	sphere1->getComponent<ModelComponent>().lock()->initaliseShaders("default", "cyan");
 	sphere1->getComponent<BoundingSphereComponent>().lock()->initaliseBoundingSphere(
@@ -103,7 +85,7 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	);
 
 	sphere2->getComponent<TransformComponent>().lock()->setScale(Vec3(0.5f, 0.5f, 0.5f));
-	sphere2->getComponent<TransformComponent>().lock()->setPos(Vec3(2.0f, -2.0f, 6.0f));
+	sphere2->getComponent<TransformComponent>().lock()->setPos(Vec3(2.0f, 4.0f, 6.0f));
 	sphere2->getComponent<ModelComponent>().lock()->initaliseMesh("sphere");
 	sphere2->getComponent<ModelComponent>().lock()->initaliseShaders("default", "magenta");
 	sphere2->getComponent<BoundingSphereComponent>().lock()->initaliseBoundingSphere(
@@ -152,61 +134,15 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 		floor->getComponent<TransformComponent>().lock()->getScale()
 	);
 
-	leftWall->getComponent<TransformComponent>().lock()->setPos(Vec3(-5.2f, -3.0f, 5.5f));
-	leftWall->getComponent<TransformComponent>().lock()->setScale(Vec3(0.5f, 1.0f, 5.5f));
-	leftWall->getComponent<TransformComponent>().lock()->rotate(Vec3(0.0f, 0.0f, 0.0f));
-	leftWall->getComponent<ModelComponent>().lock()->initaliseMesh("cube");
-	leftWall->getComponent<ModelComponent>().lock()->initaliseShaders("default", "white");
-	 	leftWall->getComponent<BoundingBoxComponent>().lock()->initaliseBoundingBox(
-	 		leftWall->getComponent<ModelComponent>().lock()->getMeshID()
-	 	);
-	 	leftWall->getComponent<BoundingBoxComponent>().lock()->scaleBoundingBox(
-	 		leftWall->getComponent<TransformComponent>().lock()->getScale()
-	 	);
-
-	rightWall->getComponent<TransformComponent>().lock()->setPos(Vec3(5.2f, -3.0f, 5.5f));
-	rightWall->getComponent<TransformComponent>().lock()->setScale(Vec3(0.5f, 1.0f, 5.5f));
-	rightWall->getComponent<TransformComponent>().lock()->rotate(Vec3(0.0f, 0.0f, 0.0f));
-	rightWall->getComponent<ModelComponent>().lock()->initaliseMesh("cube");
-	rightWall->getComponent<ModelComponent>().lock()->initaliseShaders("default", "white");
-	 	rightWall->getComponent<BoundingBoxComponent>().lock()->initaliseBoundingBox(
-	 		rightWall->getComponent<ModelComponent>().lock()->getMeshID()
-	 	);
-	 	rightWall->getComponent<BoundingBoxComponent>().lock()->scaleBoundingBox(
-	 		rightWall->getComponent<TransformComponent>().lock()->getScale()
-	 	);
-
-	backWall->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, -3.0f, 3.0f));
-	backWall->getComponent<TransformComponent>().lock()->setScale(Vec3(10.0f, 1.0f, 0.5f));
-	backWall->getComponent<TransformComponent>().lock()->rotate(Vec3(0.0f, 0.0f, 0.0f));
-	backWall->getComponent<ModelComponent>().lock()->initaliseMesh("cube");
-	backWall->getComponent<ModelComponent>().lock()->initaliseShaders("default", "white");
-	 	backWall->getComponent<BoundingBoxComponent>().lock()->initaliseBoundingBox(
-	 		backWall->getComponent<ModelComponent>().lock()->getMeshID()
-	 	);
-	 	backWall->getComponent<BoundingBoxComponent>().lock()->scaleBoundingBox(
-	 		backWall->getComponent<TransformComponent>().lock()->getScale()
-	 	);
-
-	frontWall->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, -3.0f, 8.0f));
-	frontWall->getComponent<TransformComponent>().lock()->setScale(Vec3(10.0f, 1.0f, 0.5f));
-	frontWall->getComponent<TransformComponent>().lock()->rotate(Vec3(0.0f, 0.0f, 0.0f));
-	frontWall->getComponent<ModelComponent>().lock()->initaliseMesh("cube");
-	frontWall->getComponent<ModelComponent>().lock()->initaliseShaders("default", "white");
-	 	frontWall->getComponent<BoundingBoxComponent>().lock()->initaliseBoundingBox(
-	 		frontWall->getComponent<ModelComponent>().lock()->getMeshID()
-	 	);
-	 	frontWall->getComponent<BoundingBoxComponent>().lock()->scaleBoundingBox(
-	 		frontWall->getComponent<TransformComponent>().lock()->getScale()
-	 	);
-
 	//initalise velocities
 	s1V = s2V = Vec3(0.0f, -9.81f, 0.0f);
 
+	//initalise bools
 	initialLoop = true;
+	resetPos = false;
 
 	//start the music
-	//ResourceManager::getMusic(backgroundMusicID)->startMusic();
+	ResourceManager::getMusic(backgroundMusicID)->startMusic();
 
 	//initialise the mouse press sound
 	mousePressSoundID = ResourceManager::initialiseAudio("Assets/aud/threeTone2.ogg");
@@ -226,10 +162,16 @@ MainMenu::~MainMenu()
 
 bool MainMenu::input()
 {
+	//reset bool
+	resetPos = false;
+
 	//Check for user input
 	SDL_Event incomingEvent;
 	while (SDL_PollEvent(&incomingEvent))
 	{
+		//reset velocities
+		s1V = s2V = Vec3(0.0f, -9.81f, 0.0f);
+
 		InputManager::pollInputEvent(incomingEvent);
 		if (incomingEvent.type == SDL_QUIT)
 		{
@@ -241,9 +183,6 @@ bool MainMenu::input()
 			//If Escape is pressed, end the game loop
 			return false;
 		}
-
-		//reset velocities
-		s1V = s2V = Vec3(0.0f, -9.81f, 0.0f);
 
 		//handle sphere 1
 		if (InputManager::isKeyPressed(W_KEY))
@@ -283,13 +222,13 @@ bool MainMenu::input()
 		//handle both
 		if (InputManager::isKeyPressed(SPACE_KEY))
 		{
-			s1V.y = s2V.y = 20.0f;
+			resetPos = true;
 		}
 
 		//if the mouse left button is pressed
 		if (InputManager::isMouseButtonPressed(MOUSE_LEFT))
 		{
-			//ResourceManager::getAudio(mousePressSoundID)->playEffect();
+			ResourceManager::getAudio(mousePressSoundID)->playEffect();
 			std::string message = "Mouse press window position: " + std::to_string(InputManager::getMousePos().x) + "," + std::to_string(InputManager::getMousePos().y);
 			Logging::logI(message);
 		}
@@ -307,7 +246,10 @@ void MainMenu::update(float dt)
 	}
 
 	//Keep the music playing
-	//ResourceManager::getMusic(backgroundMusicID)->startMusic();
+	ResourceManager::getMusic(backgroundMusicID)->startMusic();
+
+	//A vector for the sphere collision rotation
+	float rotSpeed = 0.0f;
 
 	//perform collision detection
 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
@@ -329,6 +271,8 @@ void MainMenu::update(float dt)
 					))
 					{
 						//Logging::logI("Sphere-Box Collision");
+
+						//stop the y velocity
 						if (Application::getGameObjects()[i]->getName() == "sphere1" && s1V.y != 20.0f)
 						{
 							s1V.y = 0.0f;
@@ -351,6 +295,9 @@ void MainMenu::update(float dt)
 					))
 					{
 						//Logging::logI("Sphere-Sphere Collision");
+
+						//set the rotation speed
+						rotSpeed = 200.0f;
 					}
 				}
 			}
@@ -364,7 +311,7 @@ void MainMenu::update(float dt)
 			|| Application::getGameObjects()[i]->getName() == "barrel")
 		{
  			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
- 				Vec3(0.0f, Convert::convertDegreeToRadian(200.0f * dt), 0.0f)
+ 				Vec3(0.0f, Convert::convertDegreeToRadian(rotSpeed * dt), 0.0f)
  			);
 		}
 		if (Application::getGameObjects()[i]->getName() == "lightingCube")
@@ -380,10 +327,18 @@ void MainMenu::update(float dt)
 		if (Application::getGameObjects()[i]->getName() == "sphere1")
 		{
 			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(s1V * dt);
+			if (resetPos)
+			{
+				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->setPos(Vec3(-2.0f, 4.0f, 6.0f));
+			}
 		}
 		if (Application::getGameObjects()[i]->getName() == "sphere2")
 		{
 			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(s2V * dt);
+			if (resetPos)
+			{
+				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->setPos(Vec3(2.0f, 4.0f, 6.0f));
+			}
 		}
  	}
 }

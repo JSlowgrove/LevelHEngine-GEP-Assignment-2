@@ -1,3 +1,5 @@
+//DISCLAIMER - This was originaly from my GCP Assignement 1
+
 #pragma once
 
 #include "math.h"

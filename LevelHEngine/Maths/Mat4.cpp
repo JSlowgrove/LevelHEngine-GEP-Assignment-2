@@ -1,3 +1,5 @@
+//DISCLAIMER - This is a modified version of my Mat4 class originaly from my GCP Assignement 1
+
 #include "Mat4.h"
 
 void Mat4::setPos(Mat4 &matrix, Vec3 pos)
@@ -151,7 +153,7 @@ m[0][1];4	m[1][1];5	m[2][1];6	m[3][1];7
 m[0][2];8	m[1][2];9	m[2][2];10	m[3][2];11
 m[0][3];12	m[1][3];13	m[2][3];14	m[3][3];15
 */
-void getInverse(Mat4 &matrix)
+void Mat4::getInverse(Mat4 &matrix)
 {
 	//make a temporary matrix
 	Mat4 tm = matrix;

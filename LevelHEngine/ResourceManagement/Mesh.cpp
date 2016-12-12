@@ -1,3 +1,5 @@
+//DISCLAIMER - This a modified version of code from a previous assignment
+
 #include "Mesh.h"
 
 Mesh::Mesh(std::string objFileName)

@@ -14,6 +14,9 @@
 class CameraComponent : public Component
 {
 public:
+	/**
+	@brief A virtual destructor.
+	*/
 	virtual ~CameraComponent();
 
 	/**
@@ -22,7 +25,14 @@ public:
 	*/
 	Mat4 getProjection();
 
+	/**
+	@brief A virtual function for the componets awake
+	*/
 	virtual void onAwake();
+
+	/**
+	@brief A virtual function for the componets destroy
+	*/
 	virtual void onDestroy();
 
 private:

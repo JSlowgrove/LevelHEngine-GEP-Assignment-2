@@ -1,3 +1,5 @@
+//DISCLAIMER - This is a modified version of the Mutiny transform class
+
 #include "TransformComponent.h"
 
 TransformComponent::~TransformComponent()

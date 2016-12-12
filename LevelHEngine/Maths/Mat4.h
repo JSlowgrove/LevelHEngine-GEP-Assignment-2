@@ -1,3 +1,5 @@
+//DISCLAIMER - This is a modified version of my Mat4 class originaly from my GCP Assignement 1
+
 #pragma once
 
 #include "Vec4.h"
@@ -176,10 +178,34 @@ struct Mat4
 	*/
 	void rotateAlongZ(Mat4 &matrix, float angle);
 
+	/**
+	@brief Rotate the matrix around a point using the angle of rotation along the x axis.
+	@param matrix A pointer to the matrix to rotate.
+	@param axisPoint The point to rtate around.
+	@param angle The angle to rotate the matrix by, must be a Radian.
+	*/
 	void rotatePointAroundXAxis(Mat4 &matrix, Vec3 axisPoint, float angle);
+
+	/**
+	@brief Rotate the matrix around a point using the angle of rotation along the y axis.
+	@param matrix A pointer to the matrix to rotate.
+	@param axisPoint The point to rtate around.
+	@param angle The angle to rotate the matrix by, must be a Radian.
+	*/
 	void rotatePointAroundYAxis(Mat4 &matrix, Vec3 axisPoint, float angle);
+
+	/**
+	@brief Rotate the matrix around a point using the angle of rotation along the z axis.
+	@param matrix A pointer to the matrix to rotate.
+	@param axisPoint The point to rtate around.
+	@param angle The angle to rotate the matrix by, must be a Radian.
+	*/
 	void rotatePointAroundZAxis(Mat4 &matrix, Vec3 axisPoint, float angle);
 
+	/**
+	@brief A function to get the inverse of a matrix.
+	@param matrix A pointer to the matrix to invert.
+	*/
 	void getInverse(Mat4 &matrix);
 
 	/**

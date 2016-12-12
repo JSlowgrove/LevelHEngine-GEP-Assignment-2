@@ -5,9 +5,13 @@
 #include "../Components/Component.h"
 #include "Application.h"
 
+///Forward declarations
 class Application;
 class Component;
 
+/**
+@brief Contains details and functions for the game object.
+*/
 class GameObject : public std::enable_shared_from_this<GameObject>
 {
 public:		
@@ -70,24 +74,71 @@ public:
 		return std::weak_ptr<T>(); 
 	}
 
-
+	/**
+	@brief A static function to create a game object.
+	@param name The name to give to the game object.
+	@returns A weak pointer to the created game object.
+	*/
 	static std::weak_ptr<GameObject> create(std::string name);
 
+	/**
+	@brief A function to set the name of the game object.
+	@param name The name to give to the game object.
+	*/
 	void setName(std::string name) { this->name = name; }
+
+	/**
+	@brief A function to get the name of the game object.
+	@param The name of the game object.
+	*/
 	std::string getName() { return name; }
+
+	/**
+	@brief A virtual function for the game objects awake.
+	*/
 	virtual void awake();
+
+	/**
+	@brief A virtual function for the game objects update.
+	*/
 	virtual void update();
+
+	/**
+	@brief A virtual function for the game objects render.
+	*/
 	virtual void render();
+
+	/**
+	@brief A virtual function for the game objects destroy.
+	*/
 	virtual void destroy();
+
+	/**
+	@brief A function to set the componets destroyed boolean.
+	@param destroyed A boolean for the state of destroyed.
+	*/
 	void setDestroyed(bool destroyed) { this->destroyed = destroyed; }
+
+	/**
+	@brief A function to get the componets destroyed boolean.
+	@return The boolean for the state of destroyed.
+	*/
 	bool getDestroyed() { return destroyed; }
+
+	/**
+	@brief A function to check the if the game object has a specific componet.
+	@param id The type ID of the component to check for.
+	@return If the game object contains the component.
+	*/
 	bool checkForComponent(std::string id);
 
 private:
-	///The name of the game object
+	///The name of the game object.
 	std::string name;
 	///A vector of components attached to the game object.
 	std::vector < std::shared_ptr<Component> > components;
+	///A vector of the component ID's contained in the game object.
 	std::vector < std::string > componentIDs;
+	///A boolean for if the game object is destroyed.
 	bool destroyed;
 };

@@ -9,6 +9,7 @@
 Splash::Splash(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "Splash"), splashTimer(new Timer(3.0f))
 {
+	//create game objects
 	auto camera = GameObject::create("camera").lock();
 	camera->addComponent<CameraComponent>();
 	camera->addComponent<TransformComponent>();
@@ -18,9 +19,11 @@ Splash::Splash(StateManager* stateManager, SDL_Window* window)
 	splash->addComponent<TransformComponent>();
 	splash->addComponent<ModelComponent>();
 
+	//awake the game objects
 	camera->awake();
 	splash->awake();
 
+	//initalise the game objects
 	camera->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f,02.0f, -10.0f));
 	camera->getComponent<TransformComponent>().lock()->rotate(Vec3(0.0f, 0.0f, 0.0f));
 

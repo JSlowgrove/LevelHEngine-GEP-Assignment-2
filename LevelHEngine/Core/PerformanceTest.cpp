@@ -1,3 +1,5 @@
+//DISCLAIMER - This was originaly from my GCP Assignement 1
+
 #include "PerformanceTest.h"
 
 PerformanceTest::PerformanceTest()
@@ -20,15 +22,6 @@ uint64_t PerformanceTest::testFinish()
 
 	QueryPerformanceCounter(&endingTime);
 	elapsedMicroseconds.QuadPart = endingTime.QuadPart - startingTime.QuadPart;
-
-
-	//
-	// We now have the elapsed number of ticks, along with the
-	// number of ticks-per-second. We use these values
-	// to convert to the number of elapsed microseconds.
-	// To guard against loss-of-precision, we convert
-	// to microseconds *before* dividing by ticks-per-second.
-	//
 
 	elapsedMicroseconds.QuadPart *= 1000000;
 	elapsedMicroseconds.QuadPart /= frequency.QuadPart;

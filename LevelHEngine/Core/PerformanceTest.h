@@ -1,3 +1,5 @@
+//DISCLAIMER - This was originaly from my GCP Assignement 1
+
 #pragma once
 #include <windows.h>
 #include <cstdint>
@@ -31,6 +33,7 @@ public:
 	@returns The time taken in seconds.
 	*/
 	uint64_t testFinish();
+
 private:
 	///The elapsed number of ticks
 	LARGE_INTEGER startingTime;
