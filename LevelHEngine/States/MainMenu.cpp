@@ -245,6 +245,23 @@ void MainMenu::update(float dt)
 		initialLoop = false;
 	}
 
+	//Store the next position of the objects
+	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
+	{
+		if (Application::getGameObjects()[i]->getName() == "sphere1")
+		{
+			Application::getGameObjects()[i]->getComponent<BoundingSphereComponent>().lock()->setNextPos(
+				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->getPos()
+				+ (s1V * dt));
+		}
+		if (Application::getGameObjects()[i]->getName() == "sphere2")
+		{
+			Application::getGameObjects()[i]->getComponent<BoundingSphereComponent>().lock()->setNextPos(
+				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->getPos()
+				+ (s2V * dt));
+		}
+	}
+
 	//Keep the music playing
 	ResourceManager::getMusic(backgroundMusicID)->startMusic();
 
@@ -262,22 +279,24 @@ void MainMenu::update(float dt)
 				//sphere box collision check
 				if (Application::getGameObjects()[j]->checkForComponent("boundingBox"))
 				{
+					Vec3 collisonSide = Vec3(0.0f, 0.0f, 0.0f);
 					//check for collision
 					if (Collision::sphereCubeIntersect(
 						Application::getGameObjects()[j]->getComponent<TransformComponent>().lock()->getPos(),
 						Application::getGameObjects()[j]->getComponent<BoundingBoxComponent>().lock()->getBoundingBoxDimensions(),
-						Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->getPos(),
-						Application::getGameObjects()[i]->getComponent<BoundingSphereComponent>().lock()->getBoundingSphereRadius()
+						Application::getGameObjects()[i]->getComponent<BoundingSphereComponent>().lock()->getNextPos(),
+						Application::getGameObjects()[i]->getComponent<BoundingSphereComponent>().lock()->getBoundingSphereRadius(),
+						collisonSide
 					))
 					{
 						//Logging::logI("Sphere-Box Collision");
 
 						//stop the y velocity
-						if (Application::getGameObjects()[i]->getName() == "sphere1" && s1V.y != 20.0f)
+						if (Application::getGameObjects()[i]->getName() == "sphere1" && collisonSide.y == -1.0f)
 						{
 							s1V.y = 0.0f;
 						}
-						if (Application::getGameObjects()[i]->getName() == "sphere2" && s2V.y != 20.0f)
+						if (Application::getGameObjects()[i]->getName() == "sphere2" && collisonSide.y == -1.0f)
 						{
 							s2V.y = 0.0f;
 						}

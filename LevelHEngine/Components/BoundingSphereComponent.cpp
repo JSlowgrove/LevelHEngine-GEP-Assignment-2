@@ -9,6 +9,7 @@ BoundingSphereComponent::~BoundingSphereComponent()
 void BoundingSphereComponent::onAwake()
 {
 	initialSphereRad = 0.0f;
+	nextPos = Vec3(0.0f, 0.0f, 0.0f);  
 	sphereRad = initialSphereRad;
 	id = "boundingSphere";
 }

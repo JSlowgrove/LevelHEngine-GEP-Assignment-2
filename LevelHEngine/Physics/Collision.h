@@ -32,6 +32,17 @@ namespace Collision
 	bool cubeCubeIntersect(Vec3 posBoxA, Vec3 dimBoxA, Vec3 posBoxB, Vec3 dimBoxB);
 
 	/**
+	@brief Checks to see if two cubes intersect (position is the center of the cube)
+	@param posBoxA The position of the first cube.
+	@param dimBoxA The dimensions of the first cube.
+	@param posBoxB The position of the second cube.
+	@param dimBoxB The dimensions of the second cube.
+	@param collisionSides A reference to the sides of the cubes that collides, eg. x = -1 then left, x = 0 then none, x = 1 then right
+	@returns If the cubes intersect.
+	*/
+	bool cubeCubeIntersect(Vec3 posBoxA, Vec3 dimBoxA, Vec3 posBoxB, Vec3 dimBoxB, Vec3 &collisionSides);
+
+	/**
 	@brief Checks to see if a cube and sphere intersects (position is the center of the cube)
 	@param posBox The position of the cube.
 	@param dimBox The dimensions of the cube.
@@ -40,6 +51,17 @@ namespace Collision
 	@returns If the cubes intersect.
 	*/
 	bool sphereCubeIntersect(Vec3 posBox, Vec3 dimBox, Vec3 posSphere, float radSphere);
+
+	/**
+	@brief Checks to see if a cube and sphere intersects (position is the center of the cube)
+	@param posBox The position of the cube.
+	@param dimBox The dimensions of the cube.
+	@param posSphere The position of the sphere.
+	@param radSphere The radius of the sphere.
+	@param collisionSides A reference to the sides of the cubes that collides, eg. x = -1 then left, x = 0 then none, x = 1 then right
+	@returns If the cubes intersect.
+	*/
+	bool sphereCubeIntersect(Vec3 posBox, Vec3 dimBox, Vec3 posSphere, float radSphere, Vec3 &collisionSides);
 
 	/**
 	@brief Takes in two circle positions, radius's to detect if the circles collide.

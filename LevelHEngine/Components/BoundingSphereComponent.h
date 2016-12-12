@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Component.h"
+#include "../Maths/Vec3.h"
 
 /**
 @brief A class that handles the bounding sphere component.
@@ -41,9 +42,23 @@ public:
 	*/
 	virtual void onDestroy();
 
+	/**
+	@brief A function to set the position of the sphere for the next loop for use with collision.
+	@param nextPos The position of the sphere next loop.
+	*/
+	void setNextPos(Vec3 nextPos) { this->nextPos = nextPos; }
+
+	/**
+	@brief A function to get the position of the sphere for the next loop for use with collision.
+	@return The position of the sphere next loop.
+	*/
+	Vec3 getNextPos() { return nextPos; }
+
 private:
 	///The initial radius of the bounding sphere
 	float initialSphereRad;
 	///The  radius of the bounding sphere
 	float sphereRad;
+	///The position in the next loop
+	Vec3 nextPos;
 };

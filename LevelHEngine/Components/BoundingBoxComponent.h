@@ -42,9 +42,23 @@ public:
 	*/
 	virtual void onDestroy();
 
+	/**
+	@brief A function to set the position of the box for the next loop for use with collision.
+	@param nextPos The position of the box next loop.
+	*/
+	void setNextPos(Vec3 nextPos) { this->nextPos = nextPos; }
+
+	/**
+	@brief A function to get the position of the box for the next loop for use with collision.
+	@return The position of the box next loop.
+	*/
+	Vec3 getNextPos() { return nextPos; }
+
 private:
 	///The initial dimensions of the bouncing box
 	Vec3 initialBoxDim;
 	///The dimensions of the bouncing box
 	Vec3 boxDim;
+	///The position in the next loop
+	Vec3 nextPos;
 };

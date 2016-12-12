@@ -17,6 +17,12 @@ namespace Collision
 
 	bool cubeCubeIntersect(Vec3 posBoxA, Vec3 dimBoxA, Vec3 posBoxB, Vec3 dimBoxB)
 	{
+		Vec3 collisionSides = Vec3(0.0f, 0.0f, 0.0f);
+		return cubeCubeIntersect(posBoxA, dimBoxA, posBoxB, dimBoxB, collisionSides);
+	}
+
+	bool cubeCubeIntersect(Vec3 posBoxA, Vec3 dimBoxA, Vec3 posBoxB, Vec3 dimBoxB, Vec3 &collisionSides)
+	{
 		//Half dimensions for center
 		Vec3 halfDimA = dimBoxA * 0.5f;
 		Vec3 halfDimB = dimBoxB * 0.5f;
@@ -44,31 +50,43 @@ namespace Collision
 		if (minAX < minBX)
 		{
 			if (maxAX >= minBX)
+			{
 				collisionX = true;
+				collisionSides.x = 1.0f;
+			}
 		}
 		else if (maxBX >= minAX)
 		{
 			collisionX = true;
+			collisionSides.x = -1.0f;
 		}
 
 		if (minAY < minBY)
 		{
 			if (maxAY >= minBY)
+			{
 				collisionY = true;
+				collisionSides.y = 1.0f;
+			}
 		}
 		else if (maxBY >= minAY)
 		{
 			collisionY = true;
+			collisionSides.y = -1.0f;
 		}
 
 		if (minAZ < minBZ)
 		{
 			if (maxAZ >= minBZ)
+			{
 				collisionZ = true;
+				collisionSides.z = 1.0f;
+			}
 		}
 		else if (maxBZ >= minAZ)
 		{
 			collisionZ = true;
+			collisionSides.z = -1.0f;
 		}
 
 		//check for intersection
@@ -76,6 +94,12 @@ namespace Collision
 	}
 
 	bool sphereCubeIntersect(Vec3 posBox, Vec3 dimBox, Vec3 posSphere, float radSphere)
+	{
+		Vec3 collisionSides = Vec3(0.0f, 0.0f, 0.0f);
+		return sphereCubeIntersect(posBox, dimBox, posSphere, radSphere, collisionSides);
+	}
+
+	bool sphereCubeIntersect(Vec3 posBox, Vec3 dimBox, Vec3 posSphere, float radSphere, Vec3 &collisionSides)
 	{
 		//Half dimensions for center
 		Vec3 halfDim = dimBox * 0.5f;
@@ -103,31 +127,43 @@ namespace Collision
 		if (minBoxX < minSphereX)
 		{
 			if (maxBoxX >= minSphereX)
+			{
 				collisionX = true;
+				collisionSides.x = 1.0f;
+			}
 		}
 		else if (maxSphereX >= minBoxX)
 		{
 			collisionX = true;
+			collisionSides.x = -1.0f;
 		}
 
 		if (minBoxY < minSphereY)
 		{
 			if (maxBoxY >= minSphereY)
+			{
 				collisionY = true;
+				collisionSides.y = 1.0f;
+			}
 		}
 		else if (maxSphereY >= minBoxY)
 		{
 			collisionY = true;
+			collisionSides.y = -1.0f;
 		}
 
 		if (minBoxZ < minSphereZ)
 		{
 			if (maxBoxZ >= minSphereZ)
+			{
 				collisionZ = true;
+				collisionSides.z = 1.0f;
+			}
 		}
 		else if (maxSphereZ >= minBoxZ)
 		{
 			collisionZ = true;
+			collisionSides.z = -1.0f;
 		}
 
 		//check for intersection
