@@ -12,7 +12,7 @@
 #include "../Physics/Collision.h"
 
 DemoState1::DemoState1(StateManager* stateManager, SDL_Window* window)
-	: State(stateManager, window, "MainMenu"),
+	: State(stateManager, window, "DemoState1"),
 	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/ExitThePremises.ogg"))
 {
 	//Create the game objects
