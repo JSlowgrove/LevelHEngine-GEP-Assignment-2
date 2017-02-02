@@ -143,6 +143,7 @@
     <ClCompile Include="Physics\Mechanics.cpp" />
     <ClCompile Include="ResourceManagement\Audio.cpp" />
     <ClCompile Include="ResourceManagement\FileLoader.cpp" />
+    <ClCompile Include="ResourceManagement\Heightmap.cpp" />
     <ClCompile Include="ResourceManagement\Music.cpp" />
     <ClCompile Include="ResourceManagement\Mesh.cpp" />
     <ClCompile Include="ResourceManagement\ResourceManager.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Physics\Mechanics.h" />
     <ClInclude Include="ResourceManagement\Audio.h" />
     <ClInclude Include="ResourceManagement\FileLoader.h" />
+    <ClInclude Include="ResourceManagement\Heightmap.h" />
     <ClInclude Include="ResourceManagement\Music.h" />
     <ClInclude Include="ResourceManagement\Mesh.h" />
     <ClInclude Include="ResourceManagement\ResourceManager.h" />
