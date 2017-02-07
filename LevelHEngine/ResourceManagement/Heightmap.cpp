@@ -34,9 +34,7 @@ void Heightmap::initaliseHeightmap(std::string mapFileLocation, std::vector<floa
 
 	//creates and array for the vertices of the height map
 	mapPointsVertex.resize(height*width);
-
-	//unsigned int indexThing = 0;
-
+	
 	for (int y = 0; y < height; y++) //loop every row
 	{
 		for (int x = 0; x < width; x++)// loop every column
