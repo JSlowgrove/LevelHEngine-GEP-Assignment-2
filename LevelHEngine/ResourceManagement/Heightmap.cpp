@@ -1,12 +1,9 @@
 #include "Heightmap.h"
 
 void Heightmap::initaliseHeightmap(std::string mapFileLocation, std::vector<float> &vertices,
-	std::vector<float> &vertexNormals, std::vector<float> &vertexTextures, std::vector<unsigned int> &indicesVector)
+	std::vector<float> &vertexNormals, std::vector<float> &vertexTextures, std::vector<unsigned int> &indices)
 {
 	std::vector<Vec3> mapPointsVertex;//the vertex array for height map
-	std::vector<Vec3> mapPointsNormal;//the normals array for height map
-	std::vector<Vec3> mapPointsColour;//the colour array for height map
-	std::vector<unsigned int> indices; //the array of indices to draw the height map
 
 	//Loads the image as a surface
 	SDL_Surface* map = IMG_Load(mapFileLocation.c_str());
@@ -37,8 +34,6 @@ void Heightmap::initaliseHeightmap(std::string mapFileLocation, std::vector<floa
 
 	//creates and array for the vertices of the height map
 	mapPointsVertex.resize(height*width);
-	mapPointsNormal.resize(height*width);
-	mapPointsColour.resize(height*width);
 
 	//unsigned int indexThing = 0;
 
@@ -57,14 +52,18 @@ void Heightmap::initaliseHeightmap(std::string mapFileLocation, std::vector<floa
 			/*fill the current vector with the current y and x value and scale and move it to be in a better position
 			and get the value of the colour and use it as the z value and scale it to make it fit better*/
 			mapPointsVertex[index] = Vec3((y * positionScale) - displayScale, (x * positionScale) - displayScale, redChannel * heightScale);
+			vertices.push_back((y * positionScale) - displayScale);
+			vertices.push_back((x * positionScale) - displayScale);
+			vertices.push_back(redChannel * heightScale);
 
 			//set the colour of the map to the colour on the image and divide it by 255 so that the number is between 0 and 1
-			mapPointsColour[index] = Vec3((redChannel / colourScale), (greenChannel / colourScale), (blueChannel / colourScale));
+			vertexTextures.push_back(redChannel / colourScale);
+			vertexTextures.push_back(greenChannel / colourScale);
+			vertexTextures.push_back(blueChannel / colourScale);
 
 			/*if the current position is not the the last row or the last column then create an indices for the triangle,
 			this check is to stop infinite triangles*/
-			if (index < ((width * height) - width) && x < (height - 1))
-			if (index < uint32_t((width * (height - 1))) && x < (width - 1))
+			if (index < uint32_t(((width * height) - width)) && x < (height - 1))
 			{
 				// adds the first triangle of the current square
 				indices.push_back(index);
@@ -86,35 +85,18 @@ void Heightmap::initaliseHeightmap(std::string mapFileLocation, std::vector<floa
 	{
 		if ((i % 2) == 0)//work out if the current index is a multiple of two and switch between the needed normal type to get accordingly
 		{
-			mapPointsNormal[i] = getNormal(mapPointsVertex[i], mapPointsVertex[i + 1], mapPointsVertex[i + width]);
+			Vec3 norm = getNormal(mapPointsVertex[i], mapPointsVertex[i + 1], mapPointsVertex[i + width]);
+			vertexNormals.push_back(norm.x);
+			vertexNormals.push_back(norm.y);
+			vertexNormals.push_back(norm.z);
 		}
 		else
 		{
-			mapPointsNormal[i] = getNormal(mapPointsVertex[i + width], mapPointsVertex[i + 1], mapPointsVertex[i + width + 1]);
+			Vec3 norm = getNormal(mapPointsVertex[i + width], mapPointsVertex[i + 1], mapPointsVertex[i + width + 1]);
+			vertexNormals.push_back(norm.x);
+			vertexNormals.push_back(norm.y);
+			vertexNormals.push_back(norm.z);
 		}
-	}
-
-	for (unsigned int i = 0; i < mapPointsVertex.size(); i++)
-	{
-		vertices.push_back(mapPointsVertex[i].x);
-		vertices.push_back(mapPointsVertex[i].y);
-		vertices.push_back(mapPointsVertex[i].z);
-	}
-	for (unsigned int i = 0; i < mapPointsNormal.size(); i++)
-	{
-		vertexNormals.push_back(mapPointsNormal[i].x);
-		vertexNormals.push_back(mapPointsNormal[i].y);
-		vertexNormals.push_back(mapPointsNormal[i].z);
-	}
-	for (unsigned int i = 0; i < mapPointsColour.size(); i++)
-	{
-		vertexTextures.push_back(mapPointsColour[i].x);
-		vertexTextures.push_back(mapPointsColour[i].y);
-		vertexTextures.push_back(mapPointsColour[i].z);
-	}
-	for (unsigned int i = 0; i < indices.size(); i++)
-	{
-		indicesVector.push_back(indices[i]);
 	}
 }
 
