@@ -44,8 +44,15 @@ void ModelComponent::onRender()
 		glUniform1i(ResourceManager::getShaders(shaderID)->getTextureSamplerLocation(), 0);
 	}
 
-	/*Draw the model to the screen, using the type of geometry and the number of vertices's*/
-	glDrawArrays(GL_TRIANGLES, 0, ResourceManager::getMesh(meshID)->getNumberOfVertices());
+	if (ResourceManager::getMesh(meshID)->checkHeightmap())
+	{
+		glDrawElements(GL_TRIANGLES, ResourceManager::getMesh(meshID)->getNumIndices(), GL_UNSIGNED_INT, (void*)0);
+	}
+	else
+	{
+		/*Draw the model to the screen, using the type of geometry and the number of vertices's*/
+		glDrawArrays(GL_TRIANGLES, 0, ResourceManager::getMesh(meshID)->getNumberOfVertices());
+	}
 	
 	/*Unbind the vertex array object*/
 	glBindVertexArray(0);
@@ -54,11 +61,18 @@ void ModelComponent::onRender()
 	glUseProgram(0);
 }
 
+void ModelComponent::initaliseHeightmap(std::string fileName)
+{
+	meshID = ResourceManager::initialiseHeightmap(fileName);
+	textured = false;
+}
+
 void ModelComponent::initaliseMesh(std::string objFileName)
 {
 	meshID = ResourceManager::initialiseMesh(objFileName);
 	textured = false;
 }
+
 void ModelComponent::initaliseMesh(std::string objFileName, std::string textureFileName)
 {
 	meshID = ResourceManager::initialiseMesh(objFileName, textureFileName);

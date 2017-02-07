@@ -65,6 +65,13 @@ public:
 	static void deleteAudio(std::string id) { audio.erase(id); }
 
 	/**
+	@brief A static function to initialise a heightmap.
+	@param heightmapFileName The name of the heightmap file.
+	@returns The ID of the loaded file.
+	*/
+	static std::string initialiseHeightmap(std::string heightmapFileName);
+
+	/**
 	@brief A static function to initialise a mesh without a texture.
 	@param objFileName The name of the obj file.
 	@returns The ID of the loaded file.

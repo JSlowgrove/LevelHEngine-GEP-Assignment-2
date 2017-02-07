@@ -11,19 +11,10 @@
 #include "../Core/Logging.h"
 
 //Generates a mesh using a Heightmap for use with a renderer.
-class Heightmap
+namespace Heightmap
 {
-public:
-	Heightmap(std::string mapFileLocation);
-	~Heightmap();
-
-private:
-	void initaliseHeightmap(std::string mapFileLocation);
+	void initaliseHeightmap(std::string mapFileLocation, std::vector<float> &vertices,
+		std::vector<float> &vertexNormals, std::vector<float> &vertexTextures, std::vector<unsigned int> &indices);
 	Uint32 getPixel(int x, int y, uint8_t bpp, SDL_Surface* map);
 	Vec3 getNormal(Vec3 a, Vec3 b, Vec3 c);
-
-	std::vector<Vec3> mapPointsVertex;//the vertex array for height map
-	std::vector<Vec3> mapPointsNormal;//the normals array for height map
-	std::vector<Vec3> mapPointsColour;//the colour array for height map
-	std::vector<int> indices; //the array of indices to draw the height map
 };

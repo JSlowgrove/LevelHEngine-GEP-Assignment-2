@@ -16,11 +16,14 @@
 class Mesh
 {	
 public:
+
 	/**
 	@brief Creates a vertex array object using a obj file location and OpenGL.
 	@param objFileName The name of the obj file.
 	*/
 	Mesh(std::string objFileName);
+
+	Mesh(std::string fileName, bool heightmap);
 
 	/**
 	@brief Creates a vertex array object using a obj file location and OpenGL.
@@ -54,12 +57,19 @@ public:
 
 	Vec3 getMaxVert() { return maxVert; }
 	Vec3 getMinVert() { return minVert; }
+	unsigned int getNumIndices() { 
+		return numberOfIndices; 
+	};
+	bool checkHeightmap() { return heightmap; }
 
 private:
 	///The Vertex Array Object for use with OpenGL
 	GLuint vertexArrayObject;
+	GLuint indexBuffer;
+
 	///Number of vertices in the model
 	unsigned int numberOfVertices;
+	unsigned int numberOfIndices;
 	///The name of the texture file
 	std::string textureFileName;
 	///The Texture
@@ -68,6 +78,8 @@ private:
 	Vec3 maxVert;
 	///The Min Verticies
 	Vec3 minVert;
+	///If the mesh if is a heightmap
+	bool heightmap;
 
 	/**
 	@brief Initialise the texture.
@@ -77,7 +89,7 @@ private:
 
 	/**
 	@brief Initialise the vertex array object.
-	@param objFileName The name of the obj file.
+	@param fileName The name of the file.
 	*/
-	void InitialiseVAO(std::string objFileName);
+	void InitialiseVAO(std::string fileName);
 };

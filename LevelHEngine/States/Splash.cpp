@@ -72,6 +72,10 @@ bool Splash::input()
 
 void Splash::update(float dt)
 {
+#if _DEBUG
+	stateManager->changeState(new MainMenu(stateManager, window));
+	return;
+#else
 	//Update the timer
 	splashTimer->upadateTimer(dt);
 
@@ -81,6 +85,7 @@ void Splash::update(float dt)
 		stateManager->changeState(new MainMenu(stateManager, window));
 		return;
 	}
+#endif
 }
 
 void Splash::draw()

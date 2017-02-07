@@ -45,6 +45,23 @@ void ResourceManager::deleteAllMusic()
 	}
 }
 
+std::string ResourceManager::initialiseHeightmap(std::string heightmapFileName)
+{
+	//test if the mesh has already been loaded
+	if (meshes.count(heightmapFileName) == 0)
+	{
+		//load the mesh
+		meshes[heightmapFileName] = new Mesh(heightmapFileName, true);
+	}
+	else
+	{
+		//print out that it is already loaded
+		Logging::logI(heightmapFileName + " heightmap already loaded.");
+	}
+	//return the ID
+	return heightmapFileName;
+}
+
 std::string ResourceManager::initialiseMesh(std::string objFileName)
 {
 	//test if the mesh has already been loaded

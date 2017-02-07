@@ -79,6 +79,7 @@ bool MainMenu::input()
 void MainMenu::update(float dt)
 {
 	//swtich to demo state
+	//stateManager->changeState(new DemoState1(stateManager, window));
 	stateManager->changeState(new DemoState2(stateManager, window));
 	return;
 }

@@ -1,8 +1,7 @@
-//DISCLAIMER - This a modified version of code from a previous assignment
-
 #include "Mesh.h"
+#include "Heightmap.h"
 
-Mesh::Mesh(std::string objFileName)
+Mesh::Mesh(std::string objFileName) : heightmap(false)
 {
 	//initialise the texture
 	textureFileName = "Untextured";
@@ -11,7 +10,16 @@ Mesh::Mesh(std::string objFileName)
 	InitialiseVAO(objFileName);
 }
 
-Mesh::Mesh(std::string objFileName, std::string materialFileName)
+Mesh::Mesh(std::string fileName, bool heightmap) : heightmap(heightmap)
+{
+	//initialise the texture
+	textureFileName = "Untextured";
+
+	//Initialise the vertex buffer object
+	InitialiseVAO(fileName);
+}
+
+Mesh::Mesh(std::string objFileName, std::string materialFileName) : heightmap(false)
 {
 	//store the texture
 	this->textureFileName = materialFileName;
@@ -27,7 +35,7 @@ Mesh::~Mesh()
 	glDeleteTextures(1, &textureID);
 }
 
-void Mesh::InitialiseVAO(std::string objFileName)
+void Mesh::InitialiseVAO(std::string fileName)
 {
 	//Creates one VAO
 	glGenVertexArrays(1, &vertexArrayObject);
@@ -38,10 +46,18 @@ void Mesh::InitialiseVAO(std::string objFileName)
 	std::vector<float> vertices;
 	std::vector<float> vertexNormals;
 	std::vector<float> vertexTextures;
-	FileLoader::loadOBJFile(objFileName, vertices, vertexNormals, vertexTextures);
+	std::vector<unsigned int> indices;
+	if (!heightmap)
+	{
+		FileLoader::loadOBJFile(fileName, vertices, vertexNormals, vertexTextures);
+	}
+	else
+	{
+		Heightmap::initaliseHeightmap(fileName, vertices, vertexNormals, vertexTextures, indices);
+	}
 
 	//set the vertices array to the contents of the vector
-	float* verticesArray = &vertices[0];
+	//float* verticesArray = &vertices[0];
 	//set the number of vertices's
 	numberOfVertices = vertices.size() / 3;
 
@@ -84,14 +100,14 @@ void Mesh::InitialiseVAO(std::string objFileName)
 	//Tell OpenGL that we want to activate the buffer and that it's a VBO
 	glBindBuffer(GL_ARRAY_BUFFER, positionBuffer);
 	//Send the data to OpenGL and set it to use GL_STATIC_DRAW (write it once)
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numberOfVertices * 3, verticesArray, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numberOfVertices * 3, &vertices[0], GL_STATIC_DRAW);
 
 	//set how the VBO will link to the shader
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(0);
 
 	//set the normal array to the contents of the vector
-	float* normals = &vertexNormals[0];
+	//float* normals = &vertexNormals[0];
 
 	//Variable for storing a VBO
 	GLuint normalBuffer = 0;
@@ -100,7 +116,7 @@ void Mesh::InitialiseVAO(std::string objFileName)
 	//Tell OpenGL that we want to activate the buffer and that it's a VBO
 	glBindBuffer(GL_ARRAY_BUFFER, normalBuffer);
 	//Send the data to OpenGL and set it to use GL_STATIC_DRAW (write it once)
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numberOfVertices * 3, normals, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numberOfVertices * 3, &vertexNormals[0], GL_STATIC_DRAW);
 
 	//set how the VBO will link to the shader
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
@@ -113,6 +129,13 @@ void Mesh::InitialiseVAO(std::string objFileName)
 		initialiseTexture(vertexTextures);
 	}
 
+	//if using the hieghtmap (indices)
+	if (heightmap)
+	{
+		glGenBuffers(1, &indexBuffer);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * indices.size(), &indices[0], GL_STATIC_DRAW);
+	}
 	
 	//deactivate the VBO
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -125,6 +148,7 @@ void Mesh::InitialiseVAO(std::string objFileName)
 	//disable the array
 	glDisableVertexAttribArray(0);
 	
+	numberOfIndices = indices.size();
 }
 
 void Mesh::initialiseTexture(std::vector<float> vertexTextures)
