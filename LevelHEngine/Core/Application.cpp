@@ -5,6 +5,7 @@ SDL_GLContext Application::glcontext;
 StateManager* Application::stateManager;
 std::vector<std::shared_ptr<GameObject> > Application::gameObjects;
 std::shared_ptr<GameObject> Application::camera;
+Vec3  Application::backgroundColour;
 
 void Application::init(std::string title, Vec2 windowPos, Vec2 windowRes, bool fullscreen, float frameRate)
 {
@@ -12,6 +13,9 @@ void Application::init(std::string title, Vec2 windowPos, Vec2 windowRes, bool f
 	initSDL();
 	initTTF();
 	initMixer();
+
+	//Initialise the background colour to default
+	setBackgroundColour(Vec3(0.0f, 0.0f, 0.0f));
 
 	// Set the OpenGL context profile
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
@@ -76,7 +80,7 @@ void Application::run(int argc, char *argv[])
 		stateManager->update(deltaTime);
 
 		//clear the frame-buffer to black
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(backgroundColour.x, backgroundColour.y, backgroundColour.z, 1.0f);
 		//write colour to the frame-buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -168,4 +172,9 @@ std::vector<std::shared_ptr<GameObject> >& Application::getGameObjects()
 std::shared_ptr<GameObject>& Application::getCamera()
 {
 	return camera;
+}
+
+void Application::setBackgroundColour(Vec3 colour)
+{
+	backgroundColour = colour;
 }

@@ -11,6 +11,9 @@
 DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "DemoState2")
 {
+	//Set the background colour
+	Application::setBackgroundColour(Vec3(0.1f, 0.1f, 0.2f));
+
 	//Create the game objects
 
 	auto camera = GameObject::create("camera").lock();

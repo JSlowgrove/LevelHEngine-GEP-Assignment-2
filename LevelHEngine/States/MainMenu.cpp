@@ -11,6 +11,9 @@
 MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "MainMenu")
 {
+	//Set the background colour
+	Application::setBackgroundColour(Vec3(0.0f, 0.0f, 0.0f));
+
 	//create game objects
 	auto camera = GameObject::create("camera").lock();
 	camera->addComponent<CameraComponent>();

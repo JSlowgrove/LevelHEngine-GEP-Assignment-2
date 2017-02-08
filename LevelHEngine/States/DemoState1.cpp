@@ -15,6 +15,9 @@ DemoState1::DemoState1(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "DemoState1"),
 	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/ExitThePremises.ogg"))
 {
+	//Set the background colour
+	Application::setBackgroundColour(Vec3(0.0f, 0.0f, 0.0f));
+
 	//Create the game objects
 
 	auto camera = GameObject::create("camera").lock();

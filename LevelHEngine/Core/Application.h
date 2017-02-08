@@ -55,6 +55,12 @@ public:
 	*/
 	static std::shared_ptr<GameObject>& getCamera();
 
+	/**
+	@brief A static function to get set the background colour.
+	@param colour The colour to set it to.
+	*/
+	static void setBackgroundColour(Vec3 colour);
+
 	///A shared pointer for the camera
 	static std::shared_ptr< GameObject > camera;
 
@@ -91,5 +97,7 @@ private:
 	static StateManager* stateManager;
 	///A vector of the game objects.
 	static std::vector< std::shared_ptr<GameObject> > gameObjects;
+	///The background colour.
+	static Vec3 backgroundColour;
 
 };
