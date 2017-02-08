@@ -43,4 +43,6 @@ public:
 	void draw();
 
 private:
+	///Initital loop bool
+	bool initialLoop;
 };

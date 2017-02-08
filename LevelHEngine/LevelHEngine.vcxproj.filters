@@ -147,6 +147,9 @@
     <ClCompile Include="ResourceManagement\Heightmap.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
+    <ClCompile Include="Components\CameraControlComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Application.h">
@@ -256,6 +259,9 @@
     </ClInclude>
     <ClInclude Include="ResourceManagement\Heightmap.h">
       <Filter>Header Files\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\CameraControlComponent.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

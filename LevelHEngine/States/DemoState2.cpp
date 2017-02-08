@@ -5,8 +5,10 @@
 #include "../Core/InputManager.h"
 #include "../Core/Application.h"
 #include "../Components/CameraComponent.h"
+#include "../Components/CameraControlComponent.h"
 #include "../Components/TransformComponent.h"
 #include "../Components/ModelComponent.h"
+
 
 DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "DemoState2")
@@ -19,6 +21,7 @@ DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
 	auto camera = GameObject::create("camera").lock();
 	camera->addComponent<CameraComponent>();
 	camera->addComponent<TransformComponent>();
+	camera->addComponent<CameraControlComponent>();
 	Application::camera = camera;
 
 	auto heightmap = GameObject::create("heightmap").lock();
@@ -33,13 +36,14 @@ DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
 	//Initalise the game objects
 
 	camera->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 0.0f, -20.0f));
-	camera->getComponent<TransformComponent>().lock()->rotate(Vec3(Convert::convertDegreeToRadian(0.0f), 0.0f, 0.0f));
 
 	heightmap->getComponent<TransformComponent>().lock()->setScale(Vec3(1.0f, 1.0f, 1.0f));
 	heightmap->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 0.0f, -20.0f));
-	heightmap->getComponent<TransformComponent>().lock()->rotate(Vec3(0.0f, Convert::convertDegreeToRadian(90.0f), Convert::convertDegreeToRadian(90.0f)));
-	heightmap->getComponent<ModelComponent>().lock()->initaliseHeightmap("Assets/img/map8bit.bmp");
+	heightmap->getComponent<ModelComponent>().lock()->initaliseHeightmap("Assets/img/map.bmp");
 	heightmap->getComponent<ModelComponent>().lock()->initaliseShaders("default", "lightgrey");
+
+	//initalise bool
+	initialLoop = true;
 }
 
 DemoState2::~DemoState2()
@@ -64,22 +68,35 @@ bool DemoState2::input()
 			//If Escape is pressed, end the game loop
 			return false;
 		}
+
+		//Handle the camera input
+		Application::camera->getComponent<CameraControlComponent>().lock()->handleInput(incomingEvent);
 	}
 	return true;
 }
 
 void DemoState2::update(float dt)
 {
-	//loops through the game objects
-	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
+	//hack for initial loop
+	if (initialLoop)
 	{
-		if (Application::getGameObjects()[i]->getName() == "heightmap")
-		{
-			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
-				Vec3(0.0f, Convert::convertDegreeToRadian(100.0f * dt), 0.0f)
-			);
-		}
+		dt = 0.0f;
+		initialLoop = false;
 	}
+
+	//Update the camera
+	Application::camera->getComponent<CameraControlComponent>().lock()->updateCamera(dt);
+
+	//loops through the game objects
+// 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
+// 	{
+// 		if (Application::getGameObjects()[i]->getName() == "heightmap")
+// 		{
+// 			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
+// 				Vec3(0.0f, Convert::convertDegreeToRadian(100.0f * dt), 0.0f)
+// 			);
+// 		}
+// 	}
 }
 
 void DemoState2::draw()
