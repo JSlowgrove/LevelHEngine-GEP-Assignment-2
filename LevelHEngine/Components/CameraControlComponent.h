@@ -41,9 +41,17 @@ public:
 	*/
 	void setSpeed(float speed);
 
+	/**
+	@brief A function to set the rotation speed of the camera
+	*/
+	void setRotateSpeed(float rotateSpeed);
+
 private:
 	///The movment speed
 	float speed;
+	///The rotation speed
+	float rotateSpeed;
 	///The velocities for the movment of the camera
 	Vec3 movementVel;
+	Vec3 rotationVel;
 };

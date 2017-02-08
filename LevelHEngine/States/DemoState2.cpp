@@ -88,15 +88,15 @@ void DemoState2::update(float dt)
 	Application::camera->getComponent<CameraControlComponent>().lock()->updateCamera(dt);
 
 	//loops through the game objects
-// 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
-// 	{
-// 		if (Application::getGameObjects()[i]->getName() == "heightmap")
-// 		{
-// 			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
-// 				Vec3(0.0f, Convert::convertDegreeToRadian(100.0f * dt), 0.0f)
-// 			);
-// 		}
-// 	}
+	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
+	{
+		if (Application::getGameObjects()[i]->getName() == "heightmap")
+		{
+			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
+				Vec3(0.0f, Convert::convertDegreeToRadian(100.0f * dt), 0.0f)
+			);
+		}
+	}
 }
 
 void DemoState2::draw()
