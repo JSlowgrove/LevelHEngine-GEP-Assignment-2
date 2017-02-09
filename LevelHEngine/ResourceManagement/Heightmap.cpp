@@ -29,7 +29,7 @@ void Heightmap::initaliseHeightmap(std::string mapFileLocation, std::vector<floa
 	uint32_t index = 0;
 	float heightScale = 0.05f;
 	float positionScale = 0.1f;
-	float displayScale = 12.6f;
+	float displayScale = (positionScale * width) * 0.5f;
 	float colourScale = 255.0f;
 
 	//creates and array for the vertices of the height map
