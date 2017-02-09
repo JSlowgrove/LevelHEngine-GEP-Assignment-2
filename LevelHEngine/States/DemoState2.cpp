@@ -40,10 +40,8 @@ DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
 	heightmap->getComponent<TransformComponent>().lock()->setScale(Vec3(1.0f, 1.0f, 1.0f));
 	heightmap->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 0.0f, -20.0f));
 	heightmap->getComponent<TransformComponent>().lock()->setRotation(Vec3(0.0f, 0.0f, Convert::convertDegreeToRadian(90.0f)));
- 	heightmap->getComponent<ModelComponent>().lock()->initaliseHeightmap("Assets/img/ppmap.png", "pp.png");
+ 	heightmap->getComponent<ModelComponent>().lock()->initaliseHeightmap("Assets/img/map.bmp", "terrain.jpg");
  	heightmap->getComponent<ModelComponent>().lock()->initaliseShaders("texture", "texture");
-// 	heightmap->getComponent<ModelComponent>().lock()->initaliseHeightmap("Assets/img/ppmap.png");
-// 	heightmap->getComponent<ModelComponent>().lock()->initaliseShaders("default", "lightgrey");
 
 	//initalise bool
 	initialLoop = true;
