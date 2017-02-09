@@ -7,6 +7,7 @@
 #include "../Components/TransformComponent.h"
 #include "DemoState1.h"
 #include "DemoState2.h"
+#include "DemoState3.h"
 
 MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "MainMenu")
@@ -83,7 +84,8 @@ void MainMenu::update(float dt)
 {
 	//swtich to demo state
 	//stateManager->changeState(new DemoState1(stateManager, window));
-	stateManager->changeState(new DemoState2(stateManager, window));
+	//stateManager->changeState(new DemoState2(stateManager, window));
+	stateManager->changeState(new DemoState3(stateManager, window));
 	return;
 }
 

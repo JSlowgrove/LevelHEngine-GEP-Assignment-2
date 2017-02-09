@@ -45,6 +45,10 @@ void ModelComponent::onRender()
 	{
 		drawWithIndices();
 	}
+	else if (ResourceManager::getMesh(meshID)->checkPrimitive())
+	{
+		drawWithPoints();
+	}
 	else
 	{
 		drawWithVerticies();
@@ -60,6 +64,12 @@ void ModelComponent::onRender()
 void ModelComponent::initaliseHeightmap(std::string fileName)
 {
 	meshID = ResourceManager::initialiseHeightmap(fileName);
+	textured = false;
+}
+
+void ModelComponent::initalisePrimitive(Primitives::PrimativeType primType)
+{
+	meshID = ResourceManager::initialisePrimitive(primType);
 	textured = false;
 }
 
@@ -98,6 +108,12 @@ void ModelComponent::drawWithVerticies()
 {
 	/*Draw the model to the screen, using the type of geometry and the number of vertices's*/
 	glDrawArrays(GL_TRIANGLES, 0, ResourceManager::getMesh(meshID)->getNumberOfVertices());
+}
+
+void ModelComponent::drawWithPoints()
+{
+	/*Draw the model to the screen, using the type of geometry and the number of vertices's*/
+	glDrawArrays(GL_POINTS, 0, ResourceManager::getMesh(meshID)->getNumberOfVertices());
 }
 
 void ModelComponent::drawWithIndices()

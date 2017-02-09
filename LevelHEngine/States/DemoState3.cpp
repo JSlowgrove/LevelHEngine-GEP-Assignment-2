@@ -1,4 +1,4 @@
-#include "DemoState2.h"
+#include "DemoState3.h"
 
 #include "MainMenu.h"
 #include "../Core/GameObject.h"
@@ -10,11 +10,11 @@
 #include "../Components/ModelComponent.h"
 
 
-DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
-	: State(stateManager, window, "DemoState2")
+DemoState3::DemoState3(StateManager* stateManager, SDL_Window* window)
+	: State(stateManager, window, "DemoState3")
 {
 	//Set the background colour
-	Application::setBackgroundColour(Vec3(0.1f, 0.1f, 0.2f));
+	Application::setBackgroundColour(Vec3(0.0f, 0.0f, 0.0f));
 
 	//Create the game objects
 
@@ -23,35 +23,35 @@ DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
 	camera->addComponent<TransformComponent>();
 	camera->addComponent<CameraControlComponent>();
 	Application::camera = camera;
-
-	auto heightmap = GameObject::create("heightmap").lock();
-	heightmap->addComponent<TransformComponent>();
-	heightmap->addComponent<ModelComponent>();
 	
+	auto tourus = GameObject::create("tourus").lock();
+	tourus->addComponent<TransformComponent>();
+	tourus->addComponent<ModelComponent>();
+
 	//Awake the game objects
 
 	camera->awake();
-	heightmap->awake();
+	tourus->awake();
 
 	//Initalise the game objects
 
 	camera->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 0.0f, -20.0f));
 
-	heightmap->getComponent<TransformComponent>().lock()->setScale(Vec3(1.0f, 1.0f, 1.0f));
-	heightmap->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 0.0f, -20.0f));
-	heightmap->getComponent<TransformComponent>().lock()->setRotation(Vec3(0.0f, 0.0f, Convert::convertDegreeToRadian(90.0f)));
- 	heightmap->getComponent<ModelComponent>().lock()->initaliseHeightmap("Assets/img/map.png", "terrain.png");
- 	heightmap->getComponent<ModelComponent>().lock()->initaliseShaders("texture", "texture");
+	tourus->getComponent<TransformComponent>().lock()->setScale(Vec3(1.5f, 1.5f, 1.5f));
+	tourus->getComponent<ModelComponent>().lock()->initalisePrimitive(Primitives::TOURUS);
+	tourus->getComponent<ModelComponent>().lock()->initaliseShaders("default", "black");
 
 	//initalise bool
 	initialLoop = true;
+
+	totalTime = 0.0f;
 }
 
-DemoState2::~DemoState2()
+DemoState3::~DemoState3()
 {
 }
 
-bool DemoState2::input()
+bool DemoState3::input()
 {
 	//Check for user input
 	SDL_Event incomingEvent;
@@ -69,14 +69,11 @@ bool DemoState2::input()
 			//If Escape is pressed, end the game loop
 			return false;
 		}
-
-		//Handle the camera input
-		Application::camera->getComponent<CameraControlComponent>().lock()->handleInput(incomingEvent);
 	}
 	return true;
 }
 
-void DemoState2::update(float dt)
+void DemoState3::update(float dt)
 {
 	//hack for initial loop
 	if (initialLoop)
@@ -85,22 +82,30 @@ void DemoState2::update(float dt)
 		initialLoop = false;
 	}
 
+	//loops through the game objects
+ 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
+ 	{
+ 		if (Application::getGameObjects()[i]->getName() == "tourus")
+ 		{
+ 			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
+ 				Vec3(Convert::convertDegreeToRadian(100.0f * dt), Convert::convertDegreeToRadian(100.0f * dt), 0.0f)
+ 			);
+ 		}
+ 	}
+
+	totalTime += dt;
+
+	//set background colour to change
+	float r = 0.5f + 0.5f*cos(totalTime*0.1347652371f);
+	float g = 0.5f + 0.5f*sin(totalTime);
+	float b = 0.5f + 0.5f*cos(totalTime);
+	Application::setBackgroundColour(Vec3(r, g, b));
+
 	//Update the camera
 	Application::camera->getComponent<CameraControlComponent>().lock()->updateCamera(dt);
-
-	//loops through the game objects
-// 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
-// 	{
-// 		if (Application::getGameObjects()[i]->getName() == "heightmap")
-// 		{
-// 			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
-// 				Vec3(0.0f, Convert::convertDegreeToRadian(100.0f * dt), 0.0f)
-// 			);
-// 		}
-// 	}
 }
 
-void DemoState2::draw()
+void DemoState3::draw()
 {
 	//loops through the game objects
 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)

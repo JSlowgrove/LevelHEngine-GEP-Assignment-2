@@ -9,6 +9,7 @@
 #include "GL/glew.h"
 #include "FileLoader.h"
 #include "../Maths/Vec3.h"
+#include "Primitives.h"
 
 /**
 @brief Creates an object from an text file, this can then be used with OpenGL.
@@ -22,6 +23,8 @@ public:
 	@param objFileName The name of the obj file.
 	*/
 	Mesh(std::string objFileName);
+
+	Mesh(Primitives::PrimativeType primType);
 
 	Mesh(std::string fileName, bool heightmap);
 
@@ -63,6 +66,7 @@ public:
 		return numberOfIndices; 
 	};
 	bool checkHeightmap() { return heightmap; }
+	bool checkPrimitive() { return primative; }
 
 private:
 	///The Vertex Array Object for use with OpenGL
@@ -82,6 +86,7 @@ private:
 	Vec3 minVert;
 	///If the mesh if is a heightmap
 	bool heightmap;
+	bool primative;
 
 	/**
 	@brief Initialise the texture.

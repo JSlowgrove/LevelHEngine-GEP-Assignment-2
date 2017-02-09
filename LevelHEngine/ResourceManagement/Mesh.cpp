@@ -1,7 +1,44 @@
 #include "Mesh.h"
 #include "Heightmap.h"
+#include "Primitives.h"
 
-Mesh::Mesh(std::string objFileName) : heightmap(false)
+Mesh::Mesh(Primitives::PrimativeType primType) : heightmap(false), primative(true)
+{
+	//initialise the texture
+	textureFileName = "Untextured";
+
+	//Creates one VAO
+	glGenVertexArrays(1, &vertexArrayObject);
+	//initialise the code to bind to the VBO
+	glBindVertexArray(vertexArrayObject);
+
+	//load the obj file
+	std::vector<float> vertices;
+
+	switch (primType)
+	{
+	case Primitives::TOURUS:
+		vertices = Primitives::generateTourus();
+		break;
+	}
+
+	//set the number of vertices's
+	numberOfVertices = vertices.size() / 3;
+
+	GLuint positionBuffer = initaliseVBO(3, vertices, 0);
+
+	//deactivate the VBO
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+
+	//delete the VBO's
+	glDeleteBuffers(1, &positionBuffer);
+
+	//disable the array
+	glDisableVertexAttribArray(0);
+}
+
+Mesh::Mesh(std::string objFileName) : heightmap(false), primative(false)
 {
 	//initialise the texture
 	textureFileName = "Untextured";
@@ -10,7 +47,7 @@ Mesh::Mesh(std::string objFileName) : heightmap(false)
 	initialiseVAO(objFileName);
 }
 
-Mesh::Mesh(std::string fileName, bool heightmap) : heightmap(heightmap)
+Mesh::Mesh(std::string fileName, bool heightmap) : heightmap(heightmap), primative(false)
 {
 	//initialise the texture
 	textureFileName = "Untextured";
@@ -19,7 +56,7 @@ Mesh::Mesh(std::string fileName, bool heightmap) : heightmap(heightmap)
 	initialiseVAO(fileName);
 }
 
-Mesh::Mesh(std::string objFileName, std::string materialFileName) : heightmap(false)
+Mesh::Mesh(std::string objFileName, std::string materialFileName) : heightmap(false), primative(false)
 {
 	//store the texture
 	this->textureFileName = materialFileName;
@@ -28,7 +65,7 @@ Mesh::Mesh(std::string objFileName, std::string materialFileName) : heightmap(fa
 	initialiseVAO(objFileName);
 }
 
-Mesh::Mesh(std::string fileName, std::string materialFileName, bool heightmap) : heightmap(heightmap)
+Mesh::Mesh(std::string fileName, std::string materialFileName, bool heightmap) : heightmap(heightmap), primative(false)
 {
 	//initialise the texture
 	this->textureFileName = materialFileName;
@@ -82,7 +119,7 @@ void Mesh::initialiseVAO(std::string fileName)
 		initialiseTexture(vertexTextures);
 	}
 
-	//if using the hieghtmap (indices)
+	//if using the heightmap (indices)
 	if (heightmap)
 	{
 		GLuint indexBuffer = initaliseIndicies(indices);

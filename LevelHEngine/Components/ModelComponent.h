@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include "GL/glew.h"
 #include "../ResourceManagement/ResourceManager.h"
+#include "../ResourceManagement/Primitives.h"
 #include "../Maths/Mat4.h"
 #include "Component.h"
 
@@ -24,6 +25,8 @@ public:
 	void onRender();
 
 	void initaliseHeightmap(std::string fileName);
+
+	void initalisePrimitive(Primitives::PrimativeType primType);
 
 	void initaliseHeightmap(std::string fileName, std::string textureFileName);
 
@@ -73,5 +76,6 @@ private:
 
 	void bindTextures();
 	void drawWithVerticies();
+	void drawWithPoints();
 	void drawWithIndices();
 };

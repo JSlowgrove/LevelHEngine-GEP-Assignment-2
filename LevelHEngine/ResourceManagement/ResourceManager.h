@@ -7,6 +7,7 @@
 #include "Music.h"
 #include "Shader.h"
 #include "Mesh.h"
+#include "Primitives.h"
 
 /**
 @brief Contains static variables and functions for use with resource manager.
@@ -72,6 +73,8 @@ public:
 	static std::string initialiseHeightmap(std::string heightmapFileName);
 
 	static std::string initialiseHeightmap(std::string heightmapFileName, std::string textureFileName);
+
+	static std::string initialisePrimitive(Primitives::PrimativeType primType);
 
 	/**
 	@brief A static function to initialise a mesh without a texture.

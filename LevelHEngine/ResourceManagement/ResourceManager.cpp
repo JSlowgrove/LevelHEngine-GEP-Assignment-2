@@ -45,6 +45,25 @@ void ResourceManager::deleteAllMusic()
 	}
 }
 
+std::string ResourceManager::initialisePrimitive(Primitives::PrimativeType primType)
+{
+	std::string primName = "type " + std::to_string(primType) + "primitive";
+
+	//test if the mesh has already been loaded
+	if (meshes.count(primName) == 0)
+	{
+		//load the mesh
+		meshes[primName] = new Mesh(primType);
+	}
+	else
+	{
+		//print out that it is already loaded
+		Logging::logI(primName + " already loaded.");
+	}
+	//return the ID
+	return primName;
+}
+
 std::string ResourceManager::initialiseHeightmap(std::string heightmapFileName)
 {
 	//test if the mesh has already been loaded
