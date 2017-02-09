@@ -91,5 +91,11 @@ private:
 	@brief Initialise the vertex array object.
 	@param fileName The name of the file.
 	*/
-	void InitialiseVAO(std::string fileName);
+	void initialiseVAO(std::string fileName);
+
+	GLuint initaliseIndicies(std::vector<unsigned int> &inIndices);
+
+	GLuint initaliseVBO(unsigned int vecNum, std::vector<float> &inVBOData, int linkNum);
+
+	void calculateMaxAndMinVerticies(std::vector<float> &vertices);
 };

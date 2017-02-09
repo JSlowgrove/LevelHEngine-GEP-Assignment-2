@@ -7,7 +7,7 @@ Mesh::Mesh(std::string objFileName) : heightmap(false)
 	textureFileName = "Untextured";
 
 	//Initialise the vertex buffer object
-	InitialiseVAO(objFileName);
+	initialiseVAO(objFileName);
 }
 
 Mesh::Mesh(std::string fileName, bool heightmap) : heightmap(heightmap)
@@ -16,7 +16,7 @@ Mesh::Mesh(std::string fileName, bool heightmap) : heightmap(heightmap)
 	textureFileName = "Untextured";
 
 	//Initialise the vertex buffer object
-	InitialiseVAO(fileName);
+	initialiseVAO(fileName);
 }
 
 Mesh::Mesh(std::string objFileName, std::string materialFileName) : heightmap(false)
@@ -25,7 +25,7 @@ Mesh::Mesh(std::string objFileName, std::string materialFileName) : heightmap(fa
 	this->textureFileName = materialFileName;
 
 	//Initialise the vertex buffer object
-	InitialiseVAO(objFileName);
+	initialiseVAO(objFileName);
 }
 
 Mesh::~Mesh()
@@ -35,7 +35,7 @@ Mesh::~Mesh()
 	glDeleteTextures(1, &textureID);
 }
 
-void Mesh::InitialiseVAO(std::string fileName)
+void Mesh::initialiseVAO(std::string fileName)
 {
 	//Creates one VAO
 	glGenVertexArrays(1, &vertexArrayObject);
@@ -56,71 +56,15 @@ void Mesh::InitialiseVAO(std::string fileName)
 		Heightmap::initaliseHeightmap(fileName, vertices, vertexNormals, vertexTextures, indices);
 	}
 
-	//set the vertices array to the contents of the vector
-	//float* verticesArray = &vertices[0];
 	//set the number of vertices's
 	numberOfVertices = vertices.size() / 3;
 
-	//calculate the max and min verticies
-	for (unsigned int i = 0; i < vertices.size(); i+=3)
-	{
-		//x
-		if (vertices[i] > maxVert.x)
-		{
-			maxVert.x = vertices[i];
-		}
-		else if (vertices[i] < minVert.x)
-		{
-			minVert.x = vertices[i];
-		}
-		//y
-		if (vertices[i + 1] > maxVert.y)
-		{
-			maxVert.y = vertices[i + 1];
-		}
-		else if (vertices[i + 1] < minVert.y)
-		{
-			minVert.y = vertices[i + 1];
-		}
-		//z
-		if (vertices[i + 2] > maxVert.z)
-		{
-			maxVert.z = vertices[i + 2];
-		}
-		else if (vertices[i + 2] < minVert.z)
-		{
-			minVert.z = vertices[i + 2];
-		}
-	}
+	//calculate max and min verticies
+	calculateMaxAndMinVerticies(vertices);
 
-	//Variable for storing a VBO
-	GLuint positionBuffer = 0;
-	//Create a generic buffer
-	glGenBuffers(1, &positionBuffer);
-	//Tell OpenGL that we want to activate the buffer and that it's a VBO
-	glBindBuffer(GL_ARRAY_BUFFER, positionBuffer);
-	//Send the data to OpenGL and set it to use GL_STATIC_DRAW (write it once)
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numberOfVertices * 3, &vertices[0], GL_STATIC_DRAW);
+	GLuint positionBuffer = initaliseVBO(3, vertices, 0);
 
-	//set how the VBO will link to the shader
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	glEnableVertexAttribArray(0);
-
-	//set the normal array to the contents of the vector
-	//float* normals = &vertexNormals[0];
-
-	//Variable for storing a VBO
-	GLuint normalBuffer = 0;
-	//Create a generic 'buffer'
-	glGenBuffers(1, &normalBuffer);
-	//Tell OpenGL that we want to activate the buffer and that it's a VBO
-	glBindBuffer(GL_ARRAY_BUFFER, normalBuffer);
-	//Send the data to OpenGL and set it to use GL_STATIC_DRAW (write it once)
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numberOfVertices * 3, &vertexNormals[0], GL_STATIC_DRAW);
-
-	//set how the VBO will link to the shader
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	glEnableVertexAttribArray(1);
+	GLuint normalBuffer = initaliseVBO(3, vertexNormals, 1);
 
 	//test if the model uses a texture
 	if (textureFileName != "Untextured")
@@ -132,10 +76,10 @@ void Mesh::InitialiseVAO(std::string fileName)
 	//if using the hieghtmap (indices)
 	if (heightmap)
 	{
-		glGenBuffers(1, &indexBuffer);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * indices.size(), &indices[0], GL_STATIC_DRAW);
+		GLuint indexBuffer = initaliseIndicies(indices);
 	}
+
+	numberOfIndices = indices.size();
 	
 	//deactivate the VBO
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -147,8 +91,6 @@ void Mesh::InitialiseVAO(std::string fileName)
 
 	//disable the array
 	glDisableVertexAttribArray(0);
-	
-	numberOfIndices = indices.size();
 }
 
 void Mesh::initialiseTexture(std::vector<float> vertexTextures)
@@ -174,9 +116,6 @@ void Mesh::initialiseTexture(std::vector<float> vertexTextures)
 		format = GL_RGBA;
 	}
 
-	//set the texture coordinates array to the contents of the vector
-	float* textureCoordinates = &vertexTextures[0];
-
 	// Create one OpenGL texture
 	glGenTextures(1, &textureID);
 
@@ -192,20 +131,7 @@ void Mesh::initialiseTexture(std::vector<float> vertexTextures)
 	//unbind texture
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	// Variable for storing a VBO
-	GLuint textureBuffer = 0;
-	// Create a generic 'buffer'
-	glGenBuffers(1, &textureBuffer);
-	// Tell OpenGL that we want to activate the buffer and that it's a VBO
-	glBindBuffer(GL_ARRAY_BUFFER, textureBuffer);
-	// With this buffer active, we can now send our data to OpenGL
-	// We need to tell it how much data to send
-	// We can also tell OpenGL how we intend to use this buffer - here we say GL_STATIC_DRAW because we're only writing it once
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numberOfVertices * 2, textureCoordinates, GL_STATIC_DRAW);
-
-	// This tells OpenGL how we link the vertex data to the shader
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, 0);
-	glEnableVertexAttribArray(2);
+	GLuint textureBuffer = initaliseVBO(2, vertexTextures, 2);
 
 	//deactivate the VBO
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -237,4 +163,67 @@ unsigned int Mesh::getNumberOfVertices()
 {
 	//returns the vertex buffer object
 	return numberOfVertices;
+}
+
+GLuint Mesh::initaliseIndicies(std::vector<unsigned int> &inIndices)
+{
+	GLuint indexBuffer = 0;
+	glGenBuffers(1, &indexBuffer);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * inIndices.size(), &inIndices[0], GL_STATIC_DRAW);
+
+	return indexBuffer;
+}
+
+GLuint Mesh::initaliseVBO(unsigned int vecNum, std::vector<float> &inVBOData, int linkNum)
+{
+	//Variable for storing a VBO
+	GLuint positionBuffer = 0;
+	//Create a generic buffer
+	glGenBuffers(1, &positionBuffer);
+	//Tell OpenGL that we want to activate the buffer and that it's a VBO
+	glBindBuffer(GL_ARRAY_BUFFER, positionBuffer);
+	//Send the data to OpenGL and set it to use GL_STATIC_DRAW (write it once)
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numberOfVertices * vecNum, &inVBOData[0], GL_STATIC_DRAW);
+
+	//set how the VBO will link to the shader
+	glVertexAttribPointer(linkNum, vecNum, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(linkNum);
+
+	return positionBuffer;
+}
+
+void Mesh::calculateMaxAndMinVerticies(std::vector<float> &vertices)
+{
+	//calculate the max and min verticies
+	for (unsigned int i = 0; i < vertices.size(); i += 3)
+	{
+		//x
+		if (vertices[i] > maxVert.x)
+		{
+			maxVert.x = vertices[i];
+		}
+		else if (vertices[i] < minVert.x)
+		{
+			minVert.x = vertices[i];
+		}
+		//y
+		if (vertices[i + 1] > maxVert.y)
+		{
+			maxVert.y = vertices[i + 1];
+		}
+		else if (vertices[i + 1] < minVert.y)
+		{
+			minVert.y = vertices[i + 1];
+		}
+		//z
+		if (vertices[i + 2] > maxVert.z)
+		{
+			maxVert.z = vertices[i + 2];
+		}
+		else if (vertices[i + 2] < minVert.z)
+		{
+			minVert.z = vertices[i + 2];
+		}
+	}
 }
