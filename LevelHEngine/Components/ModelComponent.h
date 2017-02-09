@@ -69,5 +69,7 @@ private:
 	///A boolean for if textured
 	bool textured;
 
-	
+	void bindTextures();
+	void drawWithVerticies();
+	void drawWithIndices();
 };

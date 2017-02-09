@@ -38,20 +38,16 @@ void ModelComponent::onRender()
 	/*if the model uses a texture*/
 	if (textured)
 	{
-		/*texturing*/
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, ResourceManager::getMesh(meshID)->getTextureID());
-		glUniform1i(ResourceManager::getShaders(shaderID)->getTextureSamplerLocation(), 0);
+		bindTextures();
 	}
 
 	if (ResourceManager::getMesh(meshID)->checkHeightmap())
 	{
-		glDrawElements(GL_TRIANGLES, ResourceManager::getMesh(meshID)->getNumIndices(), GL_UNSIGNED_INT, (void*)0);
+		drawWithIndices();
 	}
 	else
 	{
-		/*Draw the model to the screen, using the type of geometry and the number of vertices's*/
-		glDrawArrays(GL_TRIANGLES, 0, ResourceManager::getMesh(meshID)->getNumberOfVertices());
+		drawWithVerticies();
 	}
 	
 	/*Unbind the vertex array object*/
@@ -82,4 +78,23 @@ void ModelComponent::initaliseMesh(std::string objFileName, std::string textureF
 void ModelComponent::initaliseShaders(std::string vertexShaderFileName, std::string fragmentShaderFileName)
 {
 	shaderID = ResourceManager::initialiseShader(vertexShaderFileName, fragmentShaderFileName);
+}
+
+void ModelComponent::bindTextures()
+{
+	/*texturing*/
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, ResourceManager::getMesh(meshID)->getTextureID());
+	glUniform1i(ResourceManager::getShaders(shaderID)->getTextureSamplerLocation(), 0);
+}
+
+void ModelComponent::drawWithVerticies()
+{
+	/*Draw the model to the screen, using the type of geometry and the number of vertices's*/
+	glDrawArrays(GL_TRIANGLES, 0, ResourceManager::getMesh(meshID)->getNumberOfVertices());
+}
+
+void ModelComponent::drawWithIndices()
+{
+	glDrawElements(GL_TRIANGLES, ResourceManager::getMesh(meshID)->getNumIndices(), GL_UNSIGNED_INT, (void*)0);
 }
