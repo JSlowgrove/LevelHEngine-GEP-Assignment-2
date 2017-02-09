@@ -11,7 +11,8 @@
 
 
 DemoState3::DemoState3(StateManager* stateManager, SDL_Window* window)
-	: State(stateManager, window, "DemoState3")
+	: State(stateManager, window, "DemoState3"),
+	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/ShowYourMoves.ogg"))
 {
 	//Set the background colour
 	Application::setBackgroundColour(Vec3(0.0f, 0.0f, 0.0f));
@@ -44,11 +45,18 @@ DemoState3::DemoState3(StateManager* stateManager, SDL_Window* window)
 	//initalise bool
 	initialLoop = true;
 
+	//start the music
+	ResourceManager::getMusic(backgroundMusicID)->startMusic();
+
 	totalTime = 0.0f;
 }
 
 DemoState3::~DemoState3()
 {
+	//Stop music
+	ResourceManager::getMusic(backgroundMusicID)->stopMusic();
+	//Delete music pointers
+	ResourceManager::deleteMusic(backgroundMusicID);
 }
 
 bool DemoState3::input()
@@ -81,6 +89,9 @@ void DemoState3::update(float dt)
 		dt = 0.0f;
 		initialLoop = false;
 	}
+
+	//Keep the music playing
+	ResourceManager::getMusic(backgroundMusicID)->startMusic();
 
 	//loops through the game objects
  	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)

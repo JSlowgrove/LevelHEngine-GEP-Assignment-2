@@ -42,6 +42,8 @@ public:
 	void draw();
 
 private:
+	///The background music id.
+	std::string backgroundMusicID;
 	///Initital loop bool
 	bool initialLoop;
 
