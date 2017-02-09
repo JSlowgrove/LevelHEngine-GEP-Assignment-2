@@ -54,10 +54,9 @@ void Heightmap::initaliseHeightmap(std::string mapFileLocation, std::vector<floa
 			vertices.push_back((x * positionScale) - displayScale);
 			vertices.push_back(redChannel * heightScale);
 
-			//set the colour of the map to the colour on the image and divide it by 255 so that the number is between 0 and 1
-			vertexTextures.push_back(redChannel / colourScale);
-			vertexTextures.push_back(greenChannel / colourScale);
-			vertexTextures.push_back(blueChannel / colourScale);
+			//generate the texture coordinates for the heightmap
+			vertexTextures.push_back(float(x) * (1.0f / width));
+			vertexTextures.push_back(float(y) * (1.0f / height));
 
 			/*if the current position is not the the last row or the last column then create an indices for the triangle,
 			this check is to stop infinite triangles*/
