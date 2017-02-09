@@ -63,6 +63,12 @@ void ModelComponent::initaliseHeightmap(std::string fileName)
 	textured = false;
 }
 
+void ModelComponent::initaliseHeightmap(std::string fileName, std::string textureFileName)
+{
+	meshID = ResourceManager::initialiseHeightmap(fileName, textureFileName);
+	textured = true;
+}
+
 void ModelComponent::initaliseMesh(std::string objFileName)
 {
 	meshID = ResourceManager::initialiseMesh(objFileName);

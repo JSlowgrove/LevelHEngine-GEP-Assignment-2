@@ -56,7 +56,7 @@ void Heightmap::initaliseHeightmap(std::string mapFileLocation, std::vector<floa
 
 			//generate the texture coordinates for the heightmap
 			vertexTextures.push_back(float(x) * (1.0f / width));
-			vertexTextures.push_back(float(y) * (1.0f / height));
+			vertexTextures.push_back(float(height - y) * (1.0f / height));
 
 			/*if the current position is not the the last row or the last column then create an indices for the triangle,
 			this check is to stop infinite triangles*/
@@ -76,11 +76,17 @@ void Heightmap::initaliseHeightmap(std::string mapFileLocation, std::vector<floa
 			
 		}
 	}
-
+	
 	//create the normals for all of the triangles
-	for (int i = 0; i < (width*height) - width - 1; i++)
+	for (int i = 0; i < width * height; i++)
 	{
-		if ((i % 2) == 0)//work out if the current index is a multiple of two and switch between the needed normal type to get accordingly
+		if (i >= (width*height) - width - 1) //quick hack to get normal array size to match vertices array
+		{
+			vertexNormals.push_back(mapPointsVertex[i].x);
+			vertexNormals.push_back(mapPointsVertex[i].y);
+			vertexNormals.push_back(mapPointsVertex[i].z);
+		}
+		else if ((i % 2) == 0)//work out if the current index is a multiple of two and switch between the needed normal type to get accordingly
 		{
 			Vec3 norm = getNormal(mapPointsVertex[i], mapPointsVertex[i + 1], mapPointsVertex[i + width]);
 			vertexNormals.push_back(norm.x);

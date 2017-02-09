@@ -71,6 +71,8 @@ public:
 	*/
 	static std::string initialiseHeightmap(std::string heightmapFileName);
 
+	static std::string initialiseHeightmap(std::string heightmapFileName, std::string textureFileName);
+
 	/**
 	@brief A static function to initialise a mesh without a texture.
 	@param objFileName The name of the obj file.

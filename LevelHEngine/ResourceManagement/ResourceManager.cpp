@@ -62,6 +62,26 @@ std::string ResourceManager::initialiseHeightmap(std::string heightmapFileName)
 	return heightmapFileName;
 }
 
+std::string ResourceManager::initialiseHeightmap(std::string heightmapFileName, std::string materialFileName)
+{
+	//a string for the name of the linked mesh
+	std::string linkedMeshName = heightmapFileName + "/" + materialFileName;
+
+	//test if the object has already been loaded
+	if (meshes.count(linkedMeshName) == 0)
+	{
+		//load the object
+		meshes[linkedMeshName] = new Mesh(heightmapFileName, materialFileName, true);
+	}
+	else
+	{
+		//print out that it is already loaded
+		Logging::logI(linkedMeshName + " mesh already loaded.");
+	}
+	//return the ID
+	return linkedMeshName;
+}
+
 std::string ResourceManager::initialiseMesh(std::string objFileName)
 {
 	//test if the mesh has already been loaded

@@ -28,6 +28,15 @@ Mesh::Mesh(std::string objFileName, std::string materialFileName) : heightmap(fa
 	initialiseVAO(objFileName);
 }
 
+Mesh::Mesh(std::string fileName, std::string materialFileName, bool heightmap) : heightmap(heightmap)
+{
+	//initialise the texture
+	this->textureFileName = materialFileName;
+
+	//Initialise the vertex buffer object
+	initialiseVAO(fileName);
+}
+
 Mesh::~Mesh()
 {
 	//delete data
@@ -134,14 +143,14 @@ void Mesh::initialiseTexture(std::vector<float> vertexTextures)
 	GLuint textureBuffer = initaliseVBO(2, vertexTextures, 2);
 
 	//deactivate the VBO
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
-
-	//delete the VBO
-	glDeleteBuffers(1, &textureBuffer);
-
-	//disable the array
-	glDisableVertexAttribArray(0);
+// 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+// 	glBindVertexArray(0);
+// 
+// 	//delete the VBO
+// 	glDeleteBuffers(1, &textureBuffer);
+// 
+// 	//disable the array
+// 	glDisableVertexAttribArray(0);
 
 	//free the surface
 	SDL_FreeSurface(image);

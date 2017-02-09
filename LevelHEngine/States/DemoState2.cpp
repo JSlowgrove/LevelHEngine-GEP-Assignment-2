@@ -40,8 +40,10 @@ DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
 	heightmap->getComponent<TransformComponent>().lock()->setScale(Vec3(1.0f, 1.0f, 1.0f));
 	heightmap->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 0.0f, -20.0f));
 	heightmap->getComponent<TransformComponent>().lock()->setRotation(Vec3(0.0f, 0.0f, Convert::convertDegreeToRadian(90.0f)));
-	heightmap->getComponent<ModelComponent>().lock()->initaliseHeightmap("Assets/img/ppmap.png");
-	heightmap->getComponent<ModelComponent>().lock()->initaliseShaders("default", "lightgrey");
+ 	heightmap->getComponent<ModelComponent>().lock()->initaliseHeightmap("Assets/img/ppmap.png", "pp.png");
+ 	heightmap->getComponent<ModelComponent>().lock()->initaliseShaders("texture", "texture");
+// 	heightmap->getComponent<ModelComponent>().lock()->initaliseHeightmap("Assets/img/ppmap.png");
+// 	heightmap->getComponent<ModelComponent>().lock()->initaliseShaders("default", "lightgrey");
 
 	//initalise bool
 	initialLoop = true;
@@ -89,15 +91,15 @@ void DemoState2::update(float dt)
 	Application::camera->getComponent<CameraControlComponent>().lock()->updateCamera(dt);
 
 	//loops through the game objects
-	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
-	{
-		if (Application::getGameObjects()[i]->getName() == "heightmap")
-		{
-			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
-				Vec3(0.0f, Convert::convertDegreeToRadian(100.0f * dt), 0.0f)
-			);
-		}
-	}
+// 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
+// 	{
+// 		if (Application::getGameObjects()[i]->getName() == "heightmap")
+// 		{
+// 			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
+// 				Vec3(0.0f, Convert::convertDegreeToRadian(100.0f * dt), 0.0f)
+// 			);
+// 		}
+// 	}
 }
 
 void DemoState2::draw()

@@ -25,6 +25,8 @@ public:
 
 	void initaliseHeightmap(std::string fileName);
 
+	void initaliseHeightmap(std::string fileName, std::string textureFileName);
+
 	/**
 	@brief A function to initalise a mesh without a texture.
 	@param objFileName The obj file for the mesh.

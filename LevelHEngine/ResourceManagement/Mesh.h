@@ -32,6 +32,8 @@ public:
 	*/
 	Mesh(std::string objFileName, std::string textureFileName);
 
+	Mesh(std::string fileName, std::string textureFileName, bool heightmap);
+
 	/**
 	@brief Destructs an Object.
 	*/
