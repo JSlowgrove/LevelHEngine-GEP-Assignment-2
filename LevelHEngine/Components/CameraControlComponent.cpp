@@ -19,7 +19,7 @@ void CameraControlComponent::onDestroy()
 {
 }
 
-void CameraControlComponent::handleInput(SDL_Event &incomingEvent)
+void CameraControlComponent::handleInput()
 {
 	//reset velocity
 	movementVel = Vec3(0.0f, 0.0f, 0.0f);
@@ -84,12 +84,12 @@ void CameraControlComponent::updateCamera(float dt)
 	getGameObject().lock()->getComponent<TransformComponent>().lock()->rotate(rotationVel * dt);
 }
 
-void CameraControlComponent::setSpeed(float speed)
+void CameraControlComponent::setSpeed(float inSpeed)
 {
-	this->speed = speed;
+	speed = inSpeed;
 }
 
-void CameraControlComponent::setRotateSpeed(float rotateSpeed)
+void CameraControlComponent::setRotateSpeed(float inRotateSpeed)
 {
-	this->rotateSpeed = rotateSpeed;
+	rotateSpeed = inRotateSpeed;
 }

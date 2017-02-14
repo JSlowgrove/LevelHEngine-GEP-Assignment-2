@@ -72,6 +72,7 @@ private:
 	///The Vertex Array Object for use with OpenGL
 	GLuint vertexArrayObject;
 	GLuint indexBuffer;
+	GLuint textureBuffer;
 
 	///Number of vertices in the model
 	unsigned int numberOfVertices;

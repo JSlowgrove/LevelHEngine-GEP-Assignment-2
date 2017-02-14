@@ -5,7 +5,8 @@ SDL_GLContext Application::glcontext;
 StateManager* Application::stateManager;
 std::vector<std::shared_ptr<GameObject> > Application::gameObjects;
 std::shared_ptr<GameObject> Application::camera;
-Vec3  Application::backgroundColour;
+Vec3 Application::backgroundColour;
+float Application::dt;
 
 void Application::init(std::string title, Vec2 windowPos, Vec2 windowRes, bool fullscreen, float frameRate)
 {
@@ -61,6 +62,17 @@ void Application::init(std::string title, Vec2 windowPos, Vec2 windowRes, bool f
 	
 void Application::run(int argc, char *argv[])
 {
+	//Copy all arguments into a string (the first argument is the executable)
+	std::vector<std::string> allArgs(argv, argv + argc);
+
+	//Log the passed in commamds
+	Logging::logI("Number of commands passed in: " + std::to_string(argc));
+	Logging::logI("Passed in commands:");
+	for (unsigned int i = 0; i < allArgs.size(); i++)
+	{
+		Logging::logI(allArgs[i]);
+	}
+
 	//Time Check
 	unsigned int lastTime = SDL_GetTicks();
 
@@ -70,14 +82,14 @@ void Application::run(int argc, char *argv[])
 	{
 		//Time Check
 		unsigned int current = SDL_GetTicks();
-		float deltaTime = (float)(current - lastTime) / 1000.0f;
+		setDT((float)(current - lastTime) / 1000.0f);
 		lastTime = current;
 
 		//input
 		go = stateManager->input();
 
 		//update
-		stateManager->update(deltaTime);
+		stateManager->update();
 
 		//clear the frame-buffer to black
 		glClearColor(backgroundColour.x, backgroundColour.y, backgroundColour.z, 1.0f);
@@ -91,9 +103,9 @@ void Application::run(int argc, char *argv[])
 		SDL_GL_SwapWindow(window);
 
 		//Time Limiter
-		if (deltaTime < (1.0f / WindowFrame::getFrameRate()))
+		if (getDT() < (1.0f / WindowFrame::getFrameRate()))
 		{
-			SDL_Delay((unsigned int)(((1.0f / WindowFrame::getFrameRate()) - deltaTime) * 1000.0f));
+			SDL_Delay((unsigned int)(((1.0f / WindowFrame::getFrameRate()) - getDT()) * 1000.0f));
 		}
 	}
 }
@@ -177,4 +189,14 @@ std::shared_ptr<GameObject>& Application::getCamera()
 void Application::setBackgroundColour(Vec3 colour)
 {
 	backgroundColour = colour;
+}
+
+void Application::setDT(float inDT)
+{
+	dt = inDT;
+}
+
+float Application::getDT()
+{
+	return dt;
 }

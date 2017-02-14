@@ -244,12 +244,12 @@ bool DemoState1::input()
 	return true;
 }
 
-void DemoState1::update(float dt)
+void DemoState1::update()
 {
 	//hack for initial loop
 	if (initialLoop)
 	{
-		dt = 0.0f;
+		Application::setDT(0.0f);
 		initialLoop = false;
 	}
 
@@ -260,13 +260,13 @@ void DemoState1::update(float dt)
 		{
 			Application::getGameObjects()[i]->getComponent<BoundingSphereComponent>().lock()->setNextPos(
 				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->getPos()
-				+ (s1V * dt));
+				+ (s1V * Application::getDT()));
 		}
 		if (Application::getGameObjects()[i]->getName() == "sphere2")
 		{
 			Application::getGameObjects()[i]->getComponent<BoundingSphereComponent>().lock()->setNextPos(
 				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->getPos()
-				+ (s2V * dt));
+				+ (s2V * Application::getDT()));
 		}
 	}
 
@@ -333,14 +333,14 @@ void DemoState1::update(float dt)
 			|| Application::getGameObjects()[i]->getName() == "barrel")
 		{
 			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
-				Vec3(0.0f, Convert::convertDegreeToRadian(200.0f * dt), 0.0f)
+				Vec3(0.0f, Convert::convertDegreeToRadian(200.0f * Application::getDT()), 0.0f)
 			);
 		}
 		if (Application::getGameObjects()[i]->getName() == "lightingCube")
 		{
 			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
-				Vec3(Convert::convertDegreeToRadian(100.0f * dt),
-					Convert::convertDegreeToRadian(100.0f * dt),
+				Vec3(Convert::convertDegreeToRadian(100.0f * Application::getDT()),
+					Convert::convertDegreeToRadian(100.0f * Application::getDT()),
 					0.0f)
 			);
 		}
@@ -348,7 +348,7 @@ void DemoState1::update(float dt)
 		//update positions with new velocities
 		if (Application::getGameObjects()[i]->getName() == "sphere1")
 		{
-			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(s1V * dt);
+			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(s1V * Application::getDT());
 			if (resetPos)
 			{
 				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->setPos(Vec3(-2.0f, 4.0f, 6.0f));
@@ -356,7 +356,7 @@ void DemoState1::update(float dt)
 		}
 		if (Application::getGameObjects()[i]->getName() == "sphere2")
 		{
-			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(s2V * dt);
+			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(s2V * Application::getDT());
 			if (resetPos)
 			{
 				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->setPos(Vec3(2.0f, 4.0f, 6.0f));

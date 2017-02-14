@@ -80,7 +80,7 @@ bool MainMenu::input()
 	return true;
 }
 
-void MainMenu::update(float dt)
+void MainMenu::update()
 {
 	//swtich to demo state
 	//stateManager->changeState(new DemoState1(stateManager, window));

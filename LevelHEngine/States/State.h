@@ -37,9 +37,8 @@ public:
 
 	/**
 	@brief A pure virtual function to update the State to allow the State to run.
-	@param dt The delta time.
 	*/
-	virtual void update(float dt) = 0;
+	virtual void update() = 0;
 
 	/**
 	@brief A pure virtual function to draw to the screen using the window.

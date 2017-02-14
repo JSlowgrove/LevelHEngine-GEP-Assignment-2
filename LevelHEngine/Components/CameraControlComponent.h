@@ -29,7 +29,7 @@ public:
 	/**
 	@brief A function to handle the input for the camera
 	*/
-	void handleInput(SDL_Event &incomingEvent);
+	void handleInput();
 
 	/**
 	@brief A function to update the camera
@@ -39,12 +39,12 @@ public:
 	/**
 	@brief A function to set the speed of the camera
 	*/
-	void setSpeed(float speed);
+	void setSpeed(float inSpeed);
 
 	/**
 	@brief A function to set the rotation speed of the camera
 	*/
-	void setRotateSpeed(float rotateSpeed);
+	void setRotateSpeed(float inRotateSpeed);
 
 private:
 	///The movment speed

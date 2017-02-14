@@ -6,13 +6,13 @@ Vec2 WindowFrame::windowRes;
 bool WindowFrame::fullscreen;
 float WindowFrame::frameRate;
 
-void WindowFrame::setWindow(std::string title, Vec2 windowPos, Vec2 windowRes, bool fullscreen, float frameRate)
+void WindowFrame::setWindow(std::string inTitle, Vec2 inWindowPos, Vec2 inWindowRes, bool inFullscreen, float inFrameRate)
 {
-	setTitle(title);
-	setWindowPos(windowPos);
-	setWindowRes(windowRes);
-	setFullscreen(fullscreen);
-	setFrameRate(frameRate);
+	setTitle(inTitle);
+	setWindowPos(inWindowPos);
+	setWindowRes(inWindowRes);
+	setFullscreen(inFullscreen);
+	setFrameRate(inFrameRate);
 
 	//Log window details
 	Logging::logI("Window title: " + title);
@@ -22,29 +22,29 @@ void WindowFrame::setWindow(std::string title, Vec2 windowPos, Vec2 windowRes, b
 	Logging::logI("Window frame rate: " + std::to_string(frameRate));
 }
 
-void WindowFrame::setTitle(std::string title)
+void WindowFrame::setTitle(std::string inTitle)
 {
-	WindowFrame::title = title;
+	WindowFrame::title = inTitle;
 }
 	
-void WindowFrame::setWindowPos(Vec2 windowPos)
+void WindowFrame::setWindowPos(Vec2 inWindowPos)
 {
-	WindowFrame::windowPos = windowPos;
+	WindowFrame::windowPos = inWindowPos;
 }
 
-void WindowFrame::setWindowRes(Vec2 windowRes)
+void WindowFrame::setWindowRes(Vec2 inWindowRes)
 {
-	WindowFrame::windowRes = windowRes;
+	WindowFrame::windowRes = inWindowRes;
 }
 
-void WindowFrame::setFullscreen(bool fullscreen)
+void WindowFrame::setFullscreen(bool inFullscreen)
 {
-	WindowFrame::fullscreen = fullscreen;
+	WindowFrame::fullscreen = inFullscreen;
 }
 
-void WindowFrame::setFrameRate(float frameRate)
+void WindowFrame::setFrameRate(float inFrameRate)
 {
-	WindowFrame::frameRate = frameRate;
+	WindowFrame::frameRate = inFrameRate;
 }
 
 std::string WindowFrame::getTitle()

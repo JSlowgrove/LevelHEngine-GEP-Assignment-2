@@ -43,21 +43,21 @@ public:
 
 	/**
 	@brief A function to set the position.
-	@param pos The position of the component.
+	@param inPos The position of the component.
 	*/
-	void setPos(Vec3 pos) { this->pos = pos; }
+	void setPos(Vec3 inPos) { pos = inPos; }
 
 	/**
 	@brief A function to set the rotation.
-	@param rotation The rotation of the component.
+	@param inRotation The rotation of the component.
 	*/
-	void setRotation(Vec3 rotation) { this->rotation = rotation; }
+	void setRotation(Vec3 inRotation) { rotation = inRotation; }
 
 	/**
 	@brief A function to set the scale.
-	@param scale The scale of the component.
+	@param inScaleSize The scale of the component.
 	*/
-	void setScale(Vec3 scaleSize) { this->scaleSize = scaleSize; }
+	void setScale(Vec3 inScaleSize) { scaleSize = inScaleSize; }
 
 	/**
 	@brief A function to get the transform matrix.

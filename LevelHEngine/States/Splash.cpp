@@ -73,7 +73,7 @@ bool Splash::input()
 	return true;
 }
 
-void Splash::update(float dt)
+void Splash::update()
 {
 #if _DEBUG
 	stateManager->changeState(new MainMenu(stateManager, window));

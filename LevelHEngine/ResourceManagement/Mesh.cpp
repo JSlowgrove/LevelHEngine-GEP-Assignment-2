@@ -79,6 +79,19 @@ Mesh::~Mesh()
 	//delete data
 	glDeleteVertexArrays(1, &vertexArrayObject);
 	glDeleteTextures(1, &textureID);
+
+	if (textureFileName != "Untextured")
+	{
+		//deactivate the VBO
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBindVertexArray(0);
+
+		//delete the VBO
+		glDeleteBuffers(1, &textureBuffer);
+
+		//disable the array
+		glDisableVertexAttribArray(0);
+	}
 }
 
 void Mesh::initialiseVAO(std::string fileName)
@@ -122,7 +135,7 @@ void Mesh::initialiseVAO(std::string fileName)
 	//if using the heightmap (indices)
 	if (heightmap)
 	{
-		GLuint indexBuffer = initaliseIndicies(indices);
+		indexBuffer = initaliseIndicies(indices);
 	}
 
 	numberOfIndices = indices.size();
@@ -152,7 +165,7 @@ void Mesh::initialiseTexture(std::vector<float> vertexTextures)
 	}
 
 	//check and store the file format
-	GLenum format;
+	GLenum format = 0;
 	if (image->format->BytesPerPixel == 3)
 	{
 		format = GL_RGB;
@@ -177,17 +190,7 @@ void Mesh::initialiseTexture(std::vector<float> vertexTextures)
 	//unbind texture
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	GLuint textureBuffer = initaliseVBO(2, vertexTextures, 2);
-
-	//deactivate the VBO
-// 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-// 	glBindVertexArray(0);
-// 
-// 	//delete the VBO
-// 	glDeleteBuffers(1, &textureBuffer);
-// 
-// 	//disable the array
-// 	glDisableVertexAttribArray(0);
+	textureBuffer = initaliseVBO(2, vertexTextures, 2);
 
 	//free the surface
 	SDL_FreeSurface(image);
@@ -213,12 +216,12 @@ unsigned int Mesh::getNumberOfVertices()
 
 GLuint Mesh::initaliseIndicies(std::vector<unsigned int> &inIndices)
 {
-	GLuint indexBuffer = 0;
-	glGenBuffers(1, &indexBuffer);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+	GLuint inBuffer = 0;
+	glGenBuffers(1, &inBuffer);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, inBuffer);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * inIndices.size(), &inIndices[0], GL_STATIC_DRAW);
 
-	return indexBuffer;
+	return inBuffer;
 }
 
 GLuint Mesh::initaliseVBO(unsigned int vecNum, std::vector<float> &inVBOData, int linkNum)

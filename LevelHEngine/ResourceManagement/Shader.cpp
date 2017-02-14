@@ -54,7 +54,7 @@ Shader::~Shader()
 void Shader::initaliseShader(std::string shaderFileName, char shaderType)
 {
 	//create a shader
-	GLuint shader;
+	GLuint shader = 0;
 
 	//Create the shader using the shader type
 	switch (shaderType)

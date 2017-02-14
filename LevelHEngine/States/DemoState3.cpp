@@ -81,12 +81,12 @@ bool DemoState3::input()
 	return true;
 }
 
-void DemoState3::update(float dt)
+void DemoState3::update()
 {
 	//hack for initial loop
 	if (initialLoop)
 	{
-		dt = 0.0f;
+		Application::setDT(0.0f);
 		initialLoop = false;
 	}
 
@@ -99,12 +99,13 @@ void DemoState3::update(float dt)
  		if (Application::getGameObjects()[i]->getName() == "tourus")
  		{
  			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
- 				Vec3(Convert::convertDegreeToRadian(100.0f * dt), Convert::convertDegreeToRadian(100.0f * dt), 0.0f)
+ 				Vec3(Convert::convertDegreeToRadian(100.0f * Application::getDT()),
+					Convert::convertDegreeToRadian(100.0f * Application::getDT()), 0.0f)
  			);
  		}
  	}
 
-	totalTime += dt;
+	totalTime += Application::getDT();
 
 	//set background colour to change
 	float r = 0.5f + 0.5f*cos(totalTime*0.1347652371f);
@@ -113,7 +114,7 @@ void DemoState3::update(float dt)
 	Application::setBackgroundColour(Vec3(r, g, b));
 
 	//Update the camera
-	Application::camera->getComponent<CameraControlComponent>().lock()->updateCamera(dt);
+	Application::camera->getComponent<CameraControlComponent>().lock()->updateCamera(Application::getDT());
 }
 
 void DemoState3::draw()

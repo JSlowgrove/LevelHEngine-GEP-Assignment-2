@@ -61,6 +61,9 @@ public:
 	*/
 	static void setBackgroundColour(Vec3 colour);
 
+	static void setDT(float inDT);
+	static float getDT();
+
 	///A shared pointer for the camera
 	static std::shared_ptr< GameObject > camera;
 
@@ -99,5 +102,6 @@ private:
 	static std::vector< std::shared_ptr<GameObject> > gameObjects;
 	///The background colour.
 	static Vec3 backgroundColour;
-
+	
+	static float dt;
 };

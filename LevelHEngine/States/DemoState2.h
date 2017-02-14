@@ -33,9 +33,8 @@ public:
 
 	/**
 	@brief A function to update the State.
-	@param dt The delta time.
 	*/
-	void update(float dt);
+	void update();
 
 	/**
 	@brief A function to draw the State to the screen.
@@ -43,6 +42,8 @@ public:
 	void draw();
 
 private:
+	///The background music id.
+	std::string backgroundMusicID;
 	///Initital loop bool
 	bool initialLoop;
 };

@@ -83,9 +83,9 @@ public:
 
 	/**
 	@brief A function to set the name of the game object.
-	@param name The name to give to the game object.
+	@param inName The name to give to the game object.
 	*/
-	void setName(std::string name) { this->name = name; }
+	void setName(std::string inName) { name = inName; }
 
 	/**
 	@brief A function to get the name of the game object.
@@ -115,9 +115,9 @@ public:
 
 	/**
 	@brief A function to set the componets destroyed boolean.
-	@param destroyed A boolean for the state of destroyed.
+	@param inDestroyed A boolean for the state of destroyed.
 	*/
-	void setDestroyed(bool destroyed) { this->destroyed = destroyed; }
+	void setDestroyed(bool inDestroyed) { destroyed = inDestroyed; }
 
 	/**
 	@brief A function to get the componets destroyed boolean.

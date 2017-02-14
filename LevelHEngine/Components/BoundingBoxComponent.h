@@ -44,9 +44,9 @@ public:
 
 	/**
 	@brief A function to set the position of the box for the next loop for use with collision.
-	@param nextPos The position of the box next loop.
+	@param inNextPos The position of the box next loop.
 	*/
-	void setNextPos(Vec3 nextPos) { this->nextPos = nextPos; }
+	void setNextPos(Vec3 inNextPos) { nextPos = inNextPos; }
 
 	/**
 	@brief A function to get the position of the box for the next loop for use with collision.

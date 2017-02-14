@@ -10,7 +10,7 @@ public:
 	@brief Constructs the timer object.
 	@param float the length of the timer.
 	*/
-	Timer(float timerLength);
+	Timer(float inTimerLength);
 
 	/**
 	@brief Destructs the timer object.
@@ -31,13 +31,13 @@ public:
 	/**
 	@brief Changes the timer length.
 	*/
-	void setTimerLength(float timerLength);
+	void setTimerLength(float inTimerLength);
 
 
 	/**
 	@brief Change the timer length and reset the timer.
 	*/
-	void resetTimerLength(float timerLength);
+	void resetTimerLength(float inTimerLength);
 
 	/**
 	@brief Returns if the timer has finished or not.

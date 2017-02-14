@@ -49,6 +49,24 @@
     <Filter Include="Source Files\Components">
       <UniqueIdentifier>{0ae1aaa0-eeab-4caf-9a71-7a95d57c054a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\2D">
+      <UniqueIdentifier>{ef4ffc2b-d3c2-4b9a-9b7d-cfbe9c6f433f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\2D">
+      <UniqueIdentifier>{cc9a3440-9ca4-47e6-a4f9-7d9b548a3416}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\2D\AI">
+      <UniqueIdentifier>{4f84ee04-9e02-4342-a35f-2d9239d6df59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\2D\AI">
+      <UniqueIdentifier>{0971a7ba-f543-4056-b39b-566eec940863}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\2D\ResourceManagement">
+      <UniqueIdentifier>{90f65f7c-8d03-4076-802c-789ea515675d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\2D\ResourceManagement">
+      <UniqueIdentifier>{a30b6d90-6fe2-4f44-8714-eafb88244dfd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -153,8 +171,29 @@
     <ClCompile Include="States\DemoState3.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
+    <ClCompile Include="2D\AI\AStar.cpp">
+      <Filter>Source Files\2D\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="2D\AI\Flocking.cpp">
+      <Filter>Source Files\2D\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="2D\AI\LOS.cpp">
+      <Filter>Source Files\2D\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="2D\AI\Node.cpp">
+      <Filter>Source Files\2D\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="2D\ResourceManagement\Sprite.cpp">
+      <Filter>Source Files\2D\ResourceManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="2D\AI\Boid.cpp">
+      <Filter>Source Files\2D\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Maths\Scaling.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
     <ClCompile Include="ResourceManagement\Primitives.cpp">
-      <Filter>Source Files\States</Filter>
+      <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -274,6 +313,27 @@
     </ClInclude>
     <ClInclude Include="ResourceManagement\Primitives.h">
       <Filter>Header Files\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="2D\AI\AStar.h">
+      <Filter>Header Files\2D\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="2D\AI\Flocking.h">
+      <Filter>Header Files\2D\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="2D\AI\LOS.h">
+      <Filter>Header Files\2D\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="2D\AI\Node.h">
+      <Filter>Header Files\2D\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="2D\ResourceManagement\Sprite.h">
+      <Filter>Header Files\2D\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="2D\AI\Boid.h">
+      <Filter>Header Files\2D\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Maths\Scaling.h">
+      <Filter>Header Files\Maths</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,7 +11,8 @@
 
 
 DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
-	: State(stateManager, window, "DemoState2")
+	: State(stateManager, window, "DemoState2"),
+	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/DeliberateThought.ogg"))
 {
 	//Set the background colour
 	Application::setBackgroundColour(Vec3(0.1f, 0.1f, 0.2f));
@@ -45,10 +46,17 @@ DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
 
 	//initalise bool
 	initialLoop = true;
+
+	//start the music
+	ResourceManager::getMusic(backgroundMusicID)->startMusic();
 }
 
 DemoState2::~DemoState2()
 {
+	//Stop music
+	ResourceManager::getMusic(backgroundMusicID)->stopMusic();
+	//Delete music pointers
+	ResourceManager::deleteMusic(backgroundMusicID);
 }
 
 bool DemoState2::input()
@@ -71,22 +79,25 @@ bool DemoState2::input()
 		}
 
 		//Handle the camera input
-		Application::camera->getComponent<CameraControlComponent>().lock()->handleInput(incomingEvent);
+		Application::camera->getComponent<CameraControlComponent>().lock()->handleInput();
 	}
 	return true;
 }
 
-void DemoState2::update(float dt)
+void DemoState2::update()
 {
 	//hack for initial loop
 	if (initialLoop)
 	{
-		dt = 0.0f;
+		Application::setDT(0.0f);
 		initialLoop = false;
 	}
 
+	//Keep the music playing
+	ResourceManager::getMusic(backgroundMusicID)->startMusic();
+
 	//Update the camera
-	Application::camera->getComponent<CameraControlComponent>().lock()->updateCamera(dt);
+	Application::camera->getComponent<CameraControlComponent>().lock()->updateCamera(Application::getDT());
 
 	//loops through the game objects
 // 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
@@ -94,7 +105,7 @@ void DemoState2::update(float dt)
 // 		if (Application::getGameObjects()[i]->getName() == "heightmap")
 // 		{
 // 			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
-// 				Vec3(0.0f, Convert::convertDegreeToRadian(100.0f * dt), 0.0f)
+// 				Vec3(0.0f, Convert::convertDegreeToRadian(100.0f * Application::getDT()), 0.0f)
 // 			);
 // 		}
 // 	}

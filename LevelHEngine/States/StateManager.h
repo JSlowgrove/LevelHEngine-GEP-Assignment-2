@@ -49,9 +49,8 @@ public:
 
 	/**
 	@brief Updates the current State.
-	@param dt The delta time for use within the update function.
 	*/
-	void update(float dt);
+	void update();
 
 	/**
 	@param Draws the current State.

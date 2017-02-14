@@ -13,43 +13,43 @@ class WindowFrame
 public:
 	/**
 	@brief A static function to set a Window.
-	@param title The tile.
-	@param windowPos The window position.
-	@param windowRes The window resolution.
-	@param fullscreen The boolean for fullscreen.
-	@param frameRate The frame rate for the window.
+	@param inTitle The tile.
+	@param inWindowPos The window position.
+	@param inWindowRes The window resolution.
+	@param inFullscreen The boolean for fullscreen.
+	@param inFrameRate The frame rate for the window.
 	*/
-	static void setWindow(std::string title, Vec2 windowPos, Vec2 windowRes, bool fullscreen, float frameRate);
+	static void setWindow(std::string inTitle, Vec2 inWindowPos, Vec2 inWindowRes, bool inFullscreen, float inFrameRate);
 
 	/**
 	@brief A static function to set the title of the window.
 	@param title The tile.
 	*/
-	static void setTitle(std::string title);
+	static void setTitle(std::string inTitle);
 
 	/**
 	@brief A static function to set the position of the window.
 	@param windowPos The window position.
 	*/
-	static void setWindowPos(Vec2 windowPos);
+	static void setWindowPos(Vec2 inWindowPos);
 
 	/**
 	@brief A static function to set the resolution of the window.
 	@param windowRes The window size.
 	*/
-	static void setWindowRes(Vec2 windowRes);
+	static void setWindowRes(Vec2 inWindowRes);
 
 	/**
 	@brief A static function to set if the window should be fullscreen.
 	@param fullscreen The boolean for fullscreen.
 	*/
-	static void setFullscreen(bool fullscreen);
+	static void setFullscreen(bool inFullscreen);
 
 	/**
 	@brief A static function to set the frame rate of the window.
 	@param frameRate The frame rate for the window.
 	*/
-	static void setFrameRate(float frameRate);
+	static void setFrameRate(float inFrameRate);
 
 	/**
 	@brief A static function to get the title of the window.

@@ -1,6 +1,6 @@
 #include "Timer.h"
 
-Timer::Timer(float timerLength) : timerLength(timerLength)
+Timer::Timer(float inTimerLength) : timerLength(inTimerLength)
 {
 	resetTimer();
 }
@@ -28,19 +28,19 @@ void Timer::resetTimer()
 	finished = false;
 }
 
-void Timer::resetTimerLength(float timerLength)
+void Timer::resetTimerLength(float inTimerLength)
 {
 	//set the timer length
-	this->timerLength = timerLength;
+	timerLength = inTimerLength;
 
 	//reset the timer
 	resetTimer();
 }
 
-void Timer::setTimerLength(float timerLength)
+void Timer::setTimerLength(float inTimerLength)
 {
 	//set the timer length
-	this->timerLength = timerLength;
+	timerLength = inTimerLength;
 }
 
 bool Timer::checkTimer()

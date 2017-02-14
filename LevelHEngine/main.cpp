@@ -1,5 +1,5 @@
-#include "Core/Application.h"
 #include <memory>
+#include "Core/Application.h"
 #include "Core/Logging.h"
 
 ///Forces the game to run on the NIVDIA GPU, if one is available.

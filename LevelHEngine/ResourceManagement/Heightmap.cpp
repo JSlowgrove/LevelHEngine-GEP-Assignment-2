@@ -30,7 +30,6 @@ void Heightmap::initaliseHeightmap(std::string mapFileLocation, std::vector<floa
 	float heightScale = 0.05f;
 	float positionScale = 0.1f;
 	float displayScale = (positionScale * width) * 0.5f;
-	float colourScale = 255.0f;
 
 	//creates and array for the vertices of the height map
 	mapPointsVertex.resize(height*width);
@@ -123,10 +122,7 @@ Uint32 Heightmap::getPixel(int x, int y, uint8_t bpp, SDL_Surface* map)
 		break;
 
 	case 3:
-		if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
-			return p[0] << 16 | p[1] << 8 | p[2];
-		else
-			return p[0] | p[1] << 8 | p[2] << 16;
+		return p[0] | p[1] << 8 | p[2] << 16;
 		break;
 
 	case 4:

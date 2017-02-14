@@ -54,10 +54,10 @@ bool StateManager::input()
 	return currentStates.back()->input();
 }
 
-void StateManager::update(float dt) 
+void StateManager::update() 
 {
 	//updates the state on the top of the stack so the lower state are unaltered
-	currentStates.back()->update(dt);
+	currentStates.back()->update();
 }
 
 void StateManager::draw() 
