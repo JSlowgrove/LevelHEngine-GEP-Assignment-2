@@ -4,44 +4,44 @@
 #include <SDL_image.h>
 #include <string>
 #include "../../Maths/Vec2.h"
+#include "../../Maths/Convert.h"
 #include "../../Core/Logging.h"
+#include "../../Core/WindowFrame.h"
+#include "../../ResourceManagement/Shader.h"
+#include "../../ResourceManagement/ResourceManager.h"
 
 /**
-@brief Creates a Sprite for use with a renderer.
+@brief Creates a Sprite for use with 2D.
 */
 class Sprite
 {
 public:
 	/**
 	@brief Constructs the Sprite using an RGB value. This will create a 1x1 rectangle of that colour that can be scaled.
-	@param renderer A pointer to the renderer.
 	@param r The red value.
 	@param g The green value.
 	@param b The blue value.
 	*/
-	Sprite(SDL_Renderer* renderer, int r, int g, int b);
+	Sprite(int r, int g, int b);
 
 	/**
 	@brief Constructs the Sprite using an RGB value. This will create a 1x1 rectangle of that colour that can be scaled.
-	@param renderer A pointer to the renderer.
 	@param colour The colour value.
 	*/
-	Sprite(SDL_Renderer* renderer, SDL_Colour colour);
+	Sprite(SDL_Colour colour);
 
 	/**
 	@brief Constructs the Sprite using an image location and a renderer. This is for use with SDL image.
 	@param fileLocation The location of the image file.
-	@param renderer A pointer to the renderer.
 	*/
-	Sprite(std::string fileLocation, SDL_Renderer* renderer);
+	Sprite(std::string fileLocation);
 
 	/**
 	@brief Constructs the Sprite using an image location and a renderer. The magenta pixels of this image can represent alpha if needed.
 	@param fileLocation The location of the image file.
-	@param renderer A pointer to the renderer.
 	@param magentaAlpha If true any magenta pixels in the image will be converted to alpha.
 	*/
-	Sprite(std::string fileLocation, SDL_Renderer* renderer, bool magentaAlpha);
+	Sprite(std::string fileLocation, bool magentaAlpha);
 
 	/**
 	@brief Destructs Sprite.
@@ -49,10 +49,10 @@ public:
 	~Sprite();
 
 	/**
-	@brief Gets a pointer to the Sprite.
-	@returns A pointer to the Sprite.
+	@brief Gets a pointer to the Sprite surface.
+	@returns A pointer to the Sprite surface.
 	*/
-	SDL_Texture* getTexture();
+	SDL_Surface* getSurface();
 
 	/**
 	@brief Gets the Sprite dimensions.
@@ -62,59 +62,33 @@ public:
 
 	/**
 	@brief Pushes the image to the Renderer at the XY Coordinates.
-	@param renderer A pointer to the renderer.
 	@param pos The position of the image.
 	*/
-	void pushToScreen(SDL_Renderer* renderer, Vec2 pos);
+	void pushToScreen(Vec2 pos);
 
 	/**
 	@brief Pushes the image to the Renderer at the XY Coordinates. 
 	This is scaled to the dimensions inputed.
-	@param renderer A pointer to the renderer.
 	@param pos The position of the image.
 	@param scale The dimensions of the image.
 	*/
-	void pushToScreen(SDL_Renderer* renderer, Vec2 pos, Vec2 scale);
-
-	/**
-	@brief Pushes the image to the Renderer at the XY Coordinates. 
-	Only displays the source rectangle inputed.
-	@param renderer A pointer to the renderer.
-	@param pos The position of the image.
-	@param spritePos The position of the sprite in the spritesheet.
-	@param spriteDimensions The dimensions of the sprite.
-	*/
-	void pushSpriteToScreen(SDL_Renderer* renderer, Vec2 pos, Vec2 spritePos, Vec2 spriteDimensions);
-
-	/**
-	@brief Pushes the image to the Renderer, to the XY Coordinates. 
-	Only displays the source rectangle inputed.
-	This is scaled to the width and height inputed.
-	@param renderer A pointer to the renderer.
-	@param pos The position of the image.
-	@param scale The dimensions of the image.
-	@param spritePos The position of the sprite in the spritesheet.
-	@param spriteDimensions The dimensions of the sprite.
-	*/
-	void pushSpriteToScreen(SDL_Renderer* renderer, Vec2 pos, Vec2 scale, Vec2 spritePos, Vec2 spriteDimensions);
-
-	/**
-	@brief Tints the texture with the inputed colour.
-	@param r The red value.
-	@param g The green value.
-	@param b The blue value.
-	*/
-	void setColourTint(int r, int g, int b);
-
-	/**
-	@brief Tints the texture with the inputed colour.
-	@param colour The colour.
-	*/
-	void setColourTint(SDL_Colour colour);
+	void pushToScreen(Vec2 pos, Vec2 scale);
 
 private:
-	///The Texture data
-	SDL_Texture* textureData;
+	///The Surface data
+	SDL_Surface* surfaceData;
 	///The Texture dimensions.
 	Vec2 dimensions;
+	///The VBO for the rectangle
+	GLuint obj;
+	///The Texture
+	GLuint textureID;
+	///The Shader ID
+	std::string shaderID;
+
+	Vec2 convertToOpenGLCoords(Vec2 inVec);
+	Vec2 scaleToOpenGLCoords(Vec2 inVec);
+	void initaliseVBO(Vec2 pos, Vec2 scale);
+	void initialiseTexture();
+	void Sprite::draw();
 };

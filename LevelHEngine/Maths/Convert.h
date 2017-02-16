@@ -8,6 +8,7 @@
 */
 namespace Convert
 {
+	float normaliseFloat(float numToNormalise, float maxNum, float minNum);
 
 	/**
 	@brief Converts the degree to a radian.

@@ -40,7 +40,7 @@ public:
 	@brief Draws the Flocking.
 	@param renderer A pointer to the renderer.
 	*/
-	void draw(SDL_Renderer* renderer);
+	void draw();
 
 	/**
 	@brief Set applyRule1.

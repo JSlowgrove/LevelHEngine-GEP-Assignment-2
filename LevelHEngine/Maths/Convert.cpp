@@ -3,6 +3,10 @@
 
 namespace Convert
 {
+	float normaliseFloat(float numToNormalise, float maxNum, float minNum)
+	{
+		return (numToNormalise - minNum) / (maxNum - minNum);
+	}
 
 	float convertDegreeToRadian(float angle)
 	{

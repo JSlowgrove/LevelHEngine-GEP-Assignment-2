@@ -20,10 +20,10 @@ void Boid::update(float dt)
 	move(direction * moveSpeed * dt);
 }
 
-void Boid::draw(SDL_Renderer* renderer)
+void Boid::draw()
 {
 	//draw the texture to the screen
-	sprite->pushToScreen(renderer, position, Vec2(scaleValue, scaleValue));
+	sprite->pushToScreen(position, Vec2(scaleValue, scaleValue));
 }
 
 void Boid::setPosition(Vec2 inPosition)

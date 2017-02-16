@@ -70,13 +70,13 @@ void Flocking::update(float dt)
 	}
 }
 
-void Flocking::draw(SDL_Renderer* renderer)
+void Flocking::draw()
 {
 	//display the Boid objects
 	for (unsigned int i = 0; i < boids.size(); i++)
 	{
 		//display the Boid
-		boids[i]->draw(renderer);
+		boids[i]->draw();
 	}
 }
 

@@ -33,9 +33,8 @@ public:
 
 	/**
 	@brief Draw the Boid to the screen.
-	@param renderer A pointer to the renderer.
 	*/
-	void draw(SDL_Renderer* renderer);
+	void draw();
 
 	/**
 	@brief Sets the position of the Boid.

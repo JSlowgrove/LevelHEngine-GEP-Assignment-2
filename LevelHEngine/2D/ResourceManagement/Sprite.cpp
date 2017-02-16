@@ -1,44 +1,36 @@
 #include "Sprite.h"
 
-Sprite::Sprite(SDL_Renderer* renderer, int r, int g, int b)
+Sprite::Sprite(int r, int g, int b)
 {
 	//Creates the surface
-	SDL_Surface *surface;
-	surface = SDL_CreateRGBSurface(0, 1, 1, 32, 0, 0, 0, 0);
+	surfaceData = SDL_CreateRGBSurface(0, 1, 1, 32, 0, 0, 0, 0);
 
 	//Fills the surface with the color
-	SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, (Uint8)r, (Uint8)g, (Uint8)b));
-	
-	//Converts the surface into texture data
-	textureData = SDL_CreateTextureFromSurface(renderer, surface);
+	SDL_FillRect(surfaceData, NULL, SDL_MapRGB(surfaceData->format, (Uint8)r, (Uint8)g, (Uint8)b));
 
-	//delete the surface from memory
-	SDL_FreeSurface(surface);
+	//initalise shader;
+	shaderID = ResourceManager::initialiseShader("2d.texture", "2d.texture");
 }
 
-Sprite::Sprite(SDL_Renderer* renderer, SDL_Colour colour)
+Sprite::Sprite(SDL_Colour colour)
 {
 	//Creates the surface
-	SDL_Surface *surface;
-	surface = SDL_CreateRGBSurface(0, 1, 1, 32, 0, 0, 0, 0);
+	surfaceData = SDL_CreateRGBSurface(0, 1, 1, 32, 0, 0, 0, 0);
 
 	//Fills the surface with the color
-	SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, colour.r, colour.g, colour.b));
+	SDL_FillRect(surfaceData, NULL, SDL_MapRGB(surfaceData->format, colour.r, colour.g, colour.b));
 
-	//Converts the surface into texture data
-	textureData = SDL_CreateTextureFromSurface(renderer, surface);
-
-	//delete the surface from memory
-	SDL_FreeSurface(surface);
+	//initalise shader;
+	shaderID = ResourceManager::initialiseShader("2d.texture", "2d.texture");
 }
 
-Sprite::Sprite(std::string fileLocation, SDL_Renderer* renderer)
+Sprite::Sprite(std::string fileLocation)
 {
 	//Loads the image as a surface
-	SDL_Surface* image = IMG_Load(fileLocation.c_str());
+	surfaceData = IMG_Load(fileLocation.c_str());
 
 	//Image load check
-	if (!image)
+	if (!surfaceData)
 	{
 		//Error message
 		std::string message = "Unable to load image from: " + fileLocation + ", Error is: " + IMG_GetError();
@@ -46,25 +38,20 @@ Sprite::Sprite(std::string fileLocation, SDL_Renderer* renderer)
 		return;
 	}
 
-	//Converts the surface into texture data
-	textureData = SDL_CreateTextureFromSurface(renderer, image);
+	//store the size of the sprite
+	dimensions = Vec2(surfaceData->w, surfaceData->h);
 
-	//delete the surface from memory
-	SDL_FreeSurface(image);
-
-	//store the size of the texture
-	int textureWidth, textureHeight;
-	SDL_QueryTexture(textureData, NULL, NULL, &textureWidth, &textureHeight);
-	dimensions = Vec2(textureWidth, textureHeight);
+	//initalise shader;
+	shaderID = ResourceManager::initialiseShader("2d.texture", "2d.texture");
 }
 
-Sprite::Sprite(std::string fileLocation, SDL_Renderer* renderer, bool magentaAlpha)
+Sprite::Sprite(std::string fileLocation, bool magentaAlpha)
 {
 	//Loads the image as a surface
-	SDL_Surface* image = SDL_LoadBMP(fileLocation.c_str());
+	surfaceData = SDL_LoadBMP(fileLocation.c_str());
 
 	//Image load check
-	if (!image)
+	if (!surfaceData)
 	{
 		//Error message
 		std::string message = "Unable to load image from: " + fileLocation + ", Error is: " + IMG_GetError();
@@ -76,30 +63,28 @@ Sprite::Sprite(std::string fileLocation, SDL_Renderer* renderer, bool magentaAlp
 	if (magentaAlpha)
 	{
 		//Replaces magenta with alpha
-		SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(image->format, 255, 0, 255));
+		SDL_SetColorKey(surfaceData, SDL_TRUE, SDL_MapRGB(surfaceData->format, 255, 0, 255));
 	}
 
-	//Converts the surface into texture data
-	textureData = SDL_CreateTextureFromSurface(renderer, image);
-
-	//delete the surface from memory
-	SDL_FreeSurface(image);
-
 	//store the size of the texture
-	int textureWidth, textureHeight;
-	SDL_QueryTexture(textureData, NULL, NULL, &textureWidth, &textureHeight);
-	dimensions = Vec2(textureWidth, textureHeight);
+	dimensions = Vec2(surfaceData->w, surfaceData->h);
+
+	//initalise shader;
+	shaderID = ResourceManager::initialiseShader("2d.texture", "2d.texture");
 }
 
 Sprite::~Sprite()
 {
-	//deletes the texture from memory
-	SDL_DestroyTexture(textureData);
+	//delete the surface from memory
+	SDL_FreeSurface(surfaceData);
+	//delete data
+	glDeleteVertexArrays(1, &obj);
+	glDeleteTextures(1, &textureID);
 }
 
-SDL_Texture* Sprite::getTexture()
+SDL_Surface* Sprite::getSurface()
 {
-	return textureData;
+	return surfaceData;
 }
 
 Vec2 Sprite::getDimensions()
@@ -107,80 +92,220 @@ Vec2 Sprite::getDimensions()
 	return dimensions;
 }
 
-void Sprite::pushToScreen(SDL_Renderer* renderer, Vec2 pos)
+void Sprite::pushToScreen(Vec2 pos)
 {
-	//Create the destination rectangle of the texture
-	SDL_Rect destRect;
-	destRect.x = (int)pos.x;
-	destRect.y = (int)pos.y;
-	destRect.w = (int)dimensions.x;
-	destRect.h = (int)dimensions.y;
+	//Convert to openGL coords
+	pos = convertToOpenGLCoords(pos);
+	Vec2 scale = scaleToOpenGLCoords(dimensions);
 
-	//Copy the texture to the renderer at the destination rectangle
-	SDL_RenderCopy(renderer, textureData, NULL, &destRect);
+	//initalise VBO
+	initaliseVBO(pos, scale);
+
+	//render the image
+	draw();
 }
 
-void Sprite::pushToScreen(SDL_Renderer* renderer, Vec2 pos, Vec2 scale)
+void Sprite::pushToScreen(Vec2 pos, Vec2 scale)
 {
-	//Create the destination rectangle of the texture
-	SDL_Rect destRect;
-	destRect.x = (int)pos.x;
-	destRect.y = (int)pos.y;
-	destRect.w = (int)scale.x;
-	destRect.h = (int)scale.y;
+	//Convert to openGL coords
+	pos = convertToOpenGLCoords(pos);
+	scale = scaleToOpenGLCoords(scale);
 
-	//Copy the texture to the renderer at the destination rectangle
-	SDL_RenderCopy(renderer, textureData, NULL, &destRect);
+	//initalise VBO
+	initaliseVBO(pos, scale);
+
+	//render the image
+	draw();
 }
 
-void Sprite::pushSpriteToScreen(SDL_Renderer* renderer, Vec2 pos, Vec2 spritePos, Vec2 spriteDimensions)
+Vec2 Sprite::convertToOpenGLCoords(Vec2 inVec)
 {
-	//Create the destination rectangle of the texture
-	SDL_Rect destRect;
-	destRect.x = (int)pos.x;
-	destRect.y = (int)pos.y;
-	destRect.w = (int)spriteDimensions.x;
-	destRect.h = (int)spriteDimensions.y;
+	//get the screen dimensions
+	Vec2 screenDim = WindowFrame::getWindowRes();
 
-	//Create the source rectangle of the texture
-	SDL_Rect srcRect;
-	srcRect.x = (int)spritePos.x;
-	srcRect.y = (int)spritePos.y;
-	srcRect.w = (int)spriteDimensions.x;
-	srcRect.h = (int)spriteDimensions.y;
+	/*opengl coordinates
+	-1.0,1.0  -> 1.0, 1.0
+	|					|
+	-1.0,-1.0 -> 1.0,-1.0*/
 
-	//Copy the texture to the renderer at the destination rectangle
-	SDL_RenderCopy(renderer, textureData, &srcRect, &destRect);
+	//convert the position to a number between 0 and 1
+	float newX = Convert::normaliseFloat(inVec.x, screenDim.x, 0.0f);
+	//double to get the range between 0 and 2
+	newX *= 2.0f;
+	//minus 1 to get the number between -1 and 1
+	newX -= 1.0f;
+
+	//convert the position to a number between 0 and 1
+	float newY = Convert::normaliseFloat(inVec.y, screenDim.y, 0.0f);
+	//double to get the range between 0 and 2
+	newY *= 2.0f;
+	//minus 1 to get the number between -1 and 1
+	newY -= 1.0f;
+	//invert the x coordinate to work with opengl coords
+	newY = -newY;
+
+	return Vec2(newX, newY);
 }
 
-void Sprite::pushSpriteToScreen(SDL_Renderer* renderer, Vec2 pos, Vec2 scale, Vec2 spritePos, Vec2 spriteDimensions)
+Vec2 Sprite::scaleToOpenGLCoords(Vec2 inVec)
 {
-	//Create the destination rectangle of the texture
-	SDL_Rect destRect;
-	destRect.x = (int)pos.x;
-	destRect.y = (int)pos.y;
-	destRect.w = (int)scale.x;
-	destRect.h = (int)scale.y;
+	//get the screen dimensions
+	Vec2 screenDim = WindowFrame::getWindowRes();
 
-	//Create the source rectangle of the texture
-	SDL_Rect srcRect;
-	srcRect.x = (int)spritePos.x;
-	srcRect.y = (int)spritePos.y;
-	srcRect.w = (int)spriteDimensions.x;
-	srcRect.h = (int)spriteDimensions.y;
+	/*opengl coordinates
+	-1.0,1.0  -> 1.0, 1.0
+	|					|
+	-1.0,-1.0 -> 1.0,-1.0*/
 
-	//Copy the texture to the renderer at the destination rectangle
-	SDL_RenderCopy(renderer, textureData, &srcRect, &destRect);
+	//convert the position to a number between 0 and 1
+	float newX = Convert::normaliseFloat(inVec.x, screenDim.x, 0.0f);
+	//double to get the range between 0 and 2
+	newX *= 2.0f;
+
+	//convert the position to a number between 0 and 1
+	float newY = Convert::normaliseFloat(inVec.y, screenDim.y, 0.0f);
+	//double to get the range between 0 and 2
+	newY *= 2.0f;
+
+	return Vec2(newX, newY);
 }
 
-void Sprite::setColourTint(int r, int g, int b)
+void Sprite::initaliseVBO(Vec2 pos, Vec2 scale)
 {
-	//Tint the texture with the colour
-	SDL_SetTextureColorMod(textureData, (Uint8)r, (Uint8)g, (Uint8)b);
+	//get the max coordinates using the dimensions
+	float maxX = pos.x + scale.x;
+	float maxY = pos.y - scale.y;
+
+	//Create a VBO
+	glGenVertexArrays(1, &obj);
+	//activate the VBO
+	glBindVertexArray(obj);
+
+	//Vertices for a square from two triangles
+	float vertices[] =
+	{
+		//triangle 1
+ 		pos.x,	pos.y,
+ 		pos.x,	maxY,
+ 		maxX,	maxY,
+
+		//triangle 2
+		pos.x,	pos.y,
+		maxX,	pos.y,
+		maxX,	maxY,
+	};
+
+	//Variable for storing a VBO
+	GLuint buffer = 0;
+	//Create a generic 'buffer'
+	glGenBuffers(1, &buffer);
+	//activate the buffer as a VBO
+	glBindBuffer(GL_ARRAY_BUFFER, buffer);
+	//send the data to OpenGL (num of vertices will always be 12 as it is 2 triangles)
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 12, vertices, GL_STATIC_DRAW);
+
+	//link the VBO to the shader
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(0);
+
+	//initialise the UI texture
+	initialiseTexture();
+
+	//deactivate the VBO
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+
+	//delete the VBO
+	glDeleteBuffers(1, &buffer);
 }
 
-void Sprite::setColourTint(SDL_Colour colour)
+void Sprite::initialiseTexture()
 {
-	//Tint the texture with the colour
-	SDL_SetTextureColorMod(textureData, colour.r, colour.g, colour.b);
+	//check and store the file format
+	GLenum format = 0;
+	if (surfaceData->format->BytesPerPixel == 3)
+	{
+		format = GL_RGB;
+	}
+	else if (surfaceData->format->BytesPerPixel == 4)
+	{
+		format = GL_RGBA;
+	}
+
+	// texture coordinates
+	float textureCoordinates[] = {
+		0.0f, 1.0f,
+		0.0f, 0.0f,
+		1.0f, 0.0f,
+
+		0.0f, 1.0f,
+		1.0f, 1.0f,
+		1.0f, 0.0f
+	};
+
+	// Create one OpenGL texture
+	glGenTextures(1, &textureID);
+
+	// "Bind" the newly created texture : all future texture functions will modify this texture
+	glBindTexture(GL_TEXTURE_2D, textureID);
+
+	// Give the image to OpenGL
+	glTexImage2D(GL_TEXTURE_2D, 0, format, surfaceData->w, surfaceData->h, 0, format, GL_UNSIGNED_BYTE, surfaceData->pixels);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+	// Variable for storing a VBO
+	GLuint textureBuffer = 0;
+	// Create a generic 'buffer'
+	glGenBuffers(1, &textureBuffer);
+	// Tell OpenGL that we want to activate the buffer and that it's a VBO
+	glBindBuffer(GL_ARRAY_BUFFER, textureBuffer);
+	// With this buffer active, we can now send our data to OpenGL
+	// We need to tell it how much data to send
+	// We can also tell OpenGL how we intend to use this buffer - here we say GL_STATIC_DRAW because we're only writing it once
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 12, textureCoordinates, GL_STATIC_DRAW);
+
+	// This tells OpenGL how we link the vertex data to the shader
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(1);
+
+	//deactivate the VBO
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+
+	//delete the VBO
+	glDeleteBuffers(1, &textureBuffer);
+}
+
+void Sprite::draw()
+{
+	//Get the shader program
+	glUseProgram(ResourceManager::getShaders(shaderID)->getShaderProgram());
+
+	//activate the object
+	glBindVertexArray(obj);
+
+	//turn on blending
+	glEnable(GL_BLEND);
+
+	//turn on transparency (ALPHA * incomming   +  (1 - ALPHA) * current)
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	//texturing
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, textureID);
+	glUniform1i(ResourceManager::getShaders(shaderID)->getTextureSamplerLocation(), 0);
+
+	//draw the object, the num of vertices will always be 6 as it is drawing 2 triangles for a rectangle
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+
+	//turn of blending
+	glDisable(GL_BLEND);
+
+	//deactivate the object
+	glBindVertexArray(0);
+
+	//deactivate the shader
+	glUseProgram(0);
 }
