@@ -45,6 +45,5 @@ private:
 	std::string backgroundMusicID;
 	///Initital loop bool
 	bool initialLoop;
-
 	float totalTime;
 };

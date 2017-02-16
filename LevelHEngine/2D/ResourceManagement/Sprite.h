@@ -25,6 +25,11 @@ public:
 	Sprite(int r, int g, int b);
 
 	/**
+	@brief Constructs the Sprite using a surface.
+	*/
+	Sprite(SDL_Surface* inSurfaceData);
+
+	/**
 	@brief Constructs the Sprite using an RGB value. This will create a 1x1 rectangle of that colour that can be scaled.
 	@param colour The colour value.
 	*/

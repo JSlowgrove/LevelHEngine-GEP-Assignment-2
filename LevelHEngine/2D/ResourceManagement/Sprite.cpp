@@ -12,6 +12,15 @@ Sprite::Sprite(int r, int g, int b)
 	shaderID = ResourceManager::initialiseShader("2d.texture", "2d.texture");
 }
 
+Sprite::Sprite(SDL_Surface* inSurfaceData) : surfaceData(inSurfaceData)
+{
+	//store the size of the sprite
+	dimensions = Vec2(surfaceData->w, surfaceData->h);
+
+	//initalise shader;
+	shaderID = ResourceManager::initialiseShader("2d.texture", "2d.texture");
+}
+
 Sprite::Sprite(SDL_Colour colour)
 {
 	//Creates the surface

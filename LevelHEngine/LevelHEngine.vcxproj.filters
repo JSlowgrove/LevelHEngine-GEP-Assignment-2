@@ -195,6 +195,9 @@
     <ClCompile Include="ResourceManagement\Primitives.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
+    <ClCompile Include="2D\ResourceManagement\Text.cpp">
+      <Filter>Source Files\2D\ResourceManagement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Application.h">
@@ -334,6 +337,9 @@
     </ClInclude>
     <ClInclude Include="Maths\Scaling.h">
       <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="2D\ResourceManagement\Text.h">
+      <Filter>Header Files\2D\ResourceManagement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -130,6 +130,7 @@
     <ClCompile Include="2D\AI\LOS.cpp" />
     <ClCompile Include="2D\AI\Node.cpp" />
     <ClCompile Include="2D\ResourceManagement\Sprite.cpp" />
+    <ClCompile Include="2D\ResourceManagement\Text.cpp" />
     <ClCompile Include="Components\BoundingBoxComponent.cpp" />
     <ClCompile Include="Components\BoundingSphereComponent.cpp" />
     <ClCompile Include="Components\CameraComponent.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="2D\AI\LOS.h" />
     <ClInclude Include="2D\AI\Node.h" />
     <ClInclude Include="2D\ResourceManagement\Sprite.h" />
+    <ClInclude Include="2D\ResourceManagement\Text.h" />
     <ClInclude Include="Components\BoundingBoxComponent.h" />
     <ClInclude Include="Components\BoundingSphereComponent.h" />
     <ClInclude Include="Components\CameraComponent.h" />
