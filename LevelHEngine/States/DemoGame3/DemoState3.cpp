@@ -1,13 +1,16 @@
 #include "DemoState3.h"
 
-#include "MainMenu.h"
-#include "../Core/GameObject.h"
-#include "../Core/InputManager.h"
-#include "../Core/Application.h"
-#include "../Components/CameraComponent.h"
-#include "../Components/CameraControlComponent.h"
-#include "../Components/TransformComponent.h"
-#include "../Components/ModelComponent.h"
+#include <SDL.h>
+#include <iostream>
+#include "../MainMenu.h"
+#include "../../Core/GameObject.h"
+#include "../../Core/InputManager.h"
+#include "../../Core/Application.h"
+#include "../../Components/CameraComponent.h"
+#include "../../Components/CameraControlComponent.h"
+#include "../../Components/TransformComponent.h"
+#include "../../Components/ModelComponent.h"
+#include "../../Maths/Vec3.h"
 
 
 DemoState3::DemoState3(StateManager* stateManager, SDL_Window* window)

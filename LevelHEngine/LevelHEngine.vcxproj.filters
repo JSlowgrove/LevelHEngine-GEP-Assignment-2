@@ -67,6 +67,24 @@
     <Filter Include="Source Files\2D\ResourceManagement">
       <UniqueIdentifier>{a30b6d90-6fe2-4f44-8714-eafb88244dfd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\States\DemoGame1">
+      <UniqueIdentifier>{0e116ed2-dd79-402a-b19a-02dc7c0158fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States\DemoGame2">
+      <UniqueIdentifier>{fc74d66d-9e05-439e-b965-c3ca383ea427}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States\DemoGame3">
+      <UniqueIdentifier>{b66a2921-d8ce-4c1f-9732-1044dca106cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\DemoGame1">
+      <UniqueIdentifier>{c6d4c8e6-3e40-46b3-85ce-ac36bba5b467}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\DemoGame2">
+      <UniqueIdentifier>{e66ffaee-fb62-4937-b0f0-bdef46743612}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\DemoGame3">
+      <UniqueIdentifier>{98355171-2ec3-4743-b6f1-d527ceecafb0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -156,20 +174,11 @@
     <ClCompile Include="Components\BoundingSphereComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="States\DemoState1.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
-    <ClCompile Include="States\DemoState2.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
     <ClCompile Include="ResourceManagement\Heightmap.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
     <ClCompile Include="Components\CameraControlComponent.cpp">
       <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="States\DemoState3.cpp">
-      <Filter>Source Files\States</Filter>
     </ClCompile>
     <ClCompile Include="2D\AI\AStar.cpp">
       <Filter>Source Files\2D\AI</Filter>
@@ -197,6 +206,15 @@
     </ClCompile>
     <ClCompile Include="2D\ResourceManagement\Text.cpp">
       <Filter>Source Files\2D\ResourceManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="States\DemoGame1\DemoState1.cpp">
+      <Filter>Source Files\States\DemoGame1</Filter>
+    </ClCompile>
+    <ClCompile Include="States\DemoGame2\DemoState2.cpp">
+      <Filter>Source Files\States\DemoGame2</Filter>
+    </ClCompile>
+    <ClCompile Include="States\DemoGame3\DemoState3.cpp">
+      <Filter>Source Files\States\DemoGame3</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -299,20 +317,11 @@
     <ClInclude Include="Components\BoundingSphereComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="States\DemoState1.h">
-      <Filter>Header Files\States</Filter>
-    </ClInclude>
-    <ClInclude Include="States\DemoState2.h">
-      <Filter>Header Files\States</Filter>
-    </ClInclude>
     <ClInclude Include="ResourceManagement\Heightmap.h">
       <Filter>Header Files\ResourceManagement</Filter>
     </ClInclude>
     <ClInclude Include="Components\CameraControlComponent.h">
       <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="States\DemoState3.h">
-      <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManagement\Primitives.h">
       <Filter>Header Files\ResourceManagement</Filter>
@@ -340,6 +349,15 @@
     </ClInclude>
     <ClInclude Include="2D\ResourceManagement\Text.h">
       <Filter>Header Files\2D\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="States\DemoGame1\DemoState1.h">
+      <Filter>Header Files\States\DemoGame1</Filter>
+    </ClInclude>
+    <ClInclude Include="States\DemoGame2\DemoState2.h">
+      <Filter>Header Files\States\DemoGame2</Filter>
+    </ClInclude>
+    <ClInclude Include="States\DemoGame3\DemoState3.h">
+      <Filter>Header Files\States\DemoGame3</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

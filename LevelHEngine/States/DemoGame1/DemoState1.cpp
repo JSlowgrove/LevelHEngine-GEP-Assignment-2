@@ -1,15 +1,18 @@
 #include "DemoState1.h"
 
-#include "MainMenu.h"
-#include "../Core/GameObject.h"
-#include "../Core/InputManager.h"
-#include "../Core/Application.h"
-#include "../Components/ModelComponent.h"
-#include "../Components/CameraComponent.h"
-#include "../Components/TransformComponent.h"
-#include "../Components/BoundingSphereComponent.h"
-#include "../Components/BoundingBoxComponent.h"
-#include "../Physics/Collision.h"
+#include <SDL.h>
+#include <iostream>
+#include "../MainMenu.h"
+#include "../../Core/GameObject.h"
+#include "../../Core/InputManager.h"
+#include "../../Core/Application.h"
+#include "../../Components/ModelComponent.h"
+#include "../../Components/CameraComponent.h"
+#include "../../Components/TransformComponent.h"
+#include "../../Components/BoundingSphereComponent.h"
+#include "../../Components/BoundingBoxComponent.h"
+#include "../../ResourceManagement/ResourceManager.h"
+#include "../../Physics/Collision.h"
 
 DemoState1::DemoState1(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "DemoState1"),

@@ -1,10 +1,7 @@
 #pragma once
 
-#include <SDL.h>
-#include <iostream>
-#include "State.h"
-#include "StateManager.h"
-#include "../Maths/Vec3.h"
+#include "../State.h"
+#include "../StateManager.h"
 
 /**
 @brief A State that contains and runs the Demo.

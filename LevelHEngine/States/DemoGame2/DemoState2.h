@@ -1,19 +1,12 @@
 #pragma once
-#pragma once
 
-#include <SDL.h>
-#include <iostream>
-#include "State.h"
-#include "StateManager.h"
-#include "../ResourceManagement/ResourceManager.h"
-#include "../Maths/Vec3.h"
-
-#define moveVel 10.0f;
+#include "../State.h"
+#include "../StateManager.h"
 
 /**
 @brief A State that contains and runs the Demo.
 */
-class DemoState1 : public State
+class DemoState2 : public State
 {
 public:
 	/**
@@ -21,12 +14,12 @@ public:
 	@param stateManager A pointer to the StateManager.
 	@param window A pointer to the window in use.
 	*/
-	DemoState1(StateManager* stateManager, SDL_Window* window);
+	DemoState2(StateManager* stateManager, SDL_Window* window);
 
 	/**
 	@brief Destructs the State object.
 	*/
-	~DemoState1();
+	~DemoState2();
 
 	/**
 	@brief Handles the State input.
@@ -47,10 +40,6 @@ public:
 private:
 	///The background music id.
 	std::string backgroundMusicID;
-	///The mouse press sound id.
-	std::string mousePressSoundID;
-	///The sphere velocities
-	Vec3 s1V, s2V;
-	///Other bools
-	bool initialLoop, jump, resetPos;
+	///Initital loop bool
+	bool initialLoop;
 };
