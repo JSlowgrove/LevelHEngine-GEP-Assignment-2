@@ -1,8 +1,7 @@
 #pragma once
 
-#include <SDL.h>
 #include "../../Maths/Vec2.h"
-#include "../ResourceManagement//Sprite.h"
+#include "../ResourceManagement/Sprite.h"
 
 /**
 @brief Creates a Boid object.

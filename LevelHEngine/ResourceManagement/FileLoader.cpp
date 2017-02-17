@@ -1,6 +1,7 @@
-//DISCLAIMER - This a modified version of code from a previous assignment
-
 #include "FileLoader.h"
+
+#include <fstream>
+#include "../Core/Logging.h"
 
 /**
 @brief A namespace that contains functions to load in files.

@@ -1,10 +1,7 @@
-//DISCLAIMER - This a modified version of code from a previous assignment
-
 #pragma once
 
-#include <iostream>
+#include <string>
 #include "GL/glew.h"
-#include "FileLoader.h"
 
 /**
 @brief Creates a Shader from an text file, this can then be used with OpenGL.

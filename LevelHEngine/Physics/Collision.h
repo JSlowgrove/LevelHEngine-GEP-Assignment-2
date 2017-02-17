@@ -2,8 +2,6 @@
 
 #include "../Maths/Vec2.h"
 #include "../Maths/Vec3.h"
-#include "Mechanics.h"
-
 
 /**
 @brief Contains Collision detection functions for use within the code.

@@ -1,5 +1,9 @@
 #include "Logging.h"
 
+#include <SDL.h>
+#include <fstream>
+#include <time.h>
+
 namespace Logging
 {
 
@@ -20,7 +24,7 @@ namespace Logging
 
 	void logI(std::string message, bool printToLog)
 	{
-		SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, message.c_str());
+		SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "%s", message.c_str());
 		if (printToLog)
 		{
 			printToLogFile("INFO: " + message);
@@ -29,7 +33,7 @@ namespace Logging
 
 	void logE(std::string message, bool printToLog)
 	{
-		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, message.c_str());
+		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "%s", message.c_str());
 		if (printToLog)
 		{
 			printToLogFile("ERROR: " + message);
@@ -49,7 +53,7 @@ namespace Logging
 			}
 		}
 
-		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, outString.c_str());
+		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "%s", outString.c_str());
 		if (printToLog)
 		{
 			printToLogFile("INFO: " + outString);

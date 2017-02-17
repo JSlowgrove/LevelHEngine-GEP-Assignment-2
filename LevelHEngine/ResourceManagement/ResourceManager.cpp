@@ -1,5 +1,9 @@
 #include "ResourceManager.h"
 
+#include <SDL.h>
+#include <vector>
+#include "../Core/Logging.h"
+
 std::unordered_map<std::string, Mesh*> ResourceManager::meshes;
 std::unordered_map<std::string, Shader*> ResourceManager::shaders;
 std::unordered_map<std::string, Audio*> ResourceManager::audio;

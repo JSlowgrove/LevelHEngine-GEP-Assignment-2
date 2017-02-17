@@ -1,5 +1,13 @@
 #include "Application.h"
 
+#include <SDL_ttf.h>
+#include <SDL_mixer.h>
+#include <windows.h>
+#include <GL/glew.h>
+#include "Logging.h"
+#include "WindowFrame.h"
+#include "../States/Splash.h"
+
 SDL_Window* Application::window;
 SDL_GLContext Application::glcontext;
 StateManager* Application::stateManager;

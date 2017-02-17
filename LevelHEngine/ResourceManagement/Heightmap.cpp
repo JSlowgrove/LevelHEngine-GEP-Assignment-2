@@ -1,5 +1,12 @@
 #include "Heightmap.h"
 
+#include <SDL_image.h>
+#include <string>
+#include <iostream>
+#include <Windows.h>
+#include <math.h>
+#include "../Core/Logging.h"
+
 void Heightmap::initaliseHeightmap(std::string mapFileLocation, std::vector<float> &vertices,
 	std::vector<float> &vertexNormals, std::vector<float> &vertexTextures, std::vector<unsigned int> &indices)
 {

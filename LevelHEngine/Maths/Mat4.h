@@ -1,10 +1,7 @@
-//DISCLAIMER - This is a modified version of my Mat4 class originaly from my GCP Assignement 1
-
 #pragma once
 
 #include "Vec4.h"
 #include "Vec3.h"
-#include "Convert.h"
 
 /**
 @brief Contains the Mat4 structure with functions and overloaded operators. This is row major.

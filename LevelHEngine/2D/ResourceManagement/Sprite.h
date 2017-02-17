@@ -1,14 +1,9 @@
 #pragma once
 
 #include <SDL.h>
-#include <SDL_image.h>
 #include <string>
+#include "GL/glew.h"
 #include "../../Maths/Vec2.h"
-#include "../../Maths/Convert.h"
-#include "../../Core/Logging.h"
-#include "../../Core/WindowFrame.h"
-#include "../../ResourceManagement/Shader.h"
-#include "../../ResourceManagement/ResourceManager.h"
 
 /**
 @brief Creates a Sprite for use with 2D.

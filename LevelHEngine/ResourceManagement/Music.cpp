@@ -1,6 +1,7 @@
-//DISCLAIMER - This a modified version of code from a previous assignment
-
 #include "Music.h"
+
+#include <SDL.h>
+#include "../Core/Logging.h"
 
 Music::Music(std::string file)
 {

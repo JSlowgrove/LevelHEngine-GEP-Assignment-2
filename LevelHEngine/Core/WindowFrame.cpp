@@ -1,5 +1,7 @@
 #include "WindowFrame.h"
 
+#include "Logging.h"
+
 std::string WindowFrame::title;
 Vec2 WindowFrame::windowPos;
 Vec2 WindowFrame::windowRes;

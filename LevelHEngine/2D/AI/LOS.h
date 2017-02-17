@@ -1,7 +1,6 @@
 #pragma once
 
 #include <SDL.h>
-#include <time.h>
 #include <vector>
 #include "../../Maths/Vec2.h"
 #include "Node.h"

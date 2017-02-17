@@ -1,5 +1,7 @@
 #include "Primitives.h"
 
+#include "../Maths/MathsDefs.h"
+
 std::vector<float> Primitives::generateTourus()
 {
 	// the min/max parametric values for the surface

@@ -1,5 +1,12 @@
 #include "Sprite.h"
 
+#include <SDL_image.h>
+#include "../../Maths/Convert.h"
+#include "../../Core/Logging.h"
+#include "../../Core/WindowFrame.h"
+#include "../../ResourceManagement/Shader.h"
+#include "../../ResourceManagement/ResourceManager.h"
+
 Sprite::Sprite(int r, int g, int b)
 {
 	//Creates the surface

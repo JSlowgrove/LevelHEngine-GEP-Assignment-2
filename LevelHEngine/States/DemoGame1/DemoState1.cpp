@@ -1,11 +1,11 @@
 #include "DemoState1.h"
 
 #include <SDL.h>
-#include <iostream>
 #include "../MainMenu.h"
 #include "../../Core/GameObject.h"
 #include "../../Core/InputManager.h"
 #include "../../Core/Application.h"
+#include "../../Core/Logging.h"
 #include "../../Components/ModelComponent.h"
 #include "../../Components/CameraComponent.h"
 #include "../../Components/TransformComponent.h"
@@ -13,6 +13,8 @@
 #include "../../Components/BoundingBoxComponent.h"
 #include "../../ResourceManagement/ResourceManager.h"
 #include "../../Physics/Collision.h"
+#include "../../ResourceManagement/ResourceManager.h"
+#include "../../Maths/Convert.h"
 
 DemoState1::DemoState1(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "DemoState1"),

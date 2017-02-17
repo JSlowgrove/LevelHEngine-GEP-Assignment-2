@@ -1,11 +1,6 @@
 #pragma once
 
-#include <SDL.h>
-#include <iostream>
-#include "GL/glew.h"
-#include "../Maths/Vec3.h"
 #include "../Maths/Mat4.h"
-#include "../Core/WindowFrame.h"
 #include "Component.h"
 
 /**
@@ -38,6 +33,5 @@ public:
 private:
 	///Construct a projection matrix for the Camera (Camera lense)
 	Mat4 projection;
-
 	
 };

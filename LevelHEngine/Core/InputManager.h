@@ -1,6 +1,5 @@
 #pragma once
 
-#include <SDL.h>
 #include <vector>
 #include <unordered_map>
 #include "../Maths/Vec2.h"

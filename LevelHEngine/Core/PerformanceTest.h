@@ -1,9 +1,7 @@
-//DISCLAIMER - This was originaly from my GCP Assignement 1
-
 #pragma once
-#include <windows.h>
+
 #include <cstdint>
-#include "Logging.h"
+#include <windows.h>
 
 /**
 @brief Contains details and functions for use with testing performance.

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <vector>
-#include "../Maths/MathsDefs.h"
 #include "../Maths/Vec3.h"
 
 namespace Primitives

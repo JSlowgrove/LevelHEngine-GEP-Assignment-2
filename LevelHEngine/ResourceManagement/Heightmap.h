@@ -1,14 +1,8 @@
 #pragma once
 
 #include <SDL.h>
-#include <SDL_image.h>
-#include <string>
-#include <iostream>
-#include <Windows.h>
-#include <math.h>
 #include <vector>
 #include "../Maths/Vec3.h"
-#include "../Core/Logging.h"
 
 //Generates a mesh using a Heightmap for use with a renderer.
 namespace Heightmap

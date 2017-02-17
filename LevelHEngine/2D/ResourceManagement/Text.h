@@ -2,7 +2,6 @@
 
 #include <SDL.h>
 #include <SDL_ttf.h>
-#include <iostream>
 #include <string>
 #include "Sprite.h"
 #include "../../Maths/Vec2.h"
@@ -93,21 +92,21 @@ public:
 
 	/**
 	@brief Sets the font size of the text.
-	@param fontSize The font size of the text.
+	@param inSize The font size of the text.
 	*/
-	void setFontSize(int fontSize);
+	void setFontSize(int inSize);
 
 	/**
 	@brief Sets the font of the text.
-	@param fontLocation The location of the font file.
+	@param inFontLocation The location of the font file.
 	*/
-	void setFont(std::string fontLocation);
+	void setFont(std::string inFontLocation);
 
 	/**
 	@brief Sets the text.
-	@param text The text to display.
+	@param inText The text to display.
 	*/
-	void setText(std::string text);
+	void setText(std::string inText);
 
 	/**
 	@brief Gets the dimensions of the Text Texture.

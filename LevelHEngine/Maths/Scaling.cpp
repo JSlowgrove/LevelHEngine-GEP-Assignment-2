@@ -1,5 +1,7 @@
 #include "Scaling.h"
 
+#include "MathsDefs.h"
+
 Vec2 Scaling::scaleVec2(Vec2 vector, int scale)
 {
 	//A variable for the new Vector

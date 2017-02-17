@@ -1,9 +1,6 @@
 #pragma once
 
 #include <string>
-#include <SDL.h>
-#include <fstream>
-#include <time.h>
 #include "../Maths/Mat4.h"
 
 /**

@@ -103,48 +103,48 @@ void Text::setColour(int r, int g, int b)
 	createTextTexture();
 }
 
-void Text::setColour(SDL_Colour fontColour)
+void Text::setColour(SDL_Colour colour)
 {
 	//Set the font colour
-	this->fontColour = fontColour;
+	fontColour = colour;
 
 	//Recreate the text texture
 	createTextTexture();
 }
 
-void Text::setFontSize(int fontSize)
+void Text::setFontSize(int inSize)
 {
 	//delete font
 	TTF_CloseFont(font);
 	font = NULL;
 
 	//Set the font size
-	this->fontSize = fontSize;
+	fontSize = inSize;
 
 	//Set the font
-	font = TTF_OpenFont(fontLocation.c_str(), fontSize);
+	font = TTF_OpenFont(fontLocation.c_str(), inSize);
 
 	//Recreate the text texture
 	createTextTexture();
 }
 
-void Text::setFont(std::string fontLocation)
+void Text::setFont(std::string inFontLocation)
 {
 	//delete font
 	TTF_CloseFont(font);
 	font = NULL;
 
 	//Set the font
-	font = TTF_OpenFont(fontLocation.c_str(), fontSize);
+	font = TTF_OpenFont(inFontLocation.c_str(), fontSize);
 
 	//Recreate the text texture
 	createTextTexture();
 }
 
-void Text::setText(std::string text)
+void Text::setText(std::string inText)
 {
 	//Set the text
-	this->text = text;
+	text = inText;
 
 	//Recreate the text texture
 	createTextTexture();

@@ -1,9 +1,7 @@
 #pragma once
 
 #include <string>
-#include "Logging.h"
 #include "../Maths/Vec2.h"
-
 
 /**
 @brief Contains details and functions for use with the window.

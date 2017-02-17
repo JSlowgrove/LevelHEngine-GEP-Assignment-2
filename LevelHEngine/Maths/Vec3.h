@@ -1,5 +1,3 @@
-//DISCLAIMER - This a modified version of code from a previous assignment
-
 #pragma once
 
 #include "math.h"

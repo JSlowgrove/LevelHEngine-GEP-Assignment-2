@@ -11,6 +11,8 @@
 #include "../../Components/CameraControlComponent.h"
 #include "../../Components/TransformComponent.h"
 #include "../../Components/ModelComponent.h"
+#include "../../ResourceManagement/ResourceManager.h"
+#include "../../Maths/Convert.h"
 
 
 DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
@@ -77,6 +79,10 @@ bool DemoState2::input()
 
 		if (InputManager::isKeyPressed(ESC_KEY))
 		{
+			//If Escape is pressed, return to main menu
+			//stateManager->changeState(new MainMenu(stateManager, window));
+			//return true;
+
 			//If Escape is pressed, end the game loop
 			return false;
 		}

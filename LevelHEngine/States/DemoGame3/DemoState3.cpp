@@ -1,7 +1,6 @@
 #include "DemoState3.h"
 
 #include <SDL.h>
-#include <iostream>
 #include "../MainMenu.h"
 #include "../../Core/GameObject.h"
 #include "../../Core/InputManager.h"
@@ -11,6 +10,8 @@
 #include "../../Components/TransformComponent.h"
 #include "../../Components/ModelComponent.h"
 #include "../../Maths/Vec3.h"
+#include "../../ResourceManagement/ResourceManager.h"
+#include "../../Maths/Convert.h"
 
 
 DemoState3::DemoState3(StateManager* stateManager, SDL_Window* window)
@@ -77,6 +78,10 @@ bool DemoState3::input()
 
 		if (InputManager::isKeyPressed(ESC_KEY))
 		{
+			//If Escape is pressed, return to main menu
+			//stateManager->changeState(new MainMenu(stateManager, window));
+			//return true;
+
 			//If Escape is pressed, end the game loop
 			return false;
 		}

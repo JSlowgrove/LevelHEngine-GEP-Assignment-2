@@ -1,5 +1,4 @@
-#pragma once
-
+#include <windows.h>
 #include "Core/Application.h"
 #include "Core/Logging.h"
 

@@ -3,7 +3,6 @@
 #include <SDL.h>
 #include <vector>
 #include "../../Maths/Vec2.h"
-#include "../../Core/Logging.h"
 #include "Node.h"
 
 /**

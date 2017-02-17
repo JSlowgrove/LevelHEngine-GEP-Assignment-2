@@ -1,6 +1,10 @@
-//DISCLAIMER - This is a modified version of the Mutiny transform class
-
 #include "TransformComponent.h"
+
+//uses glm for mat4's as my mat4's are not 100% complete
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include "../Maths/Vec2.h"
 
 TransformComponent::~TransformComponent()
 {

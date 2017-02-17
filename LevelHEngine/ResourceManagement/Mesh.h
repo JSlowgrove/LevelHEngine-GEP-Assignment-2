@@ -1,15 +1,9 @@
-//DISCLAIMER - This a modified version of code from a previous assignment
-
 #pragma once
 
-#include <SDL.h>
-#include <SDL_image.h>
-#include <iostream>
-#include <string>
 #include "GL/glew.h"
-#include "FileLoader.h"
-#include "../Maths/Vec3.h"
+#include <string>
 #include "Primitives.h"
+#include "../Maths/Vec3.h"
 
 /**
 @brief Creates an object from an text file, this can then be used with OpenGL.

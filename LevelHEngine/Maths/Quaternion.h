@@ -1,8 +1,5 @@
-//DISCLAIMER - This was originaly from my GCP Assignement 1
-
 #pragma once
 
-#include "math.h"
 #include "Vec3.h"
 #include "Mat4.h"
 

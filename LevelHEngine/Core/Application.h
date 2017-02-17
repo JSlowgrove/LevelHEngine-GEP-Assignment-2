@@ -1,17 +1,11 @@
 #pragma once
 
 #include <SDL.h>
-#include <SDL_ttf.h>
-#include <SDL_mixer.h>
-#include <iostream>
-#include <windows.h>
-#include <GL/glew.h>
+#include <string>
 #include <memory>
-#include "Logging.h"
-#include "WindowFrame.h"
 #include "../Maths/Vec2.h"
+#include "../Maths/Vec3.h"
 #include "../States/StateManager.h"
-#include "../States/Splash.h"
 #include "GameObject.h"
 
 ///forward declaration of game object

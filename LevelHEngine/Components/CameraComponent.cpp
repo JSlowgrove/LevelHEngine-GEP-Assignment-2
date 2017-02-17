@@ -1,5 +1,7 @@
 #include "CameraComponent.h"
 
+#include "../Core/WindowFrame.h"
+
 CameraComponent::~CameraComponent()
 {
 }

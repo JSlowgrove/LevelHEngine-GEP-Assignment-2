@@ -1,13 +1,8 @@
-//DISCLAIMER - This a modified version of code from a previous assignment
-
 #pragma once
 
 #include <string>
-#include <iostream>
-#include <fstream>
 #include <vector>
 #include <sstream> 
-#include "../Core/Logging.h"
 
 #define shaderFolder "Assets/glsl/"
 #define shaderExtension ".glsl"
@@ -64,5 +59,4 @@ namespace FileLoader
 		std::vector<float> &loadedVertices, std::vector<float> &loadedVertexNormals,
 		std::vector<float> &loadedVertexTextures, std::vector<float> &vertices,
 		std::vector<float> &vertexNormals, std::vector<float> &vertexTextures);
-
 } 

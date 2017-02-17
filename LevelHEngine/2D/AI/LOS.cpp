@@ -1,5 +1,7 @@
 #include "LOS.h"
 
+#include <time.h>
+
 bool LOS::lineOfSight(Vec2 a, Vec2 b, std::vector<std::vector<Node*>> map, int nodeSize)
 {
 	//initialise the test area

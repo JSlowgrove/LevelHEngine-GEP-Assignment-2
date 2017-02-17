@@ -1,12 +1,7 @@
-//DISCLAIMER - This a modified version of code from a previous assignment
-
 #pragma once
 
 #include <vector>
-#include <iostream>
 #include "State.h"
-#include "GL/glew.h"
-#include "../Core/Logging.h"
 
 /**
 @brief Creates a StateManager object.

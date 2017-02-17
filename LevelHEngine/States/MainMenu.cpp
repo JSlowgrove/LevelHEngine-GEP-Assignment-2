@@ -1,7 +1,6 @@
 #include "MainMenu.h"
 
 #include <SDL.h>
-#include <iostream>
 #include "../Core/InputManager.h"
 #include "../Core/Application.h"
 #include "../Components/ModelComponent.h"
@@ -10,6 +9,8 @@
 #include "DemoGame1/DemoState1.h"
 #include "DemoGame2/DemoState2.h"
 #include "DemoGame3/DemoState3.h"
+#include "../Core/Logging.h"
+#include "../Maths/Convert.h"
 
 MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "MainMenu")

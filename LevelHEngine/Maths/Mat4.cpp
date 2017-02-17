@@ -1,6 +1,6 @@
-//DISCLAIMER - This is a modified version of my Mat4 class originaly from my GCP Assignement 1
-
 #include "Mat4.h"
+
+#include "Convert.h"
 
 void Mat4::setPos(Mat4 &matrix, Vec3 pos)
 {

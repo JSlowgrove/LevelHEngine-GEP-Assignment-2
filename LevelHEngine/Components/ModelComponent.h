@@ -1,11 +1,6 @@
 #pragma once
 
-#include <iostream>
-#include <unordered_map>
-#include "GL/glew.h"
-#include "../ResourceManagement/ResourceManager.h"
 #include "../ResourceManagement/Primitives.h"
-#include "../Maths/Mat4.h"
 #include "Component.h"
 
 /**

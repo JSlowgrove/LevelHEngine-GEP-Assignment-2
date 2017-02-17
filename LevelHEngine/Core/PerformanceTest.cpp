@@ -1,6 +1,6 @@
-//DISCLAIMER - This was originaly from my GCP Assignement 1
-
 #include "PerformanceTest.h"
+
+#include "Logging.h"
 
 PerformanceTest::PerformanceTest()
 {

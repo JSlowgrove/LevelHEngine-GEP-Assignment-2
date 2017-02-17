@@ -1,4 +1,6 @@
 #include "Convert.h"
+
+#include "MathsDefs.h"
 #include "../Core/WindowFrame.h"
 
 namespace Convert

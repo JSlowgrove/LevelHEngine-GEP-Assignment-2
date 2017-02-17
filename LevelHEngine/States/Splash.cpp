@@ -1,10 +1,12 @@
 #include "Splash.h"
 
+#include "MainMenu.h"
 #include "../Core/InputManager.h"
 #include "../Core/Application.h"
 #include "../Components/ModelComponent.h"
 #include "../Components/CameraComponent.h"
 #include "../Components/TransformComponent.h"
+#include "../Maths/Convert.h"
 
 Splash::Splash(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "Splash"), splashTimer(new Timer(3.0f))

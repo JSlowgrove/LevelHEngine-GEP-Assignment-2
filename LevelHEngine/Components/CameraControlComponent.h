@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include "../Maths/Vec3.h"
 #include "Component.h"
 

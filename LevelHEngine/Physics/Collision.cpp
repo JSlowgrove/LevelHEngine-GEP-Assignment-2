@@ -1,5 +1,7 @@
 #include "Collision.h"
 
+#include "Mechanics.h"
+
 namespace Collision
 {
 

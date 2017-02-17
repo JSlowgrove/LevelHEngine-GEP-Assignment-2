@@ -1,5 +1,7 @@
 #include "AStar.h"
 
+#include "../../Core/Logging.h"
+
 AStar::AStar(int inXNodes, int inYNodes, float inNodeWidth, float inNodeHeight)
 {
 	//initialise variables

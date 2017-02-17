@@ -1,6 +1,7 @@
-//DISCLAIMER - This a modified version of code from a previous assignment
-
 #include "Shader.h"
+
+#include "FileLoader.h"
+#include "../Core/Logging.h"
 
 Shader::Shader(std::string vertexShaderFileName, std::string fragmentShaderFileName)
 {

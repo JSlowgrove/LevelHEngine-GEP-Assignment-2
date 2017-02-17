@@ -1,7 +1,5 @@
 #pragma once
 
-#include <SDL.h>
-#include <vector>
 #include <unordered_map>
 #include "Audio.h"
 #include "Music.h"

@@ -2,6 +2,9 @@
 
 #include "TransformComponent.h"
 #include "CameraComponent.h"
+#include "GL/glew.h"
+#include "../ResourceManagement/ResourceManager.h"
+#include "../Maths/Mat4.h"
 
 ModelComponent::~ModelComponent()
 {

@@ -1,6 +1,7 @@
-//DISCLAIMER - This a modified version of code from a previous assignment
-
 #include "Audio.h"
+
+#include <SDL.h>
+#include "../Core/Logging.h"
 
 Audio::Audio(std::string file)
 {

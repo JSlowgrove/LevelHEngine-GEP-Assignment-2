@@ -1,9 +1,6 @@
-//DISCLAIMER - This a modified version of code from a previous assignment
-
 #pragma once
 
 #include <SDL.h>
-#include <iostream>
 #include <string.h>
 #include "../Core/WindowFrame.h"
 

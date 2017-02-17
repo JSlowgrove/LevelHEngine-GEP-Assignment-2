@@ -1,11 +1,7 @@
-//DISCLAIMER - This a modified version of code from a previous assignment
-
 #pragma once
 
-#include <SDL.h>
 #include <SDL_mixer.h>
 #include <string>
-#include "../Core/Logging.h"
 
 /**
 @brief Handles audio using SDL_Mixer.

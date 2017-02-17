@@ -1,6 +1,11 @@
 #include "Mesh.h"
+
+#include <SDL.h>
+#include <SDL_image.h>
+#include "FileLoader.h"
 #include "Heightmap.h"
 #include "Primitives.h"
+#include "../Core/Logging.h"
 
 Mesh::Mesh(Primitives::PrimativeType primType) : heightmap(false), primative(true)
 {
