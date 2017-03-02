@@ -40,6 +40,18 @@ void ModelComponent::onRender()
 	OpenGLRendering::activateMat4Uniform(shaderID, "viewMat", view.getMatrixArray());
 	OpenGLRendering::activateMat4Uniform(shaderID, "projMat", projection.getMatrixArray());
 
+	//loop through the mat4 uniforms
+	for (auto i = mat4Uniforms.begin(); i != mat4Uniforms.end(); ++i)
+	{
+		OpenGLRendering::activateMat4Uniform(shaderID, i->first, i->second);
+	}
+
+	//loop through the vec3 uniforms
+	for (auto i = vec3Uniforms.begin(); i != vec3Uniforms.end(); ++i)
+	{
+		OpenGLRendering::activateVec3Uniform(shaderID, i->first, i->second);
+	}
+
 	//if the model uses a texture
 	if (textured)
 	{
@@ -225,9 +237,34 @@ void ModelComponent::initaliseDefaultColourShaders(std::string vertexShaderFileN
 	initaliseUniforms();
 }
 
-void ModelComponent::addUniform(std::string uniformID)
+void ModelComponent::addMat4Uniform(std::string uniformID, float* matPointer)
 {
 	ResourceManager::getShaders(shaderID)->initaliseUniform(uniformID);
+	//test if the uniform has not already been added
+	if (mat4Uniforms.count(uniformID) == 0)
+	{
+		mat4Uniforms[uniformID] = matPointer;
+	}
+	else
+	{
+		//print out that it is already initalise
+		Logging::logI(uniformID + " uniform already added.");
+	}
+}
+
+void ModelComponent::addVec3Uniform(std::string uniformID, Vec3 vec)
+{
+	ResourceManager::getShaders(shaderID)->initaliseUniform(uniformID);
+	//test if the uniform has not already been added
+	if (vec3Uniforms.count(uniformID) == 0)
+	{
+		vec3Uniforms[uniformID] = vec;
+	}
+	else
+	{
+		//print out that it is already initalise
+		Logging::logI(uniformID + " uniform already added.");
+	}
 }
 
 void ModelComponent::initaliseUniforms()

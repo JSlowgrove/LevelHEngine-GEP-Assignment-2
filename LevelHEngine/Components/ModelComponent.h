@@ -2,6 +2,7 @@
 
 #include "../ResourceManagement/Primitives.h"
 #include "Component.h"
+#include <unordered_map>
 
 /**
 @brief A class that handles the model component.
@@ -25,7 +26,9 @@ public:
 
 	void initaliseHeightmap(std::string fileName, std::string textureFileName);
 
-	void addUniform(std::string uniformID);
+	void addMat4Uniform(std::string uniformID, float* matPointer);
+
+	void addVec3Uniform(std::string uniformID, Vec3 vec);
 
 	void initaliseUniforms();
 
@@ -80,6 +83,9 @@ private:
 	std::string meshID;
 	///A boolean for if textured
 	bool textured, colour;
+	///The Uniform locations for the shader program
+	std::unordered_map<std::string, float*> mat4Uniforms;
+	std::unordered_map<std::string, Vec3> vec3Uniforms;
 
 	Vec3 ambient, diffuse;
 };

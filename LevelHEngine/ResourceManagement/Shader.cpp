@@ -129,8 +129,8 @@ void Shader::initaliseUniform(std::string uniformID)
 	}
 	else
 	{
-		//print out that it is already initalise
-		Logging::logE(uniformID + " uniform already initalised.");
+		//print out that it is already initalised
+		Logging::logI(uniformID + " uniform already initalised.");
 	}
 }
 
