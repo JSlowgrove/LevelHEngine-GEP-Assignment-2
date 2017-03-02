@@ -25,6 +25,10 @@ public:
 
 	void initaliseHeightmap(std::string fileName, std::string textureFileName);
 
+	void addUniform(std::string uniformID);
+
+	void initaliseUniforms();
+
 	/**
 	@brief A function to initalise a mesh without a texture.
 	@param objFileName The obj file for the mesh.
@@ -40,6 +44,7 @@ public:
 
 	/**
 	@brief A function to initalise the shaders to use with the mesh.
+	MUST BE RUN AFTER MESH INITALISE!!!
 	@param vertexShaderFileName The vertex shader to use.
 	@param fragmentShaderFileName The fragment shader to use.
 	*/

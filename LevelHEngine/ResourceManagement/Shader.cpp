@@ -35,18 +35,6 @@ Shader::Shader(std::string vertexShaderFileName, std::string fragmentShaderFileN
 		//quit the function
 		return;
 	}
-
-	//Get the location of the uniforms in the shaders
-	initaliseUniform("modelMat");
-	initaliseUniform("viewMat");
-	initaliseUniform("projMat");
-
-	//if the shader is a texture shader then get the texture
-	if (vertexShaderFileName == "2d.texture" || vertexShaderFileName == "texture")
-	{
-		//textureSamplerLocation = glGetUniformLocation(shaderProgram, "textureSampler");
-		initaliseUniform("textureSampler");
-	}
 }
 
 Shader::~Shader()

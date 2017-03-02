@@ -5,6 +5,7 @@
 #include "GL/glew.h"
 #include "../ResourceManagement/ResourceManager.h"
 #include "../Maths/Mat4.h"
+#include "../Core/Logging.h"
 
 ModelComponent::~ModelComponent()
 {
@@ -97,6 +98,31 @@ void ModelComponent::initaliseMesh(std::string objFileName, std::string textureF
 void ModelComponent::initaliseShaders(std::string vertexShaderFileName, std::string fragmentShaderFileName)
 {
 	shaderID = ResourceManager::initialiseShader(vertexShaderFileName, fragmentShaderFileName);
+	
+	if (meshID == "")
+	{
+		Logging::logE("Model Mesh MUST be initalised BEFORE the Shaders!!!");
+	}
+
+	//initalise uniforms
+	initaliseUniforms();
+}
+
+void ModelComponent::addUniform(std::string uniformID)
+{
+	ResourceManager::getShaders(shaderID)->initaliseUniform(uniformID);
+}
+
+void ModelComponent::initaliseUniforms()
+{
+	ResourceManager::getShaders(shaderID)->initaliseUniform("modelMat");
+	ResourceManager::getShaders(shaderID)->initaliseUniform("viewMat");
+	ResourceManager::getShaders(shaderID)->initaliseUniform("projMat");
+
+	if (textured)
+	{
+		ResourceManager::getShaders(shaderID)->initaliseUniform("textureSampler");
+	}
 }
 
 void ModelComponent::bindTextures()
