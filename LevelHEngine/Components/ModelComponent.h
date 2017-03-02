@@ -82,9 +82,4 @@ private:
 	bool textured, colour;
 
 	Vec3 ambient, diffuse;
-
-	void bindTextures();
-	void drawWithVerticies();
-	void drawWithPoints();
-	void drawWithIndices();
 };

@@ -6,6 +6,7 @@
 #include "../ResourceManagement/ResourceManager.h"
 #include "../Maths/Mat4.h"
 #include "../Core/Logging.h"
+#include "../Rendering/OpenGLRendering.h"
 
 ModelComponent::~ModelComponent()
 {
@@ -28,47 +29,47 @@ void ModelComponent::onRender()
 
 	Mat4 model = getGameObject().lock()->getComponent<TransformComponent>().lock()->getTransformMat4();
 
-	/*Activate the shader program*/
-	glUseProgram(ResourceManager::getShaders(shaderID)->getShaderProgram());
+	//Activate the shader program
+	OpenGLRendering::activateShaderProgram(shaderID);
 
-	/*Activate the vertex array object*/
-	glBindVertexArray(ResourceManager::getMesh(meshID)->getVAO());
+	//Activate the vertex array object
+	OpenGLRendering::activateMeshVAO(meshID);
 
-	/*Send the matrices to the shader as uniforms locations*/
-	glUniformMatrix4fv(ResourceManager::getShaders(shaderID)->getUniform("modelMat"), 1, GL_TRUE, model.getMatrixArray());
-	glUniformMatrix4fv(ResourceManager::getShaders(shaderID)->getUniform("viewMat"), 1, GL_TRUE, view.getMatrixArray());
-	glUniformMatrix4fv(ResourceManager::getShaders(shaderID)->getUniform("projMat"), 1, GL_TRUE, projection.getMatrixArray());
+	//Send the matrices to the shader as uniforms locations
+	OpenGLRendering::activateMat4Uniform(shaderID, "modelMat", model.getMatrixArray());
+	OpenGLRendering::activateMat4Uniform(shaderID, "viewMat", view.getMatrixArray());
+	OpenGLRendering::activateMat4Uniform(shaderID, "projMat", projection.getMatrixArray());
 
-	/*if the model uses a texture*/
+	//if the model uses a texture
 	if (textured)
 	{
-		bindTextures();
+		OpenGLRendering::bindTextures(meshID, shaderID);
 	}
 
 	if (colour)
 	{
-		glUniform3f(ResourceManager::getShaders(shaderID)->getUniform("diffuseColour"), diffuse.x, diffuse.y, diffuse.z);
-		glUniform3f(ResourceManager::getShaders(shaderID)->getUniform("ambientColour"), ambient.x, ambient.y, ambient.z);
+		OpenGLRendering::activateVec3Uniform(shaderID, "diffuseColour", diffuse);
+		OpenGLRendering::activateVec3Uniform(shaderID, "ambientColour", ambient);
 	}
 
 	if (ResourceManager::getMesh(meshID)->checkHeightmap())
 	{
-		drawWithIndices();
+		OpenGLRendering::drawWithIndices(meshID);
 	}
 	else if (ResourceManager::getMesh(meshID)->checkPrimitive())
 	{
-		drawWithPoints();
+		OpenGLRendering::drawWithPoints(meshID);
 	}
 	else
 	{
-		drawWithVerticies();
+		OpenGLRendering::drawWithVerticies(meshID);
 	}
 	
-	/*Unbind the vertex array object*/
-	glBindVertexArray(0);
+	//Unbind the vertex array object
+	OpenGLRendering::unbindVAO();
 
-	/*disable the shader program*/
-	glUseProgram(0);
+	//disable the shader program
+	OpenGLRendering::disableShaderProgram();
 }
 
 void ModelComponent::initaliseHeightmap(std::string fileName)
@@ -244,29 +245,4 @@ void ModelComponent::initaliseUniforms()
 		ResourceManager::getShaders(shaderID)->initaliseUniform("diffuseColour");
 		ResourceManager::getShaders(shaderID)->initaliseUniform("ambientColour");
 	}
-}
-
-void ModelComponent::bindTextures()
-{
-	/*texturing*/
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, ResourceManager::getMesh(meshID)->getTextureID());
-	glUniform1i(ResourceManager::getShaders(shaderID)->getUniform("textureSampler"), 0);
-}
-
-void ModelComponent::drawWithVerticies()
-{
-	/*Draw the model to the screen, using the type of geometry and the number of vertices's*/
-	glDrawArrays(GL_TRIANGLES, 0, ResourceManager::getMesh(meshID)->getNumberOfVertices());
-}
-
-void ModelComponent::drawWithPoints()
-{
-	/*Draw the model to the screen, using the type of geometry and the number of vertices's*/
-	glDrawArrays(GL_POINTS, 0, ResourceManager::getMesh(meshID)->getNumberOfVertices());
-}
-
-void ModelComponent::drawWithIndices()
-{
-	glDrawElements(GL_TRIANGLES, ResourceManager::getMesh(meshID)->getNumIndices(), GL_UNSIGNED_INT, (void*)0);
 }

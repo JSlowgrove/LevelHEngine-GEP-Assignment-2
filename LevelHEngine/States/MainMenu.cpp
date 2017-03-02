@@ -86,9 +86,9 @@ bool MainMenu::input()
 void MainMenu::update()
 {
 	//swtich to demo state
-	//stateManager->changeState(new DemoState1(stateManager, window));
+	stateManager->changeState(new DemoState1(stateManager, window));
 	//stateManager->changeState(new DemoState2(stateManager, window));
-	stateManager->changeState(new DemoState3(stateManager, window));
+	//stateManager->changeState(new DemoState3(stateManager, window));
 	return;
 }
 

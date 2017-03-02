@@ -152,6 +152,7 @@
     <ClCompile Include="Maths\Scaling.cpp" />
     <ClCompile Include="Physics\Collision.cpp" />
     <ClCompile Include="Physics\Mechanics.cpp" />
+    <ClCompile Include="Rendering\OpenGLRendering.cpp" />
     <ClCompile Include="ResourceManagement\Audio.cpp" />
     <ClCompile Include="ResourceManagement\FileLoader.cpp" />
     <ClCompile Include="ResourceManagement\Heightmap.cpp" />
@@ -201,6 +202,7 @@
     <ClInclude Include="Maths\Vec4.h" />
     <ClInclude Include="Physics\Collision.h" />
     <ClInclude Include="Physics\Mechanics.h" />
+    <ClInclude Include="Rendering\OpenGLRendering.h" />
     <ClInclude Include="ResourceManagement\Audio.h" />
     <ClInclude Include="ResourceManagement\FileLoader.h" />
     <ClInclude Include="ResourceManagement\Heightmap.h" />

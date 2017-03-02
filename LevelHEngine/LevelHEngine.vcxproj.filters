@@ -85,6 +85,12 @@
     <Filter Include="Source Files\Core\Physics">
       <UniqueIdentifier>{edac2a95-66ea-4bef-8abf-1c4daa355c4c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Rendering">
+      <UniqueIdentifier>{e0f9b212-9bca-41da-a0f7-d146d708d2c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rendering">
+      <UniqueIdentifier>{b15dcebd-e2ab-445e-8aa3-1b439caa99f3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -215,6 +221,9 @@
     </ClCompile>
     <ClCompile Include="States\DemoGame3\DemoState3.cpp">
       <Filter>Source Files\States\DemoGame3</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\OpenGLRendering.cpp">
+      <Filter>Source Files\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -358,6 +367,9 @@
     </ClInclude>
     <ClInclude Include="States\DemoGame3\DemoState3.h">
       <Filter>Header Files\States\DemoGame3</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\OpenGLRendering.h">
+      <Filter>Header Files\Rendering</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
