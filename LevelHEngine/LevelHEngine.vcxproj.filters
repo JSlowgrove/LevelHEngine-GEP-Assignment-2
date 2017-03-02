@@ -37,9 +37,6 @@
     <Filter Include="Source Files\Maths">
       <UniqueIdentifier>{7d5397f7-606b-4e8c-b665-fbdb4bcb2a31}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Physics">
-      <UniqueIdentifier>{edac2a95-66ea-4bef-8abf-1c4daa355c4c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Physics">
       <UniqueIdentifier>{1aabae74-f9cb-4a53-8c87-824b204a2b2b}</UniqueIdentifier>
     </Filter>
@@ -85,6 +82,9 @@
     <Filter Include="Source Files\States\DemoGame3">
       <UniqueIdentifier>{98355171-2ec3-4743-b6f1-d527ceecafb0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Core\Physics">
+      <UniqueIdentifier>{edac2a95-66ea-4bef-8abf-1c4daa355c4c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -118,10 +118,10 @@
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
     <ClCompile Include="Physics\Collision.cpp">
-      <Filter>Source Files\Physics</Filter>
+      <Filter>Source Files\Core\Physics</Filter>
     </ClCompile>
     <ClCompile Include="Physics\Mechanics.cpp">
-      <Filter>Source Files\Physics</Filter>
+      <Filter>Source Files\Core\Physics</Filter>
     </ClCompile>
     <ClCompile Include="States\MainMenu.cpp">
       <Filter>Source Files\States</Filter>

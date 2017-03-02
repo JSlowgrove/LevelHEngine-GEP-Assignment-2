@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <unordered_map>
 #include "GL/glew.h"
 
 /**
@@ -28,34 +29,23 @@ public:
 	GLuint getShaderProgram();
 
 	/**
-	@brief Returns the shader model matrix location.
-	@returns The shader model matrix location.
+	@brief Initalise a uniform for the shader.
+	@param uniformID The ID of the uniform.
 	*/
-	GLint getModelMatrixLocation();
+	void initaliseUniform(std::string uniformID);
 
 	/**
-	@brief Returns the shader view matrix location.
-	@returns The shader view matrix location.
+	@brief Returns the requested uniform location.
+	@param uniformID The ID of the uniform.
+	@returns The uniform location.
 	*/
-	GLint getViewMatrixLocation();
-
-	/**
-	@brief Returns the shader projection matrix location.
-	@returns The shader projection matrix location.
-	*/
-	GLint getShaderProjectionMatrixLocation();
-
-	/**
-	@brief Returns the texture sampler location.
-	@returns The texture sampler location.
-	*/
-	GLint getTextureSamplerLocation();
+	GLint getUniform(std::string uniformID);
 
 private:
 	///The Shader program of the Shader Object
 	GLuint shaderProgram;
 	///The Uniform locations for the shader program
-	GLint shaderModelMatrixLocation, shaderViewMatrixLocation, shaderProjectionMatrixLocation, textureSamplerLocation;
+	std::unordered_map<std::string, GLint> uniforms;
 
 	/**
 	@brief A function to test if the shader compiled successfully.

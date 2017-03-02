@@ -34,9 +34,9 @@ void ModelComponent::onRender()
 	glBindVertexArray(ResourceManager::getMesh(meshID)->getVAO());
 
 	/*Send the matrices to the shader as uniforms locations*/
-	glUniformMatrix4fv(ResourceManager::getShaders(shaderID)->getModelMatrixLocation(), 1, GL_TRUE, model.getMatrixArray());
-	glUniformMatrix4fv(ResourceManager::getShaders(shaderID)->getViewMatrixLocation(), 1, GL_TRUE, view.getMatrixArray());
-	glUniformMatrix4fv(ResourceManager::getShaders(shaderID)->getShaderProjectionMatrixLocation(), 1, GL_TRUE, projection.getMatrixArray());
+	glUniformMatrix4fv(ResourceManager::getShaders(shaderID)->getUniform("modelMat"), 1, GL_TRUE, model.getMatrixArray());
+	glUniformMatrix4fv(ResourceManager::getShaders(shaderID)->getUniform("viewMat"), 1, GL_TRUE, view.getMatrixArray());
+	glUniformMatrix4fv(ResourceManager::getShaders(shaderID)->getUniform("projMat"), 1, GL_TRUE, projection.getMatrixArray());
 
 	/*if the model uses a texture*/
 	if (textured)
@@ -104,7 +104,7 @@ void ModelComponent::bindTextures()
 	/*texturing*/
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, ResourceManager::getMesh(meshID)->getTextureID());
-	glUniform1i(ResourceManager::getShaders(shaderID)->getTextureSamplerLocation(), 0);
+	glUniform1i(ResourceManager::getShaders(shaderID)->getUniform("textureSampler"), 0);
 }
 
 void ModelComponent::drawWithVerticies()

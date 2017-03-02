@@ -37,14 +37,15 @@ Shader::Shader(std::string vertexShaderFileName, std::string fragmentShaderFileN
 	}
 
 	//Get the location of the uniforms in the shaders
-	shaderModelMatrixLocation = glGetUniformLocation(shaderProgram, "modelMat");
-	shaderViewMatrixLocation = glGetUniformLocation(shaderProgram, "viewMat");
-	shaderProjectionMatrixLocation = glGetUniformLocation(shaderProgram, "projMat");
+	initaliseUniform("modelMat");
+	initaliseUniform("viewMat");
+	initaliseUniform("projMat");
 
 	//if the shader is a texture shader then get the texture
 	if (vertexShaderFileName == "2d.texture" || vertexShaderFileName == "texture")
 	{
-		textureSamplerLocation = glGetUniformLocation(shaderProgram, "textureSampler");
+		//textureSamplerLocation = glGetUniformLocation(shaderProgram, "textureSampler");
+		initaliseUniform("textureSampler");
 	}
 }
 
@@ -130,26 +131,22 @@ GLuint Shader::getShaderProgram()
 	return shaderProgram;
 }
 
-GLint Shader::getModelMatrixLocation()
+void Shader::initaliseUniform(std::string uniformID)
 {
-	//return the shader model matrix location
-	return shaderModelMatrixLocation;
+	//test if the uniform has not already been initalised
+	if (uniforms.count(uniformID) == 0)
+	{
+		//initalise the uniform
+		uniforms[uniformID] = glGetUniformLocation(shaderProgram, uniformID.c_str());
+	}
+	else
+	{
+		//print out that it is already initalise
+		Logging::logE(uniformID + " uniform already initalised.");
+	}
 }
 
-GLint Shader::getViewMatrixLocation()
+GLint Shader::getUniform(std::string uniformID)
 {
-	//return the shader view matrix location
-	return shaderViewMatrixLocation;
-}
-
-GLint Shader::getShaderProjectionMatrixLocation()
-{
-	//return the shader projection matrix location
-	return shaderProjectionMatrixLocation;
-}
-
-GLint Shader::getTextureSamplerLocation()
-{
-	//return the texture sampler location
-	return textureSamplerLocation;
+	return uniforms[uniformID];
 }

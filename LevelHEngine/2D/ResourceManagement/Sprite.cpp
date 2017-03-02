@@ -311,7 +311,7 @@ void Sprite::draw()
 	//texturing
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, textureID);
-	glUniform1i(ResourceManager::getShaders(shaderID)->getTextureSamplerLocation(), 0);
+	glUniform1i(ResourceManager::getShaders(shaderID)->getUniform("textureSampler"), 0);
 
 	//draw the object, the num of vertices will always be 6 as it is drawing 2 triangles for a rectangle
 	glDrawArrays(GL_TRIANGLES, 0, 6);
