@@ -50,6 +50,13 @@ public:
 	*/
 	void initaliseShaders(std::string vertexShaderFileName, std::string fragmentShaderFileName);
 
+
+	void initaliseShaders(std::string vertexShaderFileName, float inR, float inG, float inB);
+
+	void initaliseShaders(std::string vertexShaderFileName, Vec3 inDiffuse, Vec3 inAmbient);
+
+	void initaliseDefaultColourShaders(std::string vertexShaderFileName, std::string inColour);
+
 	/**
 	@brief A function to get the mesh ID.
 	@returns The ID of the mesh.
@@ -72,7 +79,9 @@ private:
 	///The mesh for the Model
 	std::string meshID;
 	///A boolean for if textured
-	bool textured;
+	bool textured, colour;
+
+	Vec3 ambient, diffuse;
 
 	void bindTextures();
 	void drawWithVerticies();

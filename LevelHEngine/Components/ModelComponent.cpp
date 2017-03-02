@@ -45,6 +45,12 @@ void ModelComponent::onRender()
 		bindTextures();
 	}
 
+	if (colour)
+	{
+		glUniform3f(ResourceManager::getShaders(shaderID)->getUniform("diffuseColour"), diffuse.x, diffuse.y, diffuse.z);
+		glUniform3f(ResourceManager::getShaders(shaderID)->getUniform("ambientColour"), ambient.x, ambient.y, ambient.z);
+	}
+
 	if (ResourceManager::getMesh(meshID)->checkHeightmap())
 	{
 		drawWithIndices();
@@ -68,31 +74,38 @@ void ModelComponent::onRender()
 void ModelComponent::initaliseHeightmap(std::string fileName)
 {
 	meshID = ResourceManager::initialiseHeightmap(fileName);
-	textured = false;
+	colour = textured = false;
+	diffuse = ambient = Vec3(0.0f, 0.0f, 0.0f);
 }
 
 void ModelComponent::initalisePrimitive(Primitives::PrimativeType primType)
 {
 	meshID = ResourceManager::initialisePrimitive(primType);
-	textured = false;
+	colour = textured = false;
+	diffuse = ambient = Vec3(0.0f, 0.0f, 0.0f);
 }
 
 void ModelComponent::initaliseHeightmap(std::string fileName, std::string textureFileName)
 {
 	meshID = ResourceManager::initialiseHeightmap(fileName, textureFileName);
 	textured = true;
+	colour = false;
+	diffuse = ambient = Vec3(0.0f, 0.0f, 0.0f);
 }
 
 void ModelComponent::initaliseMesh(std::string objFileName)
 {
 	meshID = ResourceManager::initialiseMesh(objFileName);
-	textured = false;
+	colour = textured = false;
+	diffuse = ambient = Vec3(0.0f, 0.0f, 0.0f);
 }
 
 void ModelComponent::initaliseMesh(std::string objFileName, std::string textureFileName)
 {
 	meshID = ResourceManager::initialiseMesh(objFileName, textureFileName);
 	textured = true;
+	colour = false;
+	diffuse = ambient = Vec3(0.0f, 0.0f, 0.0f);
 }
 
 void ModelComponent::initaliseShaders(std::string vertexShaderFileName, std::string fragmentShaderFileName)
@@ -102,6 +115,109 @@ void ModelComponent::initaliseShaders(std::string vertexShaderFileName, std::str
 	if (meshID == "")
 	{
 		Logging::logE("Model Mesh MUST be initalised BEFORE the Shaders!!!");
+	}
+
+	//initalise uniforms
+	initaliseUniforms();
+}
+
+void ModelComponent::initaliseShaders(std::string vertexShaderFileName, float inR, float inG, float inB)
+{
+	colour = true;
+	shaderID = ResourceManager::initialiseShader(vertexShaderFileName, "colour");
+
+	if (meshID == "")
+	{
+		Logging::logE("Model Mesh MUST be initalised BEFORE the Shaders!!!");
+	}
+
+	diffuse.x = inR;
+	diffuse.y = inG;
+	diffuse.z = inB;
+
+	ambient = Vec3(0.0f, 0.0f, 0.0f);
+
+	//initalise uniforms
+	initaliseUniforms();
+}
+
+void ModelComponent::initaliseShaders(std::string vertexShaderFileName, Vec3 inDiffuse, Vec3 inAmbient)
+{
+	colour = true;
+	shaderID = ResourceManager::initialiseShader(vertexShaderFileName, "colour");
+
+	if (meshID == "")
+	{
+		Logging::logE("Model Mesh MUST be initalised BEFORE the Shaders!!!");
+	}
+
+	diffuse = inDiffuse;
+
+	ambient = inAmbient;
+
+	//initalise uniforms
+	initaliseUniforms();
+}
+
+void ModelComponent::initaliseDefaultColourShaders(std::string vertexShaderFileName, std::string inColour)
+{
+	colour = true;
+	shaderID = ResourceManager::initialiseShader(vertexShaderFileName, "colour");
+
+	if (meshID == "")
+	{
+		Logging::logE("Model Mesh MUST be initalised BEFORE the Shaders!!!");
+	}
+
+	if (inColour == "default")
+	{
+		ambient = Vec3(0.1f, 0.1f, 0.2f);
+		diffuse = Vec3(0.8f, 0.1f, 0.1f);
+	}
+	if (inColour == "black")
+	{
+		ambient = Vec3(0.0f, 0.0f, 0.0f);
+		diffuse = Vec3(1.0f, 1.0f, 1.0f);
+	}
+	if (inColour == "blue")
+	{
+		ambient = Vec3(0.1f, 0.1f, 0.2f);
+		diffuse = Vec3(0.0f, 0.1f, 0.8f);
+	}
+	if (inColour == "cyan")
+	{
+		ambient = Vec3(0.1f, 0.2f, 0.2f);
+		diffuse = Vec3(0.0f, 0.8f, 0.8f);
+	}
+	if (inColour == "green")
+	{
+		ambient = Vec3(0.1f, 0.1f, 0.1f);
+		diffuse = Vec3(0.0f, 0.8f, 0.1f);
+	}
+	if (inColour == "lightgrey")
+	{
+		ambient = Vec3(0.2f, 0.2f, 0.2f);
+		diffuse = Vec3(0.7f, 0.7f, 0.7f);
+	}
+	if (inColour == "magenta")
+	{
+		ambient = Vec3(0.2f, 0.1f, 0.2f);
+		diffuse = Vec3(0.8f, 0.1f, 0.8f);
+	}
+	if (inColour == "red")
+	{
+		ambient = Vec3(1.0f, 0.0f, 0.0f);
+		diffuse = Vec3(1.0f, 0.0f, 0.0f);
+	}
+	if (inColour == "white")
+	{
+		ambient = Vec3(0.2f, 0.2f, 0.2f);
+		diffuse = Vec3(1.0f, 1.0f, 1.0f);
+	}
+	if (inColour == "yellow")
+	{
+		ambient = Vec3(0.2f, 0.2f, 0.0f);
+		diffuse = Vec3(0.8f, 0.8f, 0.0f);
 	}
 
 	//initalise uniforms
@@ -122,6 +238,11 @@ void ModelComponent::initaliseUniforms()
 	if (textured)
 	{
 		ResourceManager::getShaders(shaderID)->initaliseUniform("textureSampler");
+	}
+	if (colour)
+	{
+		ResourceManager::getShaders(shaderID)->initaliseUniform("diffuseColour");
+		ResourceManager::getShaders(shaderID)->initaliseUniform("ambientColour");
 	}
 }
 

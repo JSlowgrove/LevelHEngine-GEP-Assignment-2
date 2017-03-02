@@ -44,7 +44,7 @@ DemoState3::DemoState3(StateManager* stateManager, SDL_Window* window)
 
 	tourus->getComponent<TransformComponent>().lock()->setScale(Vec3(1.5f, 1.5f, 1.5f));
 	tourus->getComponent<ModelComponent>().lock()->initalisePrimitive(Primitives::TOURUS);
-	tourus->getComponent<ModelComponent>().lock()->initaliseShaders("default", "black");
+	tourus->getComponent<ModelComponent>().lock()->initaliseDefaultColourShaders("default", "black");
 
 	//initalise bool
 	initialLoop = true;

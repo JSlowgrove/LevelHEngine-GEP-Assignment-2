@@ -3,10 +3,11 @@
 in vec3 lightDirV;
 in vec3 vNormalV;
 
+uniform vec3 ambientColour;
+uniform vec3 diffuseColour;
+
 uniform vec3 lightColour = {1,1,1};
 uniform vec3 emissiveColour = {0,0,0};
-uniform vec3 ambientColour  = {0.1f,0.1f,0.2f};
-uniform vec3 diffuseColour  = {0.0f,0.1f,0.8f};
 uniform vec3 specularColour = {0.0f,0.0f,0.0f};
 uniform float shininess     = 50.0f;
 uniform float alpha         = 1.0f;

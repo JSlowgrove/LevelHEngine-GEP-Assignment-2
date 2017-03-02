@@ -85,7 +85,7 @@ DemoState1::DemoState1(StateManager* stateManager, SDL_Window* window)
 	sphere1->getComponent<TransformComponent>().lock()->setScale(Vec3(0.5f, 0.5f, 0.5f));
 	sphere1->getComponent<TransformComponent>().lock()->setPos(Vec3(-2.0f, 4.0f, 6.0f));
 	sphere1->getComponent<ModelComponent>().lock()->initaliseMesh("sphere");
-	sphere1->getComponent<ModelComponent>().lock()->initaliseShaders("default", "cyan");
+	sphere1->getComponent<ModelComponent>().lock()->initaliseDefaultColourShaders("default", "cyan");
 	sphere1->getComponent<BoundingSphereComponent>().lock()->initaliseBoundingSphere(
 		sphere1->getComponent<ModelComponent>().lock()->getMeshID()
 	);
@@ -96,7 +96,7 @@ DemoState1::DemoState1(StateManager* stateManager, SDL_Window* window)
 	sphere2->getComponent<TransformComponent>().lock()->setScale(Vec3(0.5f, 0.5f, 0.5f));
 	sphere2->getComponent<TransformComponent>().lock()->setPos(Vec3(2.0f, 4.0f, 6.0f));
 	sphere2->getComponent<ModelComponent>().lock()->initaliseMesh("sphere");
-	sphere2->getComponent<ModelComponent>().lock()->initaliseShaders("default", "magenta");
+	sphere2->getComponent<ModelComponent>().lock()->initaliseDefaultColourShaders("default", "magenta");
 	sphere2->getComponent<BoundingSphereComponent>().lock()->initaliseBoundingSphere(
 		sphere2->getComponent<ModelComponent>().lock()->getMeshID()
 	);
@@ -129,13 +129,13 @@ DemoState1::DemoState1(StateManager* stateManager, SDL_Window* window)
 
 	lightingCube->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, -2.0f, 0.0f));
 	lightingCube->getComponent<ModelComponent>().lock()->initaliseMesh("cube");
-	lightingCube->getComponent<ModelComponent>().lock()->initaliseShaders("default", "white");
+	lightingCube->getComponent<ModelComponent>().lock()->initaliseDefaultColourShaders("default", "white");
 
 	floor->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, -3.0f, 5.0f));
 	floor->getComponent<TransformComponent>().lock()->setScale(Vec3(10.0f, 0.1f, 5.0f));
 	floor->getComponent<TransformComponent>().lock()->rotate(Vec3(0.0f, 0.0f, 0.0f));
 	floor->getComponent<ModelComponent>().lock()->initaliseMesh("cube");
-	floor->getComponent<ModelComponent>().lock()->initaliseShaders("default", "green");
+	floor->getComponent<ModelComponent>().lock()->initaliseDefaultColourShaders("default", "green");
 	floor->getComponent<BoundingBoxComponent>().lock()->initaliseBoundingBox(
 		floor->getComponent<ModelComponent>().lock()->getMeshID()
 	);
