@@ -1,4 +1,6 @@
 #include "State.h"
+#include "../Core/Application.h"
+#include "../ResourceManagement/ResourceManager.h"
 
 State::State(StateManager * stateManager, SDL_Window* window, std::string name)
 {
@@ -8,6 +10,7 @@ State::State(StateManager * stateManager, SDL_Window* window, std::string name)
 	this->window = window;
 	//set the name
 	this->name = name;
+	destroyed = false;
 }
 
 State::~State() 
@@ -24,4 +27,20 @@ std::string State::getName()
 {
 	//return the state name
 	return name;
+}
+
+void State::destroyState()
+{
+	//delete all game objects
+	Application::getGameObjects().clear();
+	//stop all music
+	ResourceManager::stopAllMusic();
+	//Delete all resources
+	ResourceManager::deleteAllAudio();
+	ResourceManager::deleteAllMusic();
+	ResourceManager::deleteAllMeshes();
+	ResourceManager::deleteAllShaders();
+	ResourceManager::deleteAllSprites();
+	//set the state to destroyed
+	destroyed = true;
 }

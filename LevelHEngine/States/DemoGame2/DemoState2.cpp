@@ -58,10 +58,10 @@ DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
 
 DemoState2::~DemoState2()
 {
-	//Stop music
-	ResourceManager::getMusic(backgroundMusicID)->stopMusic();
-	//Delete music pointers
-	ResourceManager::deleteMusic(backgroundMusicID);
+	if (!destroyed)
+	{
+		destroyState();
+	}
 }
 
 bool DemoState2::input()
@@ -80,11 +80,10 @@ bool DemoState2::input()
 		if (InputManager::isKeyPressed(ESC_KEY))
 		{
 			//If Escape is pressed, return to main menu
-			//stateManager->changeState(new MainMenu(stateManager, window));
-			//return true;
-
-			//If Escape is pressed, end the game loop
-			return false;
+			Application::drawLoadingScreen();
+			destroyState();
+			stateManager->changeState(new MainMenu(stateManager, window));
+			return true;
 		}
 
 		//Handle the camera input

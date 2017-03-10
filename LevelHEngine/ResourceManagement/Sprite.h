@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include <string>
 #include "GL/glew.h"
-#include "../../Maths/Vec2.h"
+#include "../Maths/Vec2.h"
 
 /**
 @brief Creates a Sprite for use with 2D.

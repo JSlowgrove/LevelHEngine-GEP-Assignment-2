@@ -6,6 +6,7 @@
 #include "Shader.h"
 #include "Mesh.h"
 #include "Primitives.h"
+#include "Sprite.h"
 
 /**
 @brief Contains static variables and functions for use with resource manager.
@@ -40,6 +41,11 @@ public:
 	static void deleteAllMusic();
 
 	/**
+	@brief A static function to delete all the sprites
+	*/
+	static void deleteAllSprites();
+
+	/**
 	@brief A static function to delete the mesh
 	@param id The ID of the file.
 	*/
@@ -62,6 +68,16 @@ public:
 	@param id The ID of the file.
 	*/
 	static void deleteAudio(std::string id) { audio.erase(id); }
+
+	/**
+	@brief A static function to delete the sprite
+	@param id The ID of the file.
+	*/
+	static void deleteSprite(std::string id) { sprites.erase(id); }
+
+	static void stopMusic(std::string id);
+	
+	static void stopAllMusic();
 
 	/**
 	@brief A static function to initialise a heightmap.
@@ -99,17 +115,24 @@ public:
 
 	/**
 	@brief A static function to initialise an audio file.
-	@param objFileName The name of the audio file.
+	@param audioFileName The name of the audio file.
 	@returns The ID of the loaded file.
 	*/
 	static std::string initialiseAudio(std::string audioFileName);
 
 	/**
 	@brief A static function to initialise a music file.
-	@param objFileName The name of the music file.
+	@param musicFileName The name of the music file.
 	@returns The ID of the loaded file.
 	*/
 	static std::string initialiseMusic(std::string musicFileName);
+
+	/**
+	@brief A static function to initialise a sprite.
+	@param spriteFileName The name of the sprite.
+	@returns The ID of the loaded file.
+	*/
+	static std::string initialiseSprite(std::string spriteFileName);
 
 	/**
 	@brief A static function to get a mesh.
@@ -135,6 +158,12 @@ public:
 	*/
 	static Music* getMusic(std::string id) { return music[id]; }
 
+	/**
+	@brief A static function to get a sprite.
+	@param id The ID of the file.
+	*/
+	static Sprite* getSprite(std::string id) { return sprites[id]; }
+
 		
 private:
 	///The loaded Mesh files
@@ -145,4 +174,6 @@ private:
 	static std::unordered_map<std::string, Audio*> audio;
 	///The loaded Music files
 	static std::unordered_map<std::string, Music*> music;
+	///The loaded Sprite files
+	static std::unordered_map<std::string, Sprite*> sprites;
 };

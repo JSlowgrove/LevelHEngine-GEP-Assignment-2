@@ -8,6 +8,7 @@
 #include "../../Core/Logging.h"
 #include "../../Components/ModelComponent.h"
 #include "../../Components/CameraComponent.h"
+#include "../../Components/CameraControlComponent.h"
 #include "../../Components/TransformComponent.h"
 #include "../../Components/BoundingSphereComponent.h"
 #include "../../Components/BoundingBoxComponent.h"
@@ -159,14 +160,10 @@ DemoState1::DemoState1(StateManager* stateManager, SDL_Window* window)
 
 DemoState1::~DemoState1()
 {
-	//Stop music
-	ResourceManager::getMusic(backgroundMusicID)->stopMusic();
-	//Delete music pointers
-	ResourceManager::deleteMusic(backgroundMusicID);
-	//Delete shaders
-	ResourceManager::deleteAllShaders();
-	//delete meshes
-	ResourceManager::deleteAllMeshes();
+	if (!destroyed)
+	{
+		destroyState();
+	}
 }
 
 bool DemoState1::input()
@@ -190,11 +187,13 @@ bool DemoState1::input()
 		if (InputManager::isKeyPressed(ESC_KEY))
 		{
 			//If Escape is pressed, return to main menu
-			//stateManager->changeState(new MainMenu(stateManager, window));
-			//return true;
+			Application::drawLoadingScreen();
+			destroyState();
+			stateManager->changeState(new MainMenu(stateManager, window));
+			return true;
 
 			//If Escape is pressed, end the game loop
-			return false;
+			//return false;
 		}
 
 		//handle sphere 1

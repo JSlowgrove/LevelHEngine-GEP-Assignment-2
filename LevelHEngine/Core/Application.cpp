@@ -7,6 +7,7 @@
 #include "Logging.h"
 #include "WindowFrame.h"
 #include "../States/Splash.h"
+#include "../ResourceManagement/ResourceManager.h"
 
 SDL_Window* Application::window;
 SDL_GLContext Application::glcontext;
@@ -15,6 +16,7 @@ std::vector<std::shared_ptr<GameObject> > Application::gameObjects;
 std::shared_ptr<GameObject> Application::camera;
 Vec3 Application::backgroundColour;
 float Application::dt;
+std::string Application::loadingSpriteID;
 
 void Application::init(std::string title, Vec2 windowPos, Vec2 windowRes, bool fullscreen, float frameRate)
 {
@@ -61,6 +63,9 @@ void Application::init(std::string title, Vec2 windowPos, Vec2 windowRes, bool f
 	//Enable the depth test to make sure triangles in front are always in front no matter the order they are drawn
 	glEnable(GL_DEPTH_TEST);
 
+	//Initalise the loading sprite
+	loadingSpriteID = ResourceManager::initialiseSprite("Assets/img/loading.png");
+
 	//setup state manager
 	stateManager = new StateManager();
 	//set the initial state
@@ -93,16 +98,16 @@ void Application::run(int argc, char *argv[])
 		setDT((float)(current - lastTime) / 1000.0f);
 		lastTime = current;
 
+		//clear the frame-buffer to black
+		glClearColor(backgroundColour.x, backgroundColour.y, backgroundColour.z, 1.0f);
+		//write colour to the frame-buffer
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 		//input
 		go = stateManager->input();
 
 		//update
 		stateManager->update();
-
-		//clear the frame-buffer to black
-		glClearColor(backgroundColour.x, backgroundColour.y, backgroundColour.z, 1.0f);
-		//write colour to the frame-buffer
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		//draw
 		stateManager->draw();
@@ -121,6 +126,7 @@ void Application::run(int argc, char *argv[])
 void Application::destroy()
 {
 	//Destroy data
+	ResourceManager::deleteAllSprites();
 	SDL_GL_DeleteContext(glcontext);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -207,4 +213,21 @@ void Application::setDT(float inDT)
 float Application::getDT()
 {
 	return dt;
+}
+
+void Application::drawLoadingScreen()
+{
+	//Make sure the loading screen sprite is loaded
+	loadingSpriteID = ResourceManager::initialiseSprite("Assets/img/loading.png");
+
+	//clear the frame-buffer to black
+	glClearColor(backgroundColour.x, backgroundColour.y, backgroundColour.z, 1.0f);
+	//write colour to the frame-buffer
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	//draw the loading screen
+	ResourceManager::getSprite(loadingSpriteID)->pushToScreen(Vec2(0.0f, 0.0f));
+
+	//display the window
+	SDL_GL_SwapWindow(window);
 }

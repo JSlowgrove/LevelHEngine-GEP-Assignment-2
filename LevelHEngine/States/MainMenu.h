@@ -38,4 +38,8 @@ public:
 	void draw();
 
 private:
+	///The menu sprite
+	std::string menuSprite;
+	bool initialLoop;
+	float totalTime;
 };

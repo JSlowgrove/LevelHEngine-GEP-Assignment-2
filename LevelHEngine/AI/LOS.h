@@ -2,7 +2,7 @@
 
 #include <SDL.h>
 #include <vector>
-#include "../../Maths/Vec2.h"
+#include "../Maths/Vec2.h"
 #include "Node.h"
 
 /**

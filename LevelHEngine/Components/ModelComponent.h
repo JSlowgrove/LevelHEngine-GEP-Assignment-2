@@ -32,6 +32,10 @@ public:
 
 	void initaliseUniforms();
 
+	void setDiffuse(Vec3 inDif);
+
+	void setAmbient(Vec3 inAmb);
+
 	/**
 	@brief A function to initalise a mesh without a texture.
 	@param objFileName The obj file for the mesh.
@@ -75,6 +79,8 @@ public:
 	@brief A virtual function for the componets destroy.
 	*/
 	virtual void onDestroy();
+
+	void setColour();
 
 private:
 	///The Shader for the Model

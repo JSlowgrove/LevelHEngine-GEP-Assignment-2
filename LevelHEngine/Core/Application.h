@@ -57,6 +57,7 @@ public:
 
 	static void setDT(float inDT);
 	static float getDT();
+	static void drawLoadingScreen();
 
 	///A shared pointer for the camera
 	static std::shared_ptr< GameObject > camera;
@@ -96,6 +97,8 @@ private:
 	static std::vector< std::shared_ptr<GameObject> > gameObjects;
 	///The background colour.
 	static Vec3 backgroundColour;
+	///The loading sprite.
+	static std::string loadingSpriteID;
 	
 	static float dt;
 };

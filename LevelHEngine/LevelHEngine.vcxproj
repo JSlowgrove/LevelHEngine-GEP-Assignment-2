@@ -124,13 +124,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="2D\AI\AStar.cpp" />
-    <ClCompile Include="2D\AI\Boid.cpp" />
-    <ClCompile Include="2D\AI\Flocking.cpp" />
-    <ClCompile Include="2D\AI\LOS.cpp" />
-    <ClCompile Include="2D\AI\Node.cpp" />
-    <ClCompile Include="2D\ResourceManagement\Sprite.cpp" />
-    <ClCompile Include="2D\ResourceManagement\Text.cpp" />
+    <ClCompile Include="AI\AStar.cpp" />
+    <ClCompile Include="AI\Boid.cpp" />
+    <ClCompile Include="AI\Flocking.cpp" />
+    <ClCompile Include="AI\LOS.cpp" />
+    <ClCompile Include="AI\Node.cpp" />
     <ClCompile Include="Components\BoundingBoxComponent.cpp" />
     <ClCompile Include="Components\BoundingSphereComponent.cpp" />
     <ClCompile Include="Components\CameraComponent.cpp" />
@@ -161,6 +159,8 @@
     <ClCompile Include="ResourceManagement\Primitives.cpp" />
     <ClCompile Include="ResourceManagement\ResourceManager.cpp" />
     <ClCompile Include="ResourceManagement\Shader.cpp" />
+    <ClCompile Include="ResourceManagement\Sprite.cpp" />
+    <ClCompile Include="ResourceManagement\Text.cpp" />
     <ClCompile Include="States\DemoGame1\DemoState1.cpp" />
     <ClCompile Include="States\DemoGame2\DemoState2.cpp" />
     <ClCompile Include="States\DemoGame3\DemoState3.cpp" />
@@ -170,13 +170,11 @@
     <ClCompile Include="States\StateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="2D\AI\AStar.h" />
-    <ClInclude Include="2D\AI\Boid.h" />
-    <ClInclude Include="2D\AI\Flocking.h" />
-    <ClInclude Include="2D\AI\LOS.h" />
-    <ClInclude Include="2D\AI\Node.h" />
-    <ClInclude Include="2D\ResourceManagement\Sprite.h" />
-    <ClInclude Include="2D\ResourceManagement\Text.h" />
+    <ClInclude Include="AI\AStar.h" />
+    <ClInclude Include="AI\Boid.h" />
+    <ClInclude Include="AI\Flocking.h" />
+    <ClInclude Include="AI\LOS.h" />
+    <ClInclude Include="AI\Node.h" />
     <ClInclude Include="Components\BoundingBoxComponent.h" />
     <ClInclude Include="Components\BoundingSphereComponent.h" />
     <ClInclude Include="Components\CameraComponent.h" />
@@ -211,6 +209,8 @@
     <ClInclude Include="ResourceManagement\Primitives.h" />
     <ClInclude Include="ResourceManagement\ResourceManager.h" />
     <ClInclude Include="ResourceManagement\Shader.h" />
+    <ClInclude Include="ResourceManagement\Sprite.h" />
+    <ClInclude Include="ResourceManagement\Text.h" />
     <ClInclude Include="States\DemoGame1\DemoState1.h" />
     <ClInclude Include="States\DemoGame2\DemoState2.h" />
     <ClInclude Include="States\DemoGame3\DemoState3.h" />

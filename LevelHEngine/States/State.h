@@ -54,6 +54,8 @@ public:
 	*/
 	std::string getName();
 
+	void destroyState();
+
 protected:
 	///A pointer to the state manager
 	StateManager* stateManager;
@@ -61,4 +63,6 @@ protected:
 	SDL_Window* window;
 	///The state name
 	std::string name;
+	///A boolean for if the state is destroyed
+	bool destroyed;
 };

@@ -3,7 +3,7 @@
 #include <vector>
 #include "../ResourceManagement/Sprite.h"
 #include "Boid.h"
-#include "../../Maths/Vec2.h"
+#include "../Maths/Vec2.h"
 
 /**
 @brief Creates a Flocking object.

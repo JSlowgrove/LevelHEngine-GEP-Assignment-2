@@ -8,6 +8,7 @@ std::unordered_map<std::string, Mesh*> ResourceManager::meshes;
 std::unordered_map<std::string, Shader*> ResourceManager::shaders;
 std::unordered_map<std::string, Audio*> ResourceManager::audio;
 std::unordered_map<std::string, Music*> ResourceManager::music;
+std::unordered_map<std::string, Sprite*> ResourceManager::sprites;
 
 void ResourceManager::deleteResources()
 {
@@ -15,37 +16,44 @@ void ResourceManager::deleteResources()
 	deleteAllShaders();
 	deleteAllAudio();
 	deleteAllMusic();
+	deleteAllSprites();
 }
 
 void ResourceManager::deleteAllMeshes()
 {
-	for (auto i = meshes.begin(); i != meshes.end(); ++i)
-	{
-		delete i->second;
-	}
+	meshes.clear();
 }
 
 void ResourceManager::deleteAllShaders()
 {
-	for (auto i = shaders.begin(); i != shaders.end(); ++i)
-	{
-		delete i->second;
-	}
+	shaders.clear();
 }
 
 void ResourceManager::deleteAllAudio()
 {
-	for (auto i = audio.begin(); i != audio.end(); ++i)
-	{
-		delete i->second;
-	}
+	audio.clear();
 }
 
 void ResourceManager::deleteAllMusic()
 {
+	music.clear();
+}
+
+void ResourceManager::deleteAllSprites()
+{
+	sprites.clear();
+}
+
+void ResourceManager::stopMusic(std::string id)
+{
+	music[id]->stopMusic();
+}
+
+void ResourceManager::stopAllMusic()
+{
 	for (auto i = music.begin(); i != music.end(); ++i)
 	{
-		delete i->second;
+		i->second->stopMusic();
 	}
 }
 
@@ -194,4 +202,21 @@ std::string ResourceManager::initialiseMusic(std::string musicFileName)
 	}
 	//return the ID
 	return musicFileName;
+}
+
+std::string ResourceManager::initialiseSprite(std::string spriteFileName)
+{
+	//test if the sprite has already been loaded
+	if (sprites.count(spriteFileName) == 0)
+	{
+		//load the sprite
+		sprites[spriteFileName] = new Sprite(spriteFileName);
+	}
+	else
+	{
+		//print out that it is already loaded
+		Logging::logI(spriteFileName + " sprite already loaded.");
+	}
+	//return the ID
+	return spriteFileName;
 }

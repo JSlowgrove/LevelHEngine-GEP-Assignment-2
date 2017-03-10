@@ -57,10 +57,10 @@ DemoState3::DemoState3(StateManager* stateManager, SDL_Window* window)
 
 DemoState3::~DemoState3()
 {
-	//Stop music
-	ResourceManager::getMusic(backgroundMusicID)->stopMusic();
-	//Delete music pointers
-	ResourceManager::deleteMusic(backgroundMusicID);
+	if (!destroyed)
+	{
+		destroyState();
+	}
 }
 
 bool DemoState3::input()
@@ -79,11 +79,10 @@ bool DemoState3::input()
 		if (InputManager::isKeyPressed(ESC_KEY))
 		{
 			//If Escape is pressed, return to main menu
-			//stateManager->changeState(new MainMenu(stateManager, window));
-			//return true;
-
-			//If Escape is pressed, end the game loop
-			return false;
+			Application::drawLoadingScreen();
+			destroyState();
+			stateManager->changeState(new MainMenu(stateManager, window));
+			return true;
 		}
 	}
 	return true;

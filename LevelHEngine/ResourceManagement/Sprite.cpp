@@ -1,11 +1,11 @@
 #include "Sprite.h"
 
 #include <SDL_image.h>
-#include "../../Maths/Convert.h"
-#include "../../Core/Logging.h"
-#include "../../Core/WindowFrame.h"
-#include "../../ResourceManagement/Shader.h"
-#include "../../ResourceManagement/ResourceManager.h"
+#include "../Maths/Convert.h"
+#include "../Core/Logging.h"
+#include "../Core/WindowFrame.h"
+#include "../ResourceManagement/Shader.h"
+#include "../ResourceManagement/ResourceManager.h"
 
 Sprite::Sprite(int r, int g, int b)
 {
@@ -53,6 +53,10 @@ Sprite::Sprite(std::string fileLocation)
 		Logging::logE(message);
 		return;
 	}
+	else
+	{
+		Logging::logI("Image loaded from: " + fileLocation);
+	}
 
 	//store the size of the sprite
 	dimensions = Vec2(surfaceData->w, surfaceData->h);
@@ -73,6 +77,10 @@ Sprite::Sprite(std::string fileLocation, bool magentaAlpha)
 		std::string message = "Unable to load image from: " + fileLocation + ", Error is: " + IMG_GetError();
 		Logging::logE(message);
 		return;
+	}
+	else
+	{
+		Logging::logI("Image loaded from: " + fileLocation);
 	}
 
 	//Check if the images magenta is to be used as the alpha

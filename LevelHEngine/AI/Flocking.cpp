@@ -2,7 +2,7 @@
 
 #include <cmath>
 #include <time.h>
-#include "../../Maths/Scaling.h"
+#include "../Maths/Scaling.h"
 
 Flocking::Flocking(int inNumberOfBoids, Sprite* inSprite, int inXBoundary, int inYBoundary, float inMaxVel, int inScreenHeight)
 {

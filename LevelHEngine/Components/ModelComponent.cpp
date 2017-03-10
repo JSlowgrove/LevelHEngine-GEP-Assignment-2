@@ -21,6 +21,11 @@ void ModelComponent::onDestroy()
 {
 }
 
+void ModelComponent::setColour()
+{
+	colour = true;
+}
+
 void ModelComponent::onRender()
 {
 	auto camera = Application::camera;
@@ -282,4 +287,14 @@ void ModelComponent::initaliseUniforms()
 		ResourceManager::getShaders(shaderID)->initaliseUniform("diffuseColour");
 		ResourceManager::getShaders(shaderID)->initaliseUniform("ambientColour");
 	}
+}
+
+void ModelComponent::setDiffuse(Vec3 inDif)
+{
+	diffuse = inDif;
+}
+
+void ModelComponent::setAmbient(Vec3 inAmb)
+{
+	ambient = inAmb;
 }

@@ -4,7 +4,7 @@
 #include <SDL_ttf.h>
 #include <string>
 #include "Sprite.h"
-#include "../../Maths/Vec2.h"
+#include "../Maths/Vec2.h"
 
 /**
 @brief Creates a Text sprite for use with using the Text formating.
