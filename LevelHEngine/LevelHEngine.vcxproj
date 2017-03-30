@@ -164,6 +164,7 @@
     <ClCompile Include="States\DemoGame1\DemoState1.cpp" />
     <ClCompile Include="States\DemoGame2\DemoState2.cpp" />
     <ClCompile Include="States\DemoGame3\DemoState3.cpp" />
+    <ClCompile Include="States\DemoGame4\DemoState4.cpp" />
     <ClCompile Include="States\MainMenu.cpp" />
     <ClCompile Include="States\Splash.cpp" />
     <ClCompile Include="States\State.cpp" />
@@ -214,6 +215,7 @@
     <ClInclude Include="States\DemoGame1\DemoState1.h" />
     <ClInclude Include="States\DemoGame2\DemoState2.h" />
     <ClInclude Include="States\DemoGame3\DemoState3.h" />
+    <ClInclude Include="States\DemoGame4\DemoState4.h" />
     <ClInclude Include="States\MainMenu.h" />
     <ClInclude Include="States\Splash.h" />
     <ClInclude Include="States\State.h" />

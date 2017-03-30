@@ -79,6 +79,12 @@
     <Filter Include="Header Files\AI">
       <UniqueIdentifier>{6e6df5e7-a4a2-4b5a-9136-87e2a95ba788}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\States\DemoGame4">
+      <UniqueIdentifier>{e7528613-ec76-4c8b-879f-e6b7d0c0cfd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\DemoGame4">
+      <UniqueIdentifier>{ce88f7b7-5ab6-45c2-b8c2-7aa6dc515133}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -212,6 +218,9 @@
     </ClCompile>
     <ClCompile Include="AI\Node.cpp">
       <Filter>Source Files\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="States\DemoGame4\DemoState4.cpp">
+      <Filter>Source Files\States\DemoGame4</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -358,6 +367,9 @@
     </ClInclude>
     <ClInclude Include="AI\Node.h">
       <Filter>Header Files\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="States\DemoGame4\DemoState4.h">
+      <Filter>Header Files\States\DemoGame4</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

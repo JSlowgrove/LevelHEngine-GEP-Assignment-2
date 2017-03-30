@@ -67,12 +67,11 @@ public:
 	void pushToScreen(Vec2 pos);
 
 	/**
-	@brief Pushes the image to the Renderer at the XY Coordinates. 
-	This is scaled to the dimensions inputed.
+	@brief Scale the image to the dimensions inputed.
 	@param pos The position of the image.
 	@param scale The dimensions of the image.
 	*/
-	void pushToScreen(Vec2 pos, Vec2 scale);
+	void scaleSprite(Vec2 scale);
 
 private:
 	///The Surface data
@@ -90,5 +89,5 @@ private:
 	Vec2 scaleToOpenGLCoords(Vec2 inVec);
 	void initaliseVBO(Vec2 pos, Vec2 scale);
 	void initialiseTexture();
-	void Sprite::draw();
+	void draw(Vec2 pos);
 };

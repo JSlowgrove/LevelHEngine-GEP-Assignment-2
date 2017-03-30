@@ -21,6 +21,12 @@ public:
 	Mat4 getProjection();
 
 	/**
+	@brief Returns the Camera orthogonal projection matrix.
+	@returns The Camera orthogonal projection matrix.
+	*/
+	float* getOrthoProjection();
+
+	/**
 	@brief A virtual function for the componets awake
 	*/
 	virtual void onAwake();

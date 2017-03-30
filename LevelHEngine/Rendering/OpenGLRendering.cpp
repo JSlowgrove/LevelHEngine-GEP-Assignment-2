@@ -23,6 +23,12 @@ void OpenGLRendering::activateVec3Uniform(std::string shaderID, std::string unif
 	glUniform3f(ResourceManager::getShaders(shaderID)->getUniform(uniformID), vec.x, vec.y, vec.z);
 }
 
+void OpenGLRendering::activateVec2Uniform(std::string shaderID, std::string uniformID, Vec2 vec)
+{
+	glUniform2f(ResourceManager::getShaders(shaderID)->getUniform(uniformID), vec.x, vec.y);
+}
+
+
 void OpenGLRendering::unbindVAO()
 {
 	glBindVertexArray(0);

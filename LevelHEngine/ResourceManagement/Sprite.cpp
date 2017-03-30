@@ -6,6 +6,7 @@
 #include "../Core/WindowFrame.h"
 #include "../ResourceManagement/Shader.h"
 #include "../ResourceManagement/ResourceManager.h"
+#include "../Rendering/OpenGLRendering.h"
 
 Sprite::Sprite(int r, int g, int b)
 {
@@ -17,6 +18,11 @@ Sprite::Sprite(int r, int g, int b)
 
 	//initalise shader;
 	shaderID = ResourceManager::initialiseShader("2d.texture", "2d.texture");
+
+	//initalise the VBO of the sprite
+	Vec2 pos = Vec2(0.0f, 0.0f);
+	Vec2 scale = scaleToOpenGLCoords(dimensions);
+	initaliseVBO(pos, scale);
 }
 
 Sprite::Sprite(SDL_Surface* inSurfaceData) : surfaceData(inSurfaceData)
@@ -26,6 +32,11 @@ Sprite::Sprite(SDL_Surface* inSurfaceData) : surfaceData(inSurfaceData)
 
 	//initalise shader;
 	shaderID = ResourceManager::initialiseShader("2d.texture", "2d.texture");
+
+	//initalise the VBO of the sprite
+	Vec2 pos = Vec2(0.0f, 0.0f);
+	Vec2 scale = scaleToOpenGLCoords(dimensions);
+	initaliseVBO(pos, scale);
 }
 
 Sprite::Sprite(SDL_Colour colour)
@@ -38,6 +49,11 @@ Sprite::Sprite(SDL_Colour colour)
 
 	//initalise shader;
 	shaderID = ResourceManager::initialiseShader("2d.texture", "2d.texture");
+
+	//initalise the VBO of the sprite
+	Vec2 pos = Vec2(0.0f, 0.0f);
+	Vec2 scale = scaleToOpenGLCoords(dimensions);
+	initaliseVBO(pos, scale);
 }
 
 Sprite::Sprite(std::string fileLocation)
@@ -63,6 +79,11 @@ Sprite::Sprite(std::string fileLocation)
 
 	//initalise shader;
 	shaderID = ResourceManager::initialiseShader("2d.texture", "2d.texture");
+
+	//initalise the VBO of the sprite
+	Vec2 pos = Vec2(0.0f,0.0f);
+	Vec2 scale = scaleToOpenGLCoords(dimensions);
+	initaliseVBO(pos, scale);
 }
 
 Sprite::Sprite(std::string fileLocation, bool magentaAlpha)
@@ -95,6 +116,11 @@ Sprite::Sprite(std::string fileLocation, bool magentaAlpha)
 
 	//initalise shader;
 	shaderID = ResourceManager::initialiseShader("2d.texture", "2d.texture");
+
+	//initalise the VBO of the sprite
+	Vec2 pos = Vec2(0.0f, 0.0f);
+	Vec2 scale = scaleToOpenGLCoords(dimensions);
+	initaliseVBO(pos, scale);
 }
 
 Sprite::~Sprite()
@@ -120,26 +146,25 @@ void Sprite::pushToScreen(Vec2 pos)
 {
 	//Convert to openGL coords
 	pos = convertToOpenGLCoords(pos);
-	Vec2 scale = scaleToOpenGLCoords(dimensions);
-
-	//initalise VBO
-	initaliseVBO(pos, scale);
 
 	//render the image
-	draw();
+	draw(pos);
 }
 
-void Sprite::pushToScreen(Vec2 pos, Vec2 scale)
+void Sprite::scaleSprite(Vec2 scale)
 {
+	//get start pos
+	Vec2 pos = Vec2(0.0f, 0.0f);
+
 	//Convert to openGL coords
-	pos = convertToOpenGLCoords(pos);
 	scale = scaleToOpenGLCoords(scale);
+
+	//delete old VBO data
+	glDeleteVertexArrays(1, &obj);
+	glDeleteTextures(1, &textureID);
 
 	//initalise VBO
 	initaliseVBO(pos, scale);
-
-	//render the image
-	draw();
 }
 
 Vec2 Sprite::convertToOpenGLCoords(Vec2 inVec)
@@ -302,13 +327,16 @@ void Sprite::initialiseTexture()
 	glDeleteBuffers(1, &textureBuffer);
 }
 
-void Sprite::draw()
+void Sprite::draw(Vec2 pos)
 {
 	//Get the shader program
 	glUseProgram(ResourceManager::getShaders(shaderID)->getShaderProgram());
 
 	//activate the object
 	glBindVertexArray(obj);
+
+	//activate the position
+	OpenGLRendering::activateVec2Uniform(shaderID, "inPos", pos);
 
 	//turn on blending
 	glEnable(GL_BLEND);

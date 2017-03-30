@@ -10,6 +10,7 @@
 #include "DemoGame1/DemoState1.h"
 #include "DemoGame2/DemoState2.h"
 #include "DemoGame3/DemoState3.h"
+#include "DemoGame4/DemoState4.h"
 #include "../Core/Logging.h"
 #include "../Maths/Convert.h"
 
@@ -95,6 +96,20 @@ bool MainMenu::input()
 			Application::drawLoadingScreen();
 			destroyState();
 			stateManager->changeState(new DemoState3(stateManager, window));
+			return true;
+		}
+		if (InputManager::isKeyPressed(FOUR_KEY))
+		{
+			//swtich to demo state
+			Application::drawLoadingScreen();
+			destroyState();
+			stateManager->changeState(new DemoState4(stateManager, window));
+			return true;
+		}
+
+		if (InputManager::isKeyPressed(SPACE_KEY))
+		{
+			ResourceManager::getSprite(menuSprite)->scaleSprite(Vec2(40.0f, 40.0f));
 			return true;
 		}
 	}
