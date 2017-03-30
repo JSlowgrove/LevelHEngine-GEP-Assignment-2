@@ -13,6 +13,7 @@
 #include "DemoGame4/DemoState4.h"
 #include "../Core/Logging.h"
 #include "../Maths/Convert.h"
+#include "../Core/Screenshot.h"
 
 MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "MainMenu")
@@ -104,12 +105,6 @@ bool MainMenu::input()
 			Application::drawLoadingScreen();
 			destroyState();
 			stateManager->changeState(new DemoState4(stateManager, window));
-			return true;
-		}
-
-		if (InputManager::isKeyPressed(SPACE_KEY))
-		{
-			ResourceManager::getSprite(menuSprite)->scaleSprite(Vec2(40.0f, 40.0f));
 			return true;
 		}
 	}
