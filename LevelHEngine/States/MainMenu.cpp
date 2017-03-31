@@ -11,6 +11,8 @@
 #include "DemoGame2/DemoState2.h"
 #include "DemoGame3/DemoState3.h"
 #include "DemoGame4/DemoState4.h"
+#include "DemoGame5/DemoState5.h"
+#include "DemoGame6/DemoState6.h"
 #include "../Core/Logging.h"
 #include "../Maths/Convert.h"
 #include "../Core/Screenshot.h"
@@ -43,12 +45,23 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	cube->getComponent<ModelComponent>().lock()->initaliseMesh("cube");
 	cube->getComponent<ModelComponent>().lock()->initaliseDefaultColourShaders("default", "default");
 
+	demoButtons[0] = new Button("Assets/img/demo1Button.png", "Assets/img/demo1ButtonHeld.png", Vec2(45.0f, 126.0f));
+	demoButtons[1] = new Button("Assets/img/demo2Button.png", "Assets/img/demo2ButtonHeld.png", Vec2(45.0f, 221.0f));
+	demoButtons[2] = new Button("Assets/img/demo3Button.png", "Assets/img/demo3ButtonHeld.png", Vec2(45.0f, 316.0f));
+	demoButtons[3] = new Button("Assets/img/demo4Button.png", "Assets/img/demo4ButtonHeld.png", Vec2(45.0f, 412.0f));
+	demoButtons[4] = new Button("Assets/img/demo5Button.png", "Assets/img/demo5ButtonHeld.png", Vec2(45.0f, 507.0f));
+	demoButtons[5] = new Button("Assets/img/demo6Button.png", "Assets/img/demo6ButtonHeld.png", Vec2(45.0f, 603.0f));
+
 	totalTime = 0.0f;
 	initialLoop = true;
 }
 
 MainMenu::~MainMenu()
 {
+	for (int i = 0; i < 6; i++)
+	{
+		delete demoButtons[i];
+	}
 	if (!destroyed)
 	{
 		destroyState();
@@ -74,8 +87,8 @@ bool MainMenu::input()
 			return false;
 		}
 
-		//tmp
-		if (InputManager::isKeyPressed(ONE_KEY))
+		//menu input
+		if (demoButtons[0]->input())
 		{
 			//swtich to demo state
 			Application::drawLoadingScreen();
@@ -83,7 +96,7 @@ bool MainMenu::input()
 			stateManager->changeState(new DemoState1(stateManager, window));
 			return true;
 		}
-		if (InputManager::isKeyPressed(TWO_KEY))
+		if (demoButtons[1]->input())
 		{
 			//swtich to demo state
 			Application::drawLoadingScreen();
@@ -91,7 +104,7 @@ bool MainMenu::input()
 			stateManager->changeState(new DemoState2(stateManager, window));
 			return true;
 		}
-		if (InputManager::isKeyPressed(THREE_KEY))
+		if (demoButtons[2]->input())
 		{
 			//swtich to demo state
 			Application::drawLoadingScreen();
@@ -99,12 +112,30 @@ bool MainMenu::input()
 			stateManager->changeState(new DemoState3(stateManager, window));
 			return true;
 		}
-		if (InputManager::isKeyPressed(FOUR_KEY))
+		if (demoButtons[3]->input())
 		{
 			//swtich to demo state
 			Application::drawLoadingScreen();
 			destroyState();
 			stateManager->changeState(new DemoState4(stateManager, window));
+			return true;
+		}
+
+		if (demoButtons[4]->input())
+		{
+			//swtich to demo state
+			Application::drawLoadingScreen();
+			destroyState();
+			stateManager->changeState(new DemoState5(stateManager, window));
+			return true;
+		}
+
+		if (demoButtons[5]->input())
+		{
+			//swtich to demo state
+			Application::drawLoadingScreen();
+			destroyState();
+			stateManager->changeState(new DemoState6(stateManager, window));
 			return true;
 		}
 	}
@@ -152,6 +183,10 @@ void MainMenu::draw()
 		//draw the state
 		Application::getGameObjects()[i]->render();
 	}
-
 	ResourceManager::getSprite(menuSprite)->pushToScreen(Vec2(0.0f, 0.0f));
+
+	for (int i = 0; i < 6; i++)
+	{
+		demoButtons[i]->draw();
+	}
 }

@@ -1,13 +1,12 @@
 #pragma once
 
-#include "State.h"
-#include "StateManager.h"
-#include "../ResourceManagement/Button.h"
+#include "../State.h"
+#include "../StateManager.h"
 
 /**
-@brief A State that contains and runs the Main Menu.
+@brief A State that contains and runs the Demo.
 */
-class MainMenu : public State
+class DemoState5 : public State
 {
 public:
 	/**
@@ -15,12 +14,12 @@ public:
 	@param stateManager A pointer to the StateManager.
 	@param window A pointer to the window in use.
 	*/
-	MainMenu(StateManager* stateManager, SDL_Window* window);
+	DemoState5(StateManager* stateManager, SDL_Window* window);
 
 	/**
 	@brief Destructs the State object.
 	*/
-	~MainMenu();
+	~DemoState5();
 
 	/**
 	@brief Handles the State input.
@@ -39,10 +38,8 @@ public:
 	void draw();
 
 private:
-	///The menu sprite
-	std::string menuSprite;
-	///The menu buttons
-	Button* demoButtons[6];
+	///The background music id.
+	std::string backgroundMusicID;
+	///Initital loop bool
 	bool initialLoop;
-	float totalTime;
 };

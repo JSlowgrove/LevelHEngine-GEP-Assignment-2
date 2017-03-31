@@ -154,6 +154,7 @@
     <ClCompile Include="Physics\Mechanics.cpp" />
     <ClCompile Include="Rendering\OpenGLRendering.cpp" />
     <ClCompile Include="ResourceManagement\Audio.cpp" />
+    <ClCompile Include="ResourceManagement\Button.cpp" />
     <ClCompile Include="ResourceManagement\FileLoader.cpp" />
     <ClCompile Include="ResourceManagement\Heightmap.cpp" />
     <ClCompile Include="ResourceManagement\Music.cpp" />
@@ -167,6 +168,8 @@
     <ClCompile Include="States\DemoGame2\DemoState2.cpp" />
     <ClCompile Include="States\DemoGame3\DemoState3.cpp" />
     <ClCompile Include="States\DemoGame4\DemoState4.cpp" />
+    <ClCompile Include="States\DemoGame5\DemoState5.cpp" />
+    <ClCompile Include="States\DemoGame6\DemoState6.cpp" />
     <ClCompile Include="States\MainMenu.cpp" />
     <ClCompile Include="States\Splash.cpp" />
     <ClCompile Include="States\State.cpp" />
@@ -207,6 +210,7 @@
     <ClInclude Include="Physics\Mechanics.h" />
     <ClInclude Include="Rendering\OpenGLRendering.h" />
     <ClInclude Include="ResourceManagement\Audio.h" />
+    <ClInclude Include="ResourceManagement\Button.h" />
     <ClInclude Include="ResourceManagement\FileLoader.h" />
     <ClInclude Include="ResourceManagement\Heightmap.h" />
     <ClInclude Include="ResourceManagement\Music.h" />
@@ -220,6 +224,8 @@
     <ClInclude Include="States\DemoGame2\DemoState2.h" />
     <ClInclude Include="States\DemoGame3\DemoState3.h" />
     <ClInclude Include="States\DemoGame4\DemoState4.h" />
+    <ClInclude Include="States\DemoGame5\DemoState5.h" />
+    <ClInclude Include="States\DemoGame6\DemoState6.h" />
     <ClInclude Include="States\MainMenu.h" />
     <ClInclude Include="States\Splash.h" />
     <ClInclude Include="States\State.h" />

@@ -338,6 +338,9 @@ void Sprite::draw(Vec2 pos)
 	//activate the position
 	OpenGLRendering::activateVec2Uniform(shaderID, "inPos", pos);
 
+	//turn off depth testing
+	glDisable(GL_DEPTH_TEST);
+
 	//turn on blending
 	glEnable(GL_BLEND);
 
@@ -354,6 +357,9 @@ void Sprite::draw(Vec2 pos)
 
 	//turn of blending
 	glDisable(GL_BLEND);
+
+	//turn on depth testing
+	glEnable(GL_DEPTH_TEST);
 
 	//deactivate the object
 	glBindVertexArray(0);

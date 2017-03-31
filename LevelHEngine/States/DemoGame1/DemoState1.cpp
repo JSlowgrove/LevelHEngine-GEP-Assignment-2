@@ -16,6 +16,7 @@
 #include "../../Physics/Collision.h"
 #include "../../ResourceManagement/ResourceManager.h"
 #include "../../Maths/Convert.h"
+#include "../../Maths/Vec2.h"
 
 DemoState1::DemoState1(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "DemoState1"),
@@ -150,6 +151,10 @@ DemoState1::DemoState1(StateManager* stateManager, SDL_Window* window)
 	//initalise bools
 	initialLoop = true;
 	resetPos = false;
+
+	//initalise the info images
+	escInfo = ResourceManager::initialiseSprite("Assets/img/demo1esc.png");
+	quickUserGuide = ResourceManager::initialiseSprite("Assets/img/demo1quickuserguide.png");
 
 	//start the music
 	ResourceManager::getMusic(backgroundMusicID)->startMusic();
@@ -377,4 +382,8 @@ void DemoState1::draw()
 		//draw the state
 		Application::getGameObjects()[i]->render();
 	}
+
+	//draw the demo info
+	ResourceManager::getSprite(escInfo)->pushToScreen(Vec2(10.0f, 10.0f));
+	ResourceManager::getSprite(quickUserGuide)->pushToScreen(Vec2(1030.0f, 10.0f));
 }

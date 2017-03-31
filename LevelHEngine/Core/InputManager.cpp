@@ -35,6 +35,8 @@ std::unordered_map<uint8_t, InputManager::state> InputManager::mouseButtons =
 
 void InputManager::pollInputEvent(SDL_Event& incomingEvent)
 {
+	mouseButtons[MOUSE_RIGHT] = NONE;
+	mouseButtons[MOUSE_LEFT] = NONE;
 	switch (incomingEvent.type)
 	{
 	case SDL_KEYDOWN:

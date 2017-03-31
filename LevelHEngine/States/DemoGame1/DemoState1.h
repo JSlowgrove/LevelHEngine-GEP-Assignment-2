@@ -49,4 +49,7 @@ private:
 	Vec3 s1V, s2V;
 	///Other bools
 	bool initialLoop, jump, resetPos; 
+	///The demo info
+	std::string escInfo;
+	std::string quickUserGuide;
 };
