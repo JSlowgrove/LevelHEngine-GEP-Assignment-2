@@ -2,6 +2,7 @@
 
 #include "../State.h"
 #include "../StateManager.h"
+#include "../../AI/Flocking.h"
 
 /**
 @brief A State that contains and runs the Demo.
@@ -40,6 +41,10 @@ public:
 private:
 	///The background music id.
 	std::string backgroundMusicID;
+	///The boid sprite id.
+	std::string boidSpriteID;
+	///The Flocking object
+	Flocking* flock;
 	///Initital loop bool
 	bool initialLoop;
 };

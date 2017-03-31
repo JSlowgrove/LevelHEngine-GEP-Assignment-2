@@ -1,7 +1,6 @@
 #pragma once
 
 #include <vector>
-#include "../ResourceManagement/Sprite.h"
 #include "Boid.h"
 #include "../Maths/Vec2.h"
 
@@ -13,14 +12,13 @@ class Flocking
 public:
 	/**
 	@brief Constructs the Flocking object.
-	@param numberOfBoids The number of boids.
-	@param sprite A pointer to the sprite for the boids.
-	@param xBoundary The rough x boundary of the boids.
-	@param yBoundary The rough y boundary of the boids.
-	@param maxVel The maximum velocity of the boids.
-	@param screenHeight The screen height.
+	@param inNmberOfBoids The number of boids.
+	@param inSpriteID The ID of the sprite.
+	@param inXBoundary The rough x boundary of the boids.
+	@param inYBoundary The rough y boundary of the boids.
+	@param inMaxVel The maximum velocity of the boids.
 	*/
-	Flocking(int inNmberOfBoids, Sprite* inSprite, int inXBoundary, int inYBoundary, float inMaxVel, int inScreenHeight);
+	Flocking(int inNmberOfBoids, std::string inSpriteID, int inXBoundary, int inYBoundary, float inMaxVel);
 
 	/**
 	@brief Destructs the Flocking object.
@@ -29,9 +27,8 @@ public:
 
 	/**
 	@brief A function that updates the Flocking.
-	@param dt The delta time.
 	*/
-	void update(float dt);
+	void update();
 
 	/**
 	@brief Draws the Flocking.
@@ -58,8 +55,8 @@ public:
 	void setRule3(int inApplyRule3);
 
 private:
-	///A texture of a white square.
-	Sprite* sprite;
+	///The ID of the boid sprite.
+	std::string spriteID;
 	///A vector of Particle boids.
 	std::vector<Boid*> boids;
 	///What to do with the rule. (1 == possitve, 0 = neutral, -1 == negative)
@@ -68,8 +65,6 @@ private:
 	int xBoundary, yBoundary;
 	///The max velocity.
 	float maxVel;
-	///The screen height.
-	int screenHeight;
 
 	/**
 	@brief Applies Boid Rule 1.

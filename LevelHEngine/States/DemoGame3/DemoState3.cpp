@@ -90,6 +90,8 @@ bool DemoState3::input()
 
 void DemoState3::update()
 {
+	InputManager::updateInputManager();
+
 	//hack for initial loop
 	if (initialLoop)
 	{

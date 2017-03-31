@@ -1,10 +1,12 @@
 #include "Boid.h"
 
-Boid::Boid(Sprite* inSprite, float inScaleValue, Vec2 inDirection, float inMoveSpeed, Vec2 inPosition)
+#include "../ResourceManagement/ResourceManager.h"
+#include "../Core/Application.h"
+
+Boid::Boid(std::string inSpriteID, Vec2 inDirection, float inMoveSpeed, Vec2 inPosition)
 {
 	//initialise the variables
-	sprite = inSprite;
-	scaleValue = inScaleValue;
+	spriteID = inSpriteID;
 	direction = inDirection;
 	moveSpeed =  inMoveSpeed;
 	position = inPosition;
@@ -14,16 +16,16 @@ Boid::~Boid()
 {
 }
 
-void Boid::update(float dt)
+void Boid::update()
 {
 	//update the position of the particle
-	move(direction * moveSpeed * dt);
+	move(direction * moveSpeed * Application::getDT());
 }
 
 void Boid::draw()
 {
 	//draw the texture to the screen
-	//sprite->pushToScreen(position, Vec2(scaleValue, scaleValue));
+	ResourceManager::getSprite(spriteID)->pushToScreen(position);
 }
 
 void Boid::setPosition(Vec2 inPosition)
@@ -38,12 +40,6 @@ void Boid::setPosition(float inX, float inY)
 	position.x = inX;
 	//set the y position
 	position.y = inY;
-}
-
-void Boid::setScale(float sinScaleValue)
-{
-	//set the scale
-	scaleValue = sinScaleValue;
 }
 
 void Boid::move(Vec2 movement)
@@ -92,10 +88,4 @@ Vec2 Boid::getDirection()
 {
 	//return the direction
 	return direction;
-}
-
-float Boid::getScale()
-{
-	//return the scale
-	return scaleValue;
 }

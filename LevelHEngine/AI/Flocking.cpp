@@ -2,21 +2,19 @@
 
 #include <cmath>
 #include <time.h>
-#include "../Maths/Scaling.h"
+#include "../ResourceManagement/ResourceManager.h"
+#include "../Core/Application.h"
 
-Flocking::Flocking(int inNumberOfBoids, Sprite* inSprite, int inXBoundary, int inYBoundary, float inMaxVel, int inScreenHeight)
+Flocking::Flocking(int inNumberOfBoids, std::string inSpriteID, int inXBoundary, int inYBoundary, float inMaxVel)
 {
 	//initialize random seed
 	srand((unsigned int)time(NULL));
-
-	//initialise the size of the screen height
-	screenHeight = inScreenHeight;
 
 	//initialise a the number of Boid objects
 	for (int i = 0; i < inNumberOfBoids; i++)
 	{
 		//creates a Boid at a random position on the screen
-		boids.push_back(new Boid(inSprite, Scaling::scaleNumber(4.0f, inScreenHeight), Vec2(0.0f, 0.0f), inMaxVel, 
+		boids.push_back(new Boid(inSpriteID, Vec2(0.0f, 0.0f), inMaxVel,
 			Vec2((float)(rand() % inXBoundary), (float)(rand() % inYBoundary))));
 	}
 
@@ -40,7 +38,7 @@ Flocking::~Flocking()
 	}
 }
 
-void Flocking::update(float dt)
+void Flocking::update()
 {
 	//initialise the resultant velocities
 	Vec2 v1 = Vec2( 0.0f, 0.0f );
@@ -49,7 +47,7 @@ void Flocking::update(float dt)
 	Vec2 v4 = Vec2( 0.0f, 0.0f );
 
 	//The speed increase of the boids
-	float speed = 25.0f;
+	float speed = 150.0f;
 
 	//test each Boid
 	for (unsigned int i = 0; i < boids.size(); i++)
@@ -69,7 +67,7 @@ void Flocking::update(float dt)
 		//limit the velocity of the Boid
 		limitVelocity(i);
 		//update the Boid position
-		boids[i]->setPosition(boids[i]->getPosition() + (boids[i]->getDirection() * dt) * speed);
+		boids[i]->setPosition(boids[i]->getPosition() + (boids[i]->getDirection() * Application::getDT()) * speed);
 	}
 }
 

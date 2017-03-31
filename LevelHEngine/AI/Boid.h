@@ -1,23 +1,25 @@
 #pragma once
 
+#include <string>
 #include "../Maths/Vec2.h"
-#include "../ResourceManagement/Sprite.h"
+#include "../Maths/Vec3.h"
 
 /**
 @brief Creates a Boid object.
+NOTE - This is a modified version of a class I wrote for a previous assignment
 */
 class Boid
 {
 public:
 	/**
-	@brief Constructs the Boid Object.
-	@param sprite A pointer to the Sprite.
-	@param scaleValue The scale of the Sprite.
+	@brief Constructs the 2D Boid Object.
+	@param sprite The Sprite ID.
 	@param direction The direction of the Sprite.
 	@param moveSpeed The move speed of the Sprite.
 	@param position The position of the Sprite.
 	*/
-	Boid(Sprite* inSprite, float inScaleValue, Vec2 inDirection, float inMoveSpeed, Vec2 inPosition);
+	Boid(std::string inSpriteID, Vec2 inDirection, float inMoveSpeed, Vec2 inPosition);
+
 
 	/**
 	@brief Destructs the Boid Object deleting the Boid Object from memory.
@@ -26,9 +28,8 @@ public:
 
 	/**
 	@brief A function that updates the Boid.
-	@param dt The delta time.
 	*/
-	void update(float dt);
+	void update();
 
 	/**
 	@brief Draw the Boid to the screen.
@@ -47,12 +48,6 @@ public:
 	@param y The Y position.
 	*/
 	void setPosition(float inX, float inY);
-
-	/**
-	@brief Sets the scale of the Boid.
-	@param scaleValue The new scale.
-	*/
-	void setScale(float inScaleValue);
 
 	/**
 	@brief Move the Boid.
@@ -102,21 +97,13 @@ public:
 	*/
 	Vec2 getDirection();
 
-	/**
-	@brief Gets the scale of the Boid.
-	@returns The scale of the Boid.
-	*/
-	float getScale();
-
 private:
 	///A pointer to the sprite.
-	Sprite* sprite;
+	std::string spriteID;
 	///The direction of the Particle.
 	Vec2 direction;
 	///The Position of the Particle.
 	Vec2 position;
-	///The scale of the Particle.
-	float scaleValue;
 	///The movement speed of the Particle.
 	float moveSpeed;
 };

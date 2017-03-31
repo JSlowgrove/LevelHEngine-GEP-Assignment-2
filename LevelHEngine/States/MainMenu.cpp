@@ -144,6 +144,8 @@ bool MainMenu::input()
 
 void MainMenu::update()
 {
+	InputManager::updateInputManager();
+
 	//hack for initial loop
 	if (initialLoop)
 	{

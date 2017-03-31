@@ -98,6 +98,8 @@ DemoState4::~DemoState4()
 
 bool DemoState4::input()
 {
+	InputManager::updateInputManager();
+
 	//Check for user input
 	SDL_Event incomingEvent;
 	while (SDL_PollEvent(&incomingEvent))

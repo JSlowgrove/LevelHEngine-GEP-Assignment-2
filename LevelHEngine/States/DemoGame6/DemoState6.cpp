@@ -76,6 +76,8 @@ bool DemoState6::input()
 
 void DemoState6::update()
 {
+	InputManager::updateInputManager();
+
 	//hack for initial loop
 	if (initialLoop)
 	{

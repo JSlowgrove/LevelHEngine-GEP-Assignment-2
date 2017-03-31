@@ -255,6 +255,8 @@ bool DemoState1::input()
 
 void DemoState1::update()
 {
+	InputManager::updateInputManager();
+
 	//hack for initial loop
 	if (initialLoop)
 	{
