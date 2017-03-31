@@ -253,7 +253,7 @@
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
     <ClCompile Include="States\DemoGame1\DemoState1.cpp">
-      <Filter>Source Files\States\DemoGame2</Filter>
+      <Filter>Source Files\States\DemoGame1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

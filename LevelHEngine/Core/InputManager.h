@@ -52,6 +52,8 @@ public:
 	*/
 	static Vec2 getMousePos();
 
+	static void updateInputManager();
+
 private:
 		
 	///An static enum for the state of the keys and buttons
@@ -80,4 +82,6 @@ private:
 	@param incomingEvent A reference to the SDL event.
 	*/
 	static void pollMouseEvent(SDL_Event& incomingEvent);
+
+	static void resetKeys();
 };

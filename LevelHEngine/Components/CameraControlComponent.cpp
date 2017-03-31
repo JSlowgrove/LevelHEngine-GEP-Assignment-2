@@ -22,34 +22,60 @@ void CameraControlComponent::onDestroy()
 
 void CameraControlComponent::handleInput()
 {
-	//reset velocity
-	movementVel = Vec3(0.0f, 0.0f, 0.0f);
-	rotationVel = Vec3(0.0f, 0.0f, 0.0f);
-
 	//movements
 	if (InputManager::isKeyPressed(W_KEY))
 	{
 		movementVel.z = speed;
 	}
+	if (InputManager::isKeyReleased(W_KEY))
+	{
+		movementVel.z = 0.0f;
+	}
+
 	if (InputManager::isKeyPressed(A_KEY))
 	{
 		movementVel.x = speed;
 	}
+	if (InputManager::isKeyReleased(A_KEY))
+	{
+		movementVel.x = 0.0f;
+	}
+
 	if (InputManager::isKeyPressed(S_KEY))
 	{
 		movementVel.z = -speed;
 	}
+	if (InputManager::isKeyReleased(S_KEY))
+	{
+		movementVel.z = 0.0f;
+	}
+
 	if (InputManager::isKeyPressed(D_KEY))
 	{
 		movementVel.x = -speed;
 	}
+	if (InputManager::isKeyReleased(D_KEY))
+	{
+		movementVel.x = 0.0f;
+	}
+
 	if (InputManager::isKeyPressed(Q_KEY))
 	{
 		movementVel.y = -speed;
 	}
+	if (InputManager::isKeyReleased(Q_KEY))
+	{
+		movementVel.y = 0.0f;
+	}
+
 	if (InputManager::isKeyPressed(E_KEY))
 	{
 		movementVel.y = speed;
+	}
+
+	if (InputManager::isKeyReleased(E_KEY))
+	{
+		movementVel.y = 0.0f;
 	}
 
 	//rotations
@@ -69,13 +95,38 @@ void CameraControlComponent::handleInput()
 	{
 		rotationVel.y = rotateSpeed;
 	}
-	if (InputManager::isKeyPressed(PAGEUP_KEY))
+	if (InputManager::isKeyPressed(O_KEY))
 	{
 		rotationVel.z = rotateSpeed;
 	}
-	if (InputManager::isKeyPressed(PAGEDOWN_KEY))
+	if (InputManager::isKeyPressed(P_KEY))
 	{
 		rotationVel.z = -rotateSpeed;
+	}
+
+	if (InputManager::isKeyReleased(UP_KEY))
+	{
+		rotationVel.x = 0.0f;
+	}
+	if (InputManager::isKeyReleased(LEFT_KEY))
+	{
+		rotationVel.y = 0.0f;
+	}
+	if (InputManager::isKeyReleased(DOWN_KEY))
+	{
+		rotationVel.x = 0.0f;
+	}
+	if (InputManager::isKeyReleased(RIGHT_KEY))
+	{
+		rotationVel.y = 0.0f;
+	}
+	if (InputManager::isKeyReleased(O_KEY))
+	{
+		rotationVel.z = 0.0f;
+	}
+	if (InputManager::isKeyReleased(P_KEY))
+	{
+		rotationVel.z = 0.0f;
 	}
 }
 

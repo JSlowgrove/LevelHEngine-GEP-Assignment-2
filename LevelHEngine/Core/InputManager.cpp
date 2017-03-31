@@ -35,8 +35,6 @@ std::unordered_map<uint8_t, InputManager::state> InputManager::mouseButtons =
 
 void InputManager::pollInputEvent(SDL_Event& incomingEvent)
 {
-	mouseButtons[MOUSE_RIGHT] = NONE;
-	mouseButtons[MOUSE_LEFT] = NONE;
 	switch (incomingEvent.type)
 	{
 	case SDL_KEYDOWN:
@@ -124,4 +122,19 @@ bool InputManager::isMouseButtonReleased(uint8_t button)
 Vec2 InputManager::getMousePos()
 {
 	return mousePos;
+}
+
+void InputManager::resetKeys()
+{
+	for (auto key = keys.begin(); key != keys.end(); ++key)
+	{
+		key->second = NONE;
+	}
+}
+
+void InputManager::updateInputManager()
+{
+	mouseButtons[MOUSE_RIGHT] = NONE;
+	mouseButtons[MOUSE_LEFT] = NONE;
+	resetKeys();
 }

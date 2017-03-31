@@ -2,6 +2,7 @@
 
 #include "../State.h"
 #include "../StateManager.h"
+#include "../../Maths/Vec3.h"
 
 /**
 @brief A State that contains and runs the Demo.
@@ -42,4 +43,18 @@ private:
 	std::string backgroundMusicID;
 	///Initital loop bool
 	bool initialLoop;
+	///A boolean for help toggle
+	bool helpToggle;
+	///A boolean for camera toggle
+	bool cameraToggle;
+	///The default camera position
+	Vec3 defaultCameraPos;
+	///The default camera rotation
+	Vec3 defaultCameraRotation;
+	///The UI image ID
+	std::string UIImageID;
+	///The Help image ID
+	std::string helpID;
+	///The heightmap image ID
+	std::string heightmapImageID;
 };

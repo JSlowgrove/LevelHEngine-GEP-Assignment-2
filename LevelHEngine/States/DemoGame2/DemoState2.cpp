@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include <iostream>
 #include "../MainMenu.h"
-#include "../../Maths/Vec3.h"
+#include "../../Maths/Vec2.h"
 #include "../../Core/GameObject.h"
 #include "../../Core/InputManager.h"
 #include "../../Core/Application.h"
@@ -21,6 +21,10 @@ DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
 {
 	//Set the background colour
 	Application::setBackgroundColour(Vec3(0.1f, 0.1f, 0.2f));
+
+	//Set the camera defaults
+	defaultCameraPos = Vec3(-6.7f, -9.3f, -28.2f);
+	defaultCameraRotation = Vec3(0.9f, 0.0f, 0.0f);
 
 	//Create the game objects
 
@@ -41,16 +45,25 @@ DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
 
 	//Initalise the game objects
 
-	camera->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 0.0f, -20.0f));
+	camera->getComponent<TransformComponent>().lock()->setPos(defaultCameraPos);
+	camera->getComponent<TransformComponent>().lock()->setRotation(defaultCameraRotation);
 
 	heightmap->getComponent<TransformComponent>().lock()->setScale(Vec3(1.0f, 1.0f, 1.0f));
-	heightmap->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 0.0f, -20.0f));
+	heightmap->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 15.0f, -5.0f));
 	heightmap->getComponent<TransformComponent>().lock()->setRotation(Vec3(0.0f, 0.0f, Convert::convertDegreeToRadian(90.0f)));
  	heightmap->getComponent<ModelComponent>().lock()->initaliseHeightmap("Assets/img/map.png", "terrain.png");
  	heightmap->getComponent<ModelComponent>().lock()->initaliseShaders("texture", "texture");
 
-	//initalise bool
+	//initalise bools
 	initialLoop = true;
+	helpToggle = true;
+	cameraToggle = false;
+
+	//initalise images
+	UIImageID = ResourceManager::initialiseSprite("Assets/img/demo2ui.png");
+	helpID = ResourceManager::initialiseSprite("Assets/img/demo2help.png");
+	heightmapImageID = ResourceManager::initialiseSprite("Assets/img/map.png");
+	ResourceManager::getSprite(heightmapImageID)->scaleSprite(Vec2(337.0f, 337.0f));
 
 	//start the music
 	ResourceManager::getMusic(backgroundMusicID)->startMusic();
@@ -86,14 +99,56 @@ bool DemoState2::input()
 			return true;
 		}
 
-		//Handle the camera input
-		Application::camera->getComponent<CameraControlComponent>().lock()->handleInput();
+		if (InputManager::isKeyReleased(H_KEY))
+		{
+			//toggle help info
+			if (helpToggle)
+			{
+				helpToggle = false;
+			}
+			else
+			{
+				helpToggle = true;
+			}
+		}
+
+		if (InputManager::isKeyReleased(C_KEY))
+		{
+			//toggle camera controls
+			if (cameraToggle)
+			{
+				cameraToggle = false;
+			}
+			else
+			{
+				cameraToggle = true;
+			}
+		}
+
+		if (InputManager::isKeyReleased(SPACE_KEY))
+		{
+			//reset camera
+			Application::camera->getComponent<TransformComponent>().lock()->setPos(defaultCameraPos);
+			Application::camera->getComponent<TransformComponent>().lock()->setRotation(defaultCameraRotation);
+		}
+
+		if (cameraToggle)
+		{
+			//Handle the camera input
+			Application::camera->getComponent<CameraControlComponent>().lock()->handleInput();
+		}
 	}
+
+	Vec3 pos = Application::camera->getComponent<TransformComponent>().lock()->getPos();
+	Vec3 rot = Application::camera->getComponent<TransformComponent>().lock()->getRotation();
+
 	return true;
 }
 
 void DemoState2::update()
 {
+	InputManager::updateInputManager();
+
 	//hack for initial loop
 	if (initialLoop)
 	{
@@ -107,16 +162,19 @@ void DemoState2::update()
 	//Update the camera
 	Application::camera->getComponent<CameraControlComponent>().lock()->updateCamera(Application::getDT());
 
-	//loops through the game objects
-// 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
-// 	{
-// 		if (Application::getGameObjects()[i]->getName() == "heightmap")
-// 		{
-// 			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
-// 				Vec3(0.0f, Convert::convertDegreeToRadian(100.0f * Application::getDT()), 0.0f)
-// 			);
-// 		}
-// 	}
+	if (!cameraToggle)
+	{
+		//loops through the game objects
+		for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
+		{
+			if (Application::getGameObjects()[i]->getName() == "heightmap")
+			{
+				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
+					Vec3(0.0f, 0.0f, Convert::convertDegreeToRadian(10.0f * Application::getDT()))
+				);
+			}
+		}
+	}
 }
 
 void DemoState2::draw()
@@ -127,4 +185,11 @@ void DemoState2::draw()
 		//draw the state
 		Application::getGameObjects()[i]->render();
 	}
+	//draw the images
+	ResourceManager::getSprite(UIImageID)->pushToScreen(Vec2(0.0f,0.0f));
+	if (helpToggle)
+	{
+		ResourceManager::getSprite(helpID)->pushToScreen(Vec2(11.0f, 81.0f));
+	}
+	ResourceManager::getSprite(heightmapImageID)->pushToScreen(Vec2(927.0f, 140.0f));
 }
