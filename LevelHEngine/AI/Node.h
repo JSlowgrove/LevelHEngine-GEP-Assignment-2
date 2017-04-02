@@ -1,7 +1,8 @@
 #pragma once
 
 /**
-@brief Creates a Node object for use with path finding.
+@brief Creates a Node object for use with 2D path finding and LOS.
+NOTE - This is slighly modified version of code from a previous assignment
 */
 class Node
 {

@@ -1,12 +1,13 @@
 #pragma once
 
-#include <SDL.h>
+//#include <SDL.h>
 #include <vector>
 #include "../Maths/Vec2.h"
 #include "Node.h"
 
 /**
 @brief A Namespace that contains functions for the Line Of Sight.
+NOTE - This is slighly modified version of code from a previous assignment
 */
 namespace LOS
 {
@@ -39,7 +40,7 @@ namespace LOS
 	@param nodeSize The size of the node.
 	@param renderer A pointer to the renderer.
 	*/
-	void drawLineOfSight(Vec2 a, Vec2 b, std::vector<std::vector<Node*>> map, int nodeSize, SDL_Renderer* renderer);
+	//void drawLineOfSight(Vec2 a, Vec2 b, std::vector<std::vector<Node*>> map, int nodeSize, SDL_Renderer* renderer);
 
 	/**
 	@brief Find a new target position to go to.

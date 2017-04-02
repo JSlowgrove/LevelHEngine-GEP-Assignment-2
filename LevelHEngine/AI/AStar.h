@@ -1,12 +1,13 @@
 #pragma once
 
-#include <SDL.h>
+//#include <SDL.h>
 #include <vector>
 #include "../Maths/Vec2.h"
 #include "Node.h"
 
 /**
 @brief Creates an object for A* path finding.
+NOTE - This is slighly modified version of code from a previous assignment
 */
 class AStar
 {
@@ -58,7 +59,7 @@ public:
 	@brief Displays the open and closed lists.
 	@param renderer A pointer to the renderer.
 	*/
-	void drawLists(SDL_Renderer* renderer);
+//	void drawLists(SDL_Renderer* renderer);
 
 private:
 	///The arrays of Nodes.

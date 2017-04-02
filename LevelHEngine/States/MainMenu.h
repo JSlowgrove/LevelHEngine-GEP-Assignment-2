@@ -2,7 +2,7 @@
 
 #include "State.h"
 #include "StateManager.h"
-#include "../ResourceManagement/Button.h"
+#include "../UI/UIManager.h"
 
 /**
 @brief A State that contains and runs the Main Menu.
@@ -42,7 +42,7 @@ private:
 	///The menu sprite
 	std::string menuSprite;
 	///The menu buttons
-	Button* demoButtons[6];
+	std::string demoButtons[6];
 	bool initialLoop;
 	float totalTime;
 };

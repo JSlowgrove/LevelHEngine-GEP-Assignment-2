@@ -103,6 +103,12 @@
     <Filter Include="Source Files\States\DemoGame6">
       <UniqueIdentifier>{16b3c954-2006-41e6-84bd-ce355537259f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{0eea11e1-46fc-4da6-a3c9-0df2327d54b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{3bfb658d-9fd5-46d5-8776-e552e137de88}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -249,11 +255,14 @@
     <ClCompile Include="States\DemoGame6\DemoState6.cpp">
       <Filter>Source Files\States\DemoGame6</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceManagement\Button.cpp">
-      <Filter>Source Files\ResourceManagement</Filter>
-    </ClCompile>
     <ClCompile Include="States\DemoGame1\DemoState1.cpp">
       <Filter>Source Files\States\DemoGame1</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\UIManager.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Button.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -416,8 +425,11 @@
     <ClInclude Include="States\DemoGame6\DemoState6.h">
       <Filter>Header Files\States\DemoGame6</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceManagement\Button.h">
-      <Filter>Header Files\ResourceManagement</Filter>
+    <ClInclude Include="UI\UIManager.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Button.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

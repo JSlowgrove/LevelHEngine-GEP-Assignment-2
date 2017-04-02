@@ -147,126 +147,126 @@ bool LOS::lineLineIntersectionCheck(Vec2 a, Vec2 b, Vec2 c, Vec2 d, char axis)
 	return false;
 }
 
-void LOS::drawLineOfSight(Vec2 a, Vec2 b, std::vector<std::vector<Node*>> map, int nodeSize, SDL_Renderer* renderer)
-{
-	//creates a rectangle
-	SDL_Rect box;
-
-	//initialise the test area
-	int minX, maxX, minY, maxY;
-	minX = maxX = minY = maxY = 0;
-
-	//check for the smallest x
-	if (a.x < b.x)
-	{
-		//initialise the min tile using a and max tile using b
-		minX = (int)(a.x / nodeSize);
-		maxX = (int)((b.x + nodeSize) / nodeSize);
-	}
-	else
-	{
-		//initialise the min tile using b and max tile using a
-		minX = (int)(b.x / nodeSize);
-		maxX = (int)((a.x + nodeSize) / nodeSize);
-	}
-
-	//check for the smallest y
-	if (a.y < b.y)
-	{
-		//initialise the min tile using a and max tile using b
-		minY = (int)(a.y / nodeSize);
-		maxY = (int)((b.y + nodeSize) / nodeSize);
-	}
-	else
-	{
-		//initialise the min tile using b and max tile using a
-		minY = (int)(b.y / nodeSize);
-		maxY = (int)((a.y + nodeSize) / nodeSize);
-	}
-
-	//test only the tiles within the max and min y tiles
-	for (int i = minY; i < maxY; i++)
-	{
-		//test only the tiles within the max and min tiles on the x axis
-		for (int j = minX; j < maxX; j++)
-		{
-			bool collision = false;
-			/*
-			A---------B
-			|         |
-			|         |
-			|         |
-			|         |
-			|         |
-			C---------D
-			*/
-			//AB test
-			if (lineLineIntersectionCheck(a, b, Vec2((float)(j * nodeSize), (float)(i * nodeSize)),
-				Vec2((float)(j + 1) * nodeSize, (float)(i * nodeSize)), 'x'))
-			{
-				//collision
-				collision = true;
-			}
-			//AC test
-			if (lineLineIntersectionCheck(a, b, Vec2((float)(j * nodeSize), (float)(i * nodeSize)),
-				Vec2((float)(j * nodeSize), (float)(i + 1) * nodeSize), 'y'))
-			{
-				//collision
-				collision = true;
-			}
-			//CD test
-			if (lineLineIntersectionCheck(a, b, Vec2((float)(j * nodeSize), (float)(i + 1) * nodeSize),
-				Vec2((float)(j + 1) * nodeSize, (float)(i + 1) * nodeSize), 'x'))
-			{
-				//collision
-				collision = true;
-			}
-			//BD test
-			if (lineLineIntersectionCheck(a, b, Vec2((float)(j + 1) * nodeSize, (float)(i + 1) * nodeSize),
-				Vec2((float)(j + 1) * nodeSize, (float)(i + 1) * nodeSize), 'y'))
-			{
-				//collision
-				collision = true;
-			}
-
-			//if there has been a collision
-			if (collision)
-			{
-				//if the collision is a danger
-				if (!map[j][i]->getSafeNode())
-				{
-					//set the draw colour to magenta
-					SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0xFF, 0xFF);
-				}
-				//if the collision is with an empty tile
-				else
-				{
-					//set the draw colour to orange
-					SDL_SetRenderDrawColor(renderer, 0xFF, 0xA5, 0x00, 0xFF);
-				}
-				//update the box for the tile
-				box.x = j * nodeSize;
-				box.y = i * nodeSize;
-				box.w = box.h = nodeSize;
-
-				//draw the tiles outline
-				SDL_RenderDrawRect(renderer, &box);
-			}
-		}
-	}
-
-	//set the draw colour to white
-	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-
-	//update the box for the test area
-	box.x = minX * nodeSize;
-	box.y = minY * nodeSize;
-	box.w = (maxX * nodeSize) - (minX * nodeSize);
-	box.h = (maxY * nodeSize) - (minY * nodeSize);
-
-	//draw the test area outline
-	SDL_RenderDrawRect(renderer, &box);
-}
+// void LOS::drawLineOfSight(Vec2 a, Vec2 b, std::vector<std::vector<Node*>> map, int nodeSize, SDL_Renderer* renderer)
+// {
+// 	//creates a rectangle
+// 	SDL_Rect box;
+// 
+// 	//initialise the test area
+// 	int minX, maxX, minY, maxY;
+// 	minX = maxX = minY = maxY = 0;
+// 
+// 	//check for the smallest x
+// 	if (a.x < b.x)
+// 	{
+// 		//initialise the min tile using a and max tile using b
+// 		minX = (int)(a.x / nodeSize);
+// 		maxX = (int)((b.x + nodeSize) / nodeSize);
+// 	}
+// 	else
+// 	{
+// 		//initialise the min tile using b and max tile using a
+// 		minX = (int)(b.x / nodeSize);
+// 		maxX = (int)((a.x + nodeSize) / nodeSize);
+// 	}
+// 
+// 	//check for the smallest y
+// 	if (a.y < b.y)
+// 	{
+// 		//initialise the min tile using a and max tile using b
+// 		minY = (int)(a.y / nodeSize);
+// 		maxY = (int)((b.y + nodeSize) / nodeSize);
+// 	}
+// 	else
+// 	{
+// 		//initialise the min tile using b and max tile using a
+// 		minY = (int)(b.y / nodeSize);
+// 		maxY = (int)((a.y + nodeSize) / nodeSize);
+// 	}
+// 
+// 	//test only the tiles within the max and min y tiles
+// 	for (int i = minY; i < maxY; i++)
+// 	{
+// 		//test only the tiles within the max and min tiles on the x axis
+// 		for (int j = minX; j < maxX; j++)
+// 		{
+// 			bool collision = false;
+// 			/*
+// 			A---------B
+// 			|         |
+// 			|         |
+// 			|         |
+// 			|         |
+// 			|         |
+// 			C---------D
+// 			*/
+// 			//AB test
+// 			if (lineLineIntersectionCheck(a, b, Vec2((float)(j * nodeSize), (float)(i * nodeSize)),
+// 				Vec2((float)(j + 1) * nodeSize, (float)(i * nodeSize)), 'x'))
+// 			{
+// 				//collision
+// 				collision = true;
+// 			}
+// 			//AC test
+// 			if (lineLineIntersectionCheck(a, b, Vec2((float)(j * nodeSize), (float)(i * nodeSize)),
+// 				Vec2((float)(j * nodeSize), (float)(i + 1) * nodeSize), 'y'))
+// 			{
+// 				//collision
+// 				collision = true;
+// 			}
+// 			//CD test
+// 			if (lineLineIntersectionCheck(a, b, Vec2((float)(j * nodeSize), (float)(i + 1) * nodeSize),
+// 				Vec2((float)(j + 1) * nodeSize, (float)(i + 1) * nodeSize), 'x'))
+// 			{
+// 				//collision
+// 				collision = true;
+// 			}
+// 			//BD test
+// 			if (lineLineIntersectionCheck(a, b, Vec2((float)(j + 1) * nodeSize, (float)(i + 1) * nodeSize),
+// 				Vec2((float)(j + 1) * nodeSize, (float)(i + 1) * nodeSize), 'y'))
+// 			{
+// 				//collision
+// 				collision = true;
+// 			}
+// 
+// 			//if there has been a collision
+// 			if (collision)
+// 			{
+// 				//if the collision is a danger
+// 				if (!map[j][i]->getSafeNode())
+// 				{
+// 					//set the draw colour to magenta
+// 					SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0xFF, 0xFF);
+// 				}
+// 				//if the collision is with an empty tile
+// 				else
+// 				{
+// 					//set the draw colour to orange
+// 					SDL_SetRenderDrawColor(renderer, 0xFF, 0xA5, 0x00, 0xFF);
+// 				}
+// 				//update the box for the tile
+// 				box.x = j * nodeSize;
+// 				box.y = i * nodeSize;
+// 				box.w = box.h = nodeSize;
+// 
+// 				//draw the tiles outline
+// 				SDL_RenderDrawRect(renderer, &box);
+// 			}
+// 		}
+// 	}
+// 
+// 	//set the draw colour to white
+// 	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+// 
+// 	//update the box for the test area
+// 	box.x = minX * nodeSize;
+// 	box.y = minY * nodeSize;
+// 	box.w = (maxX * nodeSize) - (minX * nodeSize);
+// 	box.h = (maxY * nodeSize) - (minY * nodeSize);
+// 
+// 	//draw the test area outline
+// 	SDL_RenderDrawRect(renderer, &box);
+// }
 
 Vec2 LOS::getNewTarget(Vec2 a, std::vector<std::vector<Node*>> map, int nodeSize)
 {

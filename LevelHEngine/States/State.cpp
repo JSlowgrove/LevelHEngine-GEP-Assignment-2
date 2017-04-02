@@ -1,6 +1,7 @@
 #include "State.h"
 #include "../Core/Application.h"
 #include "../ResourceManagement/ResourceManager.h"
+#include "../UI/UIManager.h"
 
 State::State(StateManager * stateManager, SDL_Window* window, std::string name)
 {
@@ -31,6 +32,8 @@ std::string State::getName()
 
 void State::destroyState()
 {
+	//delete all UI
+	UIManager::deleteAllUI();
 	//delete all game objects
 	Application::getGameObjects().clear();
 	//stop all music

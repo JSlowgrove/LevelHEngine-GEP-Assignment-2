@@ -154,7 +154,6 @@
     <ClCompile Include="Physics\Mechanics.cpp" />
     <ClCompile Include="Rendering\OpenGLRendering.cpp" />
     <ClCompile Include="ResourceManagement\Audio.cpp" />
-    <ClCompile Include="ResourceManagement\Button.cpp" />
     <ClCompile Include="ResourceManagement\FileLoader.cpp" />
     <ClCompile Include="ResourceManagement\Heightmap.cpp" />
     <ClCompile Include="ResourceManagement\Music.cpp" />
@@ -174,6 +173,8 @@
     <ClCompile Include="States\Splash.cpp" />
     <ClCompile Include="States\State.cpp" />
     <ClCompile Include="States\StateManager.cpp" />
+    <ClCompile Include="UI\Button.cpp" />
+    <ClCompile Include="UI\UIManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AI\AStar.h" />
@@ -210,7 +211,6 @@
     <ClInclude Include="Physics\Mechanics.h" />
     <ClInclude Include="Rendering\OpenGLRendering.h" />
     <ClInclude Include="ResourceManagement\Audio.h" />
-    <ClInclude Include="ResourceManagement\Button.h" />
     <ClInclude Include="ResourceManagement\FileLoader.h" />
     <ClInclude Include="ResourceManagement\Heightmap.h" />
     <ClInclude Include="ResourceManagement\Music.h" />
@@ -230,6 +230,8 @@
     <ClInclude Include="States\Splash.h" />
     <ClInclude Include="States\State.h" />
     <ClInclude Include="States\StateManager.h" />
+    <ClInclude Include="UI\Button.h" />
+    <ClInclude Include="UI\UIManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

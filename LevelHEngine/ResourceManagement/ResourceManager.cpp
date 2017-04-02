@@ -21,26 +21,46 @@ void ResourceManager::deleteResources()
 
 void ResourceManager::deleteAllMeshes()
 {
+	for (auto mesh = meshes.begin(); mesh != meshes.end(); ++mesh)
+	{
+		delete mesh->second;
+	}
 	meshes.clear();
 }
 
 void ResourceManager::deleteAllShaders()
 {
+	for (auto shader = shaders.begin(); shader != shaders.end(); ++shader)
+	{
+		delete shader->second;
+	}
 	shaders.clear();
 }
 
 void ResourceManager::deleteAllAudio()
 {
+	for (auto sound = audio.begin(); sound != audio.end(); ++sound)
+	{
+		delete sound->second;
+	}
 	audio.clear();
 }
 
 void ResourceManager::deleteAllMusic()
 {
+	for (auto song = music.begin(); song != music.end(); ++song)
+	{
+		delete song->second;
+	}
 	music.clear();
 }
 
 void ResourceManager::deleteAllSprites()
 {
+	for (auto sprite = sprites.begin(); sprite != sprites.end(); ++sprite)
+	{
+		delete sprite->second;
+	}
 	sprites.clear();
 }
 

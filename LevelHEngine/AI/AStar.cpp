@@ -119,29 +119,17 @@ void AStar::findNewPath(int inStartX, int inStartY, int inEndX, int inEndY)
 
 void AStar::checkNodes(int parentX, int parentY)
 {
-	//top left test
-	//nodeTest(parentX, parentY, parentX - 1, parentY - 1, 14);
-
-	//top middle test
+	//top test
 	nodeTest(parentX, parentY, parentX, parentY - 1, 10);
 
-	//top right test
-	//nodeTest(parentX, parentY, parentX + 1, parentY - 1, 14);
-
-	//middle left test
+	//left test
 	nodeTest(parentX, parentY, parentX - 1, parentY, 10);
 
-	//middle right test
+	//right test
 	nodeTest(parentX, parentY, parentX + 1, parentY, 10);
 
-	//bottom left test
-	//nodeTest(parentX, parentY, parentX - 1, parentY + 1, 14);
-
-	//bottom middle test
+	//bottom test
 	nodeTest(parentX, parentY, parentX, parentY + 1, 10);
-
-	//bottom right test
-	//nodeTest(parentX, parentY, parentX + 1, parentY + 1, 14);
 }
 
 void AStar::nodeTest(int parentX, int parentY, int testX, int testY, int cost)
@@ -263,54 +251,54 @@ void AStar::findBestPath()
 	}
 }
 
-void AStar::drawLists(SDL_Renderer* renderer)
-{
-	//set draw colour to yellow
-	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0x00, 0x00);
-
-	//creates a rectangle
-	SDL_Rect box;
-
-	for (auto node : openList)
-	{
-		//update the box for the tile
-		box.x = node.getXIndex() * (int)nodeDimensions.x;
-		box.y = node.getYIndex() * (int)nodeDimensions.y;
-		box.w = (int)nodeDimensions.x;
-		box.h = (int)nodeDimensions.y;
-
-		//draw the tiles outline
-		SDL_RenderDrawRect(renderer, &box);
-	}
-
-	//set draw colour to red
-	SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0x00);
-
-	for (auto node : closedList)
-	{
-		//update the box for the tile
-		box.x = node.getXIndex() * (int)nodeDimensions.x;
-		box.y = node.getYIndex() * (int)nodeDimensions.y;
-		box.w = (int)nodeDimensions.x;
-		box.h = (int)nodeDimensions.y;
-
-		//draw the tiles outline
-		SDL_RenderDrawRect(renderer, &box);
-	}
-
-	//set draw colour to green
-	SDL_SetRenderDrawColor(renderer, 0x00, 0xFF, 0x00, 0x00);
-
-	//draw the best path
-	for (auto node : bestPath)
-	{
-		//update the box for the tile
-		box.x = node.getXIndex() * (int)nodeDimensions.x;
-		box.y = node.getYIndex() * (int)nodeDimensions.y;
-		box.w = (int)nodeDimensions.x;
-		box.h = (int)nodeDimensions.y;
-
-		//draw the tiles outline
-		SDL_RenderFillRect(renderer, &box);
-	}
-}
+// void AStar::drawLists(SDL_Renderer* renderer)
+// {
+// 	//set draw colour to yellow
+// 	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0x00, 0x00);
+// 
+// 	//creates a rectangle
+// 	SDL_Rect box;
+// 
+// 	for (auto node : openList)
+// 	{
+// 		//update the box for the tile
+// 		box.x = node.getXIndex() * (int)nodeDimensions.x;
+// 		box.y = node.getYIndex() * (int)nodeDimensions.y;
+// 		box.w = (int)nodeDimensions.x;
+// 		box.h = (int)nodeDimensions.y;
+// 
+// 		//draw the tiles outline
+// 		SDL_RenderDrawRect(renderer, &box);
+// 	}
+// 
+// 	//set draw colour to red
+// 	SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0x00);
+// 
+// 	for (auto node : closedList)
+// 	{
+// 		//update the box for the tile
+// 		box.x = node.getXIndex() * (int)nodeDimensions.x;
+// 		box.y = node.getYIndex() * (int)nodeDimensions.y;
+// 		box.w = (int)nodeDimensions.x;
+// 		box.h = (int)nodeDimensions.y;
+// 
+// 		//draw the tiles outline
+// 		SDL_RenderDrawRect(renderer, &box);
+// 	}
+// 
+// 	//set draw colour to green
+// 	SDL_SetRenderDrawColor(renderer, 0x00, 0xFF, 0x00, 0x00);
+// 
+// 	//draw the best path
+// 	for (auto node : bestPath)
+// 	{
+// 		//update the box for the tile
+// 		box.x = node.getXIndex() * (int)nodeDimensions.x;
+// 		box.y = node.getYIndex() * (int)nodeDimensions.y;
+// 		box.w = (int)nodeDimensions.x;
+// 		box.h = (int)nodeDimensions.y;
+// 
+// 		//draw the tiles outline
+// 		SDL_RenderFillRect(renderer, &box);
+// 	}
+// }
