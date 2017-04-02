@@ -4,10 +4,13 @@
 #include "../StateManager.h"
 #include "../../Maths/Vec3.h"
 
+#define moveVel 10.0f;
+#define rotVel 5.0f;
+
 /**
 @brief A State that contains and runs the Demo.
 */
-class DemoState2 : public State
+class CannonGame : public State
 {
 public:
 	/**
@@ -15,12 +18,12 @@ public:
 	@param stateManager A pointer to the StateManager.
 	@param window A pointer to the window in use.
 	*/
-	DemoState2(StateManager* stateManager, SDL_Window* window);
+	CannonGame(StateManager* stateManager, SDL_Window* window);
 
 	/**
 	@brief Destructs the State object.
 	*/
-	~DemoState2();
+	~CannonGame();
 
 	/**
 	@brief Handles the State input.
@@ -43,18 +46,16 @@ private:
 	std::string backgroundMusicID;
 	///Initital loop bool
 	bool initialLoop;
-	///A boolean for help toggle
-	bool helpToggle;
-	///A boolean for camera toggle
-	bool cameraToggle;
-	///The default camera position
-	Vec3 defaultCameraPos;
-	///The default camera rotation
-	Vec3 defaultCameraRotation;
-	///The UI image ID
-	std::string UIImageID;
-	///The Help image ID
-	std::string helpID;
-	///The heightmap image ID
-	std::string heightmapImageID;
+	///The sphere velocity
+	Vec3 cannonBallVel;
+	///The cannon velocity
+	float cannonPower;
+	///The cannon angle
+	Vec3 cannonAngle;
+	///The cannon velocity
+	Vec3 cannonRot;
+	///The cannon launch veclocity
+	Vec3 cannonLaunchVel;
+
+	bool fire, landed;
 };

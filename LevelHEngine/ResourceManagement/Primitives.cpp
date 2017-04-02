@@ -1,6 +1,7 @@
 #include "Primitives.h"
 
 #include "../Maths/MathsDefs.h"
+#include "../Rendering/OpenGLRendering.h"
 
 std::vector<float> Primitives::generateTourus()
 {
@@ -36,4 +37,8 @@ Vec3 Primitives::torus(float u, float v)
 	p.y = sin(u) * (r0 + r1 * cos(v));
 	p.z = r1 * sin(v);
 	return p;
+}
+
+void Primitives::drawLineBox(Vec2 pos1, Vec2 pos2, Vec2 pos3, Vec2 pos4)
+{
 }

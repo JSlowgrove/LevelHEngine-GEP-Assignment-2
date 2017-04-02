@@ -7,12 +7,12 @@
 #include "../Components/CameraComponent.h"
 #include "../Components/TransformComponent.h"
 #include "../ResourceManagement/ResourceManager.h"
-#include "DemoGame1/DemoState1.h"
-#include "DemoGame2/DemoState2.h"
-#include "DemoGame3/DemoState3.h"
-#include "DemoGame4/DemoState4.h"
-#include "DemoGame5/DemoState5.h"
-#include "DemoGame6/DemoState6.h"
+#include "CannonGame/CannonGame.h"
+#include "HeightmapDemo/HeightmapDemo.h"
+#include "FlockingDemo/FlockingDemo.h"
+#include "DemoState5/DemoState5.h"
+#include "DemoState6/DemoState6.h"
+#include "Assignment1Demo/Assignment1Demo.h"
 #include "../Core/Logging.h"
 #include "../Maths/Convert.h"
 #include "../Core/Screenshot.h"
@@ -45,12 +45,12 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	cube->getComponent<ModelComponent>().lock()->initaliseMesh("cube");
 	cube->getComponent<ModelComponent>().lock()->initaliseDefaultColourShaders("default", "default");
 
-	demoButtons[0] = UIManager::initialiseButton("Assets/img/demo1Button.png", "Assets/img/demo1ButtonHeld.png", Vec2(45.0f, 126.0f));
-	demoButtons[1] = UIManager::initialiseButton("Assets/img/demo2Button.png", "Assets/img/demo2ButtonHeld.png", Vec2(45.0f, 221.0f));
-	demoButtons[2] = UIManager::initialiseButton("Assets/img/demo3Button.png", "Assets/img/demo3ButtonHeld.png", Vec2(45.0f, 316.0f));
-	demoButtons[3] = UIManager::initialiseButton("Assets/img/demo4Button.png", "Assets/img/demo4ButtonHeld.png", Vec2(45.0f, 412.0f));
-	demoButtons[4] = UIManager::initialiseButton("Assets/img/demo5Button.png", "Assets/img/demo5ButtonHeld.png", Vec2(45.0f, 507.0f));
-	demoButtons[5] = UIManager::initialiseButton("Assets/img/demo6Button.png", "Assets/img/demo6ButtonHeld.png", Vec2(45.0f, 603.0f));
+	menuButtons[0] = UIManager::initialiseButton("Assets/img/CannonGameButton.png", "Assets/img/CannonGameButtonHeld.png", Vec2(45.0f, 126.0f));
+	menuButtons[1] = UIManager::initialiseButton("Assets/img/HeightmapDemoButton.png", "Assets/img/HeightmapDemoButtonHeld.png", Vec2(45.0f, 221.0f));
+	menuButtons[2] = UIManager::initialiseButton("Assets/img/FlockingDemoButton.png", "Assets/img/FlockingDemoButtonHeld.png", Vec2(45.0f, 316.0f));
+	menuButtons[3] = UIManager::initialiseButton("Assets/img/AStarLOSDemoButton.png", "Assets/img/AStarLOSDemoButtonHeld.png", Vec2(45.0f, 412.0f));
+	menuButtons[4] = UIManager::initialiseButton("Assets/img/AsteroidsButton.png", "Assets/img/AsteroidsButtonHeld.png", Vec2(45.0f, 507.0f));
+	menuButtons[5] = UIManager::initialiseButton("Assets/img/Assignment1DemoButton.png", "Assets/img/Assignment1DemoButtonHeld.png", Vec2(45.0f, 603.0f));
 
 	totalTime = 0.0f;
 	initialLoop = true;
@@ -84,40 +84,42 @@ bool MainMenu::input()
 		}
 
 		//menu input
-		if (UIManager::getButton(demoButtons[0])->input())
+		if (UIManager::getButton(menuButtons[0])->input())
 		{
 			//swtich to demo state
 			Application::drawLoadingScreen();
 			destroyState();
-			stateManager->changeState(new DemoState1(stateManager, window));
-			return true;
-		}
-		if (UIManager::getButton(demoButtons[1])->input())
-		{
-			//swtich to demo state
-			Application::drawLoadingScreen();
-			destroyState();
-			stateManager->changeState(new DemoState2(stateManager, window));
-			return true;
-		}
-		if (UIManager::getButton(demoButtons[2])->input())
-		{
-			//swtich to demo state
-			Application::drawLoadingScreen();
-			destroyState();
-			stateManager->changeState(new DemoState3(stateManager, window));
-			return true;
-		}
-		if (UIManager::getButton(demoButtons[3])->input())
-		{
-			//swtich to demo state
-			Application::drawLoadingScreen();
-			destroyState();
-			stateManager->changeState(new DemoState4(stateManager, window));
+			stateManager->changeState(new CannonGame(stateManager, window));
 			return true;
 		}
 
-		if (UIManager::getButton(demoButtons[4])->input())
+		if (UIManager::getButton(menuButtons[1])->input())
+		{
+			//swtich to demo state
+			Application::drawLoadingScreen();
+			destroyState();
+			stateManager->changeState(new HeightmapDemo(stateManager, window));
+			return true;
+		}
+		if (UIManager::getButton(menuButtons[2])->input())
+		{
+			//swtich to demo state
+			Application::drawLoadingScreen();
+			destroyState();
+			stateManager->changeState(new FlockingDemo(stateManager, window));
+			return true;
+		}
+
+		if (UIManager::getButton(menuButtons[3])->input())
+		{
+			//swtich to demo state
+			Application::drawLoadingScreen();
+			destroyState();
+			stateManager->changeState(new DemoState6(stateManager, window));
+			return true;
+		}
+
+		if (UIManager::getButton(menuButtons[4])->input())
 		{
 			//swtich to demo state
 			Application::drawLoadingScreen();
@@ -126,12 +128,12 @@ bool MainMenu::input()
 			return true;
 		}
 
-		if (UIManager::getButton(demoButtons[5])->input())
+		if (UIManager::getButton(menuButtons[5])->input())
 		{
 			//swtich to demo state
 			Application::drawLoadingScreen();
 			destroyState();
-			stateManager->changeState(new DemoState6(stateManager, window));
+			stateManager->changeState(new Assignment1Demo(stateManager, window));
 			return true;
 		}
 	}
@@ -185,6 +187,6 @@ void MainMenu::draw()
 
 	for (int i = 0; i < 6; i++)
 	{
-		UIManager::getButton(demoButtons[i])->draw();
+		UIManager::getButton(menuButtons[i])->draw();
 	}
 }

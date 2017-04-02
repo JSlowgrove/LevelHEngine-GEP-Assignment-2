@@ -1,10 +1,11 @@
-#include "DemoState4.h"
+#include "CannonGame.h"
 
 #include <SDL.h>
 #include "../MainMenu.h"
 #include "../../Core/GameObject.h"
 #include "../../Core/InputManager.h"
 #include "../../Core/Application.h"
+#include "../../Core/Logging.h"
 #include "../../Components/CameraComponent.h"
 #include "../../Components/CameraControlComponent.h"
 #include "../../Components/TransformComponent.h"
@@ -17,7 +18,7 @@
 #include "../../Physics/Collision.h"
 
 
-DemoState4::DemoState4(StateManager* stateManager, SDL_Window* window)
+CannonGame::CannonGame(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "DemoState4"),
 	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/ShowYourMoves.ogg"))
 {
@@ -32,63 +33,72 @@ DemoState4::DemoState4(StateManager* stateManager, SDL_Window* window)
 	camera->addComponent<CameraControlComponent>();
 	Application::camera = camera;
 
-	auto sphere = GameObject::create("sphere").lock();
-	sphere->addComponent<TransformComponent>();
-	sphere->addComponent<ModelComponent>();
-	sphere->addComponent<BoundingSphereComponent>();
+	auto cannonball = GameObject::create("cannonball").lock();
+	cannonball->addComponent<TransformComponent>();
+	cannonball->addComponent<ModelComponent>();
+	cannonball->addComponent<BoundingSphereComponent>();
 
-	auto floor = GameObject::create("floor").lock();
-	floor->addComponent<TransformComponent>();
-	floor->addComponent<ModelComponent>();
-	floor->addComponent<BoundingBoxComponent>();
+	auto targetBox = GameObject::create("box").lock();
+	targetBox->addComponent<TransformComponent>();
+	targetBox->addComponent<ModelComponent>();
+	targetBox->addComponent<BoundingBoxComponent>();
 
 	//Awake the game objects
 
 	camera->awake();
-	sphere->awake();
-	floor->awake();
+	cannonball->awake();
+	targetBox->awake();
 
 	//Initalise the game objects
 
 	camera->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 0.0f, -20.0f));
 
-	sphere->getComponent<TransformComponent>().lock()->setScale(Vec3(0.5f, 0.5f, 0.5f));
-	sphere->getComponent<TransformComponent>().lock()->setPos(Vec3(-2.0f, 4.0f, 6.0f));
-	sphere->getComponent<ModelComponent>().lock()->initaliseMesh("sphere");
-	sphere->getComponent<ModelComponent>().lock()->initaliseDefaultColourShaders("default", "cyan");
-	sphere->getComponent<BoundingSphereComponent>().lock()->initaliseBoundingSphere(
-		sphere->getComponent<ModelComponent>().lock()->getMeshID()
+	cannonball->getComponent<TransformComponent>().lock()->setScale(Vec3(0.5f, 0.5f, 0.5f));
+	cannonball->getComponent<TransformComponent>().lock()->setPos(Vec3(-2.0f, 4.0f, 6.0f));
+	cannonball->getComponent<ModelComponent>().lock()->initaliseMesh("sphere");
+	cannonball->getComponent<ModelComponent>().lock()->initaliseDefaultColourShaders("default", "cyan");
+	cannonball->getComponent<BoundingSphereComponent>().lock()->initaliseBoundingSphere(
+		cannonball->getComponent<ModelComponent>().lock()->getMeshID()
 	);
-	sphere->getComponent<BoundingSphereComponent>().lock()->scaleBoundingSphere(
-		sphere->getComponent<TransformComponent>().lock()->getScale()
+	cannonball->getComponent<BoundingSphereComponent>().lock()->scaleBoundingSphere(
+		cannonball->getComponent<TransformComponent>().lock()->getScale()
 	);
 
-	floor->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, -3.0f, 5.0f));
-	floor->getComponent<TransformComponent>().lock()->setScale(Vec3(10.0f, 0.1f, 5.0f));
-	floor->getComponent<TransformComponent>().lock()->rotate(Vec3(0.0f, 0.0f, 0.0f));
-	floor->getComponent<ModelComponent>().lock()->initaliseMesh("cube");
-	floor->getComponent<ModelComponent>().lock()->initaliseDefaultColourShaders("default", "green");
-	floor->getComponent<BoundingBoxComponent>().lock()->initaliseBoundingBox(
-		floor->getComponent<ModelComponent>().lock()->getMeshID()
+	targetBox->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, -3.0f, 5.0f));
+	targetBox->getComponent<TransformComponent>().lock()->setScale(Vec3(10.0f, 2.0f, 5.0f));
+	targetBox->getComponent<ModelComponent>().lock()->initaliseMesh("cube");
+	targetBox->getComponent<ModelComponent>().lock()->initaliseDefaultColourShaders("default", "green");
+	targetBox->getComponent<BoundingBoxComponent>().lock()->initaliseBoundingBox(
+		targetBox->getComponent<ModelComponent>().lock()->getMeshID()
 	);
-	floor->getComponent<BoundingBoxComponent>().lock()->scaleBoundingBox(
-		floor->getComponent<TransformComponent>().lock()->getScale()
+	targetBox->getComponent<BoundingBoxComponent>().lock()->scaleBoundingBox(
+		targetBox->getComponent<TransformComponent>().lock()->getScale()
 	);
 
 	//initalise bool
 	initialLoop = true;
 
 	//initalise velocity
-	sphereVel = Vec3(0.0f, 0.0f, 0.0f);
+	cannonBallVel = Vec3(0.0f, 0.0f, 0.0f);
+	cannonPower = 50.0f;
+	cannonAngle = Vec3(0.0f, Convert::convertDegreeToRadian(50.0f), -Convert::convertDegreeToRadian(50.0f));
 
-	jump = true;
-	landed = false;
+	//initalise the cannon rotation
+	cannonRot = Vec3(0.0f, 0.0f, 0.0f);
+
+	//The cannonball booleans
+	fire = false;
+	landed = true;
+
+	float A = Convert::convertDegreeToRadian(50.0f);
+
+	cannonLaunchVel = Vec3(0.0f, sin(cannonAngle.y) * cannonPower, cos(cannonAngle.z) * -cannonPower);
 
 	//start the music
 	//ResourceManager::getMusic(backgroundMusicID)->startMusic();
 }
 
-DemoState4::~DemoState4()
+CannonGame::~CannonGame()
 {
 	if (!destroyed)
 	{
@@ -96,7 +106,7 @@ DemoState4::~DemoState4()
 	}
 }
 
-bool DemoState4::input()
+bool CannonGame::input()
 {
 	InputManager::updateInputManager();
 
@@ -104,13 +114,6 @@ bool DemoState4::input()
 	SDL_Event incomingEvent;
 	while (SDL_PollEvent(&incomingEvent))
 	{
-		//apply gravity
-		sphereVel.y += -9.81f;
-		if (sphereVel.y < -9.81f)
-		{
-			sphereVel.y = -9.81;
-		}
-
 		InputManager::pollInputEvent(incomingEvent);
 		if (incomingEvent.type == SDL_QUIT)
 		{
@@ -118,27 +121,28 @@ bool DemoState4::input()
 			return false;
 		}
 
-		//handle sphere
-		if (InputManager::isKeyPressed(W_KEY))
+		//handle box
+		if (InputManager::isKeyPressed(LEFT_KEY))
 		{
-			sphereVel.z += -moveVel;
+			cannonRot.z -= rotVel;
 		}
-		if (InputManager::isKeyPressed(A_KEY))
+		if (InputManager::isKeyReleased(LEFT_KEY))
 		{
-			sphereVel.x += -moveVel;
+			cannonRot.z = 0.0f;
 		}
-		if (InputManager::isKeyPressed(S_KEY))
+		if (InputManager::isKeyPressed(RIGHT_KEY))
 		{
-			sphereVel.z += moveVel;
+			cannonRot.z += rotVel;
 		}
-		if (InputManager::isKeyPressed(D_KEY))
+		if (InputManager::isKeyReleased(RIGHT_KEY))
 		{
-			sphereVel.x += moveVel;
+			cannonRot.z = 0.0f;
 		}
 
-		if (InputManager::isKeyPressed(D_KEY))
+		//tmp
+		if (InputManager::isKeyReleased(L_KEY))
 		{
-			sphereVel.x += moveVel;
+			landed = true;
 		}
 
 		//handle both
@@ -146,9 +150,9 @@ bool DemoState4::input()
 		{
 			if (landed)
 			{
-				jump = true;
+				fire = true;
 				landed = false;
-				sphereVel.y += 100.0f;
+				cannonBallVel = cannonLaunchVel;
 			}
 		}
 
@@ -164,7 +168,7 @@ bool DemoState4::input()
 	return true;
 }
 
-void DemoState4::update()
+void CannonGame::update()
 {
 	//hack for initial loop
 	if (initialLoop)
@@ -173,14 +177,24 @@ void DemoState4::update()
 		initialLoop = false;
 	}
 
+	//apply gravity
+	if (fire)
+	{
+		cannonBallVel.y += -1.0f;
+		if (cannonBallVel.y < -9.81f)
+		{
+			cannonBallVel.y = -9.81;
+		}
+	}
+
 	//Store the next position of the objects
 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
 	{
-		if (Application::getGameObjects()[i]->getName() == "sphere")
+		if (Application::getGameObjects()[i]->getName() == "cannonball")
 		{
 			Application::getGameObjects()[i]->getComponent<BoundingSphereComponent>().lock()->setNextPos(
 				Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->getPos()
-				+ (sphereVel * Application::getDT()));
+				+ (cannonBallVel * Application::getDT()));
 		}
 	}
 
@@ -205,12 +219,12 @@ void DemoState4::update()
 						collisonSide
 					))
 					{
-						//Logging::logI("Sphere-Box Collision");
+						Logging::logI("Sphere-Box Collision");
 
 						//stop the y velocity
-						if (Application::getGameObjects()[i]->getName() == "sphere" && collisonSide.y == -1.0f)
+						if (Application::getGameObjects()[i]->getName() == "cannonball")
 						{
-							sphereVel.y = 0.0f;
+							cannonBallVel.y = 0.0f;
 							landed = true;
 						}
 					}
@@ -223,9 +237,14 @@ void DemoState4::update()
 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
 	{
 		//update positions with new velocities
-		if (Application::getGameObjects()[i]->getName() == "sphere")
+		if (Application::getGameObjects()[i]->getName() == "cannonball")
 		{
-			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(sphereVel * Application::getDT());
+			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->translate(cannonBallVel * Application::getDT());
+		}
+		//update box rotation
+		if (Application::getGameObjects()[i]->getName() == "box")
+		{
+			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(cannonRot * Application::getDT());
 		}
 	}
 
@@ -238,12 +257,12 @@ void DemoState4::update()
 
 	if (landed)
 	{
-		jump = false;
-		sphereVel.y = 0.0f;
+		fire = false;
+		cannonBallVel = Vec3(0.0f,0.0f,0.0f);
 	}
 }
 
-void DemoState4::draw()
+void CannonGame::draw()
 {
 	//loops through the game objects
 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)

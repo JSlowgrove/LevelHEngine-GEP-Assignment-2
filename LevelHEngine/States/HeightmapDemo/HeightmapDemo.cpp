@@ -1,4 +1,4 @@
-#include "DemoState2.h"
+#include "HeightmapDemo.h"
 
 #include <SDL.h>
 #include <iostream>
@@ -15,7 +15,7 @@
 #include "../../Maths/Convert.h"
 
 
-DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
+HeightmapDemo::HeightmapDemo(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "DemoState2"),
 	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/DeliberateThought.ogg"))
 {
@@ -60,8 +60,8 @@ DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
 	cameraToggle = false;
 
 	//initalise images
-	UIImageID = ResourceManager::initialiseSprite("Assets/img/demo2ui.png");
-	helpID = ResourceManager::initialiseSprite("Assets/img/demo2help.png");
+	UIImageID = ResourceManager::initialiseSprite("Assets/img/heightmapDemoUI.png");
+	helpID = ResourceManager::initialiseSprite("Assets/img/HeightmapHelp.png");
 	heightmapImageID = ResourceManager::initialiseSprite("Assets/img/map.png");
 	ResourceManager::getSprite(heightmapImageID)->scaleSprite(Vec2(337.0f, 337.0f));
 
@@ -69,7 +69,7 @@ DemoState2::DemoState2(StateManager* stateManager, SDL_Window* window)
 	ResourceManager::getMusic(backgroundMusicID)->startMusic();
 }
 
-DemoState2::~DemoState2()
+HeightmapDemo::~HeightmapDemo()
 {
 	if (!destroyed)
 	{
@@ -77,7 +77,7 @@ DemoState2::~DemoState2()
 	}
 }
 
-bool DemoState2::input()
+bool HeightmapDemo::input()
 {
 	//Check for user input
 	SDL_Event incomingEvent;
@@ -145,7 +145,7 @@ bool DemoState2::input()
 	return true;
 }
 
-void DemoState2::update()
+void HeightmapDemo::update()
 {
 	InputManager::updateInputManager();
 
@@ -177,7 +177,7 @@ void DemoState2::update()
 	}
 }
 
-void DemoState2::draw()
+void HeightmapDemo::draw()
 {
 	//loops through the game objects
 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)

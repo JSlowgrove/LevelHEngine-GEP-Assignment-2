@@ -1,4 +1,4 @@
-#include "DemoState1.h"
+#include "Assignment1Demo.h"
 
 #include <SDL.h>
 #include "../MainMenu.h"
@@ -18,7 +18,7 @@
 #include "../../Maths/Convert.h"
 #include "../../Maths/Vec2.h"
 
-DemoState1::DemoState1(StateManager* stateManager, SDL_Window* window)
+Assignment1Demo::Assignment1Demo(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "DemoState1"),
 	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/ExitThePremises.ogg"))
 {
@@ -153,8 +153,8 @@ DemoState1::DemoState1(StateManager* stateManager, SDL_Window* window)
 	resetPos = false;
 
 	//initalise the info images
-	escInfo = ResourceManager::initialiseSprite("Assets/img/demo1esc.png");
-	quickUserGuide = ResourceManager::initialiseSprite("Assets/img/demo1quickuserguide.png");
+	escInfo = ResourceManager::initialiseSprite("Assets/img/Assignment1DemoEsc.png");
+	quickUserGuide = ResourceManager::initialiseSprite("Assets/img/Assignment1DemoQuickUserGuide.png");
 
 	//start the music
 	ResourceManager::getMusic(backgroundMusicID)->startMusic();
@@ -163,7 +163,7 @@ DemoState1::DemoState1(StateManager* stateManager, SDL_Window* window)
 	mousePressSoundID = ResourceManager::initialiseAudio("Assets/aud/threeTone2.ogg");
 }
 
-DemoState1::~DemoState1()
+Assignment1Demo::~Assignment1Demo()
 {
 	if (!destroyed)
 	{
@@ -171,7 +171,7 @@ DemoState1::~DemoState1()
 	}
 }
 
-bool DemoState1::input()
+bool Assignment1Demo::input()
 {
 	//reset bool
 	resetPos = false;
@@ -254,7 +254,7 @@ bool DemoState1::input()
 	return true;
 }
 
-void DemoState1::update()
+void Assignment1Demo::update()
 {
 	InputManager::updateInputManager();
 
@@ -377,7 +377,7 @@ void DemoState1::update()
 	}
 }
 
-void DemoState1::draw()
+void Assignment1Demo::draw()
 {
 	//loops through the game objects
 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)

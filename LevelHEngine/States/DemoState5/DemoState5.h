@@ -2,14 +2,11 @@
 
 #include "../State.h"
 #include "../StateManager.h"
-#include "../../Maths/Vec3.h"
-
-#define moveVel 10.0f;
 
 /**
 @brief A State that contains and runs the Demo.
 */
-class DemoState4 : public State
+class DemoState5 : public State
 {
 public:
 	/**
@@ -17,12 +14,12 @@ public:
 	@param stateManager A pointer to the StateManager.
 	@param window A pointer to the window in use.
 	*/
-	DemoState4(StateManager* stateManager, SDL_Window* window);
+	DemoState5(StateManager* stateManager, SDL_Window* window);
 
 	/**
 	@brief Destructs the State object.
 	*/
-	~DemoState4();
+	~DemoState5();
 
 	/**
 	@brief Handles the State input.
@@ -45,8 +42,5 @@ private:
 	std::string backgroundMusicID;
 	///Initital loop bool
 	bool initialLoop;
-	///The sphere velocity
-	Vec3 sphereVel;
-	
-	bool jump, landed;
+	float totalTime;
 };

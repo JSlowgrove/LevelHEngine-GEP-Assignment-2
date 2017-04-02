@@ -1,4 +1,4 @@
-#include "DemoState3.h"
+#include "DemoState5.h"
 
 #include <SDL.h>
 #include "../MainMenu.h"
@@ -14,7 +14,7 @@
 #include "../../Maths/Convert.h"
 
 
-DemoState3::DemoState3(StateManager* stateManager, SDL_Window* window)
+DemoState5::DemoState5(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "DemoState3"),
 	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/ShowYourMoves.ogg"))
 {
@@ -55,7 +55,7 @@ DemoState3::DemoState3(StateManager* stateManager, SDL_Window* window)
 	totalTime = 0.0f;
 }
 
-DemoState3::~DemoState3()
+DemoState5::~DemoState5()
 {
 	if (!destroyed)
 	{
@@ -63,7 +63,7 @@ DemoState3::~DemoState3()
 	}
 }
 
-bool DemoState3::input()
+bool DemoState5::input()
 {
 	//Check for user input
 	SDL_Event incomingEvent;
@@ -88,7 +88,7 @@ bool DemoState3::input()
 	return true;
 }
 
-void DemoState3::update()
+void DemoState5::update()
 {
 	InputManager::updateInputManager();
 
@@ -126,7 +126,7 @@ void DemoState3::update()
 	Application::camera->getComponent<CameraControlComponent>().lock()->updateCamera(Application::getDT());
 }
 
-void DemoState3::draw()
+void DemoState5::draw()
 {
 	//loops through the game objects
 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)

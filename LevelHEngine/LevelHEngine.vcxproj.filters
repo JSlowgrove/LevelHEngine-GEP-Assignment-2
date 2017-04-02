@@ -46,24 +46,6 @@
     <Filter Include="Source Files\Components">
       <UniqueIdentifier>{0ae1aaa0-eeab-4caf-9a71-7a95d57c054a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\States\DemoGame1">
-      <UniqueIdentifier>{0e116ed2-dd79-402a-b19a-02dc7c0158fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\States\DemoGame2">
-      <UniqueIdentifier>{fc74d66d-9e05-439e-b965-c3ca383ea427}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\States\DemoGame3">
-      <UniqueIdentifier>{b66a2921-d8ce-4c1f-9732-1044dca106cf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\States\DemoGame1">
-      <UniqueIdentifier>{c6d4c8e6-3e40-46b3-85ce-ac36bba5b467}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\States\DemoGame2">
-      <UniqueIdentifier>{e66ffaee-fb62-4937-b0f0-bdef46743612}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\States\DemoGame3">
-      <UniqueIdentifier>{98355171-2ec3-4743-b6f1-d527ceecafb0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Rendering">
       <UniqueIdentifier>{e0f9b212-9bca-41da-a0f7-d146d708d2c3}</UniqueIdentifier>
     </Filter>
@@ -76,12 +58,6 @@
     <Filter Include="Header Files\AI">
       <UniqueIdentifier>{6e6df5e7-a4a2-4b5a-9136-87e2a95ba788}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\States\DemoGame4">
-      <UniqueIdentifier>{e7528613-ec76-4c8b-879f-e6b7d0c0cfd7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\States\DemoGame4">
-      <UniqueIdentifier>{ce88f7b7-5ab6-45c2-b8c2-7aa6dc515133}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Physics">
       <UniqueIdentifier>{edac2a95-66ea-4bef-8abf-1c4daa355c4c}</UniqueIdentifier>
     </Filter>
@@ -91,23 +67,47 @@
     <Filter Include="Source Files\ExternalLibraries">
       <UniqueIdentifier>{e780b81e-c96c-4aba-ba0f-ee197cfe7151}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\States\DemoGame5">
-      <UniqueIdentifier>{44a81d90-ff22-4dde-a1d9-3bb9dedc127d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\States\DemoGame6">
-      <UniqueIdentifier>{78d1b29e-e9bd-4a10-8d8c-2df7d69a2292}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\States\DemoGame5">
-      <UniqueIdentifier>{26f07ce5-cd1b-4183-91ea-66d4f19fc33c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\States\DemoGame6">
-      <UniqueIdentifier>{16b3c954-2006-41e6-84bd-ce355537259f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\UI">
       <UniqueIdentifier>{0eea11e1-46fc-4da6-a3c9-0df2327d54b1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\UI">
       <UniqueIdentifier>{3bfb658d-9fd5-46d5-8776-e552e137de88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States\Assignment1Demo">
+      <UniqueIdentifier>{b7c1d9d0-fc72-4fe7-a549-66a7b1342a2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\Assignment1Demo">
+      <UniqueIdentifier>{c6d4c8e6-3e40-46b3-85ce-ac36bba5b467}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States\DemoState5">
+      <UniqueIdentifier>{44a81d90-ff22-4dde-a1d9-3bb9dedc127d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States\DemoState6">
+      <UniqueIdentifier>{78d1b29e-e9bd-4a10-8d8c-2df7d69a2292}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States\FlockingDemo">
+      <UniqueIdentifier>{e7528613-ec76-4c8b-879f-e6b7d0c0cfd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States\HeightmapDemo">
+      <UniqueIdentifier>{b66a2921-d8ce-4c1f-9732-1044dca106cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States\CannonGame">
+      <UniqueIdentifier>{0e116ed2-dd79-402a-b19a-02dc7c0158fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\CannonGame">
+      <UniqueIdentifier>{e66ffaee-fb62-4937-b0f0-bdef46743612}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\DemoState5">
+      <UniqueIdentifier>{26f07ce5-cd1b-4183-91ea-66d4f19fc33c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\DemoState6">
+      <UniqueIdentifier>{16b3c954-2006-41e6-84bd-ce355537259f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\FlockingDemo">
+      <UniqueIdentifier>{98355171-2ec3-4743-b6f1-d527ceecafb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\HeightmapDemo">
+      <UniqueIdentifier>{ce88f7b7-5ab6-45c2-b8c2-7aa6dc515133}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -210,12 +210,6 @@
     <ClCompile Include="ResourceManagement\Primitives.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
-    <ClCompile Include="States\DemoGame2\DemoState2.cpp">
-      <Filter>Source Files\States\DemoGame2</Filter>
-    </ClCompile>
-    <ClCompile Include="States\DemoGame3\DemoState3.cpp">
-      <Filter>Source Files\States\DemoGame3</Filter>
-    </ClCompile>
     <ClCompile Include="Rendering\OpenGLRendering.cpp">
       <Filter>Source Files\Rendering</Filter>
     </ClCompile>
@@ -240,29 +234,35 @@
     <ClCompile Include="AI\Node.cpp">
       <Filter>Source Files\AI</Filter>
     </ClCompile>
-    <ClCompile Include="States\DemoGame4\DemoState4.cpp">
-      <Filter>Source Files\States\DemoGame4</Filter>
-    </ClCompile>
     <ClCompile Include="Core\Screenshot.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="ExternalLibraries\lodepng.cpp">
       <Filter>Source Files\ExternalLibraries</Filter>
     </ClCompile>
-    <ClCompile Include="States\DemoGame5\DemoState5.cpp">
-      <Filter>Source Files\States\DemoGame5</Filter>
-    </ClCompile>
-    <ClCompile Include="States\DemoGame6\DemoState6.cpp">
-      <Filter>Source Files\States\DemoGame6</Filter>
-    </ClCompile>
-    <ClCompile Include="States\DemoGame1\DemoState1.cpp">
-      <Filter>Source Files\States\DemoGame1</Filter>
-    </ClCompile>
     <ClCompile Include="UI\UIManager.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="UI\Button.cpp">
       <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="States\Assignment1Demo\Assignment1Demo.cpp">
+      <Filter>Source Files\States\Assignment1Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="States\CannonGame\CannonGame.cpp">
+      <Filter>Source Files\States\CannonGame</Filter>
+    </ClCompile>
+    <ClCompile Include="States\DemoState5\DemoState5.cpp">
+      <Filter>Source Files\States\DemoState5</Filter>
+    </ClCompile>
+    <ClCompile Include="States\DemoState6\DemoState6.cpp">
+      <Filter>Source Files\States\DemoState6</Filter>
+    </ClCompile>
+    <ClCompile Include="States\HeightmapDemo\HeightmapDemo.cpp">
+      <Filter>Source Files\States\HeightmapDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="States\FlockingDemo\FlockingDemo.cpp">
+      <Filter>Source Files\States\FlockingDemo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -377,15 +377,6 @@
     <ClInclude Include="Maths\Scaling.h">
       <Filter>Header Files\Maths</Filter>
     </ClInclude>
-    <ClInclude Include="States\DemoGame1\DemoState1.h">
-      <Filter>Header Files\States\DemoGame1</Filter>
-    </ClInclude>
-    <ClInclude Include="States\DemoGame2\DemoState2.h">
-      <Filter>Header Files\States\DemoGame2</Filter>
-    </ClInclude>
-    <ClInclude Include="States\DemoGame3\DemoState3.h">
-      <Filter>Header Files\States\DemoGame3</Filter>
-    </ClInclude>
     <ClInclude Include="Rendering\OpenGLRendering.h">
       <Filter>Header Files\Rendering</Filter>
     </ClInclude>
@@ -410,26 +401,35 @@
     <ClInclude Include="AI\Node.h">
       <Filter>Header Files\AI</Filter>
     </ClInclude>
-    <ClInclude Include="States\DemoGame4\DemoState4.h">
-      <Filter>Header Files\States\DemoGame4</Filter>
-    </ClInclude>
     <ClInclude Include="Core\Screenshot.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="ExternalLibraries\lodepng.h">
       <Filter>Header Files\ExternalLibraries</Filter>
     </ClInclude>
-    <ClInclude Include="States\DemoGame5\DemoState5.h">
-      <Filter>Header Files\States\DemoGame5</Filter>
-    </ClInclude>
-    <ClInclude Include="States\DemoGame6\DemoState6.h">
-      <Filter>Header Files\States\DemoGame6</Filter>
-    </ClInclude>
     <ClInclude Include="UI\UIManager.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="UI\Button.h">
       <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="States\Assignment1Demo\Assignment1Demo.h">
+      <Filter>Header Files\States\Assignment1Demo</Filter>
+    </ClInclude>
+    <ClInclude Include="States\CannonGame\CannonGame.h">
+      <Filter>Header Files\States\CannonGame</Filter>
+    </ClInclude>
+    <ClInclude Include="States\DemoState5\DemoState5.h">
+      <Filter>Header Files\States\DemoState5</Filter>
+    </ClInclude>
+    <ClInclude Include="States\FlockingDemo\FlockingDemo.h">
+      <Filter>Header Files\States\FlockingDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="States\DemoState6\DemoState6.h">
+      <Filter>Header Files\States\DemoState6</Filter>
+    </ClInclude>
+    <ClInclude Include="States\HeightmapDemo\HeightmapDemo.h">
+      <Filter>Header Files\States\HeightmapDemo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

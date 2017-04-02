@@ -1,11 +1,14 @@
 #pragma once
 
 #include <string>
+#include "GL/glew.h"
 #include "../Maths/Vec3.h"
 #include "../Maths/Vec2.h"
 
 namespace OpenGLRendering
 {
+	//numOfArrays = number of array to generate
+	void generateVertexArrays(GLsizei numOfArrays, GLuint* VAO);
 	void activateShaderProgram(std::string shaderID);
 	void activateMeshVAO(std::string meshID);
 	void activateMat4Uniform(std::string shaderID, std::string uniformID, float* matPointer);
@@ -14,7 +17,9 @@ namespace OpenGLRendering
 	void unbindVAO();
 	void disableShaderProgram();
 	void bindTextures(std::string meshID, std::string shaderID);
+	void bindVertexArray(GLuint VAO);
 	void drawWithVerticies(std::string meshID);
 	void drawWithPoints(std::string meshID);
+	void drawWithLines(std::string meshID);
 	void drawWithIndices(std::string meshID);
 }

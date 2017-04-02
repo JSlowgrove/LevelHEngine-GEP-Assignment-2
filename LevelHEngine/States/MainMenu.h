@@ -42,7 +42,7 @@ private:
 	///The menu sprite
 	std::string menuSprite;
 	///The menu buttons
-	std::string demoButtons[6];
+	std::string menuButtons[6];
 	bool initialLoop;
 	float totalTime;
 };

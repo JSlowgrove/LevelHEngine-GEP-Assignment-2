@@ -1,4 +1,4 @@
-#include "DemoState5.h"
+#include "FlockingDemo.h"
 
 #include <SDL.h>
 #include "../MainMenu.h"
@@ -13,9 +13,9 @@
 #include "../../ResourceManagement/ResourceManager.h"
 
 
-DemoState5::DemoState5(StateManager* stateManager, SDL_Window* window)
+FlockingDemo::FlockingDemo(StateManager* stateManager, SDL_Window* window)
 	: State(stateManager, window, "DemoState5"),
-	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/ShowYourMoves.ogg"))
+	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/LongTimeComing.ogg"))
 {
 	//Set the background colour
 	Application::setBackgroundColour(Vec3(0.0f, 0.0f, 0.1f));
@@ -48,15 +48,15 @@ DemoState5::DemoState5(StateManager* stateManager, SDL_Window* window)
 	use3D = true;
 
 	//initlaise the ID images
-	UIID = ResourceManager::initialiseSprite("Assets/img/demo5ui.png");
-	helpID = ResourceManager::initialiseSprite("Assets/img/demo5help.png");
+	UIID = ResourceManager::initialiseSprite("Assets/img/FlockingDemoUI.png");
+	helpID = ResourceManager::initialiseSprite("Assets/img/FlockingDemoHelp.png");
 	help = true;
 
 	//start the music
 	ResourceManager::getMusic(backgroundMusicID)->startMusic();
 }
 
-DemoState5::~DemoState5()
+FlockingDemo::~FlockingDemo()
 {
 	delete flock;
 	delete flock3D;
@@ -66,7 +66,7 @@ DemoState5::~DemoState5()
 	}
 }
 
-bool DemoState5::input()
+bool FlockingDemo::input()
 {
 	//Check for user input
 	SDL_Event incomingEvent;
@@ -220,7 +220,7 @@ bool DemoState5::input()
 	return true;
 }
 
-void DemoState5::update()
+void FlockingDemo::update()
 {
 	InputManager::updateInputManager();
 
@@ -248,7 +248,7 @@ void DemoState5::update()
 	Application::camera->getComponent<CameraControlComponent>().lock()->updateCamera(Application::getDT());
 }
 
-void DemoState5::draw()
+void FlockingDemo::draw()
 {
 	//loops through the game objects
 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)

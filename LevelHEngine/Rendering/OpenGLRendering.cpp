@@ -1,7 +1,11 @@
 #include "OpenGLRendering.h"
 
-#include "GL/glew.h"
 #include "../ResourceManagement/ResourceManager.h"
+
+void OpenGLRendering::generateVertexArrays(GLsizei numOfArrays, GLuint* VAO)
+{
+	glGenVertexArrays(1, VAO);
+}
 
 void OpenGLRendering::activateShaderProgram(std::string shaderID)
 {
@@ -58,7 +62,18 @@ void OpenGLRendering::drawWithPoints(std::string meshID)
 	glDrawArrays(GL_POINTS, 0, ResourceManager::getMesh(meshID)->getNumberOfVertices());
 }
 
+void OpenGLRendering::drawWithLines(std::string meshID)
+{
+	//Draw the model to the screen, using the type of geometry and the number of vertices's*/
+	glDrawArrays(GL_LINES, 0, ResourceManager::getMesh(meshID)->getNumberOfVertices());
+}
+
 void OpenGLRendering::drawWithIndices(std::string meshID)
 {
 	glDrawElements(GL_TRIANGLES, ResourceManager::getMesh(meshID)->getNumIndices(), GL_UNSIGNED_INT, (void*)0);
+}
+
+void OpenGLRendering::bindVertexArray(GLuint VAO)
+{
+	glBindVertexArray(VAO);
 }
