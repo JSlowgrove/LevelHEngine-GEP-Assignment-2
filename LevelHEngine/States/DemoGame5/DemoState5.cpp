@@ -40,8 +40,9 @@ DemoState5::DemoState5(StateManager* stateManager, SDL_Window* window)
 	boidSpriteID = ResourceManager::initialiseSprite("Assets/img/boid.png");
 	ResourceManager::getSprite(boidSpriteID)->scaleSprite(Vec2(25.0f, 25.0f));
 
-	//Initlaise the flock
+	//Initlaise the flocks
 	flock = new Flocking(25, boidSpriteID, WindowFrame::getWindowRes().x, WindowFrame::getWindowRes().y, 25.0f);
+	flock3D = new Flocking(25, "cube", "default", "magenta", 15.0f, 10.0f, 5.0f, 2.0f);
 
 	//start the music
 	ResourceManager::getMusic(backgroundMusicID)->startMusic();
@@ -50,6 +51,7 @@ DemoState5::DemoState5(StateManager* stateManager, SDL_Window* window)
 DemoState5::~DemoState5()
 {
 	delete flock;
+	delete flock3D;
 	if (!destroyed)
 	{
 		destroyState();
@@ -82,54 +84,56 @@ bool DemoState5::input()
 		if (InputManager::isKeyReleased(RETURN_KEY))
 		{
 			//If Enter is pressed all rules are active
-			flock->setRule1(1);
-			flock->setRule2(1);
-			flock->setRule3(1);
+			flock3D->setRule1(1);
+			flock3D->setRule2(1);
+			flock3D->setRule3(1);
 		}
 
 		if (InputManager::isKeyReleased(ONE_KEY))
 		{
 			//If 1 is pressed only rule 1 is active
-			flock->setRule1(1);
+			flock3D->setRule1(1);
 			//deactivate all other rules
-			flock->setRule2(0);
-			flock->setRule3(0);
+			flock3D->setRule2(0);
+			flock3D->setRule3(0);
 		}
 			
 		if (InputManager::isKeyReleased(TWO_KEY))
 		{
 			//If Escape is pressed, return to main 
-			flock->setRule2(1);
+			flock3D->setRule2(1);
 			//deactivate all other rules
-			flock->setRule1(0);
-			flock->setRule3(0);
+			flock3D->setRule1(0);
+			flock3D->setRule3(0);
 		}
 
 		if (InputManager::isKeyReleased(THREE_KEY))
 		{
 			//If 3 is pressed only rule 3 is active
-			flock->setRule3(1);
+			flock3D->setRule3(1);
 			//deactivate all other rules
-			flock->setRule1(0);
-			flock->setRule2(0);
+			flock3D->setRule1(0);
+			flock3D->setRule2(0);
 		}
 		
 		if (InputManager::isKeyPressed(SPACE_KEY))
 		{
 			//If Space is pressed scatter the flock
-			flock->setRule2(1);
-			flock->setRule3(1);
+			flock3D->setRule2(1);
+			flock3D->setRule3(1);
 			//invert rule 1
-			flock->setRule1(-1);
+			flock3D->setRule1(-1);
 		}
 
 		if (InputManager::isKeyReleased(SPACE_KEY))
 		{
 			//If Space is released activate all rules
-			flock->setRule1(1);
-			flock->setRule2(1);
-			flock->setRule3(1);
+			flock3D->setRule1(1);
+			flock3D->setRule2(1);
+			flock3D->setRule3(1);
 		}
+
+		Application::camera->getComponent<CameraControlComponent>().lock()->handleInput();
 	}
 	return true;
 }
@@ -146,7 +150,8 @@ void DemoState5::update()
 	}
 
 	//Update the flock
-	flock->update();
+	flock->update2D();
+	flock3D->update3D();
 
 	//Keep the music playing
 	ResourceManager::getMusic(backgroundMusicID)->startMusic();
@@ -164,5 +169,5 @@ void DemoState5::draw()
 		Application::getGameObjects()[i]->render();
 	}
 
-	flock->draw();
+	flock->draw2D();
 }

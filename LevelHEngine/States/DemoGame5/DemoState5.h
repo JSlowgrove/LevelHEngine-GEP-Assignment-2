@@ -43,8 +43,9 @@ private:
 	std::string backgroundMusicID;
 	///The boid sprite id.
 	std::string boidSpriteID;
-	///The Flocking object
+	///The Flocking objects
 	Flocking* flock;
+	Flocking* flock3D;
 	///Initital loop bool
 	bool initialLoop;
 };

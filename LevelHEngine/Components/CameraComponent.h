@@ -21,6 +21,12 @@ public:
 	Mat4 getProjection();
 
 	/**
+	@brief Returns the Z depth for the Camera.
+	@returns The Z depth for the Camera.
+	*/
+	float getZDepth();
+
+	/**
 	@brief Returns the Camera orthogonal projection matrix.
 	@returns The Camera orthogonal projection matrix.
 	*/
@@ -40,4 +46,6 @@ private:
 	///Construct a projection matrix for the Camera (Camera lense)
 	Mat4 projection;
 	
+	///The Z depth for the camera
+	float zDepth;
 };

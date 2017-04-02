@@ -85,8 +85,6 @@ private:
 	///The Shader ID
 	std::string shaderID;
 
-	Vec2 convertToOpenGLCoords(Vec2 inVec);
-	Vec2 scaleToOpenGLCoords(Vec2 inVec);
 	void initaliseVBO(Vec2 pos, Vec2 scale);
 	void initialiseTexture();
 	void draw(Vec2 pos);

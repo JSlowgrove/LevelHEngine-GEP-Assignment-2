@@ -21,7 +21,7 @@ Sprite::Sprite(int r, int g, int b)
 
 	//initalise the VBO of the sprite
 	Vec2 pos = Vec2(0.0f, 0.0f);
-	Vec2 scale = scaleToOpenGLCoords(dimensions);
+	Vec2 scale = Convert::scaleToOpenGLCoords(dimensions);
 	initaliseVBO(pos, scale);
 }
 
@@ -35,7 +35,7 @@ Sprite::Sprite(SDL_Surface* inSurfaceData) : surfaceData(inSurfaceData)
 
 	//initalise the VBO of the sprite
 	Vec2 pos = Vec2(0.0f, 0.0f);
-	Vec2 scale = scaleToOpenGLCoords(dimensions);
+	Vec2 scale = Convert::scaleToOpenGLCoords(dimensions);
 	initaliseVBO(pos, scale);
 }
 
@@ -52,7 +52,7 @@ Sprite::Sprite(SDL_Colour colour)
 
 	//initalise the VBO of the sprite
 	Vec2 pos = Vec2(0.0f, 0.0f);
-	Vec2 scale = scaleToOpenGLCoords(dimensions);
+	Vec2 scale = Convert::scaleToOpenGLCoords(dimensions);
 	initaliseVBO(pos, scale);
 }
 
@@ -82,7 +82,7 @@ Sprite::Sprite(std::string fileLocation)
 
 	//initalise the VBO of the sprite
 	Vec2 pos = Vec2(0.0f,0.0f);
-	Vec2 scale = scaleToOpenGLCoords(dimensions);
+	Vec2 scale = Convert::scaleToOpenGLCoords(dimensions);
 	initaliseVBO(pos, scale);
 }
 
@@ -119,7 +119,7 @@ Sprite::Sprite(std::string fileLocation, bool magentaAlpha)
 
 	//initalise the VBO of the sprite
 	Vec2 pos = Vec2(0.0f, 0.0f);
-	Vec2 scale = scaleToOpenGLCoords(dimensions);
+	Vec2 scale = Convert::scaleToOpenGLCoords(dimensions);
 	initaliseVBO(pos, scale);
 }
 
@@ -145,7 +145,7 @@ Vec2 Sprite::getDimensions()
 void Sprite::pushToScreen(Vec2 pos)
 {
 	//Convert to openGL coords
-	pos = convertToOpenGLCoords(pos);
+	pos = Convert::convertToOpenGLCoords(pos);
 
 	//render the image
 	draw(pos);
@@ -157,7 +157,7 @@ void Sprite::scaleSprite(Vec2 scale)
 	Vec2 pos = Vec2(0.0f, 0.0f);
 
 	//Convert to openGL coords
-	scale = scaleToOpenGLCoords(scale);
+	scale = Convert::scaleToOpenGLCoords(scale);
 
 	//delete old VBO data
 	glDeleteVertexArrays(1, &obj);
@@ -165,58 +165,6 @@ void Sprite::scaleSprite(Vec2 scale)
 
 	//initalise VBO
 	initaliseVBO(pos, scale);
-}
-
-Vec2 Sprite::convertToOpenGLCoords(Vec2 inVec)
-{
-	//get the screen dimensions
-	Vec2 screenDim = WindowFrame::getWindowRes();
-
-	/*opengl coordinates
-	-1.0,1.0  -> 1.0, 1.0
-	|					|
-	-1.0,-1.0 -> 1.0,-1.0*/
-
-	//convert the position to a number between 0 and 1
-	float newX = Convert::normaliseFloat(inVec.x, screenDim.x, 0.0f);
-	//double to get the range between 0 and 2
-	newX *= 2.0f;
-	//minus 1 to get the number between -1 and 1
-	newX -= 1.0f;
-
-	//convert the position to a number between 0 and 1
-	float newY = Convert::normaliseFloat(inVec.y, screenDim.y, 0.0f);
-	//double to get the range between 0 and 2
-	newY *= 2.0f;
-	//minus 1 to get the number between -1 and 1
-	newY -= 1.0f;
-	//invert the x coordinate to work with opengl coords
-	newY = -newY;
-
-	return Vec2(newX, newY);
-}
-
-Vec2 Sprite::scaleToOpenGLCoords(Vec2 inVec)
-{
-	//get the screen dimensions
-	Vec2 screenDim = WindowFrame::getWindowRes();
-
-	/*opengl coordinates
-	-1.0,1.0  -> 1.0, 1.0
-	|					|
-	-1.0,-1.0 -> 1.0,-1.0*/
-
-	//convert the position to a number between 0 and 1
-	float newX = Convert::normaliseFloat(inVec.x, screenDim.x, 0.0f);
-	//double to get the range between 0 and 2
-	newX *= 2.0f;
-
-	//convert the position to a number between 0 and 1
-	float newY = Convert::normaliseFloat(inVec.y, screenDim.y, 0.0f);
-	//double to get the range between 0 and 2
-	newY *= 2.0f;
-
-	return Vec2(newX, newY);
 }
 
 void Sprite::initaliseVBO(Vec2 pos, Vec2 scale)

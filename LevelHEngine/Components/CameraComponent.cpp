@@ -15,6 +15,7 @@ void CameraComponent::onAwake()
 	//initialise the projection matrix for the camera (camera lense)
 	projection.setAsPerspectiveMatrix(45.0f, WindowFrame::getAspect(), 0.1f, 200.0f);
 	id = "camera";
+	zDepth = 200.0f;
 }
 
 void CameraComponent::onDestroy()
@@ -25,6 +26,11 @@ Mat4 CameraComponent::getProjection()
 {
 	//return the Camera projection matrix
 	return projection;
+}
+
+float CameraComponent::getZDepth()
+{
+	return zDepth;
 }
 
 float* CameraComponent::getOrthoProjection()

@@ -246,7 +246,8 @@ bool DemoState1::input()
 		if (InputManager::isMouseButtonPressed(MOUSE_LEFT))
 		{
 			ResourceManager::getAudio(mousePressSoundID)->playEffect();
-			std::string message = "Mouse press window position: " + std::to_string(InputManager::getMousePos().x) + "," + std::to_string(InputManager::getMousePos().y);
+			std::string message = "Mouse press window position: " + std::to_string(InputManager::getMousePos().x) 
+				+ "," + std::to_string(InputManager::getMousePos().y);
 			Logging::logI(message);
 		}
 	}
