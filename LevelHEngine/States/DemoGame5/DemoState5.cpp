@@ -44,6 +44,14 @@ DemoState5::DemoState5(StateManager* stateManager, SDL_Window* window)
 	flock = new Flocking(25, boidSpriteID, WindowFrame::getWindowRes().x, WindowFrame::getWindowRes().y, 25.0f);
 	flock3D = new Flocking(25, "cube", "default", "magenta", 15.0f, 10.0f, 5.0f, 2.0f);
 
+	//Initalise the flocking as 3D
+	use3D = true;
+
+	//initlaise the ID images
+	UIID = ResourceManager::initialiseSprite("Assets/img/demo5ui.png");
+	helpID = ResourceManager::initialiseSprite("Assets/img/demo5help.png");
+	help = true;
+
 	//start the music
 	ResourceManager::getMusic(backgroundMusicID)->startMusic();
 }
@@ -84,56 +92,130 @@ bool DemoState5::input()
 		if (InputManager::isKeyReleased(RETURN_KEY))
 		{
 			//If Enter is pressed all rules are active
-			flock3D->setRule1(1);
-			flock3D->setRule2(1);
-			flock3D->setRule3(1);
+			if (use3D)
+			{				
+				flock3D->setRule1(1);
+				flock3D->setRule2(1);
+				flock3D->setRule3(1);
+			}
+			else
+			{
+				flock->setRule1(1);
+				flock->setRule2(1);
+				flock->setRule3(1);
+			}
 		}
 
 		if (InputManager::isKeyReleased(ONE_KEY))
 		{
-			//If 1 is pressed only rule 1 is active
-			flock3D->setRule1(1);
-			//deactivate all other rules
-			flock3D->setRule2(0);
-			flock3D->setRule3(0);
+			//If 1 is pressed only rule 1 is active & deactivate all other rules
+			if (use3D)
+			{
+				flock3D->setRule1(1);
+				flock3D->setRule2(0);
+				flock3D->setRule3(0);
+			}
+			else
+			{
+				flock->setRule1(1);
+				flock->setRule2(0);
+				flock->setRule3(0);
+			}
 		}
 			
 		if (InputManager::isKeyReleased(TWO_KEY))
 		{
-			//If Escape is pressed, return to main 
-			flock3D->setRule2(1);
-			//deactivate all other rules
-			flock3D->setRule1(0);
-			flock3D->setRule3(0);
+			//If 2 is pressed only rule 2 is active & deactivate all other rules 
+			if (use3D)
+			{
+				flock3D->setRule1(0);
+				flock3D->setRule2(1);
+				flock3D->setRule3(0);
+			}
+			else
+			{
+				flock->setRule1(0);
+				flock->setRule2(1);
+				flock->setRule3(0);
+			}
 		}
 
 		if (InputManager::isKeyReleased(THREE_KEY))
 		{
-			//If 3 is pressed only rule 3 is active
-			flock3D->setRule3(1);
-			//deactivate all other rules
-			flock3D->setRule1(0);
-			flock3D->setRule2(0);
+			//If 3 is pressed only rule 3 is active & deactivate all other rules 
+			if (use3D)
+			{
+				flock3D->setRule1(0);
+				flock3D->setRule2(0);
+				flock3D->setRule3(1);
+			}
+			else
+			{
+				flock->setRule1(0);
+				flock->setRule2(0);
+				flock->setRule3(1);
+			}
 		}
 		
 		if (InputManager::isKeyPressed(SPACE_KEY))
 		{
-			//If Space is pressed scatter the flock
-			flock3D->setRule2(1);
-			flock3D->setRule3(1);
-			//invert rule 1
-			flock3D->setRule1(-1);
+			//If Space is pressed scatter the flock by inverting rule 1
+			if (use3D)
+			{
+				flock3D->setRule1(-1);
+				flock3D->setRule2(1);
+				flock3D->setRule3(1);
+			}
+			else
+			{
+				flock->setRule1(-1);
+				flock->setRule2(1);
+				flock->setRule3(1);
+			}
 		}
 
 		if (InputManager::isKeyReleased(SPACE_KEY))
 		{
 			//If Space is released activate all rules
-			flock3D->setRule1(1);
-			flock3D->setRule2(1);
-			flock3D->setRule3(1);
+			if (use3D)
+			{
+				flock3D->setRule1(1);
+				flock3D->setRule2(1);
+				flock3D->setRule3(1);
+			}
+			else
+			{
+				flock->setRule1(1);
+				flock->setRule2(1);
+				flock->setRule3(1);
+			}
 		}
 
-		Application::camera->getComponent<CameraControlComponent>().lock()->handleInput();
+		if (InputManager::isKeyReleased(S_KEY))
+		{
+			//toggle 3D
+			if (use3D)
+			{
+				use3D = false;
+			}
+			else
+			{
+				use3D = true;
+			}
+		}
+
+		if (InputManager::isKeyReleased(H_KEY))
+		{
+			//toggle help
+			if (help)
+			{
+				help = false;
+			}
+			else
+			{
+				help = true;
+			}
+		}
 	}
 	return true;
 }
@@ -150,8 +232,14 @@ void DemoState5::update()
 	}
 
 	//Update the flock
-	flock->update2D();
-	flock3D->update3D();
+	if (use3D)
+	{
+		flock3D->update3D();
+	}
+	else
+	{
+		flock->update2D();
+	}
 
 	//Keep the music playing
 	ResourceManager::getMusic(backgroundMusicID)->startMusic();
@@ -165,9 +253,32 @@ void DemoState5::draw()
 	//loops through the game objects
 	for (unsigned int i = 0; i < Application::getGameObjects().size(); i++)
 	{
-		//draw the state
-		Application::getGameObjects()[i]->render();
+		if (use3D)
+		{
+			//draw the state
+			Application::getGameObjects()[i]->render();
+		}
+		else
+		{
+			//check to see of not a boid
+			std::size_t found = Application::getGameObjects()[i]->getName().find("boid");
+			if (found == std::string::npos)
+			{
+				//draw the state
+				Application::getGameObjects()[i]->render();
+			}
+		}
 	}
 
-	flock->draw2D();
+	if (!use3D)
+	{
+		flock->draw2D();
+	}
+
+	//draw UI
+	ResourceManager::getSprite(UIID)->pushToScreen(Vec2(0.0f, 0.0f));
+	if (help)
+	{
+		ResourceManager::getSprite(helpID)->pushToScreen(Vec2(180.0f, 80.0f));
+	}
 }

@@ -48,4 +48,11 @@ private:
 	Flocking* flock3D;
 	///Initital loop bool
 	bool initialLoop;
+	///A boolean for 3D
+	bool use3D;
+	///A boolean for if help should display
+	bool help;
+	///The UI textures
+	std::string UIID;
+	std::string helpID;
 };

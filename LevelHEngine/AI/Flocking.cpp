@@ -141,7 +141,7 @@ void Flocking::update3D()
 	Vec3 v4 = Vec3(0.0f, 0.0f, 0.0f);
 
 	//The speed increase of the boids
-	float speed = 15.0f;
+	float speed = 20.0f;
 
 	//test each Boid
 	for (unsigned int i = 0; i < boids.size(); i++)
@@ -276,19 +276,19 @@ Vec3 Flocking::ruleTwo3D(int boidIndex)
 		if (i != (unsigned int)boidIndex)
 		{
 			//if the Boid is closer than 0.05f to another Boid on the x axis (using absolute values)
-			if (std::abs(boids[boidIndex]->getPosition3D().x - boids[i]->getPosition3D().x) < 0.05f)
+			if (std::abs(boids[boidIndex]->getPosition3D().x - boids[i]->getPosition3D().x) < 0.3f)
 			{
 				vel.x = vel.x - (boids[i]->getPosition3D().x - boids[boidIndex]->getPosition3D().x);
 			}
 
 			//if the Boid is closer than 0.05f to another Boid on the y axis (using absolute values)
-			if (std::abs(boids[boidIndex]->getPosition3D().y - boids[i]->getPosition3D().y) < 0.05f)
+			if (std::abs(boids[boidIndex]->getPosition3D().y - boids[i]->getPosition3D().y) < 0.3f)
 			{
 				vel.y = vel.y - (boids[i]->getPosition3D().y - boids[boidIndex]->getPosition3D().y);
 			}
 
 			//if the Boid is closer than 0.05f to another Boid on the z axis (using absolute values)
-			if (std::abs(boids[boidIndex]->getPosition3D().z - boids[i]->getPosition3D().z) < 0.05f)
+			if (std::abs(boids[boidIndex]->getPosition3D().z - boids[i]->getPosition3D().z) < 0.3f)
 			{
 				vel.z = vel.z - (boids[i]->getPosition3D().z - boids[boidIndex]->getPosition3D().z);
 			}
