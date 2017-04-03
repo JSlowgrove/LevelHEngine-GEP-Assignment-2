@@ -45,6 +45,8 @@ public:
 private:
 	///The menu sprite
 	std::string buttonSprite, buttonHeldSprite;
+	///A boolean for if the button is pressed
 	bool pressed;
+	///The button position and dimensions
 	Vec2 pos, dim;
 };

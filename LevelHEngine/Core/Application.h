@@ -50,13 +50,27 @@ public:
 	static std::shared_ptr<GameObject>& getCamera();
 
 	/**
-	@brief A static function to get set the background colour.
+	@brief A static function to set the background colour.
 	@param colour The colour to set it to.
 	*/
 	static void setBackgroundColour(Vec3 colour);
 
+	/**
+	@brief A static function to set delta time.
+	@param inDT The value to set it to.
+	*/
 	static void setDT(float inDT);
+
+	/**
+	@brief A static function to get the delta time.
+	@returns The value of DT.
+	*/
 	static float getDT();
+
+	/**
+	@brief A static function to get set the background colour.
+	@param colour The colour to set it to.
+	*/
 	static void drawLoadingScreen();
 
 	///A shared pointer for the camera
@@ -99,6 +113,6 @@ private:
 	static Vec3 backgroundColour;
 	///The loading sprite.
 	static std::string loadingSpriteID;
-	
+	///The delta time
 	static float dt;
 };

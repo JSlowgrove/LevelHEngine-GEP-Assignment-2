@@ -41,5 +41,6 @@ public:
 private:
 	///The background music id.
 	std::string backgroundMusicID;
+	///The game help info
 	std::string gameHelp;
 };

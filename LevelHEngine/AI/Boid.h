@@ -48,7 +48,6 @@ public:
 	Boid(int boidIndex, std::string inMesh, std::string inBoidVertexShader, std::string inBoidFragmentShader,
 		Vec3 inDirection, float inMoveSpeed, Vec3 inPosition);
 
-
 	/**
 	@brief Destructs the Boid Object deleting the Boid Object from memory.
 	*/

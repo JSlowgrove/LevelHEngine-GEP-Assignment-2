@@ -98,7 +98,5 @@ private:
 	///The vector transform variables
 	Vec3 pos;
 	Vec3 rotation;
-	Vec3 scaleSize;
-
-	
+	Vec3 scaleSize;	
 };

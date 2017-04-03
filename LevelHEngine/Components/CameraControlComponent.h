@@ -45,11 +45,34 @@ public:
 	*/
 	void setRotateSpeed(float inRotateSpeed);
 
+	/**
+	@brief A function to disable movement along the x axis
+	*/
 	void disableMoveXControl() { moveX = false; }
+
+	/**
+	@brief A function to disable movement along the y axis
+	*/
 	void disableMoveYControl() { moveY = false; }
+
+	/**
+	@brief A function to disable movement along the z axis
+	*/
 	void disableMoveZControl() { moveZ = false; }
+
+	/**
+	@brief A function to disable rotation along the x axis
+	*/
 	void disableRotateXControl() { rotX = false; }
+
+	/**
+	@brief A function to disable rotation along the y axis
+	*/
 	void disableRotateYControl() { rotY = false; }
+
+	/**
+	@brief A function to disable rotation along the z axis
+	*/
 	void disableRotateZControl() { rotZ = false; }
 
 private:

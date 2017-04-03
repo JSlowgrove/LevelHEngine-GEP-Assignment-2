@@ -43,7 +43,10 @@ private:
 	std::string menuSprite;
 	///The menu buttons
 	std::string menuButtons[4];
+	///A boolean for the inital loop
 	bool initialLoop;
+	///The total running time
 	float totalTime;
+	///The background music ID
 	std::string backgroundMusicID;
 };

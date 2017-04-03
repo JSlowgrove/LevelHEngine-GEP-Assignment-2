@@ -43,5 +43,6 @@ public:
 private:
 	///The timer keeping the splash screen open
 	Timer* splashTimer;
+	///The splash screen sprite
 	std::string splashSprite;
 };

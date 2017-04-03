@@ -61,9 +61,6 @@
     <Filter Include="Source Files\Physics">
       <UniqueIdentifier>{edac2a95-66ea-4bef-8abf-1c4daa355c4c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\ExternalLibraries">
-      <UniqueIdentifier>{e817d0e7-ac49-4b6f-b9a1-bac52aabae11}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\ExternalLibraries">
       <UniqueIdentifier>{e780b81e-c96c-4aba-ba0f-ee197cfe7151}</UniqueIdentifier>
     </Filter>
@@ -385,9 +382,6 @@
     </ClInclude>
     <ClInclude Include="AI\Flocking.h">
       <Filter>Header Files\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="ExternalLibraries\lodepng.h">
-      <Filter>Header Files\ExternalLibraries</Filter>
     </ClInclude>
     <ClInclude Include="UI\UIManager.h">
       <Filter>Header Files\UI</Filter>

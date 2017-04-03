@@ -36,6 +36,9 @@ public:
 	*/
 	void removeLastState();
 
+	/**
+	@brief A function to destruct the first state on the array.
+	*/
 	void destructPreviousState();
 
 	/**

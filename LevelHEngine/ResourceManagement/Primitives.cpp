@@ -38,7 +38,3 @@ Vec3 Primitives::torus(float u, float v)
 	p.z = r1 * sin(v);
 	return p;
 }
-
-void Primitives::drawLineBox(Vec2 pos1, Vec2 pos2, Vec2 pos3, Vec2 pos4)
-{
-}

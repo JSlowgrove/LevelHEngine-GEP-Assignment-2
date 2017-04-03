@@ -42,7 +42,10 @@ public:
 private:
 	///The background music id.
 	std::string backgroundMusicID;
+	///The Win Lose image
 	std::string winLoseID;
+	///A boolean for if this is at the game start
 	bool gameStart;
+	///A pointer for the score text
 	Text* scoreText;
 };

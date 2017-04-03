@@ -85,7 +85,21 @@ private:
 	///The Shader ID
 	std::string shaderID;
 
+	/**
+	@brief A function to initalise a VBO for the sprite.
+	@param pos The position of the image.
+	@param scale The dimensions of the image.
+	*/
 	void initaliseVBO(Vec2 pos, Vec2 scale);
+
+	/**
+	@brief A function to initalise a texture.
+	*/
 	void initialiseTexture();
+
+	/**
+	@brief A function to draw to a position on the screen.
+	@param pos The position of the image.
+	*/
 	void draw(Vec2 pos);
 };

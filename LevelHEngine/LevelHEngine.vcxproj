@@ -192,7 +192,6 @@
     <ClInclude Include="Core\Logging.h" />
     <ClInclude Include="Core\PerformanceTest.h" />
     <ClInclude Include="Core\WindowFrame.h" />
-    <ClInclude Include="ExternalLibraries\lodepng.h" />
     <ClInclude Include="Maths\Convert.h" />
     <ClInclude Include="Maths\Mat4.h" />
     <ClInclude Include="Maths\MathsDefs.h" />

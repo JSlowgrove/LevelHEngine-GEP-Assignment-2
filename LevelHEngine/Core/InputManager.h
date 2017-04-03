@@ -52,6 +52,9 @@ public:
 	*/
 	static Vec2 getMousePos();
 
+	/**
+	@brief A static function to update the input manager
+	*/
 	static void updateInputManager();
 
 private:
@@ -83,5 +86,8 @@ private:
 	*/
 	static void pollMouseEvent(SDL_Event& incomingEvent);
 
+	/**
+	@brief A function to reset the states of the keys.
+	*/
 	static void resetKeys();
 };

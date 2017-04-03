@@ -8,6 +8,13 @@
 */
 namespace Convert
 {
+	/**
+	@brief Normailises a float.
+	@param numToNormalise The number to normalise.
+	@param maxNum The maximum value.
+	@param minNum The minimum value.
+	@returns The normailised float.
+	*/
 	float normaliseFloat(float numToNormalise, float maxNum, float minNum);
 
 	/**
@@ -31,6 +38,17 @@ namespace Convert
  	*/
 	Vec2 convertToOpenGLCoords(Vec2 inVec);
 
+	/**
+	@brief Scales the coordinates to work with OpenGL
+	@param inVec The coordinates to scale.
+	@returns The scaled coordinates.
+	*/
 	Vec2 scaleToOpenGLCoords(Vec2 inVec);
+
+	/**
+	@brief Scales the coordinates to work with OpenGL
+	@param inVec The coordinates to scale.
+	@returns The scaled coordinates.
+	*/
 	Vec3 scaleToOpenGLCoords(Vec3 inVec);
 }

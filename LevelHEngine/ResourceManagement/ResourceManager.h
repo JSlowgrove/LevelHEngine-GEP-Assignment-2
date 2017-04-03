@@ -75,8 +75,15 @@ public:
 	*/
 	static void deleteSprite(std::string id) { sprites.erase(id); }
 
+	/**
+	@brief A static function to stop the music
+	@param id The ID of the file.
+	*/
 	static void stopMusic(std::string id);
 	
+	/**
+	@brief A static function to stop all music
+	*/
 	static void stopAllMusic();
 
 	/**
@@ -86,8 +93,19 @@ public:
 	*/
 	static std::string initialiseHeightmap(std::string heightmapFileName);
 
+	/**
+	@brief A static function to initialise a heightmap.
+	@param heightmapFileName The name of the heightmap file.
+	@param textureFileName The name of the heightmap texture file.
+	@returns The ID of the loaded file.
+	*/
 	static std::string initialiseHeightmap(std::string heightmapFileName, std::string textureFileName);
 
+	/**
+	@brief A static function to initialise a primative.
+	@param primType The primitive type to use.
+	@returns The ID of the loaded file.
+	*/
 	static std::string initialisePrimitive(Primitives::PrimativeType primType);
 
 	/**

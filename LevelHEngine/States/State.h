@@ -54,6 +54,9 @@ public:
 	*/
 	std::string getName();
 
+	/**
+	@brief A function to destroy all data in a state
+	*/
 	void destroyState();
 
 protected:
