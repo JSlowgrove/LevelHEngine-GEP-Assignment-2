@@ -289,6 +289,7 @@ void CannonGame::update()
 		cannonBallVel = Vec3(0.0f, 0.0f, 0.0f);
 		gameTimer->resetTimer();
 		score = 0;
+		scoreText->setText("Score: " + std::to_string(score));
 		timeLeft = 60.0f;
 	}
 

@@ -140,7 +140,6 @@
     <ClCompile Include="Core\Logging.cpp" />
     <ClCompile Include="Core\PerformanceTest.cpp" />
     <ClCompile Include="Core\WindowFrame.cpp" />
-    <ClCompile Include="ExternalLibraries\lodepng.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Maths\Convert.cpp" />
     <ClCompile Include="Maths\Mat4.cpp" />

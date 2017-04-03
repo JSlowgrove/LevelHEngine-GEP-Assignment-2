@@ -49,11 +49,13 @@ bool WinLose::input()
 		if (InputManager::isKeyReleased(RETURN_KEY))
 		{
 			stateManager->removeLastState();
+			return true;
 		}
 
 		if (InputManager::isKeyReleased(H_KEY))
 		{
 			stateManager->addState(new Help(stateManager, window));
+			return true;
 		}
 	}
 
