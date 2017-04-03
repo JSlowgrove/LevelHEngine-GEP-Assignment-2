@@ -14,7 +14,7 @@
 
 
 FlockingDemo::FlockingDemo(StateManager* stateManager, SDL_Window* window)
-	: State(stateManager, window, "DemoState5"),
+	: State(stateManager, window, "FlockingDemo"),
 	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/LongTimeComing.ogg"))
 {
 	//Set the background colour

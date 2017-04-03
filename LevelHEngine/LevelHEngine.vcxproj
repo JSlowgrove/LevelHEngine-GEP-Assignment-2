@@ -135,7 +135,6 @@
     <ClCompile Include="Components\TransformComponent.cpp" />
     <ClCompile Include="Core\Application.cpp" />
     <ClCompile Include="Core\GameObject.cpp" />
-    <ClCompile Include="Core\Screenshot.cpp" />
     <ClCompile Include="Core\Timer.cpp" />
     <ClCompile Include="Core\InputManager.cpp" />
     <ClCompile Include="Core\Logging.cpp" />
@@ -164,8 +163,8 @@
     <ClCompile Include="States\CannonGame\CannonGame.cpp" />
     <ClCompile Include="States\CannonGame\Components\AimBallComponent.cpp" />
     <ClCompile Include="States\CannonGame\Components\CannonControllerComponent.cpp" />
-    <ClCompile Include="States\DemoState5\DemoState5.cpp" />
-    <ClCompile Include="States\DemoState6\DemoState6.cpp" />
+    <ClCompile Include="States\CannonGame\States\Help.cpp" />
+    <ClCompile Include="States\CannonGame\States\WinLose.cpp" />
     <ClCompile Include="States\FlockingDemo\FlockingDemo.cpp" />
     <ClCompile Include="States\HeightmapDemo\HeightmapDemo.cpp" />
     <ClCompile Include="States\MainMenu.cpp" />
@@ -187,7 +186,6 @@
     <ClInclude Include="Components\TransformComponent.h" />
     <ClInclude Include="Core\Application.h" />
     <ClInclude Include="Core\GameObject.h" />
-    <ClInclude Include="Core\Screenshot.h" />
     <ClInclude Include="Core\Timer.h" />
     <ClInclude Include="Core\InputManager.h" />
     <ClInclude Include="Core\InputManagerDefs.h" />
@@ -220,8 +218,8 @@
     <ClInclude Include="States\CannonGame\CannonGame.h" />
     <ClInclude Include="States\CannonGame\Components\AimBallComponent.h" />
     <ClInclude Include="States\CannonGame\Components\CannonControllerComponent.h" />
-    <ClInclude Include="States\DemoState5\DemoState5.h" />
-    <ClInclude Include="States\DemoState6\DemoState6.h" />
+    <ClInclude Include="States\CannonGame\States\Help.h" />
+    <ClInclude Include="States\CannonGame\States\WinLose.h" />
     <ClInclude Include="States\FlockingDemo\FlockingDemo.h" />
     <ClInclude Include="States\HeightmapDemo\HeightmapDemo.h" />
     <ClInclude Include="States\MainMenu.h" />

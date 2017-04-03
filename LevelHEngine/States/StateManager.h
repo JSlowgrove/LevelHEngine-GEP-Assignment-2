@@ -36,6 +36,8 @@ public:
 	*/
 	void removeLastState();
 
+	void destructPreviousState();
+
 	/**
 	@brief Handles the user input in the current State.
 	@returns If false then quit the application.

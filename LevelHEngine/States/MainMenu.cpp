@@ -10,15 +10,13 @@
 #include "CannonGame/CannonGame.h"
 #include "HeightmapDemo/HeightmapDemo.h"
 #include "FlockingDemo/FlockingDemo.h"
-#include "DemoState5/DemoState5.h"
-#include "DemoState6/DemoState6.h"
 #include "Assignment1Demo/Assignment1Demo.h"
 #include "../Core/Logging.h"
 #include "../Maths/Convert.h"
-#include "../Core/Screenshot.h"
 
 MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
-	: State(stateManager, window, "MainMenu")
+	: State(stateManager, window, "MainMenu"),
+	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/LaserGroove.ogg"))
 {
 	//Set the background colour
 	Application::setBackgroundColour(Vec3(0.0f, 0.0f, 0.0f));
@@ -45,15 +43,16 @@ MainMenu::MainMenu(StateManager* stateManager, SDL_Window* window)
 	cube->getComponent<ModelComponent>().lock()->initaliseMesh("cube");
 	cube->getComponent<ModelComponent>().lock()->initaliseDefaultColourShaders("default", "default");
 
-	menuButtons[0] = UIManager::initialiseButton("Assets/img/CannonGameButton.png", "Assets/img/CannonGameButtonHeld.png", Vec2(45.0f, 126.0f));
-	menuButtons[1] = UIManager::initialiseButton("Assets/img/HeightmapDemoButton.png", "Assets/img/HeightmapDemoButtonHeld.png", Vec2(45.0f, 221.0f));
-	menuButtons[2] = UIManager::initialiseButton("Assets/img/FlockingDemoButton.png", "Assets/img/FlockingDemoButtonHeld.png", Vec2(45.0f, 316.0f));
-	menuButtons[3] = UIManager::initialiseButton("Assets/img/AStarLOSDemoButton.png", "Assets/img/AStarLOSDemoButtonHeld.png", Vec2(45.0f, 412.0f));
-	menuButtons[4] = UIManager::initialiseButton("Assets/img/AsteroidsButton.png", "Assets/img/AsteroidsButtonHeld.png", Vec2(45.0f, 507.0f));
-	menuButtons[5] = UIManager::initialiseButton("Assets/img/Assignment1DemoButton.png", "Assets/img/Assignment1DemoButtonHeld.png", Vec2(45.0f, 603.0f));
+	menuButtons[0] = UIManager::initialiseButton("Assets/img/CannonGameButton.png", "Assets/img/CannonGameButtonHeld.png", Vec2(45.0f, 215.0f));
+	menuButtons[1] = UIManager::initialiseButton("Assets/img/HeightmapDemoButton.png", "Assets/img/HeightmapDemoButtonHeld.png", Vec2(45.0f, 305.0f));
+	menuButtons[2] = UIManager::initialiseButton("Assets/img/FlockingDemoButton.png", "Assets/img/FlockingDemoButtonHeld.png", Vec2(45.0f, 400.0f));
+	menuButtons[3] = UIManager::initialiseButton("Assets/img/Assignment1DemoButton.png", "Assets/img/Assignment1DemoButtonHeld.png", Vec2(45.0f, 490.0f));
 
 	totalTime = 0.0f;
 	initialLoop = true;
+
+	//start the music
+	ResourceManager::getMusic(backgroundMusicID)->startMusic();
 }
 
 MainMenu::~MainMenu()
@@ -115,24 +114,6 @@ bool MainMenu::input()
 			//swtich to demo state
 			Application::drawLoadingScreen();
 			destroyState();
-			stateManager->changeState(new DemoState6(stateManager, window));
-			return true;
-		}
-
-		if (UIManager::getButton(menuButtons[4])->input())
-		{
-			//swtich to demo state
-			Application::drawLoadingScreen();
-			destroyState();
-			stateManager->changeState(new DemoState5(stateManager, window));
-			return true;
-		}
-
-		if (UIManager::getButton(menuButtons[5])->input())
-		{
-			//swtich to demo state
-			Application::drawLoadingScreen();
-			destroyState();
 			stateManager->changeState(new Assignment1Demo(stateManager, window));
 			return true;
 		}
@@ -173,6 +154,8 @@ void MainMenu::update()
 			Application::getGameObjects()[i]->getComponent<ModelComponent>().lock()->setDiffuse(Vec3(r, g, b));
 		}
 	}
+
+	ResourceManager::getMusic(backgroundMusicID)->startMusic();
 }
 
 void MainMenu::draw()
@@ -185,7 +168,7 @@ void MainMenu::draw()
 	}
 	ResourceManager::getSprite(menuSprite)->pushToScreen(Vec2(0.0f, 0.0f));
 
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		UIManager::getButton(menuButtons[i])->draw();
 	}

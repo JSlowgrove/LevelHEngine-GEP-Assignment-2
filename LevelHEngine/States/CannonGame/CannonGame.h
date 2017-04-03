@@ -51,6 +51,7 @@ private:
 	Vec3 cannonBallVel;
 	///The movement speed
 	float moveSpeed;
+	float timeLeft;
 
 	float totalTime;
 
@@ -63,7 +64,7 @@ private:
 	std::shared_ptr<GameObject> aimBalls[20];
 
 	Timer* aimTimer;
-	Timer* gameTime;
+	Timer* gameTimer;
 	Timer* missTimer;
 
 	bool fire, newAimBall;
@@ -79,13 +80,12 @@ private:
 	std::string gameUI;
 	std::string gameHelp;
 
-	bool helpToggle;
-
 	int score;
 
 	unsigned int currentLastAimBallIndex;
 
 	Text* scoreText;
+	Text* timeText;
 
 	Vec3 getNewTargetPos();
 };

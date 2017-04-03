@@ -1,8 +1,8 @@
 #include "CannonGame.h"
 
 #include <SDL.h>
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
+#include <stdlib.h>     
+#include <time.h>       
 #include "../MainMenu.h"
 #include "../../Core/GameObject.h"
 #include "../../Core/InputManager.h"
@@ -20,13 +20,15 @@
 #include "../../Physics/Collision.h"
 #include "Components/CannonControllerComponent.h"
 #include "Components/AimBallComponent.h"
+#include "States/Help.h"
+#include "States/WinLose.h"
 
 
 CannonGame::CannonGame(StateManager* stateManager, SDL_Window* window)
-	: State(stateManager, window, "DemoState4"),
-	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/ShowYourMoves.ogg"))
+	: State(stateManager, window, "CannonGame"),
+	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/Voltaic.ogg"))
 {
-	/* initialize random seed: */
+	//initialize random seed:
 	srand(time(NULL));
 
 	//Initalise the speed
@@ -69,6 +71,10 @@ CannonGame::CannonGame(StateManager* stateManager, SDL_Window* window)
 	cannonball->addComponent<ModelComponent>();
 	cannonball->addComponent<BoundingSphereComponent>();
 
+	auto tourus = GameObject::create("tourus").lock();
+	tourus->addComponent<TransformComponent>();
+	tourus->addComponent<ModelComponent>();
+
 	for (unsigned int i = 0; i < 20; i++)
 	{
 		aimBalls[i] = GameObject::create("aimBall-" + std::to_string(i)).lock();
@@ -99,6 +105,7 @@ CannonGame::CannonGame(StateManager* stateManager, SDL_Window* window)
 	heightmap->awake();
 	targetPole->awake();
 	cannonPole->awake();
+	tourus->awake();
 
 	//Initalise the game objects
 
@@ -117,14 +124,19 @@ CannonGame::CannonGame(StateManager* stateManager, SDL_Window* window)
 
 	cannonball->getComponent<TransformComponent>().lock()->setScale(ballScale);
 	cannonball->getComponent<TransformComponent>().lock()->setPos(ballStartPos);
-	cannonball->getComponent<ModelComponent>().lock()->initaliseMesh("sphere");
-	cannonball->getComponent<ModelComponent>().lock()->initaliseDefaultColourShaders("default", "cyan");
+	cannonball->getComponent<ModelComponent>().lock()->initaliseMesh("sphere", "cannonball.jpg");
+	cannonball->getComponent<ModelComponent>().lock()->initaliseShaders("texture", "texture");
 	cannonball->getComponent<BoundingSphereComponent>().lock()->initaliseBoundingSphere(
 		cannonball->getComponent<ModelComponent>().lock()->getMeshID()
 	);
 	cannonball->getComponent<BoundingSphereComponent>().lock()->scaleBoundingSphere(
 		cannonball->getComponent<TransformComponent>().lock()->getScale()
 	);
+
+	tourus->getComponent<TransformComponent>().lock()->setPos(Vec3(0.0f, 10.0f, -80.0f));
+	tourus->getComponent<TransformComponent>().lock()->setScale(Vec3(1.5f, 1.5f, 1.5f));
+	tourus->getComponent<ModelComponent>().lock()->initalisePrimitive(Primitives::TOURUS);
+	tourus->getComponent<ModelComponent>().lock()->initaliseDefaultColourShaders("default", "white");
 
 	Vec3 newTarget = getNewTargetPos();
 	targetBox->getComponent<TransformComponent>().lock()->setPos(newTarget);
@@ -164,10 +176,10 @@ CannonGame::CannonGame(StateManager* stateManager, SDL_Window* window)
 	totalTime = 0.0f;
 
 	gameUI = ResourceManager::initialiseSprite("Assets/img/CannonGameUI.png");
-	gameHelp = ResourceManager::initialiseSprite("Assets/img/CannonGameHelp.png");
-	helpToggle = true;
+	gameHelp = ResourceManager::initialiseSprite("Assets/img/CannonGameHelpBox.png");
 
 	scoreText = new Text("Score: 0", "Assets/font/isl_jupiter.ttf", 120, 255, 255, 255);
+	timeText = new Text("Time Left: 60", "Assets/font/isl_jupiter.ttf", 120, 255, 255, 255);
 
 	pointSound = ResourceManager::initialiseAudio("Assets/aud/powerUp1.ogg");
 	explosionSound = ResourceManager::initialiseAudio("Assets/aud/explosion1.ogg");
@@ -177,15 +189,21 @@ CannonGame::CannonGame(StateManager* stateManager, SDL_Window* window)
 
 	missTimer = new Timer(3.0f);
 
-	//start the music
-	//ResourceManager::getMusic(backgroundMusicID)->startMusic();
-}
+	gameTimer = new Timer(60.0f);
 
+	timeLeft = 60.0f;
+
+	//start the music
+	ResourceManager::getMusic(backgroundMusicID)->startMusic();
+}
+//stateManager->removeLastState();
 CannonGame::~CannonGame()
 {
 	delete aimTimer;
 	delete missTimer;
+	delete gameTimer;
 	delete scoreText;
+	delete timeText;
 	if (!destroyed)
 	{
 		destroyState();
@@ -237,15 +255,7 @@ bool CannonGame::input()
 
 		if (InputManager::isKeyReleased(H_KEY))
 		{
-			//toggle help info
-			if (helpToggle)
-			{
-				helpToggle = false;
-			}
-			else
-			{
-				helpToggle = true;
-			}
+			stateManager->addState(new Help(stateManager, window));
 		}
 
 		Application::camera->getComponent<CameraControlComponent>().lock()->handleInput();
@@ -262,6 +272,24 @@ void CannonGame::update()
 	{
 		Application::setDT(0.0f);
 		initialLoop = false;
+
+		//stwitch to start state
+		stateManager->addState(new WinLose(stateManager, window, true, score));
+	}
+
+	timeLeft -= Application::getDT();
+
+	gameTimer->upadateTimer(Application::getDT());
+	if (gameTimer->checkTimer())
+	{
+		stateManager->addState(new WinLose(stateManager, window, false, score));
+
+		cannonball->getComponent<TransformComponent>().lock()->setPos(ballStartPos);
+		fire = false;
+		cannonBallVel = Vec3(0.0f, 0.0f, 0.0f);
+		gameTimer->resetTimer();
+		score = 0;
+		timeLeft = 60.0f;
 	}
 
 	//apply gravity
@@ -340,6 +368,14 @@ void CannonGame::update()
 					Convert::convertDegreeToRadian(100.0f * Application::getDT()), 0.0f)
 			);
 		}
+
+		if (Application::getGameObjects()[i]->getName() == "tourus")
+		{
+			Application::getGameObjects()[i]->getComponent<TransformComponent>().lock()->rotate(
+				Vec3(Convert::convertDegreeToRadian(100.0f * Application::getDT()),
+					Convert::convertDegreeToRadian(100.0f * Application::getDT()), 0.0f)
+			);
+		}
 	}
 
 	if (newAimBall)
@@ -358,11 +394,13 @@ void CannonGame::update()
 		}
 	}
 
+	timeText->setText("Time Left: " + std::to_string(int(timeLeft)));
+
 	//Update the cannon position
 	cannon->getComponent<CannonControllerComponent>().lock()->update();
 
 	//Keep the music playing
-	//ResourceManager::getMusic(backgroundMusicID)->startMusic();
+	ResourceManager::getMusic(backgroundMusicID)->startMusic();
 
 	//Update the camera
 	Application::camera->getComponent<CameraControlComponent>().lock()->updateCamera(Application::getDT());
@@ -376,12 +414,10 @@ void CannonGame::draw()
 		//draw the state
 		Application::getGameObjects()[i]->render();
 	}
-	scoreText->pushToScreen(Vec2(10.0f, 600.0f));
+	scoreText->pushToScreen(Vec2(20.0f, 600.0f));
+	timeText->pushToScreen(Vec2(710.0f, 600.0f));
 	ResourceManager::getSprite(gameUI)->pushToScreen(Vec2(0.0f, 0.0f));
-	if (helpToggle)
-	{
-		ResourceManager::getSprite(gameHelp)->pushToScreen(Vec2(180.0f, 80.0f));
-	}
+	ResourceManager::getSprite(gameHelp)->pushToScreen(Vec2(0.0f, 0.0f));
 }
 
 Vec3 CannonGame::getNewTargetPos()

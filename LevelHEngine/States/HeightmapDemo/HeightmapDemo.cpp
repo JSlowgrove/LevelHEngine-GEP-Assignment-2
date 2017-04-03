@@ -16,7 +16,7 @@
 
 
 HeightmapDemo::HeightmapDemo(StateManager* stateManager, SDL_Window* window)
-	: State(stateManager, window, "DemoState2"),
+	: State(stateManager, window, "HeightmapDemo"),
 	backgroundMusicID(ResourceManager::initialiseMusic("Assets/aud/DeliberateThought.ogg"))
 {
 	//Set the background colour

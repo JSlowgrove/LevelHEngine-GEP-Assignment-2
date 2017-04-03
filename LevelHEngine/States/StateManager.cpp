@@ -50,7 +50,12 @@ void StateManager::removeLastState()
 	Logging::logI(name + " State removed");
 }
 
-bool StateManager::input() 
+void StateManager::destructPreviousState()
+{
+	currentStates[0]->destroyState();
+}
+
+bool StateManager::input()
 {
 	return currentStates.back()->input();
 }

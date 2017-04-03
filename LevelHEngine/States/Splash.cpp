@@ -44,12 +44,6 @@ bool Splash::input()
 
 void Splash::update()
 {
-#if _DEBUG
-	Application::drawLoadingScreen();
-	destroyState();
-	stateManager->changeState(new MainMenu(stateManager, window));
-	return;
-#else
 	//Update the timer
 	splashTimer->upadateTimer(Application::getDT());
 
@@ -61,7 +55,6 @@ void Splash::update()
 		stateManager->changeState(new MainMenu(stateManager, window));
 		return;
 	}
-#endif
 }
 
 void Splash::draw()

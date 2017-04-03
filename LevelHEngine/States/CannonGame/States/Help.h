@@ -1,12 +1,13 @@
 #pragma once
 
-#include "../State.h"
-#include "../StateManager.h"
+#include <memory>
+#include "../../State.h"
+#include "../../StateManager.h"
 
 /**
 @brief A State that contains and runs the Demo.
 */
-class DemoState6 : public State
+class Help : public State
 {
 public:
 	/**
@@ -14,12 +15,12 @@ public:
 	@param stateManager A pointer to the StateManager.
 	@param window A pointer to the window in use.
 	*/
-	DemoState6(StateManager* stateManager, SDL_Window* window);
+	Help(StateManager* stateManager, SDL_Window* window);
 
 	/**
 	@brief Destructs the State object.
 	*/
-	~DemoState6();
+	~Help();
 
 	/**
 	@brief Handles the State input.
@@ -40,6 +41,5 @@ public:
 private:
 	///The background music id.
 	std::string backgroundMusicID;
-	///Initital loop bool
-	bool initialLoop;
+	std::string gameHelp;
 };

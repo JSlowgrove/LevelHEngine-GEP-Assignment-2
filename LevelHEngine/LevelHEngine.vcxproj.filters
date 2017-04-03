@@ -79,12 +79,6 @@
     <Filter Include="Source Files\States\Assignment1Demo">
       <UniqueIdentifier>{c6d4c8e6-3e40-46b3-85ce-ac36bba5b467}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\States\DemoState5">
-      <UniqueIdentifier>{44a81d90-ff22-4dde-a1d9-3bb9dedc127d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\States\DemoState6">
-      <UniqueIdentifier>{78d1b29e-e9bd-4a10-8d8c-2df7d69a2292}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\States\FlockingDemo">
       <UniqueIdentifier>{e7528613-ec76-4c8b-879f-e6b7d0c0cfd7}</UniqueIdentifier>
     </Filter>
@@ -97,12 +91,6 @@
     <Filter Include="Source Files\States\CannonGame">
       <UniqueIdentifier>{e66ffaee-fb62-4937-b0f0-bdef46743612}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\States\DemoState5">
-      <UniqueIdentifier>{26f07ce5-cd1b-4183-91ea-66d4f19fc33c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\States\DemoState6">
-      <UniqueIdentifier>{16b3c954-2006-41e6-84bd-ce355537259f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\States\FlockingDemo">
       <UniqueIdentifier>{98355171-2ec3-4743-b6f1-d527ceecafb0}</UniqueIdentifier>
     </Filter>
@@ -114,6 +102,12 @@
     </Filter>
     <Filter Include="Source Files\States\CannonGame\Components">
       <UniqueIdentifier>{25be5a74-5412-4ac3-8b0f-368d7fabeef2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\CannonGame\States">
+      <UniqueIdentifier>{542abf7e-d278-4093-96d6-634055099852}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States\CannonGame\States">
+      <UniqueIdentifier>{c4c1863b-eb48-4c12-8109-a2b00a61c240}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -231,9 +225,6 @@
     <ClCompile Include="AI\Flocking.cpp">
       <Filter>Source Files\AI</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Screenshot.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="ExternalLibraries\lodepng.cpp">
       <Filter>Source Files\ExternalLibraries</Filter>
     </ClCompile>
@@ -249,12 +240,6 @@
     <ClCompile Include="States\CannonGame\CannonGame.cpp">
       <Filter>Source Files\States\CannonGame</Filter>
     </ClCompile>
-    <ClCompile Include="States\DemoState5\DemoState5.cpp">
-      <Filter>Source Files\States\DemoState5</Filter>
-    </ClCompile>
-    <ClCompile Include="States\DemoState6\DemoState6.cpp">
-      <Filter>Source Files\States\DemoState6</Filter>
-    </ClCompile>
     <ClCompile Include="States\HeightmapDemo\HeightmapDemo.cpp">
       <Filter>Source Files\States\HeightmapDemo</Filter>
     </ClCompile>
@@ -266,6 +251,12 @@
     </ClCompile>
     <ClCompile Include="States\CannonGame\Components\AimBallComponent.cpp">
       <Filter>Source Files\States\CannonGame\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="States\CannonGame\States\Help.cpp">
+      <Filter>Source Files\States\CannonGame\States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\CannonGame\States\WinLose.cpp">
+      <Filter>Source Files\States\CannonGame\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -395,9 +386,6 @@
     <ClInclude Include="AI\Flocking.h">
       <Filter>Header Files\AI</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Screenshot.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="ExternalLibraries\lodepng.h">
       <Filter>Header Files\ExternalLibraries</Filter>
     </ClInclude>
@@ -413,14 +401,8 @@
     <ClInclude Include="States\CannonGame\CannonGame.h">
       <Filter>Header Files\States\CannonGame</Filter>
     </ClInclude>
-    <ClInclude Include="States\DemoState5\DemoState5.h">
-      <Filter>Header Files\States\DemoState5</Filter>
-    </ClInclude>
     <ClInclude Include="States\FlockingDemo\FlockingDemo.h">
       <Filter>Header Files\States\FlockingDemo</Filter>
-    </ClInclude>
-    <ClInclude Include="States\DemoState6\DemoState6.h">
-      <Filter>Header Files\States\DemoState6</Filter>
     </ClInclude>
     <ClInclude Include="States\HeightmapDemo\HeightmapDemo.h">
       <Filter>Header Files\States\HeightmapDemo</Filter>
@@ -430,6 +412,12 @@
     </ClInclude>
     <ClInclude Include="States\CannonGame\Components\AimBallComponent.h">
       <Filter>Header Files\States\CannonGame\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="States\CannonGame\States\Help.h">
+      <Filter>Header Files\States\CannonGame\States</Filter>
+    </ClInclude>
+    <ClInclude Include="States\CannonGame\States\WinLose.h">
+      <Filter>Header Files\States\CannonGame\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
