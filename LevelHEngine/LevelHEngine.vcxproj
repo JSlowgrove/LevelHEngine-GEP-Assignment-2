@@ -124,11 +124,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AI\AStar.cpp" />
     <ClCompile Include="AI\Boid.cpp" />
     <ClCompile Include="AI\Flocking.cpp" />
-    <ClCompile Include="AI\LOS.cpp" />
-    <ClCompile Include="AI\Node.cpp" />
     <ClCompile Include="Components\BoundingBoxComponent.cpp" />
     <ClCompile Include="Components\BoundingSphereComponent.cpp" />
     <ClCompile Include="Components\CameraComponent.cpp" />
@@ -165,6 +162,8 @@
     <ClCompile Include="ResourceManagement\Text.cpp" />
     <ClCompile Include="States\Assignment1Demo\Assignment1Demo.cpp" />
     <ClCompile Include="States\CannonGame\CannonGame.cpp" />
+    <ClCompile Include="States\CannonGame\Components\AimBallComponent.cpp" />
+    <ClCompile Include="States\CannonGame\Components\CannonControllerComponent.cpp" />
     <ClCompile Include="States\DemoState5\DemoState5.cpp" />
     <ClCompile Include="States\DemoState6\DemoState6.cpp" />
     <ClCompile Include="States\FlockingDemo\FlockingDemo.cpp" />
@@ -177,11 +176,8 @@
     <ClCompile Include="UI\UIManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AI\AStar.h" />
     <ClInclude Include="AI\Boid.h" />
     <ClInclude Include="AI\Flocking.h" />
-    <ClInclude Include="AI\LOS.h" />
-    <ClInclude Include="AI\Node.h" />
     <ClInclude Include="Components\BoundingBoxComponent.h" />
     <ClInclude Include="Components\BoundingSphereComponent.h" />
     <ClInclude Include="Components\CameraComponent.h" />
@@ -222,6 +218,8 @@
     <ClInclude Include="ResourceManagement\Text.h" />
     <ClInclude Include="States\Assignment1Demo\Assignment1Demo.h" />
     <ClInclude Include="States\CannonGame\CannonGame.h" />
+    <ClInclude Include="States\CannonGame\Components\AimBallComponent.h" />
+    <ClInclude Include="States\CannonGame\Components\CannonControllerComponent.h" />
     <ClInclude Include="States\DemoState5\DemoState5.h" />
     <ClInclude Include="States\DemoState6\DemoState6.h" />
     <ClInclude Include="States\FlockingDemo\FlockingDemo.h" />

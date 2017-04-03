@@ -1,11 +1,12 @@
 #pragma once
 
+#include <memory>
 #include "../State.h"
 #include "../StateManager.h"
 #include "../../Maths/Vec3.h"
-
-#define moveVel 10.0f;
-#define rotVel 5.0f;
+#include "../../Core/GameObject.h"
+#include "../../Core/Timer.h"
+#include "../../ResourceManagement/Text.h"
 
 /**
 @brief A State that contains and runs the Demo.
@@ -48,14 +49,43 @@ private:
 	bool initialLoop;
 	///The sphere velocity
 	Vec3 cannonBallVel;
-	///The cannon velocity
-	float cannonPower;
-	///The cannon angle
-	Vec3 cannonAngle;
-	///The cannon velocity
-	Vec3 cannonRot;
-	///The cannon launch veclocity
-	Vec3 cannonLaunchVel;
+	///The movement speed
+	float moveSpeed;
 
-	bool fire, landed;
+	float totalTime;
+
+	///A shared pointer to the cannon
+	std::shared_ptr<GameObject> cannon;
+	std::shared_ptr<GameObject> cannonball;
+	std::shared_ptr<GameObject> targetBox;
+	std::shared_ptr<GameObject> targetPole;
+
+	std::shared_ptr<GameObject> aimBalls[20];
+
+	Timer* aimTimer;
+	Timer* gameTime;
+	Timer* missTimer;
+
+	bool fire, newAimBall;
+
+	Vec3 targetPoleOffset;
+
+	Vec3 ballStartPos, ballScale;
+
+	std::string pointSound;
+	std::string noBallSound;
+	std::string explosionSound;
+
+	std::string gameUI;
+	std::string gameHelp;
+
+	bool helpToggle;
+
+	int score;
+
+	unsigned int currentLastAimBallIndex;
+
+	Text* scoreText;
+
+	Vec3 getNewTargetPos();
 };

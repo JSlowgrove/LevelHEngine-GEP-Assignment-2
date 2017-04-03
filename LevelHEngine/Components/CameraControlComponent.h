@@ -45,6 +45,13 @@ public:
 	*/
 	void setRotateSpeed(float inRotateSpeed);
 
+	void disableMoveXControl() { moveX = false; }
+	void disableMoveYControl() { moveY = false; }
+	void disableMoveZControl() { moveZ = false; }
+	void disableRotateXControl() { rotX = false; }
+	void disableRotateYControl() { rotY = false; }
+	void disableRotateZControl() { rotZ = false; }
+
 private:
 	///The movment speed
 	float speed;
@@ -53,4 +60,6 @@ private:
 	///The velocities for the movment of the camera
 	Vec3 movementVel;
 	Vec3 rotationVel;
+	///control booleans
+	bool moveX, moveY, moveZ, rotX, rotY, rotZ;
 };

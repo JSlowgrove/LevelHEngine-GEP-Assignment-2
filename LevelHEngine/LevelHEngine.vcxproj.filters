@@ -109,6 +109,12 @@
     <Filter Include="Source Files\States\HeightmapDemo">
       <UniqueIdentifier>{ce88f7b7-5ab6-45c2-b8c2-7aa6dc515133}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\States\CannonGame\Components">
+      <UniqueIdentifier>{cfbf0193-3f2d-4205-9ca5-824f12efeb72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\CannonGame\Components">
+      <UniqueIdentifier>{25be5a74-5412-4ac3-8b0f-368d7fabeef2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -219,19 +225,10 @@
     <ClCompile Include="ResourceManagement\Text.cpp">
       <Filter>Source Files\ResourceManagement</Filter>
     </ClCompile>
-    <ClCompile Include="AI\AStar.cpp">
-      <Filter>Source Files\AI</Filter>
-    </ClCompile>
     <ClCompile Include="AI\Boid.cpp">
       <Filter>Source Files\AI</Filter>
     </ClCompile>
     <ClCompile Include="AI\Flocking.cpp">
-      <Filter>Source Files\AI</Filter>
-    </ClCompile>
-    <ClCompile Include="AI\LOS.cpp">
-      <Filter>Source Files\AI</Filter>
-    </ClCompile>
-    <ClCompile Include="AI\Node.cpp">
       <Filter>Source Files\AI</Filter>
     </ClCompile>
     <ClCompile Include="Core\Screenshot.cpp">
@@ -263,6 +260,12 @@
     </ClCompile>
     <ClCompile Include="States\FlockingDemo\FlockingDemo.cpp">
       <Filter>Source Files\States\FlockingDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="States\CannonGame\Components\CannonControllerComponent.cpp">
+      <Filter>Source Files\States\CannonGame\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="States\CannonGame\Components\AimBallComponent.cpp">
+      <Filter>Source Files\States\CannonGame\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -386,19 +389,10 @@
     <ClInclude Include="ResourceManagement\Text.h">
       <Filter>Header Files\ResourceManagement</Filter>
     </ClInclude>
-    <ClInclude Include="AI\AStar.h">
-      <Filter>Header Files\AI</Filter>
-    </ClInclude>
     <ClInclude Include="AI\Boid.h">
       <Filter>Header Files\AI</Filter>
     </ClInclude>
     <ClInclude Include="AI\Flocking.h">
-      <Filter>Header Files\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="AI\LOS.h">
-      <Filter>Header Files\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="AI\Node.h">
       <Filter>Header Files\AI</Filter>
     </ClInclude>
     <ClInclude Include="Core\Screenshot.h">
@@ -430,6 +424,12 @@
     </ClInclude>
     <ClInclude Include="States\HeightmapDemo\HeightmapDemo.h">
       <Filter>Header Files\States\HeightmapDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="States\CannonGame\Components\CannonControllerComponent.h">
+      <Filter>Header Files\States\CannonGame\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="States\CannonGame\Components\AimBallComponent.h">
+      <Filter>Header Files\States\CannonGame\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
